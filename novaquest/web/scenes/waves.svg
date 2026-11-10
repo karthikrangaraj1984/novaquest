@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"loud":[60,46],"soft":[60,126],"low":[260,46],"high":[260,126],"amplitude":[118,40],"period":[312,206]}'>
+<g fill="none" stroke-width="3.5"><path d="M20 70 q25 -60 50 0 t50 0 t50 0" stroke="#E0541A"/><path d="M20 150 q25 -22 50 0 t50 0 t50 0" stroke="#F0A070"/>
+<path d="M220 70 q40 -44 80 0 t80 0" stroke="#2B4BD8"/><path d="M220 150 q10 -44 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0" stroke="#7B8DEB"/></g>
+<g stroke="#2A3150" stroke-width="2"><path d="M20 70 H170" stroke-dasharray="3 4"/><path d="M118 70 V40" /><path d="M220 70 H380" stroke-dasharray="3 4"/></g>
+<line x1="200" y1="10" x2="200" y2="190" stroke="#D7DCE8" stroke-width="2"/>
+<g stroke="#2A3150" stroke-width="2" fill="none"><path d="M220 230 q40 -44 80 0 t80 0"/><path d="M220 260 H380" stroke-dasharray="3 4"/><path d="M220 250 v20 M380 250 v20 M220 260 h160"/></g>
+<text x="300" y="290" font-size="12" text-anchor="middle" fill="#5A6178" font-family="sans-serif">one complete wave = one oscillation</text>
+<g font-size="12" fill="#5A6178" font-family="sans-serif"><text x="20" y="196">same pitch, different loudness</text><text x="220" y="196">same loudness, different pitch</text></g>
+</svg>

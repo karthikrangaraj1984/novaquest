@@ -1,0 +1,19 @@
+{% extends "student.html" %}
+{% from "_icons.html" import level_pill %}
+{% block title %}Your understanding{% endblock %}
+{% block heading %}{{ topic.title }}{% endblock %}
+{% block main %}
+<section class="card stack-sm">
+  <h2>{% if res.score >= 0.75 %}You've got it!{% elif res.score >= 0.4 %}Getting there{% else %}Let's try again{% endif %}</h2>
+  <div class="row">Topic level: {{ level_pill(res.level) }}</div>
+  <p class="small muted">{{ res.rationale }}</p>
+</section>
+<section class="card stack-sm" aria-labelledby="next-h">
+  <h2 id="next-h">Next step</h2>
+  <p>{{ res.next.message }}</p>
+  {% if res.next.action == "revise" %}<a class="btn block" href="/student/learn/{{ res.next.topic_id }}">Revise in 5 minutes</a>
+  {% elif res.next.action == "teach" %}<a class="btn block warm" href="/student/teach/{{ res.next.topic_id }}">Teach NOVA</a>
+  {% else %}<a class="btn block" href="/student/learn/{{ res.next.topic_id }}">Next topic</a>{% endif %}
+  <a class="btn block quiet" href="/student/learn/{{ topic.id }}">Back to {{ topic.title }}</a>
+</section>
+{% endblock %}

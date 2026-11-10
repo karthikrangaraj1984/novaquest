@@ -1,0 +1,19 @@
+{% extends layout %}
+{% block title %}Notifications{% endblock %}
+{% block heading %}Notifications{% endblock %}
+{% block main %}
+{% if actor.role != "student" %}<h1>Notifications</h1>{% endif %}
+<section class="stack-sm" aria-label="Notifications">
+  {% for n in items %}
+  <a class="topic-row" href="{{ n.link or '#' }}" style="align-items:flex-start">
+    <span class="stack-sm" style="gap:2px"><b>{{ n.title }}</b><span class="small muted">{{ n.body }}</span><span class="tiny muted">{{ n.updated_at|ist }}</span></span>
+    {% if not n.read_at %}<span class="pill warn">New</span>{% endif %}
+  </a>
+  {% else %}
+  <p class="empty">You're all caught up.</p>
+  {% endfor %}
+</section>
+{% if items %}
+<form method="post"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn quiet" type="submit">Mark all as read</button></form>
+{% endif %}
+{% endblock %}

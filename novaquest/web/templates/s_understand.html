@@ -1,0 +1,18 @@
+{% extends "student.html" %}
+{% block title %}Check my understanding{% endblock %}
+{% block eyebrow %}<span class="small muted">Understanding check</span>{% endblock %}
+{% block heading %}{{ topic.title }}{% endblock %}
+{% block main %}
+<p class="small muted">Explain it in your own words, then use it on a new case. Two or three sentences for each is enough. You can speak instead of typing.</p>
+<p class="small"><a href="/student/learn/{{ topic.id }}">Read the topic again first</a></p>
+<form method="post" class="stack">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <div class="field"><label for="explain">1. Explain: {{ explain_q }}</label><span class="small muted" id="explain-hint">Try starting with: “This means that…” or “It happens because…”</span>
+    <textarea id="explain" name="explain" required aria-describedby="explain-hint" placeholder="2–3 sentences"></textarea>
+    <button type="button" class="btn small quiet" data-voice="explain" aria-label="Speak your explanation" aria-pressed="false" style="align-self:flex-start">🎤 Speak</button></div>
+  <div class="field"><label for="apply">2. Apply: {{ apply_q }}</label><span class="small muted" id="apply-hint">Try starting with: “In this case…” or “I think … because…”</span>
+    <textarea id="apply" name="apply" required aria-describedby="apply-hint" placeholder="2–3 sentences"></textarea>
+    <button type="button" class="btn small quiet" data-voice="apply" aria-label="Speak your answer" aria-pressed="false" style="align-self:flex-start">🎤 Speak</button></div>
+  <button class="btn block" type="submit">Check my understanding</button>
+</form>
+{% endblock %}

@@ -1,0 +1,834 @@
+{
+ "3.1": {
+  "crux": "Synthetic fibres are made by people from chemicals; each fibre is a polymer, a long chain of small repeating units.",
+  "cards": [
+   {
+    "title": "Natural or synthetic?",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Natural fibres",
+       "icon": "🐑",
+       "cells": [
+        "Come from plants and animals",
+        "Cotton, jute, wool, silk"
+       ]
+      },
+      {
+       "head": "Synthetic fibres",
+       "icon": "🏭",
+       "cells": [
+        "Made by people in factories",
+        "Rayon, nylon, polyester, acrylic"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "The clothes we wear are made of fibres.",
+     "Fibres made by people are called synthetic or man-made fibres."
+    ]
+   },
+   {
+    "title": "A chain of small units",
+    "pic": {
+     "kind": "scene",
+     "scene": "polymer_chain",
+     "labels": [
+      {
+       "at": "unit",
+       "name": "Small unit",
+       "note": "One repeating unit (monomer)"
+      },
+      {
+       "at": "link",
+       "name": "Link",
+       "note": "Units are joined to each other"
+      },
+      {
+       "at": "chain",
+       "name": "Long chain",
+       "note": "Many units joined: a polymer"
+      },
+      {
+       "at": "fibre",
+       "name": "Fibre",
+       "note": "Many chains together"
+      }
+     ]
+    },
+    "say": [
+     "A synthetic fibre is a very long chain of small units joined together.",
+     "Such a large unit made of many small units is called a polymer."
+    ],
+    "remember": "'Poly' means many and 'mer' means part: a polymer is many parts joined."
+   },
+   {
+    "title": "Like paper clips",
+    "pic": {
+     "kind": "equation",
+     "parts": [
+      {
+       "icon": "📎",
+       "text": "One clip",
+       "color": "grey"
+      },
+      "+",
+      {
+       "icon": "📎📎📎",
+       "text": "Many clips",
+       "color": "grey"
+      },
+      "=",
+      {
+       "icon": "🔗",
+       "text": "A long chain",
+       "color": "blue"
+      }
+     ]
+    },
+    "say": [
+     "Join many paper clips end to end and you get a long chain.",
+     "A polymer is built the same way from tiny units."
+    ]
+   },
+   {
+    "title": "Natural polymers too",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🌿",
+       "text": "Cotton",
+       "sub": "A polymer called cellulose"
+      },
+      {
+       "icon": "🛢️",
+       "text": "Synthetic fibres",
+       "sub": "Made from petrochemicals (from petroleum)"
+      }
+     ]
+    },
+    "say": [
+     "Polymers occur in nature too: cotton is made of cellulose, a natural polymer.",
+     "Most synthetic fibres are made from chemicals obtained from petroleum."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Synthetic fibres are made by people, natural fibres come from plants and animals.",
+   "A polymer is a long chain of small repeating units.",
+   "Most synthetic fibres are made from petrochemicals."
+  ],
+  "quiz": [
+   {
+    "q": "What is a polymer?",
+    "options": [
+     "A long chain of small repeating units",
+     "A single small unit",
+     "A kind of metal",
+     "A natural dye"
+    ],
+    "answer": 0,
+    "why": "Polymers are made by joining many small units into a long chain."
+   },
+   {
+    "q": "Which of these is a synthetic fibre?",
+    "options": [
+     "Nylon",
+     "Cotton",
+     "Wool",
+     "Jute"
+    ],
+    "answer": 0,
+    "why": "Nylon is made in factories; cotton, wool and jute are natural."
+   }
+  ]
+ },
+ "3.2": {
+  "crux": "The main synthetic fibres are rayon, nylon, polyester and acrylic; each is used where its special property helps.",
+  "cards": [
+   {
+    "title": "Four synthetic fibres",
+    "pic": {
+     "kind": "groups",
+     "root": "Synthetic fibres",
+     "items": [
+      {
+       "icon": "🌲",
+       "name": "Rayon",
+       "eg": "From wood pulp; looks like silk"
+      },
+      {
+       "icon": "🪢",
+       "name": "Nylon",
+       "eg": "Very strong and elastic"
+      },
+      {
+       "icon": "👕",
+       "name": "Polyester",
+       "eg": "Doesn't wrinkle easily"
+      },
+      {
+       "icon": "🧣",
+       "name": "Acrylic",
+       "eg": "Looks and feels like wool"
+      }
+     ]
+    },
+    "say": [
+     "Each fibre is made differently and has its own special features."
+    ]
+   },
+   {
+    "title": "Rayon: artificial silk",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🌲",
+       "text": "Wood pulp is treated with chemicals"
+      },
+      {
+       "icon": "🧵",
+       "text": "A shiny fibre, rayon, is made"
+      },
+      {
+       "icon": "🛏️",
+       "text": "Mixed with cotton for bed sheets, or with wool for carpets"
+      }
+     ]
+    },
+    "say": [
+     "Rayon looks like silk but is much cheaper.",
+     "It is called artificial silk."
+    ]
+   },
+   {
+    "title": "Nylon: stronger than steel wire",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🪂",
+       "text": "Parachutes"
+      },
+      {
+       "icon": "🧗",
+       "text": "Climbing ropes"
+      },
+      {
+       "icon": "⛺",
+       "text": "Tents"
+      },
+      {
+       "icon": "🪥",
+       "text": "Toothbrush bristles"
+      },
+      {
+       "icon": "🧦",
+       "text": "Socks"
+      },
+      {
+       "icon": "🚗",
+       "text": "Seat belts"
+      }
+     ]
+    },
+    "say": [
+     "Nylon, made in 1931, was the first fully synthetic fibre.",
+     "A nylon thread is stronger than a steel wire of the same thickness. It is also light, elastic and easy to wash."
+    ],
+    "remember": "Nylon: strong, elastic and light."
+   },
+   {
+    "title": "Polyester and acrylic",
+    "pic": {
+     "kind": "compare",
+     "rows": [
+      "Feels like",
+      "Special feature",
+      "Used for"
+     ],
+     "cols": [
+      {
+       "head": "Polyester",
+       "icon": "👔",
+       "cells": [
+        "Smooth cloth",
+        "Stays crease-free, easy to wash",
+        "Shirts, sarees; PET bottles and films"
+       ]
+      },
+      {
+       "head": "Acrylic",
+       "icon": "🧶",
+       "cells": [
+        "Wool",
+        "Cheaper than wool, many colours",
+        "Sweaters, shawls, blankets"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Terylene is a popular polyester. Mixed with cotton it becomes 'terrycot'.",
+     "PET, a kind of polyester, is used to make bottles and containers."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Rayon is made from wood pulp and looks like silk.",
+   "Nylon is very strong and elastic: ropes, parachutes, tents.",
+   "Polyester stays crease-free; acrylic is a cheap substitute for wool."
+  ],
+  "quiz": [
+   {
+    "q": "Which fibre is called 'artificial silk'?",
+    "options": [
+     "Rayon",
+     "Nylon",
+     "Acrylic",
+     "Wool"
+    ],
+    "answer": 0,
+    "why": "Rayon is made from wood pulp and looks like silk."
+   },
+   {
+    "q": "Which fibre would you choose for a climbing rope?",
+    "options": [
+     "Nylon",
+     "Rayon",
+     "Cotton",
+     "Acrylic"
+    ],
+    "answer": 0,
+    "why": "Nylon is very strong and elastic, so it is used for climbing ropes and parachutes."
+   },
+   {
+    "q": "Sweaters that look like wool but cost less are usually made of…",
+    "options": [
+     "Acrylic",
+     "Nylon",
+     "Rayon",
+     "Jute"
+    ],
+    "answer": 0,
+    "why": "Acrylic looks and feels like wool but is cheaper."
+   }
+  ]
+ },
+ "3.3": {
+  "crux": "Synthetic fibres are popular because they are strong, last long, dry quickly and cost less, but they melt when heated.",
+  "cards": [
+   {
+    "title": "Why people like them",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "💪",
+       "text": "Strong and durable"
+      },
+      {
+       "icon": "💨",
+       "text": "Dry quickly"
+      },
+      {
+       "icon": "💰",
+       "text": "Less expensive"
+      },
+      {
+       "icon": "🧼",
+       "text": "Easy to maintain"
+      },
+      {
+       "icon": "📦",
+       "text": "Readily available"
+      }
+     ]
+    },
+    "say": [
+     "Synthetic fibres absorb less water, so they dry quickly.",
+     "They last a long time and are cheaper than natural fibres."
+    ]
+   },
+   {
+    "title": "The big danger: melting",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Synthetic clothes near fire",
+       "icon": "🔥",
+       "cells": [
+        "Melt on heating",
+        "Stick to the body",
+        "Cause serious burns"
+       ]
+      },
+      {
+       "head": "Cotton clothes near fire",
+       "icon": "🌿",
+       "cells": [
+        "Do not melt",
+        "Safer to wear",
+        "Best in the kitchen and lab"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "If synthetic clothes catch fire, the melted fibre sticks to the skin.",
+     "So we should never wear synthetic clothes while cooking or working in a laboratory."
+    ],
+    "remember": "Wear cotton, not synthetics, near a stove or flame."
+   },
+   {
+    "title": "Wet test",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Cotton or wool cloth",
+       "icon": "🌿",
+       "cells": [
+        "Soaks up a lot of water",
+        "Takes longer to dry"
+       ]
+      },
+      {
+       "head": "Nylon or polyester cloth",
+       "icon": "🪢",
+       "cells": [
+        "Soaks up little water",
+        "Dries quickly"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Soak the same size of different cloths and see which dries first.",
+     "Synthetic cloth soaks up less water, so it dries faster."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Synthetic fibres are strong, durable, cheap and easy to care for.",
+   "They absorb little water, so they dry quickly.",
+   "They melt on heating, so they are dangerous near fire."
+  ],
+  "quiz": [
+   {
+    "q": "Why should you not wear synthetic clothes while cooking?",
+    "options": [
+     "They melt and stick to the skin if they catch fire",
+     "They are too heavy",
+     "They absorb oil",
+     "They change colour"
+    ],
+    "answer": 0,
+    "why": "Synthetic fibres melt on heating and can cause severe burns."
+   },
+   {
+    "q": "Why does a nylon cloth dry faster than a cotton one?",
+    "options": [
+     "It absorbs less water",
+     "It is heavier",
+     "It is warmer",
+     "It is thicker"
+    ],
+    "answer": 0,
+    "why": "Synthetic fibres hold less water, so they dry quickly."
+   }
+  ]
+ },
+ "3.4": {
+  "crux": "Plastics are polymers too: thermoplastics soften again on heating, but thermosetting plastics stay hard once moulded.",
+  "cards": [
+   {
+    "title": "Two kinds of plastic",
+    "pic": {
+     "kind": "compare",
+     "rows": [
+      "On heating",
+      "Can it be reshaped?",
+      "Examples"
+     ],
+     "cols": [
+      {
+       "head": "Thermoplastic",
+       "icon": "🧴",
+       "cells": [
+        "Softens and bends easily",
+        "Yes, again and again",
+        "Polythene, PVC: toys, combs, bottles"
+       ]
+      },
+      {
+       "head": "Thermosetting",
+       "icon": "🔌",
+       "cells": [
+        "Does not soften",
+        "No, it stays hard once set",
+        "Bakelite, melamine"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Plastic can be moulded into any shape.",
+     "Some plastics bend on heating; others don't."
+    ],
+    "remember": "Thermo-PLASTIC can be reshaped; thermo-SETTING is set for good."
+   },
+   {
+    "title": "Bakelite and melamine",
+    "pic": {
+     "kind": "groups",
+     "root": "Thermosetting plastics",
+     "items": [
+      {
+       "icon": "🔌",
+       "name": "Bakelite",
+       "eg": "Poor conductor of heat and electricity: switches, pan handles"
+      },
+      {
+       "icon": "🍽️",
+       "name": "Melamine",
+       "eg": "Resists fire and heat: kitchenware, floor tiles, fire-proof fabrics"
+      }
+     ]
+    },
+    "say": [
+     "Bakelite is used in electrical switches because it does not conduct electricity.",
+     "Melamine is used to make crockery and fabric that resists fire."
+    ]
+   },
+   {
+    "title": "Chains: straight or linked",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Long straight chains",
+       "icon": "〰️",
+       "cells": [
+        "Chains slide past each other when warm",
+        "Thermoplastics"
+       ]
+      },
+      {
+       "head": "Chains linked across",
+       "icon": "🕸️",
+       "cells": [
+        "Chains are locked in a net",
+        "Thermosetting plastics"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "In some plastics the chains are straight; in others they are cross-linked like a net.",
+     "Cross-linked chains can't move, so the plastic stays hard."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Plastics are polymers that can be moulded into shapes.",
+   "Thermoplastics (polythene, PVC) soften and reshape on heating.",
+   "Thermosetting plastics (bakelite, melamine) stay hard once moulded."
+  ],
+  "quiz": [
+   {
+    "q": "Electrical switches are made of…",
+    "options": [
+     "Bakelite",
+     "Polythene",
+     "Nylon",
+     "Rayon"
+    ],
+    "answer": 0,
+    "why": "Bakelite is a thermosetting plastic that does not conduct electricity or heat."
+   },
+   {
+    "q": "A plastic bottle bends when you put it in hot water. It is a…",
+    "options": [
+     "Thermoplastic",
+     "Thermosetting plastic",
+     "Metal",
+     "Natural fibre"
+    ],
+    "answer": 0,
+    "why": "Thermoplastics soften on heating and can be reshaped."
+   }
+  ]
+ },
+ "3.5": {
+  "crux": "Plastics are used everywhere because they don't rust, are light, strong, last long and don't conduct heat or electricity.",
+  "cards": [
+   {
+    "title": "Why we choose plastic",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🚫",
+       "text": "Doesn't rust or corrode",
+       "sub": "Safe for storing many chemicals"
+      },
+      {
+       "icon": "🪶",
+       "text": "Light",
+       "sub": "Easy to carry"
+      },
+      {
+       "icon": "💪",
+       "text": "Strong and durable",
+       "sub": "Lasts a long time"
+      },
+      {
+       "icon": "🔌",
+       "text": "Poor conductor",
+       "sub": "Of heat and electricity"
+      },
+      {
+       "icon": "💰",
+       "text": "Cheap",
+       "sub": "Easy to make in any shape"
+      }
+     ]
+    },
+    "say": [
+     "Water and air do not react with plastic, so it doesn't rust like iron."
+    ]
+   },
+   {
+    "title": "Plastics in hospitals and homes",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "💉",
+       "text": "Syringes"
+      },
+      {
+       "icon": "🧤",
+       "text": "Gloves"
+      },
+      {
+       "icon": "💊",
+       "text": "Medicine packs"
+      },
+      {
+       "icon": "🍳",
+       "text": "Non-stick pans",
+       "sub": "Teflon coating"
+      },
+      {
+       "icon": "👨‍🚒",
+       "text": "Firefighters' uniforms",
+       "sub": "Melamine coating resists fire"
+      }
+     ]
+    },
+    "say": [
+     "Teflon is a special plastic that oil and water don't stick to.",
+     "Many medical items are plastic because they can be thrown away after one use."
+    ]
+   },
+   {
+    "title": "In planes and cars",
+    "pic": {
+     "kind": "equation",
+     "parts": [
+      {
+       "icon": "🪶",
+       "text": "Light plastic parts",
+       "color": "sky"
+      },
+      "→",
+      {
+       "icon": "🚗",
+       "text": "Lighter vehicle",
+       "color": "blue"
+      },
+      "→",
+      {
+       "icon": "⛽",
+       "text": "Saves fuel",
+       "color": "green"
+      }
+     ]
+    },
+    "say": [
+     "Plastics replace heavy metal parts in cars, planes and trains."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Plastics don't rust or react with most substances.",
+   "They are light, strong, durable and cheap.",
+   "They don't conduct heat or electricity, so they are used for handles and wire covers."
+  ],
+  "quiz": [
+   {
+    "q": "Why are electric wires covered with plastic?",
+    "options": [
+     "Plastic does not conduct electricity",
+     "Plastic is shiny",
+     "Plastic is heavy",
+     "Plastic rusts"
+    ],
+    "answer": 0,
+    "why": "Plastic is a poor conductor of electricity, so it keeps us safe."
+   },
+   {
+    "q": "What is used to make non-stick cookware?",
+    "options": [
+     "Teflon",
+     "Rayon",
+     "Jute",
+     "Wool"
+    ],
+    "answer": 0,
+    "why": "Teflon is a plastic coating that food, oil and water don't stick to."
+   }
+  ]
+ },
+ "3.6": {
+  "crux": "Plastics don't rot away (they are non-biodegradable), so they pile up and harm animals and the land; we must follow the 4 Rs.",
+  "cards": [
+   {
+    "title": "How long things take to break down",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🥕",
+       "text": "Vegetable and fruit peels: 1 to 2 weeks"
+      },
+      {
+       "icon": "📄",
+       "text": "Paper: 10 to 30 days"
+      },
+      {
+       "icon": "👕",
+       "text": "Cotton cloth: 2 to 5 months"
+      },
+      {
+       "icon": "🪵",
+       "text": "Wood: 10 to 15 years"
+      },
+      {
+       "icon": "🛍️",
+       "text": "Plastic bags: several years"
+      },
+      {
+       "icon": "🥫",
+       "text": "Tin and aluminium cans: 100 to 500 years"
+      }
+     ]
+    },
+    "say": [
+     "Things that rot naturally because of bacteria are biodegradable.",
+     "Plastic is non-biodegradable: it stays in the soil for years."
+    ]
+   },
+   {
+    "title": "Harm done by plastic",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🐄",
+       "text": "Animals eat bags",
+       "sub": "Cows can choke and die"
+      },
+      {
+       "icon": "🚧",
+       "text": "Blocks drains",
+       "sub": "Causes flooding in streets"
+      },
+      {
+       "icon": "🔥",
+       "text": "Burning is toxic",
+       "sub": "Gives off poisonous gases"
+      },
+      {
+       "icon": "🟫",
+       "text": "Pollutes soil",
+       "sub": "Stays for years"
+      }
+     ]
+    },
+    "say": [
+     "Plastic thrown away carelessly ends up in drains, fields and animals' stomachs.",
+     "Burning plastic is not a solution: it releases poisonous fumes."
+    ]
+   },
+   {
+    "title": "The 4 Rs",
+    "pic": {
+     "kind": "cycle",
+     "steps": [
+      {
+       "icon": "➖",
+       "short": "Reduce",
+       "text": "Use less plastic; carry a cloth or jute bag."
+      },
+      {
+       "icon": "🔁",
+       "short": "Reuse",
+       "text": "Use containers again instead of throwing them away."
+      },
+      {
+       "icon": "♻️",
+       "short": "Recycle",
+       "text": "Send plastics to be melted and made into new things."
+      },
+      {
+       "icon": "⚡",
+       "short": "Recover",
+       "text": "Get useful energy or material back from waste."
+      }
+     ]
+    },
+    "say": [
+     "Separate waste: biodegradable in one bin, plastics and cans in another."
+    ],
+    "remember": "Reduce, Reuse, Recycle, Recover."
+   }
+  ],
+  "crux_points": [
+   "Biodegradable materials rot naturally; plastic does not.",
+   "Plastic waste harms animals, blocks drains and pollutes soil; burning it releases poison.",
+   "Follow the 4 Rs: Reduce, Reuse, Recycle, Recover."
+  ],
+  "quiz": [
+   {
+    "q": "Which of these is non-biodegradable?",
+    "options": [
+     "Plastic bag",
+     "Banana peel",
+     "Paper",
+     "Cotton cloth"
+    ],
+    "answer": 0,
+    "why": "Bacteria cannot break plastic down, so it stays in the environment for years."
+   },
+   {
+    "q": "Carrying a cloth bag to the market is an example of…",
+    "options": [
+     "Reduce",
+     "Recover",
+     "Burning",
+     "Biodegradation"
+    ],
+    "answer": 0,
+    "why": "Using a cloth bag reduces the number of plastic bags used."
+   }
+  ]
+ }
+}

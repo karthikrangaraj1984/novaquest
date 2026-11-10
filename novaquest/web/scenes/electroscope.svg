@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"clip":[200,40],"jar":[120,180],"cardboard":[248,96],"strips":[200,218],"charged":[300,40]}'>
+<path d="M120 100 H280 V270 Q280 286 264 286 H136 Q120 286 120 270 Z" fill="#E3F2FD" stroke="#5A6178" stroke-width="3" opacity=".9"/>
+<rect x="112" y="88" width="176" height="14" rx="3" fill="#BCAAA4" stroke="#6D4C41" stroke-width="2"/>
+<path d="M200 30 V190" stroke="#8A90A6" stroke-width="6"/><path d="M190 30 Q200 18 210 30" stroke="#8A90A6" stroke-width="6" fill="none"/>
+<g fill="#CFD8DC" stroke="#78909C" stroke-width="1.5"><path d="M198 190 L172 250 L180 254 L202 196Z"/><path d="M202 190 L228 250 L220 254 L198 196Z"/></g>
+<rect x="290" y="30" width="80" height="14" rx="7" fill="#7448C8" transform="rotate(-20 330 37)"/>
+<g font-size="14" font-weight="700" fill="#C62828" font-family="sans-serif"><text x="186" y="236">+</text><text x="216" y="236">+</text><text x="194" y="60">+</text><text x="300" y="62">+</text><text x="324" y="52">+</text><text x="348" y="42">+</text></g>
+</svg>

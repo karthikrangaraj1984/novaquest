@@ -1,0 +1,23 @@
+{% extends "staff.html" %}
+{% block title %}Login slips{% endblock %}
+{% block main %}
+<ol class="stepper" aria-label="Steps"><li class="done"><span class="n">✓</span>Add students</li><li class="done"><span class="n">✓</span>Check rows</li><li class="now"><span class="n">3</span>Print login slips</li></ol>
+<div class="row-between"><h1>Login slips · {{ klass.label }}</h1>
+  <form method="post" action="/teacher/slips.pdf"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="token" value="{{ token }}"><button class="btn" type="submit">Download PDF (8 per page)</button></form></div>
+<div class="note info">PINs are shown only now. Print or download the slips before leaving this page. You can make a new PIN for any student later.</div>
+{% if not slips %}<p class="empty">No new students were added.</p>{% endif %}
+<div class="grid">
+  {% for s in slips %}
+  <div class="slip" aria-label="Login slip for {{ s.name }}">
+    <b>Nova<span style="color:var(--primary)">Quest</span> · {{ s.name }}</b>
+    <div class="small" style="display:grid;grid-template-columns:auto 1fr;gap:2px 12px">
+      <span class="muted">School code</span><span class="mono">{{ code }}</span>
+      <span class="muted">Class · Roll</span><span class="mono">{{ klass.label }} · {{ s.roll_no }}</span>
+      <span class="muted">PIN</span><span class="mono" style="letter-spacing:.15em">{{ s.pin }}</span>
+    </div>
+    <span class="tiny muted">Keep your PIN secret. Ask your teacher if you forget it.</span>
+  </div>
+  {% endfor %}
+</div>
+<a class="btn ghost" href="/teacher/classes/{{ cid }}/students">Back to the class list</a>
+{% endblock %}

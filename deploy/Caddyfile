@@ -1,0 +1,19 @@
+# Local HTTPS for NovaQuest. Phones on the room's Wi-Fi reach the app at https://<this machine's IP>:8443
+# after trusting Caddy's local root certificate (see README, "Phones on the classroom Wi-Fi").
+{
+	local_certs
+	admin 127.0.0.1:2019
+	skip_install_trust
+}
+
+{$NQ_SITE:localhost:8443}, {$NQ_LAN_SITE:127.0.0.1:8443} {
+	tls internal
+	encode zstd gzip
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		-Server
+	}
+	reverse_proxy {$NQ_APP_UPSTREAM:127.0.0.1:8000} {
+		header_up X-Forwarded-Proto https
+	}
+}

@@ -1,0 +1,28 @@
+{% extends layout %}
+{# Book pages (LN-11): the topic's real printed pages, for students (student.html) and staff (staff.html). #}
+{% block title %}{{ topic.title }} · book pages{% endblock %}
+{% block eyebrow %}<span class="small"><a href="{{ '/student/learn/' ~ topic.id if layout == 'student.html' else '/teacher/syllabus?topic=' ~ topic.id ~ '#detail' }}">{{ topic.title }}</a><span class="muted"> · {{ book.title }}</span></span>{% endblock %}
+{% block heading %}Book pages{% endblock %}
+{% block main %}
+{% if layout != "student.html" %}<div class="stack-sm"><a class="small" href="/teacher/syllabus?topic={{ topic.id }}#detail">← {{ topic.title }}</a><h1>Book pages: {{ topic.title }}</h1>
+  <p class="small muted">{{ book.title }} · {{ book.label }}. This is what students see when the book allows full pages.</p></div>{% endif %}
+{% if not allowed %}
+<p class="note info">Full pages of this book aren't turned on by your school. The topic page has a short extract from the textbook, and Ask NOVA answers with page numbers.</p>
+{% elif not pages %}
+<p class="note info">This topic has no textbook pages.</p>
+{% elif not ready %}
+<p class="note warn">The book's pages can't be shown on this computer yet (the page viewer, Poppler, isn't installed). Ask your school's NovaQuest admin.</p>
+{% else %}
+<p class="small muted">Pages {{ pages[0] }}{% if pages|length > 1 %}–{{ pages[-1] }}{% endif %} of your book{% if book.institution_id %} (page numbers of the uploaded file){% endif %}. Pinch or zoom to read the small print.</p>
+<div class="bookpages">
+  {% for n in pages %}
+  <figure class="bookpage"><img src="{{ base }}/pages/{{ n }}.jpg" alt="Page {{ n }} of {{ book.title }}" loading="{{ 'eager' if loop.first else 'lazy' }}" width="1157" height="1637">
+    <figcaption class="small muted">Page {{ n }}</figcaption></figure>
+  {% endfor %}
+</div>
+{% endif %}
+<div class="stack-sm">
+  {% if layout == "student.html" %}<a class="btn block quiet" href="/student/learn/{{ topic.id }}">Back to {{ topic.title }}</a>
+  {% if next_topic %}<a class="small" href="/student/learn/{{ next_topic.id }}/pages">Next topic's pages: {{ next_topic.title }} →</a>{% endif %}{% endif %}
+</div>
+{% endblock %}

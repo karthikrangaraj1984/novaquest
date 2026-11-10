@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"wall":[52,150],"membrane":[72,236],"cytoplasm":[104,74],"nucleus":[112,150],"vacuole":[236,150],"chloroplast":[318,86]}'>
+<rect x="44" y="30" width="312" height="240" rx="14" fill="#D8EFC9" stroke="#3E7D2A" stroke-width="9"/>
+<rect x="58" y="44" width="284" height="212" rx="8" fill="#EEF8E6" stroke="#7DB35F" stroke-width="3"/>
+<rect x="156" y="70" width="162" height="160" rx="46" fill="#E3F2FB" stroke="#5AA4C8" stroke-width="3"/>
+<ellipse cx="112" cy="150" rx="30" ry="27" fill="#C7D0FA" stroke="#3949A8" stroke-width="3"/>
+<circle cx="108" cy="154" r="8" fill="#3949A8"/>
+<g fill="#4CAF50" stroke="#2E7D32" stroke-width="2"><ellipse cx="318" cy="86" rx="15" ry="9"/><ellipse cx="330" cy="200" rx="9" ry="14"/><ellipse cx="96" cy="222" rx="15" ry="8"/><ellipse cx="128" cy="76" rx="13" ry="8" transform="rotate(-20 128 76)"/><ellipse cx="234" cy="246" rx="14" ry="6"/></g>
+</svg>

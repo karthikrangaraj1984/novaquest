@@ -1,0 +1,142 @@
+{% extends "staff.html" %}
+{% block title %}{{ book.title }}{% endblock %}
+{% block head %}{% if book.status == "processing" or (drafting_now and book.meta.lessons and book.meta.lessons.stage in ("queued", "drafting")) or (rooms_now and book.meta.escape and book.meta.escape.stage in ("queued", "drafting")) or (book.meta.refresh and book.meta.refresh.stage in ("queued", "reading")) %}<meta http-equiv="refresh" content="6">{% endif %}{% endblock %}
+{% block main %}
+{% set m = book.meta %}
+<div class="stack-sm"><a class="small" href="/admin/books">← Books</a>
+  <div class="row-between"><div class="stack-sm" style="gap:2px"><h1>{{ book.title }}</h1><span class="muted">{{ book.label }}</span>
+      {% if book.status != "processing" %}<form method="post" action="/admin/books/{{ book.id }}/part" class="row small" style="gap:6px;align-items:center"><input type="hidden" name="csrf" value="{{ csrf }}">
+        <label for="bk-part" class="muted">Part of a book in parts:</label><select id="bk-part" name="part"><option value="">No (whole book)</option>{% for n in range(1, 5) %}<option value="{{ n }}" {% if book.part == n %}selected{% endif %}>Part {{ n }}</option>{% endfor %}</select>
+        <button class="btn quiet small" type="submit">Save</button></form>{% endif %}</div>
+    <div class="row">
+      {% if book.status == "review" %}<form method="post" action="/admin/books/{{ book.id }}/publish"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn" type="submit">Publish the book</button></form>{% endif %}
+      {% if book.status == "archived" %}<form method="post" action="/admin/books/{{ book.id }}/publish"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn" type="submit">Publish again</button></form>{% endif %}
+      {% if book.status == "published" %}<form method="post" action="/admin/books/{{ book.id }}/archive" data-confirm="Archive this book? Classes will no longer see it; history is kept."><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn quiet small" type="submit">Archive</button></form>{% endif %}
+      {% if book.status != "published" and not used %}<form method="post" action="/admin/books/{{ book.id }}/delete" data-confirm="Delete this book and its files?"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn quiet small" type="submit">Delete</button></form>{% endif %}
+    </div></div></div>
+
+{% if book.status == "processing" %}
+<section class="card stack-sm" aria-live="polite"><h2>Reading the book…</h2>
+  <p>{% if m.stage == "outlining" %}Finding topics: chapter {{ m.done }} of {{ m.total }}.{% elif m.stage == "scanning" %}The pages are scanned pictures, so NovaQuest is reading their words: page {{ m.done }} of {{ m.total }}. A long book takes several minutes.{% else %}Extracting the text from {{ m.files }} file{{ "s" if m.files != 1 }}.{% endif %} This page updates by itself.</p>
+  {% if m.total %}<span class="track wide" aria-hidden="true"><span class="fill" style="width:{{ (100 * m.done / m.total)|round(0) }}%"></span></span>{% endif %}
+</section>
+{% elif book.status == "failed" %}
+<div class="note warn stack-sm" role="alert"><p><b>NovaQuest couldn't read this book.</b> {{ m.error }}</p>
+  <form method="post" action="/admin/books/{{ book.id }}/read"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small" type="submit">Read again</button></form></div>
+{% else %}
+{% if book.status == "review" %}
+<div class="note info"><b>Check the topics, then publish.</b> NovaQuest found {{ m.chapters }} chapters and {{ m.topics }} topics {% if m.method == "claude" %}with Claude{% else %}from the book's headings{% endif %}. Rename anything that reads wrongly, and remove a topic if it isn't really one (its text joins the topic next to it). Students see nothing until you publish.{% if m.scanned %} The book's pages are scanned pictures, so their words were read by text recognition ({{ m.scanned }} pages): check the chapter and topic titles closely, as a heading can come out garbled.{% endif %}</div>
+{% elif book.status == "published" %}
+<div class="note ok">Published. Give it to classes on <a href="/admin">School setup</a> (Subjects), then map its teachers.</div>
+{% endif %}
+
+<section class="card stack-sm" aria-labelledby="les-h">
+  <div class="row-between"><h2 id="les-h">Picture lessons, quick checks and NOVA's mix-ups</h2>
+  {% if drafts %}<form method="post" action="/admin/books/{{ book.id }}/approve" data-confirm="Approve all {{ drafts }} drafted items? Students will see them."><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small" type="submit">Approve all {{ drafts }}</button></form>{% endif %}</div>
+  {% set L = m.lessons or {} %}
+  {% if L.stage in ("queued", "drafting") %}<p aria-live="polite">Claude is drafting: {{ L.done or 0 }} of {{ L.total or "…" }} topics{% if L.failed %} · {{ L.failed }} couldn't be drafted{% endif %}. Each topic takes about a minute; a few are drafted at once. This page updates by itself.</p>
+    {% if L.total %}<span class="track wide" aria-hidden="true"><span class="fill" style="width:{{ (100 * ((L.done or 0) + (L.failed or 0)) / L.total)|round(0) }}%"></span></span>{% endif %}
+  {% elif L.stage == "needs_claude" %}<p class="note warn small">This needs a Claude API key (run <span class="mono">nq set-key</span> on the NovaQuest computer, then restart).</p>
+  {% elif L.stage == "paused" %}<p class="note warn small">Drafted {{ L.done }} of {{ L.total }} topics.{% if L.failed %} {{ L.failed }} couldn't be drafted (Claude was busy or its reply was unusable).{% endif %} Continue drafting to try the rest; if it stops again, the school's daily AI limit may have been reached.</p>
+  {% endif %}
+  {% if L.stage == "ready" and L.no_pictures %}<p class="small">{{ L.no_pictures }} topic{{ "s" if L.no_pictures != 1 }} {{ "have" if L.no_pictures != 1 else "has" }} no picture lesson (labelled "No pictures": Claude's pictures couldn't be drawn). Draft any missing topics tries again; their quick checks and mix-ups are kept.</p>{% endif %}
+  <p class="small muted">Claude drafts each topic's material from the book's own text. Check each topic (answers are shown), then approve it. Until then students still get practice, Ask NOVA and the textbook text.</p>
+  {% if L.stage in ("queued", "drafting") and not drafting_now %}<p class="note warn small">Drafting was interrupted (NovaQuest was restarted). Continue to pick up where it stopped.</p>{% endif %}
+  {% if L.stage not in ("queued", "drafting") or not drafting_now %}
+  <form method="post" action="/admin/books/{{ book.id }}/lessons"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn {{ 'quiet' if L.stage == 'ready' else '' }} small" type="submit" {% if not claude %}disabled title="Needs a Claude API key"{% endif %}>{% if L.stage == "ready" %}Draft any missing topics{% elif L.stage %}Continue drafting{% else %}Draft lessons with Claude{% endif %}</button></form>
+  {% endif %}
+</section>
+
+{% if book.status == "published" %}
+{% set E = m.escape or {} %}
+{% set chapters_n = tree|length %}
+{% set waiting = rooms.values()|selectattr("status", "equalto", "draft")|list|length %}
+<section class="card stack-sm" id="escape" aria-labelledby="esc-h">
+  <div class="row-between"><h2 id="esc-h">Escape rooms</h2>
+  {% if waiting %}<form method="post" action="/admin/books/{{ book.id }}/escape_approve" data-confirm="Approve all {{ waiting }} drafted escape rooms? Students and teachers will see them."><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small" type="submit">Approve all {{ waiting }}</button></form>{% endif %}</div>
+  <p class="small muted">One room per chapter: students help NOVA open four locks, each joining the chapter's science with an AI skill. Claude drafts each room from the chapter's text and NovaQuest checks every lock can be solved. Check a room (answers are shown), then approve it.</p>
+  {% if E.stage in ("queued", "drafting") and rooms_now %}<p aria-live="polite">Claude is drafting: {{ E.done or 0 }} of {{ E.total or "…" }} chapters{% if E.failed %} · {{ E.failed }} couldn't be drafted{% endif %}. Each room takes about a minute. This page updates by itself.</p>
+  {% elif E.stage == "needs_claude" %}<p class="note warn small">This needs a Claude API key (run <span class="mono">nq set-key</span> on the NovaQuest computer, then restart).</p>
+  {% elif E.stage == "paused" %}<p class="note warn small">{{ E.failed }} chapter{{ "s" if E.failed != 1 }} couldn't be drafted (Claude was busy, or its room didn't pass the checks twice). Draft again to try them.</p>
+  {% endif %}
+  {% if rooms %}<ul class="stack-sm">{% for ch in tree if ch.code|int(0) in rooms %}{% set r = rooms[ch.code|int] %}
+    <li class="row-between"><span><a href="/admin/books/{{ book.id }}/escape/{{ ch.code }}">Chapter {{ ch.code }}: {{ r.title }}</a> {% if r.status == "approved" %}<span class="pill ok">Approved</span>{% else %}<span class="pill warn">To check</span>{% endif %}</span>
+      <span class="row">{% if r.status == "draft" %}<form method="post" action="/admin/books/{{ book.id }}/escape_approve"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="chapter" value="{{ ch.code }}"><button class="btn small quiet" type="submit">Approve</button></form>{% endif %}
+      <form method="post" action="/admin/books/{{ book.id }}/escape_discard" data-confirm="Remove this room so Claude can draft a new one?"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="chapter" value="{{ ch.code }}"><button class="btn small quiet" type="submit">Redraft</button></form></span></li>{% endfor %}</ul>{% endif %}
+  {% if not (E.stage in ("queued", "drafting") and rooms_now) and rooms|length < chapters_n %}
+  <form method="post" action="/admin/books/{{ book.id }}/escape"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small" type="submit" {% if not claude %}disabled title="Needs a Claude API key"{% endif %}>{% if rooms %}Draft the missing rooms ({{ chapters_n - rooms|length }}){% else %}Draft escape rooms with Claude ({{ chapters_n }} chapters){% endif %}</button></form>{% endif %}
+</section>
+{% endif %}
+
+<section class="card stack-sm" aria-labelledby="pg-h"><h2 id="pg-h">Book pages for students</h2>
+  {% if m.full_pages %}
+  <p class="small"><span class="pill ok">On</span> Students can open the real pages of each topic (with all figures) from the topic page.</p>
+  <form method="post" action="/admin/books/{{ book.id }}/pages"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="on" value="0"><button class="btn quiet small" type="submit">Hide book pages from students</button></form>
+  {% else %}
+  <p class="small muted">Off. Students see short extracts with page numbers. Turn this on to let them open each topic's real pages, with all the figures and tables.</p>
+  <form method="post" action="/admin/books/{{ book.id }}/pages" class="stack-sm"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="on" value="1">
+    <label class="check-row small"><input type="checkbox" name="rights" value="1" required>Our school has the right to show the full pages of this book to our students (for example, the publisher's digital licence, or a free book such as NCERT).</label>
+    <button class="btn small" type="submit">Show book pages to students</button></form>
+  {% endif %}
+</section>
+
+<section class="card stack-sm" aria-labelledby="tf-h"><h2 id="tf-h">The book's figures on teachers' slides</h2>
+  {% if m.teacher_figures or m.full_pages %}
+  <p class="small"><span class="pill ok">On</span> Teachers' Prepare to teach pages and projector slides show the figures cut from this book's pages, with their captions.</p>
+  {% if m.teacher_figures %}<form method="post" action="/admin/books/{{ book.id }}/figures"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="on" value="0"><button class="btn quiet small" type="submit">Stop showing figures to teachers</button></form>
+  {% else %}<p class="small muted">On because book pages are shown to students.</p>{% endif %}
+  {% else %}
+  <p class="small muted">Off. Teachers' slides use NovaQuest's diagrams only. Turn this on to put the book's own figures (Fig. 2.3 and so on) on teachers' slides and prep pages; students don't get the pages.</p>
+  <form method="post" action="/admin/books/{{ book.id }}/figures" class="stack-sm"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="on" value="1">
+    <label class="check-row small"><input type="checkbox" name="rights" value="1" required>Our teachers may show this book's figures to their classes (for example, our licence for the book, or a free book such as NCERT).</label>
+    <button class="btn small" type="submit">Show figures on teachers' slides</button></form>
+  {% endif %}
+</section>
+
+<section class="card tree" aria-label="Chapters and topics">
+  {% for ch in tree %}
+  <details {% if loop.first or book.status == "review" %}open{% endif %} id="n{{ ch.id }}">
+    <summary>{{ ch.code }}. {{ ch.title }}{% if ch.meta.file %} <span class="small muted">· {{ ch.meta.file }}</span>{% endif %}</summary>
+    <form method="post" action="/admin/books/{{ book.id }}/rename" class="row small" style="flex-wrap:nowrap;margin:6px 0 10px">
+      <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="node_id" value="{{ ch.id }}">
+      <label class="sr-only" for="c{{ ch.id }}">Chapter title</label><input type="text" id="c{{ ch.id }}" name="title" value="{{ ch.title }}" style="flex:1">
+      <button class="btn quiet small" type="submit">Rename chapter</button></form>
+    {% for t in ch.topics %}
+    {% set pic = pics.get(t.id) %}{% set le = les.get(t.id) %}{% set mx = mix.get(t.id, {}) %}
+    <div class="topic" id="n{{ t.id }}">
+      <details class="stack-sm" style="flex:1 1 320px;min-width:0">
+        <summary><b>{{ t.code }} {{ t.title }}</b> <span class="tiny muted">· {{ counts.get(t.id, 0) }} passages</span></summary>
+        <form method="post" action="/admin/books/{{ book.id }}/rename" class="stack-sm" style="margin:8px 0">
+          <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="node_id" value="{{ t.id }}">
+          <div class="field"><label for="t{{ t.id }}">Topic title</label><input type="text" id="t{{ t.id }}" name="title" value="{{ t.title }}"></div>
+          <div class="field"><label for="o{{ t.id }}">Learning outcome</label><input type="text" id="o{{ t.id }}" name="outcome" value="{{ t.outcomes[0].title if t.outcomes }}"></div>
+          <div class="row"><button class="btn quiet small" type="submit">Save</button>
+          {% if book.status == "review" and ch.topics|length > 1 %}<button class="btn quiet small" type="submit" formaction="/admin/books/{{ book.id }}/remove" data-confirm="Remove this topic? Its text joins the topic next to it.">Remove topic</button>{% endif %}</div>
+        </form>
+      </details>
+      <div class="row">
+        {% if pic == "approved" %}<span class="pill ok">Pictures ✓</span>{% elif pic == "draft" %}<span class="pill l1">Pictures to check</span>{% elif pic == "failed" %}<span class="pill l0">No pictures</span>{% endif %}
+        {% if le == "approved" %}<span class="pill ok">Quick checks ✓</span>{% elif le == "draft" %}<span class="pill l1">Quick checks to check</span>{% endif %}
+        {% if mx.approved %}<span class="pill ok">Mix-ups ✓</span>{% elif mx.draft %}<span class="pill l1">Mix-ups to check</span>{% endif %}
+        {% if pic or le or mx %}<a class="btn quiet small" href="/admin/books/{{ book.id }}/topics/{{ t.id }}">Check</a>{% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </details>
+  {% endfor %}
+</section>
+{% endif %}
+{% if book.status in ("review", "published", "archived") %}
+{% set R = m.refresh or {} %}
+<section class="card stack-sm" id="refresh" aria-labelledby="rf-h"><h2 id="rf-h">Book text</h2>
+  <p class="small muted">NovaQuest keeps the book's text under each topic for Ask NOVA, the textbook extracts and questions. Refresh it to read the stored PDF again with NovaQuest's latest reading (for example, diagram labels taken out of sentences since 1.14.2). Topic names, lessons, questions and students' progress stay as they are.</p>
+  {% if R.stage in ("queued", "reading") %}<p aria-live="polite">Reading the text again… This page updates by itself.</p>
+  {% elif R.stage == "done" %}<p class="note ok small">Text refreshed {{ R.at or "" }}: {{ R.chapters }} chapter{{ "s" if R.chapters != 1 }}{% if R.skipped %}. Left as they were: chapter{{ "s" if R.skipped|length != 1 }} {{ R.skipped|join(", ") }} (their topics no longer match the PDF's headings, e.g. after renaming or removing topics){% endif %}.</p>
+  {% elif R.stage == "failed" %}<p class="note warn small">{{ R.error }}</p>{% endif %}
+  {% if R.stage not in ("queued", "reading") %}<form method="post" action="/admin/books/{{ book.id }}/refresh" data-confirm="Read the book's text again? Topics, lessons and progress are kept."><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small quiet" type="submit">Refresh the book's text</button></form>{% endif %}
+</section>
+{% endif %}
+<section class="card stack-sm"><h2>Files</h2>
+  <ul class="small">{% for f in files %}<li>{{ f.filename }} · {{ f.pages or "?" }} pages · {{ (f.bytes / 1048576)|round(1) }} MB{% if f.missing %} <span class="pill warn">Not on this computer</span>{% endif %}</li>{% endfor %}</ul>
+  {% if files|selectattr("missing")|list %}<p class="note warn small">The uploaded PDF isn't on the NovaQuest computer any more (usually after an upgrade into a new folder). The book's chapters, topics, lessons and questions are safe, but Book pages and Read again need the file. Run <span class="mono">nq up</span>: it copies books across from earlier NovaQuest folders in the same place. If the old folder is gone, delete this book (when nothing uses it) and upload it again.</p>{% endif %}</section>
+{% endblock %}

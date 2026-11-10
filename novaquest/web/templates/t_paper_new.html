@@ -1,0 +1,69 @@
+{% extends "staff.html" %}
+{# New exam paper (AS-8): pattern, difficulty, topics and print details. #}
+{% block title %}New exam paper{% endblock %}
+{% block main %}
+<div class="stack-sm"><a class="small" href="/teacher/papers">← Exam papers</a><h1>New exam paper</h1>
+  <p class="muted small">NovaQuest writes three different papers to your pattern from the textbook. You compare them, pick one, swap any question, and print it with its answer key.</p></div>
+{% if error %}<div class="note warn" role="alert">{{ error }}</div>{% endif %}
+<form method="post" class="cols">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <section class="main stack">
+    <section class="card stack" aria-labelledby="pat-h">
+      <h2 id="pat-h">1. Pattern</h2>
+      {% set pat = f.get("pattern", "1") %}
+      <fieldset class="stack-sm"><legend class="small">Choose a pattern, or make your own</legend>
+        {% for label, rows in presets %}<label class="choice"><input type="radio" name="pattern" value="{{ loop.index0 }}" {% if pat == loop.index0|string %}checked{% endif %}>{{ label }}</label>{% endfor %}
+        <label class="choice"><input type="radio" name="pattern" value="custom" {% if pat == "custom" %}checked{% endif %}>My own pattern (below)</label>
+      </fieldset>
+      <details class="custom-pattern" {% if pat == "custom" %}open{% endif %}><summary class="small"><b>My own pattern</b>: up to 6 sections</summary>
+        <div class="table-wrap"><table class="pattern-table" data-exam-pattern>
+          <thead><tr><th scope="col">Section</th><th scope="col">Questions</th><th scope="col">Marks each</th><th scope="col">Kind of question</th></tr></thead>
+          <tbody>{% for i in range(6) %}<tr>
+            <th scope="row">{{ "ABCDEF"[i] }}</th>
+            <td><label class="sr-only" for="count_{{ i }}">Section {{ "ABCDEF"[i] }}: number of questions</label><input id="count_{{ i }}" name="count_{{ i }}" type="number" min="0" max="50" inputmode="numeric" value="{{ f.get('count_' ~ i, ('10' if i == 0 else ('5' if i == 1 else ''))) }}"></td>
+            <td><label class="sr-only" for="marks_{{ i }}">Section {{ "ABCDEF"[i] }}: marks per question</label><select id="marks_{{ i }}" name="marks_{{ i }}"><option value="">—</option>{% for m in marks_choices %}{% set sel = f.get('marks_' ~ i, ('1' if i == 0 else ('3' if i == 1 else ''))) %}<option value="{{ m }}" {% if sel and sel|float == m %}selected{% endif %}>{{ m|nicenum|replace(".5", "½")|replace("0½", "½") }}</option>{% endfor %}</select></td>
+            <td><label class="sr-only" for="kind_{{ i }}">Section {{ "ABCDEF"[i] }}: kind of question</label><select id="kind_{{ i }}" name="kind_{{ i }}"><option value="">Decide by marks</option>{% for k, name in kinds.items() %}<option value="{{ k }}" {% if f.get('kind_' ~ i) == k %}selected{% endif %}>{{ name }}</option>{% endfor %}</select></td>
+          </tr>{% endfor %}</tbody></table></div>
+        <p class="small"><b data-exam-total>Total: 25 marks</b> <span class="muted">· By marks: 1 mark is multiple choice, 2 to 4 marks a short answer, 5 or more a long answer in two parts.</span></p>
+      </details>
+    </section>
+    <section class="card stack" aria-labelledby="topics-h">
+      <div class="row-between"><h2 id="topics-h">2. Topics</h2><span class="small muted" data-topic-count>{{ chosen|length }} chosen</span></div>
+      {% if teaching|length > 1 %}
+      <div class="field"><label for="for">Class and subject</label>
+        <select id="for" name="for" data-reload-param="for">{% for t in teaching %}<option value="{{ t.key }}" {% if cur and t.key == cur.key %}selected{% endif %}>{{ t.name }}</option>{% endfor %}</select></div>
+      {% elif cur %}<input type="hidden" name="for" value="{{ cur.key }}"><p class="small muted">For class {{ cur.class_label }} · {{ cur.book.label }}</p>
+      {% else %}<p class="note warn small">You aren't mapped to a class and subject yet. Ask your school admin.</p>{% endif %}
+      <div class="field"><label for="topic-search">Find a topic</label><input id="topic-search" type="search" data-topic-search placeholder="e.g. cell, friction, sound" autocomplete="off"></div>
+      <p class="small muted">More topics give more different questions, so the three papers differ more.</p>
+      <div class="tree" data-topic-tree>
+        {% for ch in tree %}
+        {% set ids = ch.topics|map(attribute='id')|list %}
+        <details {% if ids|select('in', chosen)|list %}open{% endif %}>
+          <summary>{{ ch|inpart }}{{ ch.code }}. {{ ch.title }}{% if ch.id in in_class %} <span class="pill l2">In class now</span>{% endif %}</summary>
+          <label class="check-row"><input type="checkbox" data-check-all>All topics in this chapter</label>
+          {% for t in ch.topics %}<label class="check-row"><input type="checkbox" name="topics[]" value="{{ t.id }}" {% if t.id in chosen %}checked{% endif %}>{{ t|pc }} {{ t.title }}</label>{% endfor %}
+        </details>
+        {% endfor %}
+      </div>
+    </section>
+  </section>
+  <section class="aside stack">
+    <section class="card stack" aria-labelledby="diff-h">
+      <h2 id="diff-h">3. Difficulty</h2>
+      <fieldset class="stack-sm"><legend class="sr-only">Difficulty</legend>
+        {% for k, name in difficulties.items() %}<label class="choice"><input type="radio" name="difficulty" value="{{ k }}" {% if f.get("difficulty", "mixed") == k %}checked{% endif %}>{{ name }}</label>{% endfor %}
+      </fieldset>
+    </section>
+    <section class="card stack" aria-labelledby="print-h">
+      <h2 id="print-h">4. On the paper</h2>
+      <div class="field"><label for="title">Title</label><input id="title" name="title" type="text" maxlength="120" value="{{ f.get('title', 'Unit Test') }}" required></div>
+      <div class="field"><label for="duration">Time allowed</label><select id="duration" name="duration">{% for m in (30, 40, 45, 60, 90, 120, 150, 180) %}<option value="{{ m }}" {% if f.get('duration', '60')|int == m %}selected{% endif %}>{{ m }} minutes{% if m >= 60 and m % 30 == 0 %} ({{ (m / 60)|nicenum }} hour{{ "s" if m != 60 }}){% endif %}</option>{% endfor %}</select></div>
+      <div class="field"><label for="instructions">Extra instructions <span class="hint">(optional, one per line)</span></label><textarea id="instructions" name="instructions" style="min-height:70px" placeholder="Draw neat diagrams wherever needed.">{{ f.get('instructions', '') }}</textarea></div>
+      <label class="check-row"><input type="checkbox" name="answer_space" value="1" {% if f.get("answer_space") %}checked{% endif %}>Leave lines to write answers on the paper</label>
+      <button class="btn block" type="submit" data-busy="Writing three papers…">Write three papers</button>
+      <p class="tiny muted">Without a Claude key, NovaQuest writes from the textbook's sentences: check each question and swap any that read oddly.</p>
+    </section>
+  </section>
+</form>
+{% endblock %}

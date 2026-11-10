@@ -1,0 +1,14 @@
+{% extends "student.html" %}
+{% from "_icons.html" import level_pill %}
+{% from "_path.html" import next_step %}
+{% block title %}Mission complete{% endblock %}
+{% block heading %}Mission complete{% endblock %}
+{% block main %}
+<section class="card stack-sm"><h2>{{ (res.score * 100)|round|int }}% on {{ topic.title }}</h2><div class="row">Topic level: {{ level_pill(res.level) }}</div></section>
+{% for r in res.results %}
+<article class="qcard"><div class="row"><span class="pill {{ 'ok' if r.correct else 'warn' }}">{{ "✓" if r.correct else "✗" }}</span><b>{{ r.prompt }}</b></div>
+  {% if not r.correct and r.answer %}<p class="small note info">Answer: {{ r.answer }}</p>{% endif %}</article>
+{% endfor %}
+{% if res.score < 0.6 %}<a class="btn block warm" href="/student/learn/{{ topic.id }}/practice">Try the mission again</a>{% endif %}
+{{ next_step(topic, path, "practice") }}
+{% endblock %}

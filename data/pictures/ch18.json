@@ -1,0 +1,1121 @@
+{
+ "18.1": {
+  "crux": "Air pollution happens when air is contaminated by unwanted substances (pollutants) that harm living and non-living things.",
+  "cards": [
+   {
+    "title": "What clean air contains",
+    "pic": {
+     "kind": "bars",
+     "unit": "%",
+     "items": [
+      {
+       "label": "Nitrogen",
+       "icon": "🌫️",
+       "value": 78,
+       "show": "about 78%",
+       "color": "blue"
+      },
+      {
+       "label": "Oxygen",
+       "icon": "💨",
+       "value": 21,
+       "show": "about 21%",
+       "color": "sky"
+      },
+      {
+       "label": "Others",
+       "icon": "☁️",
+       "value": 1,
+       "show": "about 1%",
+       "color": "grey"
+      }
+     ]
+    },
+    "say": [
+     "The small remaining part includes carbon dioxide, argon, methane, ozone and water vapour."
+    ]
+   },
+   {
+    "title": "Air pollution",
+    "pic": {
+     "kind": "equation",
+     "parts": [
+      {
+       "icon": "💨",
+       "text": "Clean air",
+       "color": "sky"
+      },
+      "+",
+      {
+       "icon": "🏭",
+       "text": "Pollutants",
+       "color": "grey"
+      },
+      "→",
+      {
+       "icon": "😷",
+       "text": "Polluted air",
+       "color": "red"
+      }
+     ]
+    },
+    "say": [
+     "When unwanted substances change the air in a harmful way, the air is polluted.",
+     "The substances that pollute it are called pollutants."
+    ],
+    "remember": "Pollutants = substances that contaminate the air."
+   },
+   {
+    "title": "Where pollutants come from",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Natural sources",
+       "icon": "🌋",
+       "cells": [
+        "Smoke and dust from forest fires",
+        "Volcanic eruptions"
+       ]
+      },
+      {
+       "head": "Human activities",
+       "icon": "🏭",
+       "cells": [
+        "Factories and power plants",
+        "Vehicle exhaust",
+        "Burning firewood and dung cakes"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Most air pollution today comes from human activities."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Clean air is about 78% nitrogen and 21% oxygen.",
+   "Air pollution is contamination of air by harmful substances.",
+   "Pollutants come from natural sources and, mostly, human activities."
+  ],
+  "quiz": [
+   {
+    "q": "Which gas makes up most of the air?",
+    "options": [
+     "Nitrogen",
+     "Oxygen",
+     "Carbon dioxide",
+     "Argon"
+    ],
+    "answer": 0,
+    "why": "Nitrogen is about 78% of air."
+   },
+   {
+    "q": "A substance that contaminates the air is called a…",
+    "options": [
+     "Pollutant",
+     "Nutrient",
+     "Fertiliser",
+     "Lubricant"
+    ],
+    "answer": 0,
+    "why": "Pollutants are substances that pollute."
+   }
+  ]
+ },
+ "18.2": {
+  "crux": "Vehicles, factories and power plants release pollutants like carbon monoxide, sulphur dioxide, nitrogen oxides, soot and CFCs that harm our health and the ozone layer.",
+  "cards": [
+   {
+    "title": "Main air pollutants",
+    "pic": {
+     "kind": "compare",
+     "rows": [
+      "Comes from",
+      "Harm"
+     ],
+     "cols": [
+      {
+       "head": "Carbon monoxide",
+       "icon": "🚗",
+       "cells": [
+        "Incomplete burning of petrol and diesel",
+        "Poisonous: blood carries less oxygen"
+       ]
+      },
+      {
+       "head": "Sulphur dioxide",
+       "icon": "🏭",
+       "cells": [
+        "Burning coal in power plants",
+        "Breathing problems, lung damage"
+       ]
+      },
+      {
+       "head": "Particles, soot",
+       "icon": "🌫️",
+       "cells": [
+        "Diesel, petrol, steel making, mining",
+        "Breathing diseases"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Thermal power plants also give out fly ash, a fine dust."
+    ]
+   },
+   {
+    "title": "Smog",
+    "pic": {
+     "kind": "equation",
+     "parts": [
+      {
+       "icon": "💨",
+       "text": "Smoke",
+       "color": "grey"
+      },
+      "+",
+      {
+       "icon": "🌫️",
+       "text": "Fog",
+       "color": "sky"
+      },
+      "=",
+      {
+       "icon": "😷",
+       "text": "Smog",
+       "color": "brown"
+      }
+     ]
+    },
+    "say": [
+     "In winter, a thick layer of smog hangs over many cities.",
+     "It contains nitrogen oxides and causes asthma, coughing and wheezing in children."
+    ]
+   },
+   {
+    "title": "CFCs and the ozone layer",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "❄️",
+       "text": "CFCs were used in refrigerators, ACs and aerosol sprays"
+      },
+      {
+       "icon": "⬆️",
+       "text": "They rise high into the atmosphere"
+      },
+      {
+       "icon": "🕳️",
+       "text": "They damage the ozone layer, which protects us from harmful UV rays"
+      }
+     ]
+    },
+    "say": [
+     "Thinning of the ozone layer is often called the 'ozone hole'.",
+     "CFCs are now being replaced by less harmful chemicals."
+    ],
+    "remember": "CFCs damage the ozone layer."
+   },
+   {
+    "title": "Vehicles add up",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🚗",
+       "text": "Cars"
+      },
+      {
+       "icon": "🛵",
+       "text": "Scooters"
+      },
+      {
+       "icon": "🚚",
+       "text": "Trucks"
+      },
+      {
+       "icon": "🚌",
+       "text": "Buses"
+      }
+     ]
+    },
+    "say": [
+     "The more vehicles burn fuel, the more pollutants enter the air."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Carbon monoxide (vehicles) is poisonous; sulphur dioxide (power plants) harms lungs.",
+   "Smog (smoke + fog) causes breathing problems.",
+   "CFCs damage the ozone layer that protects us from UV rays."
+  ],
+  "quiz": [
+   {
+    "q": "Smog is a mixture of…",
+    "options": [
+     "Smoke and fog",
+     "Sand and water",
+     "Snow and ice",
+     "Steam and oil"
+    ],
+    "answer": 0,
+    "why": "Smog = smoke + fog."
+   },
+   {
+    "q": "Which pollutant damages the ozone layer?",
+    "options": [
+     "CFCs",
+     "Oxygen",
+     "Nitrogen",
+     "Water vapour"
+    ],
+    "answer": 0,
+    "why": "Chlorofluorocarbons (CFCs) destroy ozone high in the atmosphere."
+   }
+  ]
+ },
+ "18.3": {
+  "crux": "Acid rain from sulphur dioxide and nitrogen dioxide is eating away the white marble of the Taj Mahal, and soot is turning it yellow.",
+  "cards": [
+   {
+    "title": "How acid rain forms",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🏭",
+       "text": "Industries near Agra give out sulphur dioxide and nitrogen dioxide"
+      },
+      {
+       "icon": "☁️",
+       "text": "These gases mix with water vapour in the air"
+      },
+      {
+       "icon": "🧪",
+       "text": "They form sulphuric acid and nitric acid"
+      },
+      {
+       "icon": "🌧️",
+       "text": "The acids fall with rain: acid rain"
+      }
+     ]
+    },
+    "say": [
+     "Industries around Agra include rubber processing, car, chemical and the Mathura oil refinery."
+    ]
+   },
+   {
+    "title": "Marble cancer",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Acid rain",
+       "icon": "🌧️",
+       "cells": [
+        "Corrodes the marble",
+        "Called 'marble cancer'"
+       ]
+      },
+      {
+       "head": "Soot particles",
+       "icon": "🌫️",
+       "cells": [
+        "From the refinery",
+        "Turn the white marble yellowish"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "The Taj Mahal, one of the world's most famous monuments, is being damaged by pollution."
+    ],
+    "remember": "Acid rain → marble cancer."
+   },
+   {
+    "title": "Steps to protect it",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "⚖️",
+       "text": "Supreme Court orders",
+       "sub": "To protect the monument"
+      },
+      {
+       "icon": "🔥",
+       "text": "Cleaner fuels",
+       "sub": "Industries to switch to CNG and LPG"
+      },
+      {
+       "icon": "⛽",
+       "text": "Unleaded petrol",
+       "sub": "For vehicles in the Taj zone"
+      }
+     ]
+    },
+    "say": [
+     "Acid rain also harms crops, soil and other buildings."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Sulphur dioxide and nitrogen dioxide form acids with water vapour: acid rain.",
+   "Acid rain corrodes marble ('marble cancer'); soot yellows it.",
+   "Cleaner fuels (CNG, LPG) and unleaded petrol help protect the Taj Mahal."
+  ],
+  "quiz": [
+   {
+    "q": "'Marble cancer' is caused by…",
+    "options": [
+     "Acid rain",
+     "Too much sunlight",
+     "Earthquakes",
+     "Rain water alone"
+    ],
+    "answer": 0,
+    "why": "Acids in rain react with and corrode marble."
+   },
+   {
+    "q": "Which fuels were industries near the Taj asked to switch to?",
+    "options": [
+     "CNG and LPG",
+     "Coal",
+     "Wood",
+     "Diesel"
+    ],
+    "answer": 0,
+    "why": "CNG and LPG are cleaner fuels that pollute much less."
+   }
+  ]
+ },
+ "18.4": {
+  "crux": "Greenhouse gases like carbon dioxide trap the Sun's heat and keep the Earth warm; too much of them is causing global warming.",
+  "cards": [
+   {
+    "title": "The greenhouse effect",
+    "pic": {
+     "kind": "scene",
+     "scene": "greenhouse",
+     "labels": [
+      {
+       "at": "sun",
+       "name": "Sun"
+      },
+      {
+       "at": "sunlight",
+       "name": "Sunlight comes in",
+       "note": "Warms the Earth"
+      },
+      {
+       "at": "earth",
+       "name": "Earth's surface",
+       "note": "Gives off heat"
+      },
+      {
+       "at": "gases",
+       "name": "Greenhouse gases",
+       "note": "Carbon dioxide, methane, water vapour"
+      },
+      {
+       "at": "heat_trapped",
+       "name": "Heat trapped",
+       "note": "Sent back to Earth"
+      },
+      {
+       "at": "heat_out",
+       "name": "Some heat escapes to space"
+      }
+     ]
+    },
+    "say": [
+     "Sunlight warms the Earth, and the Earth gives off heat.",
+     "Greenhouse gases trap part of this heat, keeping the Earth warm enough for life."
+    ]
+   },
+   {
+    "title": "Like a greenhouse",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🏡",
+       "text": "In a glass greenhouse, sunlight gets in"
+      },
+      {
+       "icon": "🔒",
+       "text": "The heat can't easily get out"
+      },
+      {
+       "icon": "🌡️",
+       "text": "So it stays warm inside, even in winter"
+      }
+     ]
+    },
+    "say": [
+     "Carbon dioxide and other gases do this for the whole Earth."
+    ]
+   },
+   {
+    "title": "Global warming",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🏭",
+       "text": "Burning fuels and cutting forests add carbon dioxide"
+      },
+      {
+       "icon": "🌡️",
+       "text": "More heat is trapped: the Earth's average temperature rises"
+      },
+      {
+       "icon": "🧊",
+       "text": "Glaciers melt (the Gangotri glacier is shrinking)"
+      },
+      {
+       "icon": "🌊",
+       "text": "Sea level rises and coastal areas may flood"
+      }
+     ]
+    },
+    "say": [
+     "Global warming also affects rainfall, farming, forests and wildlife."
+    ],
+    "remember": "Too much greenhouse gas → global warming."
+   },
+   {
+    "title": "Countries working together",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🌍",
+       "text": "Kyoto Protocol",
+       "sub": "An agreement by many countries to reduce greenhouse gas emissions"
+      },
+      {
+       "icon": "🌳",
+       "text": "Plant trees",
+       "sub": "Trees absorb carbon dioxide"
+      }
+     ]
+    },
+    "say": [
+     "Global warming is a worldwide problem that needs worldwide action."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Greenhouse gases (CO₂, methane, water vapour) trap the Sun's heat.",
+   "Some trapping keeps Earth warm; too much causes global warming.",
+   "Global warming melts glaciers, raises sea level and disturbs climate."
+  ],
+  "quiz": [
+   {
+    "q": "What is marked '?' in the picture?",
+    "pic": {
+     "kind": "scene",
+     "scene": "greenhouse",
+     "ask": "gases"
+    },
+    "options": [
+     "Layer of greenhouse gases",
+     "Clouds of water only",
+     "The Sun",
+     "The ocean"
+    ],
+    "answer": 0,
+    "why": "Greenhouse gases like CO₂ form the layer that traps heat."
+   },
+   {
+    "q": "Which of these is a greenhouse gas?",
+    "options": [
+     "Carbon dioxide",
+     "Oxygen",
+     "Nitrogen",
+     "Argon"
+    ],
+    "answer": 0,
+    "why": "Carbon dioxide traps heat in the atmosphere."
+   }
+  ]
+ },
+ "18.5": {
+  "crux": "We can reduce air pollution with cleaner fuels, less driving, more public transport, clean energy and more trees.",
+  "cards": [
+   {
+    "title": "Cleaner energy",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🚌",
+       "text": "CNG and unleaded petrol",
+       "sub": "For vehicles"
+      },
+      {
+       "icon": "☀️",
+       "text": "Solar energy"
+      },
+      {
+       "icon": "💧",
+       "text": "Hydropower"
+      },
+      {
+       "icon": "🌬️",
+       "text": "Wind energy"
+      }
+     ]
+    },
+    "say": [
+     "Switching from fossil fuels to cleaner sources reduces pollutants."
+    ]
+   },
+   {
+    "title": "What you can do",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🚶",
+       "text": "Walk or cycle short distances"
+      },
+      {
+       "icon": "🚌",
+       "text": "Use public transport"
+      },
+      {
+       "icon": "🚗",
+       "text": "Share rides (car pooling)"
+      },
+      {
+       "icon": "🍂",
+       "text": "Don't burn dry leaves"
+      },
+      {
+       "icon": "🌳",
+       "text": "Plant and care for trees"
+      },
+      {
+       "icon": "📋",
+       "text": "Vehicles need a PUC certificate",
+       "sub": "Pollution Under Control"
+      }
+     ]
+    },
+    "say": [
+     "Small actions by many people make a big difference.",
+     "Van Mahotsav is a tree-planting festival held every year in July."
+    ],
+    "remember": "Cleaner fuel, fewer vehicles, more trees."
+   },
+   {
+    "title": "Trees clean the air",
+    "pic": {
+     "kind": "equation",
+     "parts": [
+      {
+       "icon": "🏭",
+       "text": "Carbon dioxide",
+       "color": "grey"
+      },
+      "→",
+      {
+       "icon": "🌳",
+       "text": "Trees",
+       "color": "green"
+      },
+      "→",
+      {
+       "icon": "💨",
+       "text": "Oxygen",
+       "color": "sky"
+      }
+     ]
+    },
+    "say": [
+     "Trees take in carbon dioxide and give out oxygen."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Use cleaner fuels (CNG, unleaded petrol) and clean energy (solar, wind, hydro).",
+   "Walk, cycle, use public transport and share rides.",
+   "Don't burn leaves; plant trees; keep vehicles pollution-checked."
+  ],
+  "quiz": [
+   {
+    "q": "Which helps reduce air pollution?",
+    "options": [
+     "Using public transport",
+     "Burning dry leaves",
+     "Driving alone everywhere",
+     "Cutting trees"
+    ],
+    "answer": 0,
+    "why": "Fewer vehicles on the road means fewer pollutants."
+   },
+   {
+    "q": "Which is a clean energy source?",
+    "options": [
+     "Solar energy",
+     "Coal",
+     "Diesel",
+     "Firewood"
+    ],
+    "answer": 0,
+    "why": "Solar energy gives power without burning fuel."
+   }
+  ]
+ },
+ "18.6": {
+  "crux": "Water pollution is when harmful substances like sewage, toxic chemicals and silt get into water and make it unsafe for life.",
+  "cards": [
+   {
+    "title": "Water pollution",
+    "pic": {
+     "kind": "equation",
+     "parts": [
+      {
+       "icon": "💧",
+       "text": "Clean water",
+       "color": "sky"
+      },
+      "+",
+      {
+       "icon": "🧪",
+       "text": "Sewage, chemicals, silt",
+       "color": "brown"
+      },
+      "→",
+      {
+       "icon": "☠️",
+       "text": "Polluted water",
+       "color": "red"
+      }
+     ]
+    },
+    "say": [
+     "When harmful substances contaminate water, it is called water pollution."
+    ],
+    "remember": "Water pollution = harmful substances in water."
+   },
+   {
+    "title": "The Ganga",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🏞️",
+       "text": "The Ganga flows past many towns and cities"
+      },
+      {
+       "icon": "🗑️",
+       "text": "Garbage, sewage, dead bodies and industrial waste are put into it"
+      },
+      {
+       "icon": "🏛️",
+       "text": "In 1985 the Ganga Action Plan was started to reduce its pollution"
+      }
+     ]
+    },
+    "say": [
+     "Rivers are shared by millions of people, plants and animals."
+    ]
+   },
+   {
+    "title": "Everything in the water suffers",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🐟",
+       "text": "Fish die"
+      },
+      {
+       "icon": "🌿",
+       "text": "Water plants are harmed"
+      },
+      {
+       "icon": "🤒",
+       "text": "People fall ill",
+       "sub": "From drinking or using dirty water"
+      }
+     ]
+    },
+    "say": [
+     "Clean water is precious for every living thing."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Water pollution is contamination of water by harmful substances.",
+   "Sewage, chemicals and silt are common pollutants.",
+   "The Ganga Action Plan (1985) aimed to clean the Ganga."
+  ],
+  "quiz": [
+   {
+    "q": "When did the Ganga Action Plan begin?",
+    "options": [
+     "1985",
+     "1947",
+     "2010",
+     "1900"
+    ],
+    "answer": 0,
+    "why": "It was launched in 1985 to reduce pollution in the river."
+   },
+   {
+    "q": "Which of these pollutes water?",
+    "options": [
+     "Untreated sewage",
+     "Rain from clean clouds",
+     "Fish",
+     "Sunlight"
+    ],
+    "answer": 0,
+    "why": "Sewage carries germs and harmful substances into water."
+   }
+  ]
+ },
+ "18.7": {
+  "crux": "Water gets polluted by factory chemicals, untreated sewage, farm chemicals that cause too much algae, and hot water from power plants.",
+  "cards": [
+   {
+    "title": "Sources of water pollution",
+    "pic": {
+     "kind": "groups",
+     "root": "Polluters",
+     "items": [
+      {
+       "icon": "🏭",
+       "name": "Industries",
+       "eg": "Harmful chemicals like arsenic, lead, fluorides"
+      },
+      {
+       "icon": "🚽",
+       "name": "Untreated sewage",
+       "eg": "Germs that cause cholera, typhoid, jaundice"
+      },
+      {
+       "icon": "🌾",
+       "name": "Farm chemicals",
+       "eg": "Pesticides and fertilisers washed into water"
+      },
+      {
+       "icon": "♨️",
+       "name": "Hot water",
+       "eg": "From power plants and industries"
+      }
+     ]
+    },
+    "say": [
+     "Many factories empty their waste into rivers without treating it, though laws forbid this."
+    ]
+   },
+   {
+    "title": "Too much algae",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🌾",
+       "text": "Fertilisers wash from fields into a lake"
+      },
+      {
+       "icon": "🟢",
+       "text": "Extra nutrients make algae grow very fast"
+      },
+      {
+       "icon": "🍂",
+       "text": "When the algae die, decomposers use up the oxygen in the water"
+      },
+      {
+       "icon": "🐟",
+       "text": "Fish and other water life die for lack of oxygen"
+      }
+     ]
+    },
+    "say": [
+     "Too many nutrients can be as harmful as too few."
+    ],
+    "remember": "Fertilisers in water → algae boom → oxygen falls → fish die."
+   },
+   {
+    "title": "Hidden pollution",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🕳️",
+       "text": "Groundwater",
+       "sub": "Chemicals seep down into the ground"
+      },
+      {
+       "icon": "🌡️",
+       "text": "Warm water",
+       "sub": "Raises river temperature, harming life"
+      }
+     ]
+    },
+    "say": [
+     "Pollution we can't see, in groundwater or in water temperature, is also dangerous."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Industries release toxic chemicals; untreated sewage spreads disease.",
+   "Fertilisers cause algae to grow fast, then oxygen falls and fish die.",
+   "Hot water and chemicals seeping into groundwater also pollute."
+  ],
+  "quiz": [
+   {
+    "q": "Why do fish die after too much algae grows in a lake?",
+    "options": [
+     "Dead algae decompose and use up oxygen",
+     "Algae bite the fish",
+     "The water gets too clean",
+     "Fish eat too much"
+    ],
+    "answer": 0,
+    "why": "Decomposers breaking down the dead algae use up the water's oxygen."
+   },
+   {
+    "q": "Which disease can spread through water polluted by sewage?",
+    "options": [
+     "Cholera",
+     "Night blindness",
+     "Goitre",
+     "Diabetes"
+    ],
+    "answer": 0,
+    "why": "Sewage carries germs that cause cholera, typhoid and jaundice."
+   }
+  ]
+ },
+ "18.8": {
+  "crux": "Potable water is water safe to drink; at home we make it safe by filtering, boiling or adding chlorine.",
+  "cards": [
+   {
+    "title": "Potable water",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Potable",
+       "icon": "🚰",
+       "cells": [
+        "Safe to drink",
+        "Free from germs and harmful substances"
+       ]
+      },
+      {
+       "head": "Not potable",
+       "icon": "🚫",
+       "cells": [
+        "May look clear but carry germs",
+        "Can cause disease"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Water that looks clean can still contain germs."
+    ]
+   },
+   {
+    "title": "Making water safe",
+    "pic": {
+     "kind": "groups",
+     "root": "Purifying water",
+     "items": [
+      {
+       "icon": "🫗",
+       "name": "Filtration",
+       "eg": "Removes dirt; candle-type filters are common at home"
+      },
+      {
+       "icon": "🔥",
+       "name": "Boiling",
+       "eg": "Kills germs"
+      },
+      {
+       "icon": "🧪",
+       "name": "Chlorination",
+       "eg": "Chlorine tablets or bleaching powder kill germs"
+      }
+     ]
+    },
+    "say": [
+     "Filtration is a physical method; chlorination is a chemical method."
+    ],
+    "remember": "Filter, boil or chlorinate."
+   },
+   {
+    "title": "Don't overdo chlorine",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "⚠️",
+       "text": "Use the right amount",
+       "sub": "Follow the instructions on the pack"
+      },
+      {
+       "icon": "🧴",
+       "text": "Store safely",
+       "sub": "Keep purified water covered and clean"
+      }
+     ]
+    },
+    "say": [
+     "Too much chlorine is also not good for health."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Potable water is water safe for drinking.",
+   "Filtration removes dirt; boiling and chlorination kill germs.",
+   "Use chlorine in the right amount."
+  ],
+  "quiz": [
+   {
+    "q": "Water that is safe to drink is called…",
+    "options": [
+     "Potable water",
+     "Distilled water",
+     "Sea water",
+     "Hard water"
+    ],
+    "answer": 0,
+    "why": "Potable means fit to drink."
+   },
+   {
+    "q": "Which method KILLS germs in water?",
+    "options": [
+     "Boiling",
+     "Pouring it into a new jug",
+     "Stirring",
+     "Freezing a little"
+    ],
+    "answer": 0,
+    "why": "Boiling kills germs; chlorination does too."
+   }
+  ]
+ },
+ "18.9": {
+  "crux": "We can keep water clean by treating waste before it reaches rivers and by reducing, reusing and recycling water at home.",
+  "cards": [
+   {
+    "title": "What industries must do",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🏭",
+       "text": "Factory waste water is collected"
+      },
+      {
+       "icon": "⚗️",
+       "text": "It is treated to remove harmful chemicals"
+      },
+      {
+       "icon": "🏞️",
+       "text": "Only then may it go into rivers or lakes"
+      }
+     ]
+    },
+    "say": [
+     "Laws require industries to treat their waste, but they must be followed strictly."
+    ]
+   },
+   {
+    "title": "Reduce, reuse, recycle water",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🚰",
+       "text": "Turn off taps",
+       "sub": "When not in use"
+      },
+      {
+       "icon": "🥬",
+       "text": "Reuse water",
+       "sub": "Water used to wash vegetables can water plants"
+      },
+      {
+       "icon": "🍳",
+       "text": "No oil down the drain",
+       "sub": "Fats and oils block drains and pollute"
+      },
+      {
+       "icon": "♻️",
+       "text": "Recycle",
+       "sub": "Treated waste water can be used again"
+      }
+     ]
+    },
+    "say": [
+     "Every drop saved is less water to clean."
+    ],
+    "remember": "Reduce, reuse, recycle water."
+   },
+   {
+    "title": "Spread the word",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "📣",
+       "text": "Tell others",
+       "sub": "Awareness changes habits"
+      },
+      {
+       "icon": "🧹",
+       "text": "Keep rivers clean",
+       "sub": "Don't throw waste into water"
+      }
+     ]
+    },
+    "say": [
+     "Clean water depends on everyone's habits."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Industrial waste must be treated before it is released.",
+   "At home: save, reuse and recycle water; don't pour oil down drains.",
+   "Awareness helps everyone protect water."
+  ],
+  "quiz": [
+   {
+    "q": "Water used to wash vegetables can be reused to…",
+    "options": [
+     "Water the garden",
+     "Drink",
+     "Cook rice",
+     "Brush teeth"
+    ],
+    "answer": 0,
+    "why": "It's fine for plants, so reusing it saves water."
+   },
+   {
+    "q": "Why shouldn't cooking oil be poured down the sink?",
+    "options": [
+     "It blocks drains and pollutes water",
+     "It makes the sink shine",
+     "It cleans pipes",
+     "It saves water"
+    ],
+    "answer": 0,
+    "why": "Oils and fats clog pipes and pollute water bodies."
+   }
+  ]
+ }
+}

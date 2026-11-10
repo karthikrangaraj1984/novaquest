@@ -1,0 +1,12 @@
+{% extends "student.html" %}
+{% block title %}My mistakes{% endblock %}
+{% block heading %}{{ tr("{n} of {m} right", n=res.right, m=res.total) }}{% endblock %}
+{% block main %}
+<section class="card stack-sm"><p>{% if res.right == res.total %}All fixed. 🎉{% elif res.right %}{{ res.right }} fixed. The others stay on your list: try them again another day.{% else %}Not yet: they stay on your list. Read the answers below, revise the topic, then try again.{% endif %}</p>
+  <p class="small muted">{{ res.left }} mistake{{ "s" if res.left != 1 }} left to fix.</p></section>
+{% for r in res.results %}
+<article class="qcard"><div class="row" style="flex-wrap:nowrap;align-items:flex-start"><span class="pill {{ 'ok' if r.correct else 'warn' }}">{{ "✓" if r.correct else "✗" }}</span><span class="stack-sm" style="gap:2px"><b>{{ r.prompt }}</b><span class="small muted">{{ r.topic }}</span></span></div>
+  {% if not r.correct %}<p class="small note info">Answer: {{ r.answer }}</p><a class="small" href="/student/learn/{{ r.topic_id }}">Revise {{ r.topic }} →</a>{% endif %}</article>
+{% endfor %}
+<div class="row">{% if res.left %}<a class="btn" href="/student/mistakes">Next round</a>{% endif %}<a class="btn ghost" href="/student/progress">{{ tr("My progress") }}</a></div>
+{% endblock %}

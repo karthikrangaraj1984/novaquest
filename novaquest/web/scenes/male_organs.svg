@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"testis":[146,228],"sperm_duct":[110,120],"penis":[218,214]}'>
+<g fill="none" stroke="#1565C0" stroke-width="6" stroke-linecap="round"><path d="M146 214 Q96 170 104 110 Q112 70 160 80 Q194 90 196 130 L198 170"/><path d="M254 214 Q304 170 296 110 Q288 70 240 80 Q206 90 204 130 L202 170"/></g>
+<path d="M188 168 H212 V260 Q212 272 200 272 Q188 272 188 260 Z" fill="#E3F2FD" stroke="#1565C0" stroke-width="4"/>
+<g fill="#BBDEFB" stroke="#1565C0" stroke-width="3"><ellipse cx="146" cy="232" rx="20" ry="26"/><ellipse cx="254" cy="232" rx="20" ry="26"/></g>
+</svg>

@@ -1,0 +1,13 @@
+{% extends ("student.html" if actor and actor.role == "student" else ("staff.html" if actor else "base.html")) %}
+{% block title %}Something needs your attention{% endblock %}
+{% block heading %}Hmm, one moment{% endblock %}
+{% block body %}{% if actor %}{{ super() }}{% else %}
+<main id="main" class="auth"><h1>Hmm, one moment</h1><div class="note warn" role="alert">{{ message }}</div><a class="btn" href="/">Go to the start</a></main>
+{% endif %}{% endblock %}
+{% block main %}
+<div class="card stack">
+  {% if not actor or actor.role != "student" %}<h1>Hmm, one moment</h1>{% endif %}
+  <div class="note warn" role="alert">{{ message }}</div>
+  <div class="row"><a class="btn" href="/">Back to home</a></div>
+</div>
+{% endblock %}

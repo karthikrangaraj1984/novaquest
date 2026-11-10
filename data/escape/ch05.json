@@ -1,0 +1,210 @@
+{
+ "chapter": 5,
+ "title": "The Fuel Depot",
+ "story": "You and NOVA are trapped in a fuel depot during a safety drill. The exit unlocks only when NOVA understands fuels: which ones run out, where they come from, and how to plan with them.",
+ "escaped": "The depot gates open. NOVA now knows which resources run out and how to give an honest prediction.",
+ "locks": [
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "5.4",
+   "title": "Which resources run out?",
+   "intro": "NOVA is learning which natural resources are exhaustible (limited, can run out) and which are inexhaustible. Tick the wrong labels.",
+   "rows": [
+    {
+     "item": "Sunlight",
+     "label": "Inexhaustible"
+    },
+    {
+     "item": "Coal",
+     "label": "Exhaustible"
+    },
+    {
+     "item": "Air",
+     "label": "Inexhaustible"
+    },
+    {
+     "item": "Petroleum",
+     "label": "Exhaustible"
+    },
+    {
+     "item": "Natural gas",
+     "label": "Inexhaustible",
+     "wrong": true,
+     "why": "natural gas is a fossil fuel and can run out"
+    },
+    {
+     "item": "Forests",
+     "label": "Exhaustible"
+    },
+    {
+     "item": "Minerals",
+     "label": "Inexhaustible",
+     "wrong": true,
+     "why": "minerals are limited and can run out"
+    }
+   ],
+   "hint": "Fossil fuels took millions of years to form. Can we make more of them?",
+   "learn": "Mislabelled training data would teach NOVA that some fuels never run out, and then it would give bad advice about saving them. Clean labels lead to sensible answers."
+  },
+  {
+   "kind": "pattern",
+   "skill": "predicting",
+   "topic": "5.4",
+   "title": "When will the tank run dry?",
+   "intro": "A village fuel store is being used up. NOVA has the readings.",
+   "table": {
+    "cols": [
+     "Day",
+     "Litres left"
+    ],
+    "rows": [
+     [
+      "0",
+      "1,200"
+     ],
+     [
+      "10",
+      "900"
+     ],
+     [
+      "20",
+      "600"
+     ]
+    ]
+   },
+   "question": "When will the store run out, and how should NOVA say it?",
+   "options": [
+    "On exactly day 40, whatever happens.",
+    "Around day 40, if people keep using the same amount each day; using more would make it sooner, saving would make it later.",
+    "It will never run out.",
+    "Nobody can say anything about it."
+   ],
+   "answer": 1,
+   "hint": "It drops 300 litres every 10 days. Then ask: will people always use exactly the same amount?",
+   "learn": "A prediction from data rests on an assumption (here, the same use each day). An honest AI says the assumption out loud, the way the textbook says fuels will last about so many years 'at the present rate'."
+  },
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "5.2",
+   "title": "Fossil fuel or not?",
+   "intro": "NOVA must sort fuels into fossil fuels (formed from organisms buried millions of years ago) and others. Choose its clues.",
+   "labels": [
+    "Fossil fuel",
+    "Not a fossil fuel"
+   ],
+   "features": [
+    {
+     "key": "ancient",
+     "text": "Comes from organisms buried millions of years ago"
+    },
+    {
+     "key": "black",
+     "text": "Black or dark in colour"
+    },
+    {
+     "key": "underground",
+     "text": "Dug or pumped out of the ground"
+    }
+   ],
+   "train": [
+    {
+     "name": "Coal",
+     "label": 0,
+     "f": {
+      "ancient": 1,
+      "black": 1,
+      "underground": 1
+     }
+    },
+    {
+     "name": "Petroleum",
+     "label": 0,
+     "f": {
+      "ancient": 1,
+      "black": 1,
+      "underground": 1
+     }
+    },
+    {
+     "name": "Natural gas",
+     "label": 0,
+     "f": {
+      "ancient": 1,
+      "black": 0,
+      "underground": 1
+     }
+    },
+    {
+     "name": "Wood",
+     "label": 1,
+     "f": {
+      "ancient": 0,
+      "black": 0,
+      "underground": 0
+     }
+    },
+    {
+     "name": "Cow-dung cake",
+     "label": 1,
+     "f": {
+      "ancient": 0,
+      "black": 0,
+      "underground": 0
+     }
+    },
+    {
+     "name": "Biogas",
+     "label": 1,
+     "f": {
+      "ancient": 0,
+      "black": 0,
+      "underground": 0
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "Charcoal (made by burning wood)",
+     "label": 1,
+     "f": {
+      "ancient": 0,
+      "black": 1,
+      "underground": 0
+     }
+    },
+    {
+     "name": "Kerosene (made from petroleum)",
+     "label": 0,
+     "f": {
+      "ancient": 1,
+      "black": 0,
+      "underground": 0
+     }
+    }
+   ],
+   "hint": "Charcoal is black but is made from wood. Kerosene isn't pumped from the ground; it is made from petroleum.",
+   "learn": "Colour and 'comes from the ground' fitted the examples NOVA saw, but not new fuels. What makes a fuel a fossil fuel is where it ultimately came from, so that is the clue to use."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "5.3",
+   "title": "Check NOVA's advice to the city",
+   "intro": "NOVA is advising the city transport office. Is it right? Decide and pick the fact that settles it.",
+   "claim": "CNG is dirtier than petrol, so city buses should stop using CNG.",
+   "confidence": "90% sure",
+   "verdict": 1,
+   "evidence": [
+    "CNG is a less polluting fuel; it is called a cleaner fuel.",
+    "Natural gas is stored under high pressure as CNG.",
+    "Petroleum is refined in a refinery.",
+    "Coal tar is used to make dyes and paints."
+   ],
+   "right": 0,
+   "hint": "Which fact compares how much CNG pollutes?",
+   "learn": "An AI giving advice to a whole city can do real harm when it is wrong. Big decisions need claims checked against evidence first."
+  }
+ ]
+}

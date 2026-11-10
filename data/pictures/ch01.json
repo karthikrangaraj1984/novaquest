@@ -1,0 +1,296 @@
+{
+  "1.1": {
+    "crux": "When people began to settle and farm, they grew crops: the same kind of plant grown in large numbers in one place.",
+    "cards": [
+      {"title": "From hunting to farming", "pic": {"kind": "flow", "steps": [
+          {"icon": "🏹", "text": "Long ago, people moved from place to place to hunt and gather food."},
+          {"icon": "🌱", "text": "Around 10,000 BCE, people learnt to grow plants for food."},
+          {"icon": "🏡", "text": "They settled near rivers and farms, and agriculture began."}]},
+       "say": ["Growing food let people stay in one place.", "Settling down led to villages, and later to towns and cities."]},
+      {"title": "What is a crop?", "pic": {"kind": "icons", "items": [
+          {"icon": "🌾", "text": "Wheat field", "sub": "All wheat plants: a crop"},
+          {"icon": "🌽", "text": "Maize field", "sub": "All maize plants: a crop"},
+          {"icon": "🫘", "text": "Pulses field", "sub": "All gram plants: a crop"}]},
+       "say": ["When the same kind of plant is grown on a large scale in one place, it is called a crop."],
+       "remember": "Crop = the same kind of plant grown in large numbers at one place."},
+      {"title": "Two crop seasons in India", "pic": {"kind": "compare", "rows": ["When sown", "Season", "Examples"], "cols": [
+          {"head": "Kharif crops", "icon": "🌧️", "cells": ["June to September", "Rainy season", "Paddy, maize, soyabean, groundnut, cotton"]},
+          {"head": "Rabi crops", "icon": "❄️", "cells": ["October to March", "Winter season", "Wheat, gram, pea, mustard, linseed"]}]},
+       "say": ["Different crops need different temperature, water and sunlight.", "So in India we grow kharif crops in the rains and rabi crops in winter."]},
+      {"title": "Why paddy is a kharif crop", "pic": {"kind": "equation", "parts": [
+          {"icon": "🌾", "text": "Paddy needs lots of water", "color": "green"}, "+", {"icon": "🌧️", "text": "Monsoon rain", "color": "sky"}, "=", {"icon": "✅", "text": "Grows best in the rainy season", "color": "amber"}]},
+       "say": ["Paddy needs a lot of water, so it is grown in the rainy season.", "Wheat grows well in the cooler winter months."],
+       "think": "Which crops are grown near your home? Are they kharif or rabi?"}
+    ],
+    "crux_points": ["Agriculture began when people settled and grew their own food.", "A crop is the same kind of plant grown in large numbers in one place.", "Kharif crops grow in the rainy season; rabi crops grow in winter."],
+    "quiz": [
+      {"q": "Wheat is sown in winter. It is a…", "options": ["Rabi crop", "Kharif crop", "Weed", "Fertiliser"], "answer": 0, "why": "Rabi crops are grown in winter, from October to March. Wheat is one of them."},
+      {"q": "Which of these is a kharif crop?", "options": ["Paddy", "Wheat", "Gram", "Mustard"], "answer": 0, "why": "Paddy needs plenty of water, so it is sown in the rainy (kharif) season."}
+    ]
+  },
+  "1.2": {
+    "crux": "Growing a crop follows seven steps, in order: prepare the soil, sow, add manure, irrigate, remove weeds, harvest and store.",
+    "cards": [
+      {"title": "The seven steps", "pic": {"kind": "flow", "steps": [
+          {"icon": "🚜", "text": "Preparation of soil"},
+          {"icon": "🌰", "text": "Sowing seeds"},
+          {"icon": "💩", "text": "Adding manure and fertilisers"},
+          {"icon": "💧", "text": "Irrigation (watering)"},
+          {"icon": "🌿", "text": "Protection from weeds"},
+          {"icon": "🌾", "text": "Harvesting"},
+          {"icon": "🏚️", "text": "Storage"}]},
+       "say": ["Farmers follow these steps season after season.", "Each step prepares for the next one."],
+       "remember": "Soil → Sow → Manure → Water → Weeds → Harvest → Store."},
+      {"title": "Like growing a garden", "pic": {"kind": "icons", "items": [
+          {"icon": "🪴", "text": "Ready the pot", "sub": "Soil preparation"},
+          {"icon": "🌱", "text": "Plant the seed", "sub": "Sowing"},
+          {"icon": "🚿", "text": "Feed and water", "sub": "Manure and irrigation"},
+          {"icon": "✂️", "text": "Pull out unwanted plants", "sub": "Weeding"},
+          {"icon": "🧺", "text": "Pick and keep safely", "sub": "Harvest and storage"}]},
+       "say": ["A farm is like a very big garden.", "The same steps are needed, only on a much bigger scale."]},
+      {"title": "Tools help at every step", "pic": {"kind": "icons", "items": [
+          {"icon": "⛏️", "text": "Plough and hoe", "sub": "Loosen the soil"},
+          {"icon": "🌰", "text": "Seed drill", "sub": "Sows seeds evenly"},
+          {"icon": "💦", "text": "Sprinkler, drip", "sub": "Water the crop"},
+          {"icon": "🔪", "text": "Sickle, harvester", "sub": "Cut the crop"}]},
+       "say": ["Farmers use tools and machines to do each step faster and better."]}
+    ],
+    "crux_points": ["Crop production has seven basic practices.", "They happen in order: soil, sowing, manure, irrigation, weeding, harvesting, storage.", "Tools and machines make each step easier."],
+    "quiz": [
+      {"q": "What is the FIRST step in growing a crop?", "options": ["Preparing the soil", "Harvesting", "Storage", "Weeding"], "answer": 0, "why": "The soil must be loosened and levelled before seeds can be sown."},
+      {"q": "Which step comes right after harvesting?", "options": ["Storage", "Sowing", "Irrigation", "Ploughing"], "answer": 0, "why": "After the crop is cut and the grain separated, it is stored safely."}
+    ]
+  },
+  "1.3": {
+    "crux": "Before sowing, farmers loosen (plough) the soil so roots can grow and breathe, then level it so water and soil are not lost.",
+    "cards": [
+      {"title": "Why loosen the soil?", "pic": {"kind": "compare", "cols": [
+          {"head": "Hard soil", "icon": "🧱", "cells": ["Roots can't push through", "Little air for roots", "Few earthworms and microbes"]},
+          {"head": "Loose soil", "icon": "🟫", "cells": ["Roots go deep easily", "Roots can breathe", "Earthworms and microbes thrive"]}]},
+       "say": ["Loose soil lets roots go deep and breathe easily.", "Earthworms and microbes in loose soil add humus and make it richer."],
+       "remember": "Earthworms are called the 'friends of the farmer'."},
+      {"title": "Turning the soil brings food up", "pic": {"kind": "layers", "items": [
+          {"name": "Top soil", "note": "Nutrients get used up by earlier crops", "color": "amber"},
+          {"name": "Lower soil", "note": "Still rich in nutrients", "color": "brown"},
+          {"name": "After ploughing", "note": "Rich soil is turned up to the top", "color": "green"}]},
+       "say": ["Plants take nutrients from the top layer of soil.", "Turning the soil brings nutrient-rich soil up where new roots can use it."]},
+      {"title": "Tools for tilling", "pic": {"kind": "groups", "root": "Ploughing tools", "items": [
+          {"icon": "🐂", "name": "Plough", "eg": "Pulled by bullocks; its iron tip (ploughshare) cuts the soil"},
+          {"icon": "⛏️", "name": "Hoe", "eg": "Removes weeds and loosens soil"},
+          {"icon": "🚜", "name": "Cultivator", "eg": "Pulled by a tractor; saves time and labour"}]},
+       "say": ["Loosening and turning the soil is called tilling or ploughing.", "Big lumps of soil are then broken with a tool called a crumbler."]},
+      {"title": "Then level it", "pic": {"kind": "flow", "steps": [
+          {"icon": "〰️", "text": "Ploughed field is uneven, with lumps"},
+          {"icon": "🪵", "text": "A heavy wooden or iron plank (leveller) is pulled over it"},
+          {"icon": "➖", "text": "The field becomes flat and even"}]},
+       "say": ["A level field gets water evenly when it is irrigated.", "Levelling also stops wind and water from carrying away the loose soil."],
+       "think": "Why might a farmer add water before ploughing very dry soil?"}
+    ],
+    "crux_points": ["Ploughing loosens the soil so roots can grow and breathe.", "Turning the soil brings nutrient-rich soil to the top.", "Levelling helps even watering and stops soil loss."],
+    "quiz": [
+      {"q": "Why do farmers loosen the soil?", "options": ["So roots can go deep and breathe", "To make the soil hard", "To kill earthworms", "To keep water out"], "answer": 0, "why": "Loose soil lets roots grow deep and get air, and helps earthworms and microbes."},
+      {"q": "What does a leveller do?", "options": ["Makes the field flat", "Sows seeds", "Cuts the crop", "Sprays water"], "answer": 0, "why": "A leveller is a heavy plank pulled over the field to make it flat."}
+    ]
+  },
+  "1.4": {
+    "crux": "Choose healthy seeds, then sow them at the right depth and distance apart, for example with a seed drill.",
+    "cards": [
+      {"title": "The water test for seeds", "pic": {"kind": "compare", "cols": [
+          {"head": "Seeds that float", "icon": "🔝", "cells": ["Damaged or hollow", "Light because they are empty", "Thrown away"]},
+          {"head": "Seeds that sink", "icon": "⬇️", "cells": ["Healthy and full", "Heavier", "Used for sowing"]}]},
+       "say": ["Put the seeds in a bucket of water.", "Damaged seeds are hollow and float. Healthy seeds sink."],
+       "remember": "Good seeds sink; bad seeds float."},
+      {"title": "Sowing with a seed drill", "pic": {"kind": "flow", "steps": [
+          {"icon": "🚜", "text": "A tractor pulls the seed drill across the field"},
+          {"icon": "🌰", "text": "Seeds drop through tubes at equal distance and depth"},
+          {"icon": "🟫", "text": "The drill covers the seeds with soil"},
+          {"icon": "🐦", "text": "Covered seeds are safe from birds"}]},
+       "say": ["Earlier, farmers dropped seeds through a funnel attached to a plough.", "A seed drill does it faster and more evenly, saving time and labour."]},
+      {"title": "Why spacing matters", "pic": {"kind": "compare", "cols": [
+          {"head": "Too crowded", "icon": "🌱🌱🌱", "cells": ["Plants fight for light", "Not enough water and nutrients", "Weak plants, poor harvest"]},
+          {"head": "Right spacing", "icon": "🌱 🌱", "cells": ["Each plant gets sunlight", "Enough water and nutrients", "Healthy plants, good harvest"]}]},
+       "say": ["Seeds sown too close together grow crowded.", "Proper spacing lets every plant get enough sunlight, water and nutrients."]},
+      {"title": "Some crops start in a nursery", "pic": {"kind": "flow", "steps": [
+          {"icon": "🌱", "text": "Paddy seeds are first grown in a small nursery"},
+          {"icon": "🤲", "text": "The young plants (seedlings) are pulled out"},
+          {"icon": "🌾", "text": "They are planted again in the field by hand: transplanting"}]},
+       "say": ["Paddy, and some vegetables and flowers, are grown this way."]}
+    ],
+    "crux_points": ["Healthy seeds sink in water; damaged ones float.", "A seed drill sows seeds at the right depth and spacing and covers them.", "Proper spacing gives each plant enough light, water and nutrients."],
+    "quiz": [
+      {"q": "Seeds are put in water. Which ones should the farmer sow?", "options": ["The ones that sink", "The ones that float", "Both", "Neither"], "answer": 0, "why": "Healthy seeds are full and heavy, so they sink. Hollow, damaged seeds float."},
+      {"q": "Why should seeds not be sown too close together?", "options": ["The plants would compete for light, water and nutrients", "Birds like spaced seeds", "Close seeds grow faster", "Soil becomes hard"], "answer": 0, "why": "Crowded plants don't each get enough sunlight, water and nutrients."}
+    ]
+  },
+  "1.5": {
+    "crux": "Crops take nutrients from the soil; we put them back with natural manure or factory-made fertilisers, or by rotating crops.",
+    "cards": [
+      {"title": "Why soil needs feeding", "pic": {"kind": "flow", "steps": [
+          {"icon": "🌾", "text": "Crops take nutrients from the soil as they grow"},
+          {"icon": "📉", "text": "After each harvest the soil has fewer nutrients"},
+          {"icon": "➕", "text": "Farmers add manure or fertilisers to refill them"}]},
+       "say": ["Growing crops again and again makes the soil poor.", "Nutrients must be put back for the next crop to grow well."]},
+      {"title": "Manure or fertiliser?", "pic": {"kind": "compare", "rows": ["What it is", "Made from", "Nutrients", "Effect on soil"], "cols": [
+          {"head": "Manure", "icon": "🍂", "cells": ["Natural (organic)", "Rotting plant and animal waste", "Fewer nutrients", "Adds humus; improves soil texture and water holding"]},
+          {"head": "Fertiliser", "icon": "🧪", "cells": ["Chemical (man-made)", "Made in factories", "Rich in specific nutrients (N, P, K)", "Too much harms soil and pollutes water"]}]},
+       "say": ["Manure is made by letting plant and animal wastes rot in pits.", "Urea, ammonium sulphate and NPK are examples of fertilisers."],
+       "remember": "Manure feeds the soil; fertiliser feeds the plant."},
+      {"title": "Crop rotation", "pic": {"kind": "cycle", "steps": [
+          {"icon": "🌾", "short": "Wheat", "text": "A cereal crop uses up nitrogen from the soil."},
+          {"icon": "🫘", "short": "Pulses", "text": "A legume crop (beans, gram) puts nitrogen back into the soil."},
+          {"icon": "🌽", "short": "Maize", "text": "The next cereal grows well in the refreshed soil."},
+          {"icon": "🫛", "short": "Peas", "text": "Another legume refills the soil again."}]},
+       "say": ["Growing different crops one after another is called crop rotation.", "Legumes have bacteria in their roots that add nitrogen to the soil."]},
+      {"title": "Resting the land", "pic": {"kind": "icons", "items": [
+          {"icon": "🟫", "text": "Leave the field empty", "sub": "Called keeping it fallow"},
+          {"icon": "⏳", "text": "For a season", "sub": "Nutrients slowly build up again"}]},
+       "say": ["Another old method is to leave the field unsown for a season so the soil can recover."]}
+    ],
+    "crux_points": ["Crops use up soil nutrients, so they must be replaced.", "Manure is natural and improves the soil; fertilisers are chemicals rich in nutrients.", "Crop rotation with legumes puts nitrogen back into the soil."],
+    "quiz": [
+      {"q": "Which is made from rotting plant and animal waste?", "options": ["Manure", "Urea", "NPK", "Weedicide"], "answer": 0, "why": "Manure is natural and comes from decomposed plant and animal wastes."},
+      {"q": "Why do farmers grow pulses between two wheat crops?", "options": ["Pulses put nitrogen back into the soil", "Pulses need no water", "Pulses kill all pests", "Wheat grows only in summer"], "answer": 0, "why": "Legumes like pulses have nitrogen-fixing bacteria in their roots that enrich the soil."},
+      {"q": "What can too much fertiliser do?", "options": ["Harm the soil and pollute water", "Make soil softer forever", "Add humus", "Nothing at all"], "answer": 0, "why": "Too much fertiliser reduces soil fertility over time and washes into water bodies."}
+    ]
+  },
+  "1.6": {
+    "crux": "Irrigation means giving crops water at regular times; modern sprinklers and drip pipes save water compared with old methods.",
+    "cards": [
+      {"title": "Why plants need water", "pic": {"kind": "icons", "items": [
+          {"icon": "🌱", "text": "Seeds sprout", "sub": "Germination needs water"},
+          {"icon": "🧂", "text": "Carries nutrients", "sub": "Dissolved nutrients reach every part"},
+          {"icon": "🌡️", "text": "Keeps plants cool", "sub": "Protects from heat and frost"},
+          {"icon": "🌾", "text": "Healthy growth", "sub": "Most of a plant's body is water"}]},
+       "say": ["Every plant needs water to grow.", "Giving water to crops at regular intervals is called irrigation."]},
+      {"title": "Where the water comes from", "pic": {"kind": "icons", "items": [
+          {"icon": "🕳️", "text": "Wells, tubewells"}, {"icon": "🏞️", "text": "Ponds, lakes"},
+          {"icon": "🌊", "text": "Rivers"}, {"icon": "🧱", "text": "Dams, canals"}]},
+       "say": ["How often to water depends on the crop, the soil and the season."]},
+      {"title": "Traditional ways", "pic": {"kind": "groups", "root": "Lifting water from wells and ponds", "items": [
+          {"icon": "🪢", "name": "Moat", "eg": "Pulley system"},
+          {"icon": "⛓️", "name": "Chain pump", "eg": "A chain of buckets"},
+          {"icon": "⚖️", "name": "Dhekli", "eg": "Lever with a counterweight"},
+          {"icon": "🐂", "name": "Rahat", "eg": "Turned by animals"}]},
+       "say": ["These methods are cheap but often waste water, because it flows over the ground and evaporates."]},
+      {"title": "Modern ways save water", "pic": {"kind": "scene", "scene": "irrigation", "labels": [
+          {"at": "sprinkler", "name": "Sprinkler", "note": "Turns and sprays water like rain"},
+          {"at": "main_pipe", "name": "Main pipe", "note": "Carries water to the sprinklers"},
+          {"at": "drip_pipe", "name": "Drip pipe", "note": "Runs along the plants"},
+          {"at": "drip", "name": "Drop by drop", "note": "Water falls right at the roots"},
+          {"at": "roots", "name": "Roots", "note": "Get water with almost no waste"}]},
+       "say": ["Sprinklers suit uneven land and sandy soil, where water would run off.", "Drip irrigation is best for fruit trees, gardens and places short of water."],
+       "remember": "Drip irrigation wastes almost no water."}
+    ],
+    "crux_points": ["Irrigation is giving water to crops at regular intervals.", "Traditional methods (moat, chain pump, dhekli, rahat) are cheap but less efficient.", "Sprinkler and drip systems save water."],
+    "quiz": [
+      {"q": "Which method gives water drop by drop at the roots?", "pic": {"kind": "scene", "scene": "irrigation", "ask": "drip"}, "options": ["Drip irrigation", "Sprinkler", "Rahat", "Chain pump"], "answer": 0, "why": "Drip pipes let water fall slowly right at the base of each plant."},
+      {"q": "Why is a sprinkler good for uneven, sandy land?", "options": ["Water falls like rain instead of running off", "It needs no water", "It ploughs the soil", "It removes weeds"], "answer": 0, "why": "On uneven or sandy land, flowing water is lost; a sprinkler spreads it evenly like rain."}
+    ]
+  },
+  "1.7": {
+    "crux": "Weeds are unwanted plants that steal water, nutrients, space and light from the crop, so farmers remove them.",
+    "cards": [
+      {"title": "What is a weed?", "pic": {"kind": "icons", "items": [
+          {"icon": "🌾", "text": "Crop plant", "sub": "Grown on purpose"},
+          {"icon": "🌿", "text": "Weed", "sub": "Grows by itself, not wanted"}]},
+       "say": ["Some unwanted plants grow naturally along with the crop.", "These unwanted plants are called weeds."]},
+      {"title": "Weeds steal from the crop", "pic": {"kind": "icons", "items": [
+          {"icon": "💧", "text": "Water"}, {"icon": "🧂", "text": "Nutrients"}, {"icon": "☀️", "text": "Sunlight"}, {"icon": "📏", "text": "Space"}]},
+       "say": ["Weeds compete with the crop for everything it needs.", "So the crop grows less, and the harvest is smaller. Some weeds are even poisonous."]},
+      {"title": "Ways to remove weeds", "pic": {"kind": "groups", "root": "Weeding", "items": [
+          {"icon": "🚜", "name": "Tilling before sowing", "eg": "Uproots and kills weeds"},
+          {"icon": "✋", "name": "By hand", "eg": "Pulling out or cutting close to the ground"},
+          {"icon": "🔪", "name": "Khurpi or harrow", "eg": "Simple tools to uproot weeds"},
+          {"icon": "🧴", "name": "Weedicides", "eg": "Chemicals like 2,4-D that kill weeds, not the crop"}]},
+       "say": ["The best time to remove weeds is before they flower and make seeds."],
+       "remember": "Weedicide sprayers must cover their nose and mouth: the spray can harm people."}
+    ],
+    "crux_points": ["Weeds are unwanted plants growing with the crop.", "They compete with the crop for water, nutrients, light and space.", "They are removed by tilling, by hand, with tools, or with weedicides."],
+    "quiz": [
+      {"q": "Why are weeds harmful to crops?", "options": ["They take water, nutrients and light from the crop", "They add nitrogen", "They keep birds away", "They make grain heavier"], "answer": 0, "why": "Weeds compete with the crop for the things it needs, so the crop yields less."},
+      {"q": "What is a weedicide?", "options": ["A chemical that kills weeds", "A type of weed", "A seed drill", "A fertiliser"], "answer": 0, "why": "Weedicides like 2,4-D are sprayed to kill weeds without harming the crop."}
+    ]
+  },
+  "1.8": {
+    "crux": "When the crop is ripe it is cut (harvesting), the grain is beaten out (threshing) and separated from the chaff (winnowing).",
+    "cards": [
+      {"title": "From field to grain", "pic": {"kind": "flow", "steps": [
+          {"icon": "🔪", "text": "Harvesting: cut the mature crop with a sickle or a harvester"},
+          {"icon": "🔨", "text": "Threshing: beat the grain out of the ears"},
+          {"icon": "🌬️", "text": "Winnowing: let the wind blow away the light chaff"}]},
+       "say": ["A cereal crop takes 3 to 4 months to mature.", "Cutting the mature crop is called harvesting."]},
+      {"title": "Winnowing", "pic": {"kind": "scene", "scene": "winnowing", "labels": [
+          {"at": "farmer", "name": "Farmer", "note": "Drops grain from a height"},
+          {"at": "basket", "name": "Winnowing basket"},
+          {"at": "wind", "name": "Wind"},
+          {"at": "grain", "name": "Heavy grain", "note": "Falls straight down"},
+          {"at": "chaff", "name": "Light chaff", "note": "Blown further away"}]},
+       "say": ["Grain is heavy and falls close to the farmer.", "Chaff (husk) is light and is carried away by the wind."],
+       "remember": "Heavy grain falls; light chaff flies."},
+      {"title": "Machines make it fast", "pic": {"kind": "equation", "parts": [
+          {"icon": "🔪", "text": "Harvester", "color": "amber"}, "+", {"icon": "🔨", "text": "Thresher", "color": "orange"}, "=", {"icon": "🚜", "text": "Combine", "color": "green"}]},
+       "say": ["A combine harvests and threshes the crop in one go.", "Farmers with small fields still thresh with cattle or by hand."]},
+      {"title": "Harvest festivals", "pic": {"kind": "icons", "items": [
+          {"icon": "🎉", "text": "Pongal", "sub": "Tamil Nadu"}, {"icon": "🥁", "text": "Baisakhi", "sub": "Punjab"},
+          {"icon": "🪔", "text": "Bihu", "sub": "Assam"}, {"icon": "🌾", "text": "Nabanya", "sub": "West Bengal"}]},
+       "say": ["After months of hard work, farmers celebrate the harvest with festivals."]}
+    ],
+    "crux_points": ["Harvesting is cutting the mature crop.", "Threshing separates the grain from the ears.", "Winnowing uses wind to blow light chaff away from heavy grain."],
+    "quiz": [
+      {"q": "What is marked '?' in the winnowing picture?", "pic": {"kind": "scene", "scene": "winnowing", "ask": "chaff"}, "options": ["Light chaff", "Heavy grain", "The basket", "Seeds for sowing"], "answer": 0, "why": "The chaff is light, so the wind carries it further away from the farmer."},
+      {"q": "A combine is a machine that…", "options": ["Harvests and threshes together", "Ploughs the soil", "Sprays water", "Stores grain"], "answer": 0, "why": "A combine is a harvester and a thresher combined."}
+    ]
+  },
+  "1.9": {
+    "crux": "Grain is dried in the sun and stored in clean bins or silos so moisture, pests and microbes can't spoil it.",
+    "cards": [
+      {"title": "What spoils stored grain?", "pic": {"kind": "icons", "items": [
+          {"icon": "💧", "text": "Moisture", "sub": "Damp grain rots and grows fungus"},
+          {"icon": "🐀", "text": "Rats", "sub": "Eat and dirty the grain"},
+          {"icon": "🐛", "text": "Insects", "sub": "Bore into the grains"},
+          {"icon": "🦠", "text": "Microbes", "sub": "Grow on wet grain"}]},
+       "say": ["Fresh grain has some moisture in it.", "Moisture lets fungi and microbes grow, and pests attack."]},
+      {"title": "Dry first", "pic": {"kind": "equation", "parts": [
+          {"icon": "🌾", "text": "Fresh grain", "color": "green"}, "+", {"icon": "☀️", "text": "Sun drying", "color": "amber"}, "→", {"icon": "✅", "text": "Safe to store", "color": "blue"}]},
+       "say": ["Drying in the sun removes most of the moisture.", "Dry grain keeps much longer."]},
+      {"title": "How grain is stored", "pic": {"kind": "groups", "root": "Storage", "items": [
+          {"icon": "🛍️", "name": "Jute bags, metal bins", "eg": "Used by farmers"},
+          {"icon": "🏭", "name": "Silos and granaries", "eg": "Huge stores for large amounts"},
+          {"icon": "🍃", "name": "Dried neem leaves", "eg": "Used at home to keep insects away"},
+          {"icon": "🧪", "name": "Chemical treatment", "eg": "Used in big warehouses against pests"}]},
+       "say": ["Large amounts of grain are kept in silos and granaries, protected from pests like rats and insects."]}
+    ],
+    "crux_points": ["Moisture, pests and microbes spoil stored grain.", "Grain is dried in the sun before storing.", "It is kept in bins, bags, silos or granaries, protected from pests."],
+    "quiz": [
+      {"q": "Why is grain dried before storing?", "options": ["To remove moisture so fungi and microbes can't grow", "To make it heavier", "To change its colour", "To add nutrients"], "answer": 0, "why": "Moist grain lets fungi and microbes grow and attracts pests."},
+      {"q": "What do many families put in grain to keep insects away?", "options": ["Dried neem leaves", "Sugar", "Water", "Salt water"], "answer": 0, "why": "Dried neem leaves are a traditional way to protect stored grain at home."}
+    ]
+  },
+  "1.10": {
+    "crux": "Animals also give us food such as milk, eggs, fish and meat; caring for and raising them is called animal husbandry.",
+    "cards": [
+      {"title": "Food from animals", "pic": {"kind": "icons", "items": [
+          {"icon": "🐄", "text": "Milk", "sub": "From cows, buffaloes, goats"},
+          {"icon": "🐔", "text": "Eggs and meat", "sub": "From poultry"},
+          {"icon": "🐟", "text": "Fish", "sub": "From ponds, rivers, the sea"},
+          {"icon": "🐝", "text": "Honey", "sub": "From bees"}]},
+       "say": ["Just like plants, animals are raised on farms to give us food."]},
+      {"title": "Animal husbandry", "pic": {"kind": "flow", "steps": [
+          {"icon": "🌾", "text": "Feeding the animals properly"},
+          {"icon": "🏠", "text": "Giving them clean shelter"},
+          {"icon": "🩺", "text": "Caring for their health"},
+          {"icon": "🥛", "text": "Getting food like milk and eggs from them"}]},
+       "say": ["Rearing animals on a large scale, with proper food, shelter and care, is called animal husbandry."],
+       "remember": "Animal husbandry = feeding, sheltering and caring for farm animals."},
+      {"title": "Fish is good food", "pic": {"kind": "icons", "items": [
+          {"icon": "🐟", "text": "Fish", "sub": "Rich in protein"},
+          {"icon": "🐠", "text": "Cod liver oil", "sub": "Rich in vitamin D"}]},
+       "say": ["People living near the coast eat a lot of fish.", "Fish is healthy food for growing children."]}
+    ],
+    "crux_points": ["We get milk, eggs, meat, fish and honey from animals.", "Animal husbandry means raising animals with good food, shelter and care.", "Fish is rich in protein and fish oil in vitamin D."],
+    "quiz": [
+      {"q": "Rearing animals on a large scale for food is called…", "options": ["Animal husbandry", "Irrigation", "Crop rotation", "Winnowing"], "answer": 0, "why": "Animal husbandry is the proper feeding, shelter and care of farm animals."},
+      {"q": "Which food comes from poultry?", "options": ["Eggs", "Milk", "Honey", "Wheat"], "answer": 0, "why": "Poultry means birds like hens raised for eggs and meat."}
+    ]
+  }
+}

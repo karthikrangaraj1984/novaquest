@@ -1,0 +1,60 @@
+{% extends "staff.html" %}
+{# Data protection (1.19.0): consent register, a student's data export and erasure, retention, parent notice. #}
+{% block title %}Data protection{% endblock %}
+{% block main %}
+<div class="stack-sm" style="gap:2px"><span class="muted">India's Digital Personal Data Protection Act 2023: children's data needs a parent's consent, and parents can see, correct or erase it.</span><h1>Data protection</h1></div>
+
+<section class="kpis" aria-label="Consent">
+  <div class="kpi"><span class="k">Students</span><span class="v">{{ d.counts.students }}</span><span class="d">at school now</span></div>
+  <div class="kpi"><span class="k">Consent recorded</span><span class="v">{{ d.counts.recorded }}</span><span class="d">can use NovaQuest</span></div>
+  <div class="kpi"><span class="k">Waiting</span><span class="v">{{ d.counts.pending }}</span><span class="d">no consent yet</span></div>
+  <div class="kpi"><span class="k">Withdrawn</span><span class="v">{{ d.counts.withdrawn }}</span><span class="d">signed out</span></div>
+</section>
+
+<div class="cols">
+  <div class="main stack">
+    <section class="card stack-sm" aria-labelledby="cr-h">
+      <div class="row-between"><h2 id="cr-h">Consent register</h2><a class="btn small quiet" href="/admin/privacy?format=csv">Download (CSV)</a></div>
+      <p class="small muted">Teachers record consent on their class's Students page. Export gives a parent a copy of everything held about their child; erase removes it for good.</p>
+      <div class="table-wrap"><table class="cards">
+        <thead><tr><th scope="col">Student</th><th scope="col">Consent</th><th scope="col">Data</th></tr></thead>
+        <tbody>{% for r in d.register %}<tr>
+          <th scope="row">{{ r.class_label }} · {{ r.roll_no }}. {{ r.name }}{% if r.status != "active" %} <span class="pill l1">Left</span>{% endif %}</th>
+          <td data-label="Consent">{% if r.consent_status == "recorded" %}<span class="pill ok">Recorded</span> <span class="small muted">{{ r.consent_by }}, {{ methods.get(r.consent_method, r.consent_method) }}, {{ r.consent_at|ist("%d %b %Y") }}</span>
+              <details><summary class="small link">Withdraw</summary>
+                <form method="post" action="/admin/privacy/withdraw" class="stack-sm" style="margin-top:6px"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="enrolment_id" value="{{ r.enrolment_id }}">
+                  <span class="small">{{ r.name }} will be signed out and can't sign in until consent is recorded again.</span>
+                  <button class="btn small quiet" type="submit">Withdraw consent</button></form></details>
+            {% elif r.consent_status == "withdrawn" %}<span class="pill warn">Withdrawn</span> <span class="small muted">{{ r.consent_withdrawn_at|ist("%d %b %Y") }}</span>
+            {% else %}<span class="pill l1">Waiting</span>{% endif %}</td>
+          <td data-label="Data"><a class="small" href="/admin/privacy/students/{{ r.student_id }}/export">Export</a>
+            <details><summary class="small link">Erase</summary>
+              <form method="post" action="/admin/privacy/students/{{ r.student_id }}/erase" class="stack-sm" style="margin-top:6px"><input type="hidden" name="csrf" value="{{ csrf }}">
+                <span class="small">Deletes {{ r.name }}'s name, parent email, PIN, conversations with NOVA, written answers and photos of paper work. Marks stay without a name. <b>This can't be undone.</b></span>
+                <label class="small" for="cf{{ r.student_id }}">Type the student's name to confirm</label><input id="cf{{ r.student_id }}" name="confirm" type="text" autocomplete="off" required>
+                <button class="btn small danger" type="submit">Erase for good</button></form></details></td>
+        </tr>{% else %}<tr><td colspan="3" class="muted">No students yet.</td></tr>{% endfor %}</tbody></table></div>
+      {% if d.erased %}<p class="tiny muted">{{ d.erased }} student record{{ "s" if d.erased != 1 }} erased so far.</p>{% endif %}
+    </section>
+  </div>
+  <aside class="aside stack">
+    <section class="card stack-sm" aria-labelledby="rt-h"><h2 id="rt-h">How long we keep data</h2>
+      <form method="post" action="/admin/privacy/retention" class="stack-sm"><input type="hidden" name="csrf" value="{{ csrf }}">
+        <div class="field"><label for="ai">Conversations with NOVA and photos of paper work</label><select id="ai" name="ai_chat_months">
+          {% for m in choices %}<option value="{{ m }}" {% if m == d.settings.ai_chat_months %}selected{% endif %}>{{ "Keep until erased" if not m else "Delete after " ~ m ~ " months" }}</option>{% endfor %}</select></div>
+        <div class="field"><label for="lf">Students who have left</label><select id="lf" name="left_student_months">
+          {% for m in choices %}<option value="{{ m }}" {% if m == d.settings.left_student_months %}selected{% endif %}>{{ "Keep until erased" if not m else "Erase " ~ m ~ " months after leaving" }}</option>{% endfor %}</select></div>
+        <button class="btn small" type="submit">Save</button>
+        <span class="tiny muted">Checked once a day. Marks are kept without names, so class figures don't change.</span></form></section>
+    <section class="card stack-sm" aria-labelledby="pn-h"><h2 id="pn-h">Parent notice</h2>
+      <p class="small">A one-page notice that tells parents what NovaQuest keeps, who sees it, how AI is used, how long data is kept and their rights, with a consent form to sign. It uses your settings above.</p>
+      <a class="btn small quiet" href="/admin/privacy/notice">Download notice and consent form (PDF)</a></section>
+    <section class="card stack-sm" aria-labelledby="al-h"><h2 id="al-h">AI conversations</h2>
+      <p class="small">Read what students asked NOVA and taught NOVA. The principal can see this too; each look is recorded below.</p>
+      <a class="btn small quiet" href="/leader/ai-log">Open the AI conversation log</a></section>
+    <section class="card stack-sm" aria-labelledby="lg-h"><h2 id="lg-h">Recent actions</h2>
+      {% for a in d.log %}<div class="small"><span class="muted">{{ a.created_at|ist("%d %b, %I:%M %p") }}</span> · {{ actions.get(a.action, a.action) }}{% if a.actor %} by {{ a.actor }}{% endif %}</div>
+      {% else %}<p class="small muted">Nothing yet.</p>{% endfor %}</section>
+  </aside>
+</div>
+{% endblock %}

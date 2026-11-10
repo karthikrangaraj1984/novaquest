@@ -1,0 +1,40 @@
+{% extends "student.html" %}
+{% from "_tasks.html" import subject_tag, task_row with context %}
+{% block title %}Tasks{% endblock %}
+{% block heading %}{{ tr('My tasks') }}{% endblock %}
+{% block main %}
+{% if subjects %}
+<nav class="row subj-sum" aria-label="Show tasks for">
+  <a class="chip" href="/student/tasks" {% if pick is none %}aria-current="page"{% endif %}>{{ tr("All") }}</a>
+  {% for s in subjects %}<a class="chip" href="/student/tasks?book={{ s.id }}" {% if pick == s.id %}aria-current="page"{% endif %}>{{ subject_tag(s.label, s.colour) }}{% if s.open %} {{ tr("{n} to do", n=s.open) }}{% endif %}</a>{% endfor %}
+</nav>
+{% endif %}
+{% set labels = {"started": "In progress", "open": "Not started", "done": "Handed in", "results": "Results", "upcoming": "Coming up", "closed": "Closed", "missed": "Missed"} %}
+{% set ns = namespace(any=false) %}
+{% for group in ["started", "open", "upcoming", "done", "results", "closed", "missed"] %}
+  {% if group == "started" %}{% set rows = items|selectattr("view", "equalto", "open")|selectattr("started")|list %}
+  {% elif group == "open" %}{% set rows = items|selectattr("view", "equalto", "open")|rejectattr("started")|list %}
+  {% else %}{% set rows = items|selectattr("view", "equalto", group)|list %}{% endif %}
+  {% if rows %}{% set ns.any = true %}
+  <section class="stack-sm" aria-labelledby="g-{{ group }}">
+    <h2 id="g-{{ group }}">{{ tr(labels[group]) }}</h2>
+    {% for a in rows %}
+      {% if group in ("started", "open") %}{{ task_row(a) }}
+      {% elif group == "results" %}
+        {% set sc = scores.get(a.id) %}
+        <a class="topic-row" href="/student/results/{{ a.id }}"><span class="stack-sm" style="gap:2px"><span class="row" style="gap:6px">{{ subject_tag(a.subject_label, a.subject_colour) }}<b>{{ a.title }}</b></span><span class="small muted">{% if sc %}{{ sc.right }} of {{ sc.total }} right · {% endif %}{{ a.released_at|ist('%d %b') }}{% if sc and sc.change is not none %} · {% if sc.change > 0 %}<span class="up">▲ {{ sc.change }}</span>{% elif sc.change < 0 %}<span class="down">▼ {{ -sc.change }}</span>{% else %}same as last time{% endif %}{% endif %}</span></span>{% if sc %}<span class="score-chip">{{ sc.pct }}%</span>{% else %}<span class="pill ok">{{ tr("Scorecard") }}</span>{% endif %}</a>
+      {% elif group == "upcoming" %}
+        <div class="topic-row"><span class="stack-sm" style="gap:2px"><span class="row" style="gap:6px">{{ subject_tag(a.subject_label, a.subject_colour) }}<b>{{ a.title }}</b></span><span class="small muted">Opens {{ a.opens_at|ist }}</span></span><span class="pill l0">{{ tr("Soon") }}</span></div>
+      {% elif group == "done" %}
+        <div class="topic-row"><span class="row" style="gap:6px">{{ subject_tag(a.subject_label, a.subject_colour) }}<b>{{ a.title }}</b></span><span class="pill">{{ tr("Waiting for teacher") }}</span></div>
+      {% elif group == "missed" %}
+        <div class="topic-row"><span class="stack-sm" style="gap:2px"><span class="row" style="gap:6px">{{ subject_tag(a.subject_label, a.subject_colour) }}<b>{{ a.title }}</b></span><span class="small muted">Not handed in. Revise its topics from Learn.</span></span><span class="pill l0">{{ tr("Missed") }}</span></div>
+      {% else %}
+        <div class="topic-row"><span class="row" style="gap:6px">{{ subject_tag(a.subject_label, a.subject_colour) }}<b>{{ a.title }}</b></span><span class="pill l0">{{ tr("Closed") }}</span></div>
+      {% endif %}
+    {% endfor %}
+  </section>
+  {% endif %}
+{% endfor %}
+{% if not ns.any %}<p class="empty">{% if pick is not none %}No tasks in this subject yet.{% else %}{{ tr("No tasks yet. Your teacher will add them here.") }}{% endif %}</p>{% endif %}
+{% endblock %}

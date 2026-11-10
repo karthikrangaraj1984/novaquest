@@ -1,0 +1,153 @@
+{
+  "12.1": {
+    "crux": "Friction is a force between two surfaces in contact that opposes their motion against each other.",
+    "cards": [
+      {"title": "Friction opposes motion", "pic": {"kind": "scene", "scene": "surface_zoom", "labels": [
+          {"at": "block", "name": "Moving block"},
+          {"at": "zoom", "name": "Pushed this way", "note": "Applied force"},
+          {"at": "floor", "name": "Floor"},
+          {"at": "bumps", "name": "Where surfaces touch", "note": "Friction acts here"}]},
+       "say": ["When you push a book across a table, it slows down and stops.", "A force between the book and the table acts against the motion: friction."],
+       "remember": "Friction acts in the direction opposite to motion."},
+      {"title": "Everyday friction", "pic": {"kind": "icons", "items": [
+          {"icon": "📚", "text": "A pushed book stops"}, {"icon": "⚽", "text": "A rolling ball slows down"},
+          {"icon": "🚲", "text": "Bicycle slows when you stop pedalling"}, {"icon": "🍌", "text": "Slipping on a banana peel", "sub": "Too little friction!"}]},
+       "say": ["Friction is all around us, though we rarely notice it."]},
+      {"title": "Both surfaces", "pic": {"kind": "compare", "cols": [
+          {"head": "Upper surface", "icon": "📗", "cells": ["Feels friction from the lower surface"]},
+          {"head": "Lower surface", "icon": "🪵", "cells": ["Feels friction from the upper surface"]}]},
+       "say": ["Friction acts on both surfaces that are in contact."]}
+    ],
+    "crux_points": ["Friction acts between two surfaces in contact.", "It opposes the relative motion between them.", "It acts on both surfaces."],
+    "quiz": [
+      {"q": "A book pushed along a table stops because of…", "options": ["Friction", "Magnetism", "Pressure of light", "Sound"], "answer": 0, "why": "Friction between the book and table opposes its motion."},
+      {"q": "In which direction does friction act?", "options": ["Opposite to the motion", "Same as the motion", "Always upward", "Always downward"], "answer": 0, "why": "Friction always opposes the motion between surfaces."}
+    ]
+  },
+  "12.2": {
+    "crux": "Friction comes from tiny bumps on surfaces locking into each other; rougher surfaces and harder pressing give more friction, and it's harder to start something moving than to keep it sliding.",
+    "cards": [
+      {"title": "Zoom in on a surface", "pic": {"kind": "scene", "scene": "surface_zoom", "labels": [
+          {"at": "bumps", "name": "Tiny bumps lock together", "note": "Even 'smooth' surfaces have them"},
+          {"at": "block", "name": "Upper surface"},
+          {"at": "floor", "name": "Lower surface"}]},
+       "say": ["Under a magnifier, all surfaces have tiny hills and valleys.", "These irregularities interlock, and we need force to get them past each other."]},
+      {"title": "What changes friction", "pic": {"kind": "compare", "rows": ["Surface", "Pressing force"], "cols": [
+          {"head": "More friction", "icon": "🧱", "cells": ["Rough (sand, carpet)", "Pressed together harder (heavier object)"]},
+          {"head": "Less friction", "icon": "🧊", "cells": ["Smooth (glass, polished floor)", "Pressed together lightly"]}]},
+       "say": ["Rough surfaces have bigger bumps, so more interlocking.", "A heavier object presses the surfaces together harder, so friction increases."],
+       "remember": "Rougher or heavier → more friction."},
+      {"title": "Starting vs sliding", "pic": {"kind": "compare", "rows": ["When", "Size"], "cols": [
+          {"head": "Static friction", "icon": "🛑", "cells": ["To start moving an object at rest", "Bigger"]},
+          {"head": "Sliding friction", "icon": "🛝", "cells": ["When the object is already sliding", "Smaller"]}]},
+       "say": ["It is harder to start pushing a heavy box than to keep it moving.", "Once it slides, the bumps don't get time to lock in as deeply."]}
+    ],
+    "crux_points": ["Friction comes from interlocking irregularities on surfaces.", "Rougher surfaces and stronger pressing give more friction.", "Static friction (to start) is bigger than sliding friction."],
+    "quiz": [
+      {"q": "Why does a rough surface have more friction?", "options": ["Its bumps interlock more", "It is colder", "It is lighter", "It has no bumps"], "answer": 0, "why": "Bigger irregularities lock together more strongly."},
+      {"q": "Which is larger?", "options": ["Static friction", "Sliding friction", "They are always equal", "Neither exists"], "answer": 0, "why": "It takes more force to start an object moving than to keep it sliding."}
+    ]
+  },
+  "12.3": {
+    "crux": "Friction is a 'necessary evil': we couldn't walk, write or brake without it, but it also wears things out and wastes energy as heat.",
+    "cards": [
+      {"title": "We need friction", "pic": {"kind": "icons", "items": [
+          {"icon": "🚶", "text": "Walking", "sub": "Shoes grip the ground"}, {"icon": "✏️", "text": "Writing", "sub": "Pencil rubs on paper"},
+          {"icon": "🖐️", "text": "Holding things", "sub": "A glass doesn't slip"}, {"icon": "🛑", "text": "Brakes", "sub": "Vehicles can stop"},
+          {"icon": "🔥", "text": "Lighting a match"}, {"icon": "🔩", "text": "Nails and screws hold"}]},
+       "say": ["On a wet, slippery floor we can hardly walk, because there's too little friction."]},
+      {"title": "But friction also harms", "pic": {"kind": "icons", "items": [
+          {"icon": "👟", "text": "Shoe soles wear out"}, {"icon": "🛞", "text": "Tyres wear out"},
+          {"icon": "⚙️", "text": "Machine parts wear down"}, {"icon": "🪜", "text": "Steps of stairs get worn"}]},
+       "say": ["Rubbing slowly wears away surfaces: this is wear and tear."]},
+      {"title": "Friction makes heat", "pic": {"kind": "flow", "steps": [
+          {"icon": "🙌", "text": "Rub your palms together hard"},
+          {"icon": "🔥", "text": "They get warm: friction produces heat"},
+          {"icon": "⚙️", "text": "In machines this heat is wasted energy"}]},
+       "say": ["That's why friction is called a necessary evil."],
+       "remember": "Necessary: grip and control. Evil: wear and wasted heat."}
+    ],
+    "crux_points": ["Friction lets us walk, hold, write and brake.", "It wears out shoes, tyres and machine parts.", "It produces heat, wasting energy in machines."],
+    "quiz": [
+      {"q": "Why is it hard to walk on a wet marble floor?", "options": ["There is very little friction", "There is too much friction", "Gravity is stronger", "The floor is magnetic"], "answer": 0, "why": "Water makes the floor slippery, reducing the friction we need to grip."},
+      {"q": "Your hands get warm when you rub them. This shows friction…", "options": ["Produces heat", "Produces light", "Makes sound only", "Creates magnetism"], "answer": 0, "why": "Rubbing surfaces together produces heat."}
+    ]
+  },
+  "12.4": {
+    "crux": "We increase friction with grooves and rough grips, and reduce it with lubricants like oil and grease, powder, and wheels.",
+    "cards": [
+      {"title": "When we want MORE friction", "pic": {"kind": "icons", "items": [
+          {"icon": "👟", "text": "Grooved shoe soles", "sub": "Better grip"},
+          {"icon": "🛞", "text": "Treads on tyres", "sub": "Grip the road"},
+          {"icon": "🤸", "text": "Gymnasts' powder", "sub": "Coarse substance on hands"},
+          {"icon": "🤼", "text": "Kabaddi players", "sub": "Rub soil on their hands"},
+          {"icon": "🛑", "text": "Brake pads", "sub": "Press on the wheel"}]},
+       "say": ["Grooves and rough materials increase friction where we need grip."]},
+      {"title": "When we want LESS friction", "pic": {"kind": "icons", "items": [
+          {"icon": "🛢️", "text": "Oil and grease", "sub": "On moving machine parts"},
+          {"icon": "✏️", "text": "Graphite", "sub": "A dry lubricant"},
+          {"icon": "🎯", "text": "Powder on a carrom board", "sub": "Lets the striker glide"},
+          {"icon": "🛞", "text": "Wheels and ball bearings"}]},
+       "say": ["Substances that reduce friction are called lubricants.", "Oil forms a thin layer between surfaces so they don't rub directly."],
+       "remember": "Lubricant = a substance that reduces friction."},
+      {"title": "How a lubricant works", "pic": {"kind": "layers", "items": [
+          {"name": "Moving part", "color": "grey"},
+          {"name": "Thin layer of oil", "note": "Keeps the bumps apart", "color": "amber"},
+          {"name": "Fixed part", "color": "grey"}]},
+       "say": ["With oil between them, the surfaces barely touch.", "In some machines, a cushion of air between parts reduces friction even more."]}
+    ],
+    "crux_points": ["Grooves, treads and rough grips increase friction.", "Lubricants (oil, grease, graphite) and powder reduce friction.", "A thin layer between surfaces keeps their bumps from interlocking."],
+    "quiz": [
+      {"q": "Why do tyres have treads?", "options": ["To increase friction with the road", "To reduce friction", "To look nice", "To make them lighter"], "answer": 0, "why": "Treads give a better grip on the road."},
+      {"q": "Oil put between moving machine parts is a…", "options": ["Lubricant", "Brake", "Fuel", "Magnet"], "answer": 0, "why": "Lubricants reduce friction between moving parts."}
+    ]
+  },
+  "12.5": {
+    "crux": "Rolling is much easier than sliding: rolling friction is smaller, so we use wheels and ball bearings.",
+    "cards": [
+      {"title": "Slide or roll?", "pic": {"kind": "compare", "cols": [
+          {"head": "Sliding", "icon": "📦", "cells": ["Drag a heavy box on the floor", "Hard work", "Sliding friction"]},
+          {"head": "Rolling", "icon": "🧳", "cells": ["Pull a suitcase on wheels", "Easy", "Rolling friction: much smaller"]}]},
+       "say": ["When one object rolls over another, the friction is called rolling friction.", "It is smaller than sliding friction."],
+       "remember": "Rolling friction < sliding friction."},
+      {"title": "Ball bearings", "pic": {"kind": "scene", "scene": "ball_bearing", "labels": [
+          {"at": "outer_ring", "name": "Outer ring", "note": "Fixed in the hub"},
+          {"at": "balls", "name": "Steel balls", "note": "Roll instead of slide"},
+          {"at": "inner_ring", "name": "Inner ring"},
+          {"at": "axle", "name": "Axle", "note": "Turns smoothly"}]},
+       "say": ["Ball bearings replace sliding with rolling.", "They are used in ceiling fans, bicycles and many machines."]},
+      {"title": "The wheel changed the world", "pic": {"kind": "icons", "items": [
+          {"icon": "🛞", "text": "Wheel", "sub": "One of humankind's greatest inventions"},
+          {"icon": "🚲", "text": "Bicycles"}, {"icon": "🛒", "text": "Trolleys"}, {"icon": "🚗", "text": "Cars"}]},
+       "say": ["Because rolling friction is small, wheels let us move heavy loads easily."]}
+    ],
+    "crux_points": ["Rolling friction is smaller than sliding friction.", "Wheels make moving heavy loads easy.", "Ball bearings reduce friction in fans, bicycles and machines."],
+    "quiz": [
+      {"q": "Which part is marked '?' in the ball bearing?", "pic": {"kind": "scene", "scene": "ball_bearing", "ask": "balls"}, "options": ["Steel balls that roll", "The axle", "The tyre", "Oil"], "answer": 0, "why": "The steel balls roll between the rings, replacing sliding with rolling."},
+      {"q": "Why do suitcases have wheels?", "options": ["Rolling friction is smaller than sliding friction", "Wheels make them heavier", "To increase friction", "To look modern"], "answer": 0, "why": "Rolling needs much less force than dragging."}
+    ]
+  },
+  "12.6": {
+    "crux": "Air and water also exert friction (drag) on things moving through them; streamlined shapes, like a fish or a plane, reduce it.",
+    "cards": [
+      {"title": "Friction in fluids", "pic": {"kind": "icons", "items": [
+          {"icon": "🌊", "text": "Liquids", "sub": "Water, oil"}, {"icon": "💨", "text": "Gases", "sub": "Air"}]},
+       "say": ["Liquids and gases are together called fluids.", "Fluids exert a friction force on objects moving through them, called drag."]},
+      {"title": "What affects drag", "pic": {"kind": "icons", "items": [
+          {"icon": "🏎️", "text": "Speed", "sub": "Faster → more drag"},
+          {"icon": "🔺", "text": "Shape", "sub": "Pointed shapes slip through"},
+          {"icon": "🍯", "text": "Kind of fluid", "sub": "Honey drags more than water"}]},
+       "say": ["Moving objects must use energy to overcome drag."]},
+      {"title": "Learning from nature", "pic": {"kind": "compare", "rows": ["Nature", "Design"], "cols": [
+          {"head": "In water", "icon": "🐟", "cells": ["Fish", "Boats and ships"]},
+          {"head": "In air", "icon": "🦅", "cells": ["Birds", "Aeroplanes"]}]},
+       "say": ["Fish and birds have streamlined bodies: pointed at the front, slim and smooth.", "Engineers copy these shapes for boats and aeroplanes."],
+       "remember": "Streamlined shape = less drag."}
+    ],
+    "crux_points": ["Fluids (liquids and gases) exert friction called drag.", "Drag depends on speed, shape and the kind of fluid.", "Streamlined shapes like fish, birds and planes reduce drag."],
+    "quiz": [
+      {"q": "Why are aeroplanes shaped like birds?", "options": ["To reduce drag (fluid friction)", "To look friendly", "To be heavier", "To increase drag"], "answer": 0, "why": "A streamlined shape reduces air friction."},
+      {"q": "The friction exerted by fluids is called…", "options": ["Drag", "Lubricant", "Static friction", "Rolling"], "answer": 0, "why": "Fluid friction is also called drag."}
+    ]
+  }
+}

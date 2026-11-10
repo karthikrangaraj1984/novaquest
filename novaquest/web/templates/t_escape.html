@@ -1,0 +1,32 @@
+{% extends "staff.html" %}
+{% from "_class.html" import class_head with context %}
+{# Escape rooms for a class (DB-8): each AI skill across the class, and every student x room. #}
+{% block title %}Escape rooms {{ label }}{% endblock %}
+{% block main %}
+{{ class_head(cid, label, students_n, "escape") }}
+<p class="small muted">Escape rooms teach six AI skills through each chapter's science. A lock opened first time without a hint scores highest. These are learning indicators, not marks.</p>
+<section class="stack-sm" aria-labelledby="sk-h">
+  <h2 id="sk-h">AI skills in the class</h2>
+  <div class="skills">{% for s in skills %}
+    <div class="skill {{ 'strong' if s.avg is not none and s.avg >= 70 else ('learning' if s.avg is not none else '') }}"><b>{{ s.name }}</b>
+      <span class="small">{% if s.avg is not none %}{{ s.avg }}% · {{ s.strong }} of {{ students|length }} strong{% else %}Not tried yet{% endif %}</span>
+      <span class="tiny">{{ s.about }}</span></div>{% endfor %}</div>
+</section>
+<section class="card stack-sm" aria-labelledby="g-h">
+  <div class="row-between"><h2 id="g-h">Who has escaped which room</h2><span class="small muted">{{ escapes }} escape{{ "s" if escapes != 1 }} so far</span></div>
+  <div class="table-wrap"><table class="grid-table">
+    {% if books|length > 1 %}<thead><tr><td></td>{% for bid, blabel in books %}<th scope="colgroup" colspan="{{ rooms|selectattr('book_id', 'equalto', bid)|list|length }}" class="small">{{ blabel }}</th>{% endfor %}</tr></thead>{% endif %}
+    <thead><tr><th scope="col">Student</th>{% for r in rooms %}<th scope="col" class="gt"><a href="/teacher/escape/{{ r.no }}?book={{ r.book_id }}" title="{{ r.room.title }}: answer guide">{{ r.no }}</a></th>{% endfor %}</tr></thead>
+    <tbody>{% for s in students %}<tr><th scope="row"><a href="/teacher/students/{{ s.id }}">{{ s.roll_no }}. {{ s.name }}</a></th>
+      {% for r in rooms %}{% set c = cells.get((s.id, r.book_id, r.no)) %}<td class="gc">
+        {% if c == "escaped" %}<span class="cell c3" title="Escaped">✓</span>{% elif c is not none %}<span class="cell c1" title="{{ c }} of 4 locks">{{ c }}</span>{% else %}<span class="cell c0" title="Not started">·</span>{% endif %}</td>{% endfor %}</tr>
+    {% else %}<tr><td colspan="{{ rooms|length + 1 }}" class="muted">No students yet.</td></tr>{% endfor %}</tbody></table></div>
+  <p class="tiny muted">✓ escaped · a number is how many of the 4 locks are open · column numbers are chapters; click one for its answer guide.</p>
+</section>
+<section class="stack-sm" aria-labelledby="rooms-h"><h2 id="rooms-h">Rooms and answer guides</h2>
+  {% for r in rooms %}{% if books|length > 1 and (loop.first or loop.previtem.book_id != r.book_id) %}<h3 class="small muted">{{ r.book }}</h3>{% endif %}
+  <div class="topic-row"><a href="/teacher/escape/{{ r.no }}?book={{ r.book_id }}" style="flex:1;text-decoration:none;color:inherit"><b>{{ r|inpart }}Chapter {{ r.no }}: {{ r.room.title }}</b><br><span class="small muted">{{ r.room.locks|map(attribute="title")|join(" · ") }} · answer guide ›</span></a>
+    {% if actor.role == "teacher" and r.chapter_id %}<a class="btn small ghost" href="/teacher/assignments/new?for={{ cid }}:{{ r.book_id }}&amp;chapter={{ r.chapter_id }}&amp;kind=escape">Set as assignment</a>{% endif %}</div>
+  {% else %}<p class="empty">No escape rooms yet for this class's books. The school admin drafts and approves them on each book's page under Books.</p>{% endfor %}
+</section>
+{% endblock %}

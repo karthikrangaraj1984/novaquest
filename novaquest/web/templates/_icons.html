@@ -1,0 +1,25 @@
+{% macro icon(name, color="currentColor", size=22) -%}
+<svg aria-hidden="true" width="{{ size }}" height="{{ size }}" viewBox="0 0 24 24" fill="none" stroke="{{ color }}" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+{%- if name == "home" %}<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>
+{%- elif name == "book" %}<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/>
+{%- elif name == "tasks" %}<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12l3 3 5-6"/>
+{%- elif name == "calendar" %}<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>
+{%- elif name == "chart" %}<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+{%- elif name == "bell" %}<path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/>
+{%- elif name == "review" %}<path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/>
+{%- elif name == "users" %}<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M17 8h5M19.5 5.5v5"/>
+{%- elif name == "plus" %}<path d="M12 5v14M5 12h14"/>
+{%- elif name == "mic" %}<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>
+{%- elif name == "send" %}<path d="M5 12h14M13 6l6 6-6 6"/>
+{%- elif name == "back" %}<path d="M15 6l-6 6 6 6"/>
+{%- elif name == "settings" %}<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>
+{%- elif name == "bank" %}<path d="M3 10l9-6 9 6M5 10v8M19 10v8M9 10v8M15 10v8M3 20h18"/>
+{%- elif name == "check" %}<path d="M5 12l4 4 10-10"/>
+{%- elif name == "user" %}<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>
+{%- elif name == "chat" %}<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/>
+{%- elif name == "class" %}<circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20a6 6 0 0 1 12 0M14 20a4.5 4.5 0 0 1 8 0"/>
+{%- endif %}
+</svg>
+{%- endmacro %}
+{% macro level_pill(level) -%}<span class="pill l{{ level }}">{{ levels[level] }}</span>{%- endmacro %}
+{% macro flash_msg(flash) -%}{% if flash %}<div class="flash" role="status">{{ flash }}</div>{% endif %}{%- endmacro %}

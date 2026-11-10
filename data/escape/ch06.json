@@ -1,0 +1,202 @@
+{
+ "chapter": 6,
+ "title": "The Fire Lab",
+ "story": "A fire drill has locked you and NOVA in the science lab. NOVA must understand burning and how to control it before the doors will open. Careful: wrong fire advice is dangerous.",
+ "escaped": "The doors unlock. NOVA now knows what burns, how to put out different fires and what a flame's zones are.",
+ "locks": [
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "6.1",
+   "title": "Will it burn?",
+   "intro": "NOVA must sort materials into combustible (burn in air, giving heat and light) and non-combustible. Choose its clues.",
+   "labels": [
+    "Combustible",
+    "Non-combustible"
+   ],
+   "features": [
+    {
+     "key": "burns",
+     "text": "Burns in air giving heat and light"
+    },
+    {
+     "key": "kitchen",
+     "text": "Found in the kitchen"
+    },
+    {
+     "key": "solid",
+     "text": "Is a solid"
+    }
+   ],
+   "train": [
+    {
+     "name": "Wood",
+     "label": 0,
+     "f": {
+      "burns": 1,
+      "kitchen": 0,
+      "solid": 1
+     }
+    },
+    {
+     "name": "Paper",
+     "label": 0,
+     "f": {
+      "burns": 1,
+      "kitchen": 0,
+      "solid": 1
+     }
+    },
+    {
+     "name": "Kerosene",
+     "label": 0,
+     "f": {
+      "burns": 1,
+      "kitchen": 1,
+      "solid": 0
+     }
+    },
+    {
+     "name": "Stone",
+     "label": 1,
+     "f": {
+      "burns": 0,
+      "kitchen": 0,
+      "solid": 1
+     }
+    },
+    {
+     "name": "Glass",
+     "label": 1,
+     "f": {
+      "burns": 0,
+      "kitchen": 1,
+      "solid": 1
+     }
+    },
+    {
+     "name": "Iron nail",
+     "label": 1,
+     "f": {
+      "burns": 0,
+      "kitchen": 0,
+      "solid": 1
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "Matchstick",
+     "label": 0,
+     "f": {
+      "burns": 1,
+      "kitchen": 1,
+      "solid": 1
+     }
+    },
+    {
+     "name": "Steel spoon",
+     "label": 1,
+     "f": {
+      "burns": 0,
+      "kitchen": 1,
+      "solid": 1
+     }
+    }
+   ],
+   "hint": "A matchstick and a steel spoon are both solids found in the kitchen. What is different about them?",
+   "learn": "Clues like 'solid' or 'in the kitchen' were true for both groups, so they confused NOVA. The defining property, burning in air, sorts every case."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "6.2",
+   "title": "Check NOVA's fire advice",
+   "intro": "NOVA is helping write a fire safety poster. Is this line right? Decide and pick the fact that settles it.",
+   "claim": "Pour water on any fire, even an electrical fire or burning petrol, to put it out fast.",
+   "confidence": "95% sure",
+   "verdict": 1,
+   "evidence": [
+    "Water is not suitable for fires in electrical equipment or burning oil and petrol; carbon dioxide is the best extinguisher for these.",
+    "Water cools a burning substance below its ignition temperature.",
+    "A candle flame has three zones.",
+    "LPG has a high calorific value."
+   ],
+   "right": 0,
+   "hint": "Water does put out many fires. Is that true for ALL fires?",
+   "learn": "AI answers often over-generalise: true for wood fires, dangerous for electrical and oil fires. The word 'any' is a signal to check the exceptions."
+  },
+  {
+   "kind": "pattern",
+   "skill": "cause",
+   "topic": "6.1",
+   "title": "Why did the candles go out?",
+   "intro": "Three lit candles: one in the open, one under a small glass jar and one under a big glass jar.",
+   "table": {
+    "cols": [
+     "Candle",
+     "How long it kept burning"
+    ],
+    "rows": [
+     [
+      "In the open",
+      "Kept burning"
+     ],
+     [
+      "Under a small jar",
+      "About 10 seconds"
+     ],
+     [
+      "Under a big jar",
+      "About 25 seconds"
+     ]
+    ]
+   },
+   "question": "NOVA says: 'Glass jars put out flames because glass is cold.' What is the honest explanation?",
+   "options": [
+    "NOVA is right: cold glass cools the flame.",
+    "The candle uses up the air (oxygen) in the jar; a bigger jar holds more air, so the candle burns longer.",
+    "Bigger jars are warmer.",
+    "Candles go out at random."
+   ],
+   "answer": 1,
+   "hint": "Both jars were glass. What else is different between the small jar and the big jar?",
+   "learn": "When NOVA picked a cause, it ignored a detail in the data: jar size changed how long the candle burned. A good explanation fits all the data: combustion needs air."
+  },
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "6.5",
+   "title": "Fix NOVA's flame map",
+   "intro": "NOVA has labelled the zones of a candle flame. Tick the labels that are wrong.",
+   "rows": [
+    {
+     "item": "Outermost zone",
+     "label": "Hottest part, complete combustion"
+    },
+    {
+     "item": "Middle zone",
+     "label": "Bright yellow, partial combustion"
+    },
+    {
+     "item": "Innermost zone",
+     "label": "Hottest part of the flame",
+     "wrong": true,
+     "why": "the innermost zone is the least hot: unburnt wax vapour"
+    },
+    {
+     "item": "Goldsmiths' blowpipe",
+     "label": "Uses the outermost zone to melt gold"
+    },
+    {
+     "item": "Blue outer zone",
+     "label": "Sooty, incomplete combustion",
+     "wrong": true,
+     "why": "the blue outer zone burns completely and is the hottest"
+    }
+   ],
+   "hint": "Which zone do goldsmiths use, and why?",
+   "learn": "Two wrong labels flip the facts about heat. A model trained on them would give exactly the wrong answer when it matters, so check the examples that disagree with each other."
+  }
+ ]
+}

@@ -1,0 +1,15 @@
+{% macro account_menu(suffix, wide=False) %}{# Account menu: who you are, switch role, Sign out (top right) #}
+<details class="mmenu{% if wide %} wide{% endif %}" data-menu><summary class="avatar" aria-label="Account: {{ actor.name }}">{% if wide %}<span class="ini" aria-hidden="true">{{ actor.name|initials }}</span><span class="who">{{ actor.name }}</span><span aria-hidden="true">▾</span>{% else %}{{ actor.name|initials }}{% endif %}</summary>
+  <div class="mmenu-pop stack-sm">
+    <span class="small"><b>{{ actor.name }}</b><br><span class="muted">{{ role_names[actor.role] }}</span></span>
+    {% if actor.roles|length > 1 %}
+    <form method="post" action="/role" class="row">
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      <label class="sr-only" for="role-switch-{{ suffix }}">Switch role</label>
+      <select id="role-switch-{{ suffix }}" name="role">{% for r in actor.roles %}<option value="{{ r }}" {% if r == actor.role %}selected{% endif %}>{{ role_names[r] }}</option>{% endfor %}</select>
+      <button class="btn small quiet" type="submit">Switch</button>
+    </form>
+    {% endif %}
+    <form method="post" action="/logout"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small quiet block" type="submit">Sign out</button></form>
+  </div></details>
+{% endmacro %}

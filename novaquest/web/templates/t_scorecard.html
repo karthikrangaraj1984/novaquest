@@ -1,0 +1,38 @@
+{% extends "staff.html" %}
+{% from "_messages.html" import starters %}
+{% block title %}Scorecard{% endblock %}
+{% block main %}
+<div class="stack-sm"><a class="small" href="/teacher/assignments/{{ card.assignment.id }}/review?tab=students">← All students</a>
+  <h1>{{ student.name }} · {{ card.assignment.title }}</h1></div>
+<div class="grid">
+  <div class="kpi"><span class="k">Science</span><span class="v" style="color:var(--primary-dark)">{{ card.science|pct }}</span></div>
+  <div class="kpi"><span class="k">AI skills</span><span class="v" style="color:var(--ai)">{{ card.ai|pct }}</span></div>
+  <div class="kpi"><span class="k">Big ideas</span><span class="v">{{ card.big_ideas[0] }} of {{ card.big_ideas[1] }}</span></div>
+  <div class="kpi"><span class="k">Time</span><span class="v">{{ card.minutes or "—" }} min</span></div>
+</div>
+<div class="cols">
+  <section class="main stack-sm">
+    {% for r in card.rows %}
+    <article class="card stack-sm"><b>{{ r.ord }}. {{ r.prompt }}</b>
+      {% if r.options %}<p class="small">Chose: {{ r.options[r.answer.index] if r.answer and r.answer.index is not none else "No answer" }} · Correct: {{ r.key.text }}</p>
+      {% else %}<p class="small">“{{ (r.answer or {}).get("text") or "—" }}”</p><p class="small note info">Model: {{ r.key.model if r.key else "" }}</p>{% endif %}
+      <span class="small muted">{{ r.final|round(1) }} of {{ r.max_score|float|round(1) }} · {{ r.teacher_comment or r.ai_rationale }}</span></article>
+    {% endfor %}
+  </section>
+  <aside class="aside stack">
+    <section class="card stack-sm"><h2>By concept</h2>{% for c in card.concepts %}<div class="row-between small"><span>{{ c.name }}{% if c.ai %} <span class="pill ai">AI</span>{% endif %}</span><b>{{ c.got|round(1) }}/{{ c.max|round(1) }}</b></div>{% endfor %}</section>
+    {% if attempt_id and actor.role == "teacher" %}
+    <section class="card stack-sm" id="note"><h2>Note to {{ student.name.split()[0] }}</h2>
+      <p class="small muted">{% if card.assignment.released_at %}{{ student.name.split()[0] }} is told about a new note on their bell and Home.{% else %}{{ student.name.split()[0] }} sees it with their results, once you release them.{% endif %}</p>
+      {% if suggested %}<p class="note info small">{{ "Suggested by Claude" if by_claude else "Suggested" }} from {{ student.name.split()[0] }}'s answers. Edit it, then save: nothing is sent until you do.</p>{% endif %}
+      <form method="post" action="/teacher/attempts/{{ attempt_id }}/feedback" class="stack-sm"><input type="hidden" name="csrf" value="{{ csrf }}">
+        <label for="fb" class="sr-only">Note</label><textarea id="fb" name="feedback" maxlength="1000" rows="5">{{ suggested or card.feedback or "" }}</textarea>
+        {{ starters("fb") }}
+        <button class="btn small" type="submit">Save note</button></form>
+      <form method="post" action="/teacher/attempts/{{ attempt_id }}/suggest#note"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small quiet" type="submit">Suggest a note from the answers</button></form></section>
+    {% endif %}
+    <a class="btn ghost" href="/teacher/students/{{ student.id }}/report.pdf">Parent report (PDF)</a>
+    <a class="btn quiet" href="/teacher/students/{{ student.id }}/tutor">Tutor conversations</a>
+  </aside>
+</div>
+{% endblock %}

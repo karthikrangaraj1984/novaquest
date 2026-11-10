@@ -1,0 +1,201 @@
+{
+ "chapter": 7,
+ "title": "The Forest Reserve",
+ "story": "You and NOVA are on a field trip to a biosphere reserve when the gate locks behind you. The ranger's computer opens it only when NOVA's forest knowledge is fixed.",
+ "escaped": "The gate opens. NOVA now separates human and natural causes, knows flora from fauna and can scale a pattern.",
+ "locks": [
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "7.5",
+   "title": "Flora or fauna?",
+   "intro": "NOVA is labelling what it sees in the reserve as flora (plants) or fauna (animals). Tick the wrong labels.",
+   "rows": [
+    {
+     "item": "Sal",
+     "label": "Flora"
+    },
+    {
+     "item": "Teak",
+     "label": "Flora"
+    },
+    {
+     "item": "Cheetal",
+     "label": "Fauna"
+    },
+    {
+     "item": "Wild dog",
+     "label": "Fauna"
+    },
+    {
+     "item": "Wild mango",
+     "label": "Fauna",
+     "wrong": true,
+     "why": "a mango tree is a plant: flora"
+    },
+    {
+     "item": "Leopard",
+     "label": "Flora",
+     "wrong": true,
+     "why": "a leopard is an animal: fauna"
+    },
+    {
+     "item": "Jamun",
+     "label": "Flora"
+    }
+   ],
+   "hint": "Flora means plants; fauna means animals.",
+   "learn": "Even simple labels go wrong when people label in a hurry. A few wrong labels teach an AI muddled ideas, so people double-check training data."
+  },
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "7.1",
+   "title": "Human or natural cause?",
+   "intro": "NOVA must sort causes of forest loss into human causes and natural causes. Choose its clues.",
+   "labels": [
+    "Human cause",
+    "Natural cause"
+   ],
+   "features": [
+    {
+     "key": "people",
+     "text": "Done by people"
+    },
+    {
+     "key": "summer",
+     "text": "Happens in the hot summer"
+    },
+    {
+     "key": "machines",
+     "text": "Uses machines"
+    }
+   ],
+   "train": [
+    {
+     "name": "Clearing land for farms",
+     "label": 0,
+     "f": {
+      "people": 1,
+      "summer": 0,
+      "machines": 1
+     }
+    },
+    {
+     "name": "Building roads",
+     "label": 0,
+     "f": {
+      "people": 1,
+      "summer": 0,
+      "machines": 1
+     }
+    },
+    {
+     "name": "Collecting firewood",
+     "label": 0,
+     "f": {
+      "people": 1,
+      "summer": 0,
+      "machines": 0
+     }
+    },
+    {
+     "name": "Severe drought",
+     "label": 1,
+     "f": {
+      "people": 0,
+      "summer": 1,
+      "machines": 0
+     }
+    },
+    {
+     "name": "Forest fire from a lightning strike",
+     "label": 1,
+     "f": {
+      "people": 0,
+      "summer": 1,
+      "machines": 0
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "Cutting trees for furniture by hand",
+     "label": 0,
+     "f": {
+      "people": 1,
+      "summer": 0,
+      "machines": 0
+     }
+    },
+    {
+     "name": "A forest fire from lightning in the rainy season",
+     "label": 1,
+     "f": {
+      "people": 0,
+      "summer": 0,
+      "machines": 0
+     }
+    }
+   ],
+   "hint": "Not every human cause uses machines, and not every natural cause happens in summer.",
+   "learn": "Clues that happen to go along with a group in the examples (summer, machines) break on new cases. The clue that defines the groups, whether people did it, keeps working."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "7.2",
+   "title": "Check NOVA's climate claim",
+   "intro": "NOVA explains what cutting forests does to the air. Is it right? Decide and pick the fact that settles it.",
+   "claim": "Cutting down forests lowers the carbon dioxide in the air.",
+   "confidence": "93% sure",
+   "verdict": 1,
+   "evidence": [
+    "Plants use carbon dioxide for photosynthesis, so with fewer trees less carbon dioxide is used up and more stays in the air.",
+    "Forests are home to many animals.",
+    "Paper is made from wood.",
+    "Migratory birds fly long distances."
+   ],
+   "right": 0,
+   "hint": "What do trees do with carbon dioxide?",
+   "learn": "AI can get cause and effect backwards. Checking how the process works (photosynthesis uses carbon dioxide) shows which way the effect goes."
+  },
+  {
+   "kind": "pattern",
+   "skill": "data",
+   "topic": "7.11",
+   "title": "Trees saved by recycling",
+   "intro": "The textbook says about 17 full-grown trees are needed to make one tonne of paper. NOVA made a table.",
+   "table": {
+    "cols": [
+     "Paper recycled (tonnes)",
+     "Trees saved"
+    ],
+    "rows": [
+     [
+      "1",
+      "17"
+     ],
+     [
+      "2",
+      "34"
+     ],
+     [
+      "3",
+      "51"
+     ]
+    ]
+   },
+   "question": "Your school recycles 5 tonnes of paper this year. About how many trees does that save?",
+   "options": [
+    "85",
+    "51",
+    "22",
+    "170"
+   ],
+   "answer": 0,
+   "hint": "Each tonne saves about 17 trees. Multiply.",
+   "learn": "Spotting a steady pattern (17 more trees for every tonne) lets an AI, or you, estimate new cases."
+  }
+ ]
+}

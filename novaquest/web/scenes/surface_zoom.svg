@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"block":[200,60],"floor":[200,250],"bumps":[200,168],"zoom":[330,60]}'>
+<rect x="110" y="30" width="180" height="112" fill="#BCAAA4" stroke="#6D4C41" stroke-width="3"/>
+<path d="M110 142 l10 14 l12 -12 l10 16 l14 -14 l8 12 l12 -16 l12 14 l10 -12 l14 16 l12 -14 l10 12 l14 -16 l12 14 l14 -12 l6 6 V142 Z" fill="#BCAAA4" stroke="#6D4C41" stroke-width="3"/>
+<path d="M0 300 V170 l14 -12 l12 14 l10 -16 l12 12 l12 -14 l12 10 l14 -16 l10 14 l14 -12 l10 16 l12 -14 l12 12 l14 -16 l10 14 l14 -12 l12 14 l12 -14 l10 12 l14 -16 l12 14 l12 -12 l12 12 l14 -16 l10 14 l12 -12 l14 16 l12 -14 l10 12 l12 -12 l12 12 l14 -14 V300 Z" fill="#D7CCC8" stroke="#6D4C41" stroke-width="3"/>
+<g stroke="#E0541A" stroke-width="5" fill="#E0541A"><path d="M300 86 H370"/><path d="M366 76 l14 10 l-14 10z"/></g>
+<g stroke="#2B4BD8" stroke-width="5" fill="#2B4BD8"><path d="M110 120 H50"/><path d="M54 110 l-14 10 l14 10z"/></g>
+<text x="330" y="40" font-size="22" text-anchor="middle" font-family="Segoe UI Emoji, Noto Color Emoji, sans-serif">🔍</text>
+</svg>

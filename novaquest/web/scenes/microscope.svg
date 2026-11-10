@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"eyepiece":[176,26],"tube":[176,80],"objective":[176,140],"stage":[244,174],"slide":[150,166],"mirror":[176,232],"focus":[262,104],"base":[230,282]}'>
+<rect x="110" y="270" width="200" height="22" rx="6" fill="#4A5168"/>
+<path d="M226 270 L232 70 Q232 54 220 50 L196 50 L196 66 L214 66 Q218 66 218 74 L214 270 Z" fill="#6B7390"/>
+<circle cx="250" cy="104" r="16" fill="#A3AAC2" stroke="#4A5168" stroke-width="3"/><path d="M226 104 h8" stroke="#4A5168" stroke-width="6"/>
+<rect x="160" y="34" width="32" height="96" rx="5" fill="#2A3150"/>
+<rect x="155" y="14" width="42" height="24" rx="4" fill="#3A4170"/>
+<rect x="166" y="128" width="20" height="24" rx="3" fill="#8A90A6"/>
+<rect x="104" y="170" width="168" height="12" rx="3" fill="#4A5168"/>
+<rect x="138" y="163" width="76" height="7" fill="#BFE3F2" stroke="#5AA4C8" stroke-width="1.5"/>
+<ellipse cx="176" cy="232" rx="26" ry="10" fill="#DDE3F2" stroke="#4A5168" stroke-width="3"/>
+<path d="M176 222 L176 186" stroke="#E0A100" stroke-width="2.5" stroke-dasharray="5 4"/>
+<path d="M190 232 L214 232" stroke="#4A5168" stroke-width="4"/>
+</svg>

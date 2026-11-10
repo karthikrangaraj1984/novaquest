@@ -1,0 +1,36 @@
+{% extends "staff.html" %}
+{% block title %}Platform{% endblock %}
+{% block main %}
+<h1>NovaQuest platform</h1>
+{% if invite %}<div class="note info stack-sm"><b>Admin invite link</b><div class="row" style="flex-wrap:nowrap"><label class="sr-only" for="inv">Invite link</label><input id="inv" type="text" readonly value="{{ invite }}"><button class="btn small quiet" type="button" data-copy="inv">Copy</button></div></div>{% endif %}
+<div class="cols">
+  <section class="main stack">
+    <div class="card stack-sm"><h2>Institutions</h2>
+      <div class="table-wrap"><table><thead><tr><th scope="col">Name</th><th scope="col">Code</th><th scope="col">Board</th><th scope="col">Teachers</th><th scope="col">Students</th></tr></thead>
+      <tbody>{% for i in insts %}<tr><th scope="row">{{ i.name }}</th><td class="mono">{{ i.school_code }}</td><td>{{ i.board }} · {{ i.academic_year }}</td><td>{{ i.teachers }}</td><td>{{ i.students }}</td></tr>{% else %}<tr><td colspan="5" class="muted">None yet.</td></tr>{% endfor %}</tbody></table></div></div>
+    <div class="card stack-sm"><h2>Syllabus versions</h2>
+      <div class="table-wrap"><table><thead><tr><th scope="col">Syllabus</th><th scope="col">Version</th><th scope="col">Passages</th><th scope="col">Status</th></tr></thead>
+      <tbody>{% for v in versions %}<tr><th scope="row">{{ v.board }} {{ v.subject }} Grade {{ v.grade }}</th><td>{{ v.version }}</td><td>{{ v.passages }}</td><td>{% if v.is_current %}<span class="pill ok">Current</span>{% else %}<span class="pill l0">Kept for older assignments</span>{% endif %}</td></tr>{% endfor %}</tbody></table></div></div>
+    <div class="card stack-sm"><h2>AI usage, last 30 days</h2>
+      <div class="table-wrap"><table><thead><tr><th scope="col">Institution</th><th scope="col">Model tier</th><th scope="col">Calls</th><th scope="col">Tokens in / out</th><th scope="col">Cached</th><th scope="col">Fallbacks</th><th scope="col">Est. cost</th></tr></thead>
+      <tbody>{% for c in costs %}<tr><th scope="row">{{ c.name }}</th><td>{{ c.tier }}</td><td>{{ c.calls }}</td><td>{{ c.inp }} / {{ c.outp }}</td><td>{{ c.cached }}</td><td>{{ c.fallbacks }}</td><td>${{ c.cost_usd }}</td></tr>{% else %}<tr><td colspan="7" class="muted">No AI calls yet.</td></tr>{% endfor %}</tbody></table></div></div>
+  </section>
+  <aside class="aside stack">
+    <section class="card stack-sm"><h2>Add an institution</h2>
+      <form method="post" action="/platform/institution" class="stack-sm"><input type="hidden" name="csrf" value="{{ csrf }}">
+        <div class="field"><label for="in">Name</label><input id="in" name="name" type="text" required></div>
+        <div class="field"><label for="ik">Type</label><select id="ik" name="kind"><option value="school">School</option><option value="college">College</option></select></div>
+        <div class="field"><label for="ib">Board or university</label><input id="ib" name="board" type="text" value="CBSE"></div>
+        <div class="field"><label for="iy">Academic year</label><input id="iy" name="academic_year" type="text" value="2026-27"></div>
+        <div class="field"><label for="ic">School code</label><input id="ic" name="school_code" type="text" required placeholder="e.g. SVS-CBE"></div>
+        <div class="field"><label for="an">Admin name</label><input id="an" name="admin_name" type="text" required></div>
+        <div class="field"><label for="ae">Admin email</label><input id="ae" name="admin_email" type="email" required></div>
+        <button class="btn small" type="submit">Create and invite admin</button></form></section>
+    <section class="card stack-sm"><h2>Load a syllabus version</h2><p class="small muted">Older versions stay, so existing assignments keep working.</p>
+      <form method="post" action="/platform/syllabus" enctype="multipart/form-data" class="stack-sm"><input type="hidden" name="csrf" value="{{ csrf }}">
+        <div class="field"><label for="sm">Syllabus map (JSON)</label><input id="sm" name="map" type="file" accept=".json" required></div>
+        <div class="field"><label for="sp">Textbook PDF</label><input id="sp" name="pdf" type="file" accept=".pdf"></div>
+        <button class="btn small quiet" type="submit">Load version</button></form></section>
+  </aside>
+</div>
+{% endblock %}

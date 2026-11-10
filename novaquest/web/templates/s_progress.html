@@ -1,0 +1,118 @@
+{% extends "student.html" %}
+{% import "_charts.html" as charts with context %}
+{% from "_tasks.html" import subject_tag %}
+{# My progress (1.31.0): how I'm doing, compared only with myself. Score trend and summary per subject, best and most
+   improved, strong topics and the ones to work on, the weekly goal and streaks, exams, mistakes and my questions;
+   then chapters, AI skills and Teach NOVA; settings last. #}
+{% block title %}My progress{% endblock %}
+{% block heading %}{{ tr('My progress') }}{% endblock %}
+{% block main %}
+<p class="small muted">{{ tr("These show your learning progress. They are not exam marks.") }}</p>
+
+<section class="card stack-sm" aria-labelledby="goal-h">
+  <div class="row-between"><h2 id="goal-h">{{ tr("This week") }}</h2>
+    <span class="row" style="gap:6px">{% if ov.streak %}<span class="pill streak">🔥 {{ ov.streak }} week{{ "s" if ov.streak != 1 }} in a row</span>{% endif %}{% if daily_streak %}<span class="pill l2">Daily 5: {{ daily_streak }} day{{ "s" if daily_streak != 1 }}</span>{% endif %}</span></div>
+  {% if goal.target %}
+  <p><b>{{ goal.done }} of {{ goal.target }}</b> topic{{ "s" if goal.target != 1 }} worked on{% if goal.done >= goal.target %} · goal reached 🎉{% else %} · {{ goal.days_left }} day{{ "s" if goal.days_left != 1 }} left{% endif %}</p>
+  <div class="goal-bar" role="img" aria-label="{{ goal.done }} of {{ goal.target }} topics"><span style="width:{{ [100, (100 * goal.done / goal.target)|round]|min }}%"></span></div>
+  {% else %}<p class="small">Set a goal: how many topics will you work on this week? ({{ goal.done }} so far)</p>{% endif %}
+  {% if goal.last %}<p class="small muted">Last week: {{ goal.last.done }} of {{ goal.last.target }}{% if goal.last.met %} ✓ goal met{% endif %}</p>{% endif %}
+  <form method="post" action="/student/goal" class="row" style="align-items:flex-end">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <div class="field"><label for="goal" class="small">{{ "Change my goal" if goal.target else "My goal" }}</label>
+      <select id="goal" name="target">{% for n in [1, 2, 3, 4, 5, 6, 8, 10] %}<option value="{{ n }}" {% if (goal.target or 3) == n %}selected{% endif %}>{{ n }} topic{{ "s" if n != 1 }}</option>{% endfor %}</select></div>
+    <button class="btn small quiet" type="submit">{{ tr("Save") }}</button></form>
+</section>
+
+<section class="stack-sm" aria-labelledby="trend-h">
+  <h2 id="trend-h">{{ tr("My scores") }}</h2>
+  {% for s in subjects %}
+  <div class="card stack-sm subj-trend">
+    <div class="subj-head"><span class="row" style="gap:6px">{{ subject_tag(s.label, s.colour) }}<b>Average {{ s.avg }}%</b></span>
+      <span class="small">Latest {{ s.last }}%{% if s.change is not none %} · {% if s.change > 0 %}<span class="up">▲ {{ s.change }} recently</span>{% elif s.change < 0 %}<span class="down">▼ {{ -s.change }} recently</span>{% else %}steady{% endif %}{% endif %}</span></div>
+    {% if s.points|length >= 2 %}{{ charts.line_chart(s.points, "when", "pct", s.label ~ " scores") }}
+    {% else %}<p class="small muted">Your trend appears after your second result in {{ s.label }}.</p>{% endif %}
+  </div>
+  {% else %}
+  <p class="small muted">Your scores appear here once your teacher releases results.</p>
+  {% endfor %}
+  {% if best or tp.improved %}
+  <div class="grid-3" style="grid-template-columns:repeat(2,1fr)">
+    {% if best %}<a class="tile" href="/student/results/{{ best.id }}"><span class="k">Best this term</span><span class="v">{{ best.pct }}%</span><span class="tiny muted">{{ best.title }}</span></a>{% endif %}
+    {% if tp.improved %}<a class="tile" href="/student/learn/{{ tp.improved.topic_id }}"><span class="k">Most improved</span><span class="v up">▲ {{ tp.improved.points }} pts</span><span class="tiny muted">{{ tp.improved.title }}</span></a>{% endif %}
+  </div>
+  {% endif %}
+  {% if results %}
+  <h3>Latest results</h3>
+  {% for r in results %}<a class="topic-row" href="/student/results/{{ r.id }}"><span class="stack-sm" style="gap:2px"><span class="row" style="gap:6px">{{ subject_tag(r.subject, r.colour) }}<b>{{ r.title }}</b></span>
+    <span class="small muted">{{ r.right }} of {{ r.total }} right · {{ r.when|ist('%d %b') }}{% if r.change is not none %} · {% if r.change > 0 %}<span class="up">▲ {{ r.change }}</span>{% elif r.change < 0 %}<span class="down">▼ {{ -r.change }}</span>{% else %}same as last time{% endif %}{% endif %}</span></span><span class="score-chip">{{ r.pct }}%</span></a>{% endfor %}
+  {% if n_results > results|length %}<a class="small" href="/student/tasks#g-results">All {{ n_results }} results ›</a>{% endif %}
+  {% endif %}
+</section>
+
+{% if tp.strong or tp.weak %}
+<section class="grid-3" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))" aria-label="Topics">
+  <div class="card stack-sm"><h2>{{ tr("Strong") }}</h2>
+    {% for t in tp.strong %}<a class="topic-row" href="/student/learn/{{ t.topic_id }}"><span class="stack-sm" style="gap:1px"><span>{{ t.title }}</span><span class="tiny muted">{{ t.chapter }}</span></span><span class="pill {{ 'l3' if t.level == 3 else 'l2' }}">{{ "Mastered" if t.level == 3 else "Practised" }}</span></a>
+    {% else %}<p class="small muted">Practise a topic well to see it here.</p>{% endfor %}</div>
+  <div class="card stack-sm"><h2>{{ tr("Needs work") }}</h2>
+    {% for t in tp.weak %}<a class="topic-row" href="/student/learn/{{ t.topic_id }}"><span class="stack-sm" style="gap:1px"><span>{{ t.title }}</span><span class="tiny muted">{{ t.chapter }}{% if t.recent is not none %} · recent {{ t.recent }}%{% endif %}</span></span><span class="pill l1">{{ tr("Revise") }}</span></a>
+    {% else %}<p class="small muted">Nothing needs work right now. 👏</p>{% endfor %}</div>
+</section>
+{% endif %}
+
+<section class="stack-sm" aria-labelledby="tools-h">
+  <h2 id="tools-h">{{ tr("Help me improve") }}</h2>
+  <a class="topic-row" href="/student/mistakes"><span class="stack-sm" style="gap:2px"><b>{{ tr("My mistakes") }}</b><span class="small muted">{% if to_fix %}{{ to_fix }} question{{ "s" if to_fix != 1 }} to get right{% else %}No mistakes to fix ✓{% endif %}</span></span><span aria-hidden="true">›</span></a>
+  <a class="topic-row" href="/student/exams"><span class="stack-sm" style="gap:2px"><b>{{ tr("Exam mode") }}</b><span class="small muted">{% if exams %}{{ exams[0].title }} {% if exams[0].days_left == 0 %}today{% elif exams[0].days_left == 1 %}tomorrow{% else %}in {{ exams[0].days_left }} days{% endif %}{% else %}Prepare for a test: a countdown, a revision plan and practice papers{% endif %}</span></span><span aria-hidden="true">›</span></a>
+  <a class="topic-row" href="/student/questions"><span class="stack-sm" style="gap:2px"><b>{{ tr("Ask my teacher") }}</b><span class="small muted">{% if asked %}{% set waiting = asked|selectattr("status", "equalto", "open")|list|length %}{{ asked|selectattr("status", "equalto", "answered")|list|length }} answered{% if waiting %} · {{ waiting }} waiting{% endif %}{% else %}Stuck? Ask your teacher a question{% endif %}</span></span><span aria-hidden="true">›</span></a>
+</section>
+
+
+<details class="card" {% if not subjects %}open{% endif %}>
+  <summary><b>{{ tr("Chapters") }}</b> <span class="small muted">· how far each chapter is</span></summary>
+  <div class="stack-sm" style="margin-top:10px">
+  {% for c in ov.chapters %}
+  <div class="stack-sm"><div class="row-between"><b class="small">{{ c|inpart }}{{ c.no }}. {{ c.title }}</b><span class="small muted">{{ c.started }} of {{ c.total }} started</span></div>
+    <div class="bar stacked" role="img" aria-label="{{ c.mastered }} mastered, {{ c.practised }} practised, {{ c.learning }} learning, of {{ c.total }} topics"><span class="m" style="width:{{ (100 * c.mastered / c.total)|round }}%"></span><span class="p" style="width:{{ (100 * c.practised / c.total)|round }}%"></span><span class="l" style="width:{{ (100 * c.learning / c.total)|round }}%"></span></div>
+    <p class="tiny muted">{{ c.mastered }} mastered · {{ c.practised }} practised · {{ c.learning }} learning</p></div>
+  {% else %}<p class="empty">Start a lesson to see your progress here.</p>{% endfor %}
+  </div>
+</details>
+
+<details class="card">
+  <summary><b>{{ tr("More") }}</b> <span class="small muted">· what I've done, AI skills, Teach NOVA</span></summary>
+  <div class="stack" style="margin-top:10px">
+    <div class="grid-3" style="grid-template-columns:repeat(2,1fr)">
+      <div class="tile"><span class="k">Picture lessons</span><span class="v">{{ ov.done.pictures }}</span></div>
+      <div class="tile"><span class="k">Topics practised</span><span class="v">{{ ov.done.practised }}</span></div>
+      <div class="tile"><span class="k">Understanding checks</span><span class="v">{{ ov.done.checked }}</span></div>
+      <div class="tile"><span class="k">Taught NOVA</span><span class="v">{{ ov.done.taught }}</span></div>
+    </div>
+    {% if rooms %}<div class="stack-sm"><div class="row-between"><h3>AI skills</h3><a class="small" href="/student/escape">{{ rooms|selectattr("escaped")|list|length }} of {{ rooms|length }} escape rooms ›</a></div>
+      <div class="skills">{% for s in skills %}<div class="skill {{ s.level }}"><b>{{ s.name }}</b><span class="small">{{ {"not_yet": "Not yet", "learning": "Learning", "strong": "Strong ★"}[s.level] }}</span></div>{% endfor %}</div></div>{% endif %}
+    <div class="stack-sm"><h3>Topics I taught NOVA</h3>
+      {% for t in ov.taught %}<div class="topic-row"><span>{{ t.title }}</span><span class="pill dark">Taught ✓</span></div>{% else %}<p class="small muted">Teach NOVA a topic to build real confidence.</p>{% endfor %}</div>
+  </div>
+</details>
+
+<section class="card stack" aria-labelledby="set-h">
+  <h2 id="set-h">{{ tr("Settings") }}</h2>
+  <div class="stack-sm" aria-labelledby="share-h"><h3 id="share-h">{{ tr("Share with my parents") }}</h3>
+    {% if share %}
+      <label for="share-link" class="small">Private link (works for 14 days)</label>
+      <div class="row" style="flex-wrap:nowrap"><input id="share-link" type="text" readonly value="{{ share }}"><button class="btn small quiet" type="button" data-copy="share-link">Copy</button></div>
+    {% endif %}
+    <div class="row">
+      <a class="btn small ghost" href="/student/report.pdf">Download report (PDF)</a>
+      <form method="post" action="/student/report/share"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small quiet" type="submit">Get a share link</button></form>
+    </div></div>
+  <details class="stack-sm" id="lang-h"><summary><b>{{ tr("Language") }}</b> <span class="small muted">· {{ lang_name }}</span></summary>
+    <p class="small muted">{{ tr("NovaQuest's words on your main screens are shown in your language. NOVA replies in it too, and you can read each question in it.") }}</p>
+    <form method="post" action="/student/language" class="stack-sm"><input type="hidden" name="csrf" value="{{ csrf }}">
+      <fieldset class="langs"><legend class="sr-only">{{ tr("Language") }}</legend>
+      {% for code, names in langs.items() %}<label class="choice small"><input type="radio" name="lang" value="{{ code }}" {% if code == lang %}checked{% endif %}><span lang="{{ code }}">{{ names[0] }}</span>{% if code != "en" %} <span class="muted">· {{ names[1] }}</span>{% endif %}</label>{% endfor %}</fieldset>
+      <button class="btn small" type="submit">{{ tr("Save") }}</button></form></details>
+  <form method="post" action="/logout" data-signout><input type="hidden" name="csrf" value="{{ csrf }}"><p class="note warn small" data-signout-warning hidden></p><button class="link-btn" type="submit">Sign out</button></form>
+</section>
+{% endblock %}

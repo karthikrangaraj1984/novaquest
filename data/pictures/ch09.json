@@ -1,0 +1,111 @@
+{
+  "9.1": {
+    "crux": "Animals reproduce in two ways: sexual reproduction needs two parents; asexual reproduction needs only one.",
+    "cards": [
+      {"title": "Why reproduce?", "pic": {"kind": "flow", "steps": [
+          {"icon": "🐣", "text": "Parents produce young ones"},
+          {"icon": "🐔", "text": "The young grow into adults"},
+          {"icon": "🔁", "text": "The adults produce young ones in turn, so the species continues"}]},
+       "say": ["Reproduction makes sure that a kind of animal continues from one generation to the next."]},
+      {"title": "Two ways", "pic": {"kind": "compare", "rows": ["Parents", "How", "Examples"], "cols": [
+          {"head": "Sexual", "icon": "👫", "cells": ["Two: male and female", "A male and a female gamete join", "Humans, cows, frogs, hens"]},
+          {"head": "Asexual", "icon": "🔵", "cells": ["Only one", "One parent's body makes a new individual", "Hydra, Amoeba"]}]},
+       "say": ["Gametes are special reproductive cells: sperms from the male and eggs from the female."],
+       "remember": "Sexual = two parents; asexual = one parent."},
+      {"title": "Same parents, similar young", "pic": {"kind": "icons", "items": [
+          {"icon": "🐄➜🐮", "text": "A cow gives birth to a calf"},
+          {"icon": "🐔➜🐥", "text": "A hen's egg hatches into a chick"},
+          {"icon": "🐸➜🥚", "text": "A frog lays eggs that become frogs"}]},
+       "say": ["Animals always produce young ones of their own kind."]}
+    ],
+    "crux_points": ["Reproduction keeps each species going.", "Sexual reproduction needs a male and a female parent and their gametes.", "Asexual reproduction needs only one parent."],
+    "quiz": [
+      {"q": "How many parents are needed in asexual reproduction?", "options": ["One", "Two", "Three", "None"], "answer": 0, "why": "In asexual reproduction a single parent produces the young one."},
+      {"q": "Male and female gametes join in…", "options": ["Sexual reproduction", "Asexual reproduction", "Budding", "Binary fission"], "answer": 0, "why": "Sexual reproduction involves the joining of a sperm and an egg."}
+    ]
+  },
+  "9.2": {
+    "crux": "In sexual reproduction a sperm joins an egg (fertilisation) to form a zygote, which grows into an embryo and then a young animal, born either as a baby or from an egg.",
+    "cards": [
+      {"title": "Reproductive organs", "pic": {"kind": "compare", "rows": ["Main organs", "Make", "How many"], "cols": [
+          {"head": "Male", "icon": "♂️", "cells": ["A pair of testes, two sperm ducts, penis", "Sperms (male gametes)", "Millions of sperms"]},
+          {"head": "Female", "icon": "♀️", "cells": ["A pair of ovaries, oviducts, uterus", "Eggs (ova, female gametes)", "One egg each month"]}]},
+       "say": ["The ovary releases one mature egg into the oviduct every month."]},
+      {"title": "Female reproductive organs", "pic": {"kind": "scene", "scene": "female_organs", "labels": [
+          {"at": "ovary", "name": "Ovary", "note": "Makes eggs"},
+          {"at": "oviduct", "name": "Oviduct (fallopian tube)", "note": "Fertilisation happens here"},
+          {"at": "uterus", "name": "Uterus", "note": "The baby grows here"}]},
+       "say": ["This simple diagram shows the main parts as in your textbook."]},
+      {"title": "Male reproductive organs", "pic": {"kind": "scene", "scene": "male_organs", "labels": [
+          {"at": "testis", "name": "Testis", "note": "Makes sperms"},
+          {"at": "sperm_duct", "name": "Sperm duct", "note": "Carries sperms"},
+          {"at": "penis", "name": "Penis"}]},
+       "say": ["Sperms are tiny single cells that can swim."]},
+      {"title": "Sperm and egg", "pic": {"kind": "scene", "scene": "sperm_egg", "labels": [
+          {"at": "head", "name": "Sperm head", "note": "Contains the nucleus"},
+          {"at": "middle", "name": "Middle piece"},
+          {"at": "tail", "name": "Tail", "note": "Helps it swim"},
+          {"at": "egg", "name": "Egg (ovum)", "note": "A much larger single cell"},
+          {"at": "zygote", "name": "Zygote", "note": "The fertilised egg"}]},
+       "say": ["When a sperm and an egg fuse, their nuclei join to form one cell: the zygote.", "This is called fertilisation."],
+       "remember": "Sperm + egg → zygote (fertilisation)."},
+      {"title": "Inside or outside the body", "pic": {"kind": "compare", "rows": ["Where", "Examples"], "cols": [
+          {"head": "Internal fertilisation", "icon": "🏠", "cells": ["Inside the female's body", "Humans, cows, dogs, hens"]},
+          {"head": "External fertilisation", "icon": "🌊", "cells": ["Outside, usually in water", "Frogs, fish, starfish"]}]},
+       "say": ["Frogs and fish lay hundreds of eggs in water, covered by a layer of jelly.", "Many eggs and sperms are wasted, so they produce a lot of them."]},
+      {"title": "From zygote to baby", "pic": {"kind": "flow", "steps": [
+          {"icon": "🔵", "text": "Zygote: one cell"},
+          {"icon": "⚪", "text": "It divides again and again into a ball of cells"},
+          {"icon": "🧩", "text": "Cells form tissues and organs: this is the embryo"},
+          {"icon": "🤰", "text": "The embryo grows in the uterus wall; when all body parts can be seen it is called a foetus"},
+          {"icon": "👶", "text": "The baby is born"}]},
+       "say": ["In a hen, a hard shell forms around the developing egg, and the chick hatches after about 3 weeks of warmth."]},
+      {"title": "Born or hatched?", "pic": {"kind": "compare", "cols": [
+          {"head": "Viviparous", "icon": "🐕", "cells": ["Give birth to young ones", "Humans, cows, dogs"]},
+          {"head": "Oviparous", "icon": "🥚", "cells": ["Lay eggs", "Hens, frogs, lizards, butterflies"]}]},
+       "say": ["'Vivi' means alive and 'ovi' means egg."],
+       "remember": "Viviparous: born alive. Oviparous: hatch from eggs."},
+      {"title": "Metamorphosis", "pic": {"kind": "cycle", "steps": [
+          {"icon": "🫧", "short": "Eggs", "text": "A frog lays eggs in water."},
+          {"icon": "🐟", "short": "Tadpole", "text": "Eggs hatch into tadpoles (larvae) that look very different from frogs."},
+          {"icon": "🦵", "short": "Legs grow", "text": "Tadpoles grow legs and lose their tails."},
+          {"icon": "🐸", "short": "Frog", "text": "They become adult frogs."}]},
+       "say": ["Such a big change from larva to adult is called metamorphosis.", "Silkworms also go through metamorphosis: egg, larva, pupa, adult."]}
+    ],
+    "crux_points": ["Fertilisation is the joining of a sperm and an egg to form a zygote.", "Fertilisation can be internal (humans, hens) or external (frogs, fish).", "The zygote grows into an embryo; viviparous animals give birth, oviparous animals lay eggs."],
+    "quiz": [
+      {"q": "What is marked '?' in this picture?", "pic": {"kind": "scene", "scene": "sperm_egg", "ask": "zygote"}, "options": ["Zygote (fertilised egg)", "Sperm", "Tadpole", "Ovary"], "answer": 0, "why": "When a sperm and egg fuse, the single cell formed is the zygote."},
+      {"q": "Frogs show external fertilisation because…", "options": ["Eggs and sperms meet outside the body, in water", "Babies are born alive", "They have no eggs", "Fertilisation happens in the uterus"], "answer": 0, "why": "Frogs release eggs and sperms into water, where they meet."},
+      {"q": "A hen is oviparous because it…", "options": ["Lays eggs", "Gives birth to chicks", "Divides into two", "Grows buds"], "answer": 0, "why": "Oviparous animals lay eggs that hatch outside the body."}
+    ]
+  },
+  "9.3": {
+    "crux": "In asexual reproduction one parent makes new individuals: Hydra grows buds, and Amoeba splits into two (binary fission).",
+    "cards": [
+      {"title": "Budding in Hydra", "pic": {"kind": "scene", "scene": "hydra_budding", "labels": [
+          {"at": "parent", "name": "Parent Hydra"},
+          {"at": "tentacles", "name": "Tentacles"},
+          {"at": "bud", "name": "Bud", "note": "A small bulge that grows"},
+          {"at": "young", "name": "Young Hydra", "note": "Bud separates and lives on its own"}]},
+       "say": ["A small bulge called a bud grows on the side of the Hydra.", "The bud grows tentacles, then breaks away to become a new Hydra."],
+       "remember": "Budding: a new individual grows out of the parent's body."},
+      {"title": "Binary fission in Amoeba", "pic": {"kind": "scene", "scene": "binary_fission", "labels": [
+          {"at": "one", "name": "One Amoeba"},
+          {"at": "nucleus_divides", "name": "Nucleus divides into two"},
+          {"at": "pinches", "name": "Body pinches in the middle"},
+          {"at": "two", "name": "Two new Amoebae"}]},
+       "say": ["First the nucleus splits into two, then the body divides.", "'Binary' means two, and 'fission' means splitting."],
+       "remember": "Binary fission: one cell splits into two."},
+      {"title": "Clones", "pic": {"kind": "flow", "steps": [
+          {"icon": "🐑", "text": "A clone is an exact copy of a living thing"},
+          {"icon": "🔬", "text": "Scientists in Scotland created Dolly the sheep in 1996"},
+          {"icon": "⭐", "text": "Dolly was the first mammal to be cloned"}]},
+       "say": ["Cloning is an artificial way of making an exact copy.", "Asexual reproduction in nature also makes young that are copies of the parent."]}
+    ],
+    "crux_points": ["Asexual reproduction needs only one parent.", "Hydra reproduces by budding.", "Amoeba reproduces by binary fission: splitting into two."],
+    "quiz": [
+      {"q": "What is marked '?' on the Hydra?", "pic": {"kind": "scene", "scene": "hydra_budding", "ask": "bud"}, "options": ["A bud", "A tentacle", "An egg", "A root"], "answer": 0, "why": "The bulge on the side is a bud that will become a new Hydra."},
+      {"q": "In binary fission, what divides first?", "options": ["The nucleus", "The tail", "The tentacles", "The shell"], "answer": 0, "why": "The nucleus splits first, then the rest of the body divides."}
+    ]
+  }
+}

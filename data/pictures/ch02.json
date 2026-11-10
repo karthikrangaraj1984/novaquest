@@ -1,0 +1,1012 @@
+{
+ "2.1": {
+  "crux": "Microorganisms are living things too small to see without a microscope; the main groups are bacteria, fungi, protozoa, algae and viruses.",
+  "cards": [
+   {
+    "title": "Tiny living things",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🐜",
+       "text": "An ant",
+       "sub": "Seen easily"
+      },
+      {
+       "icon": "⏺",
+       "text": "A speck of dust",
+       "sub": "Just about seen"
+      },
+      {
+       "icon": "🦠",
+       "text": "A microbe",
+       "sub": "Needs a microscope"
+      }
+     ]
+    },
+    "say": [
+     "Microorganisms (microbes) are so small that we need a microscope to see them.",
+     "Some, like bread mould, can be seen with a magnifying glass when they grow in large groups."
+    ]
+   },
+   {
+    "title": "Meet the five groups",
+    "pic": {
+     "kind": "scene",
+     "scene": "microbe_gallery",
+     "labels": [
+      {
+       "at": "bacteria",
+       "name": "Bacteria",
+       "note": "Rod, round or spiral shaped"
+      },
+      {
+       "at": "fungi",
+       "name": "Fungi",
+       "note": "Like bread mould"
+      },
+      {
+       "at": "protozoa",
+       "name": "Protozoa",
+       "note": "Like Amoeba and Paramecium"
+      },
+      {
+       "at": "algae",
+       "name": "Algae",
+       "note": "Green, like Chlamydomonas"
+      },
+      {
+       "at": "virus",
+       "name": "Virus",
+       "note": "The smallest of all"
+      }
+     ]
+    },
+    "say": [
+     "Bacteria, fungi, protozoa and algae are the four main groups.",
+     "Viruses are different: they can only multiply inside the cells of another living thing."
+    ]
+   },
+   {
+    "title": "What makes viruses special",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Other microbes",
+       "icon": "🦠",
+       "cells": [
+        "Live and grow on their own",
+        "Bacteria, fungi, protozoa, algae"
+       ]
+      },
+      {
+       "head": "Viruses",
+       "icon": "🧬",
+       "cells": [
+        "Multiply only inside another organism's cells",
+        "Cause cold, flu, polio, chicken pox"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "A virus outside a living cell cannot reproduce.",
+     "Inside a host cell, it makes many copies of itself."
+    ],
+    "remember": "Viruses multiply only inside the cells of a host."
+   }
+  ],
+  "crux_points": [
+   "Microorganisms are too small to see without a microscope.",
+   "The main groups are bacteria, fungi, protozoa and algae.",
+   "Viruses multiply only inside the cells of other living things."
+  ],
+  "quiz": [
+   {
+    "q": "Which microbe is marked '?'",
+    "pic": {
+     "kind": "scene",
+     "scene": "microbe_gallery",
+     "ask": "virus"
+    },
+    "options": [
+     "Virus",
+     "Fungus",
+     "Alga",
+     "Amoeba"
+    ],
+    "answer": 0,
+    "why": "This is a virus: the smallest microbe, which reproduces only inside host cells."
+   },
+   {
+    "q": "Bread mould belongs to which group?",
+    "options": [
+     "Fungi",
+     "Bacteria",
+     "Protozoa",
+     "Viruses"
+    ],
+    "answer": 0,
+    "why": "Moulds that grow on bread are fungi."
+   }
+  ]
+ },
+ "2.2": {
+  "crux": "Microbes live almost everywhere: in air, water, soil, ice, hot springs and inside the bodies of plants and animals.",
+  "cards": [
+   {
+    "title": "Microbes are everywhere",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🧊",
+       "text": "Ice-cold places"
+      },
+      {
+       "icon": "♨️",
+       "text": "Hot springs"
+      },
+      {
+       "icon": "🏜️",
+       "text": "Deserts"
+      },
+      {
+       "icon": "🌊",
+       "text": "Water"
+      },
+      {
+       "icon": "🟫",
+       "text": "Soil"
+      },
+      {
+       "icon": "🧍",
+       "text": "Inside our bodies"
+      }
+     ]
+    },
+    "say": [
+     "Microbes can survive in very cold and very hot places.",
+     "They also live inside animals, including humans."
+    ]
+   },
+   {
+    "title": "One cell or many",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Single-celled",
+       "icon": "🔵",
+       "cells": [
+        "Bacteria",
+        "Some algae",
+        "Protozoa"
+       ]
+      },
+      {
+       "head": "Many-celled",
+       "icon": "🟢🟢",
+       "cells": [
+        "Many algae",
+        "Fungi like bread mould"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Some microbes are just one cell. Others are made of many cells.",
+     "Some live alone; others grow together in colonies."
+    ]
+   },
+   {
+    "title": "Where can you find them today?",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🍞",
+       "text": "Old bread",
+       "sub": "Fuzzy mould"
+      },
+      {
+       "icon": "🪴",
+       "text": "Pond water",
+       "sub": "Green algae"
+      },
+      {
+       "icon": "🖐️",
+       "text": "Your hands",
+       "sub": "Bacteria, so wash them!"
+      }
+     ]
+    },
+    "say": [
+     "Microbes are around us all the time.",
+     "Most are harmless, and many are useful."
+    ],
+    "think": "Why do we wash our hands before eating?"
+   }
+  ],
+  "crux_points": [
+   "Microbes live in air, water, soil and inside living things.",
+   "They survive even in ice and hot springs.",
+   "They can be single-celled or many-celled, alone or in colonies."
+  ],
+  "quiz": [
+   {
+    "q": "Can microbes live in hot springs?",
+    "options": [
+     "Yes",
+     "No",
+     "Only viruses",
+     "Only in winter"
+    ],
+    "answer": 0,
+    "why": "Some microbes survive in very hot places like hot springs."
+   },
+   {
+    "q": "Which of these is many-celled?",
+    "options": [
+     "Bread mould",
+     "A bacterium",
+     "Amoeba",
+     "Paramecium"
+    ],
+    "answer": 0,
+    "why": "Bread mould is a fungus made of many cells."
+   }
+  ]
+ },
+ "2.3": {
+  "crux": "Many microbes are our friends: they make curd and bread, give us medicines and vaccines, enrich the soil and clean up waste.",
+  "cards": [
+   {
+    "title": "Microbes in the kitchen",
+    "pic": {
+     "kind": "groups",
+     "root": "Food made with microbes",
+     "items": [
+      {
+       "icon": "🥛",
+       "name": "Curd",
+       "eg": "Lactobacillus bacteria turn milk into curd"
+      },
+      {
+       "icon": "🍞",
+       "name": "Bread, idli, cake",
+       "eg": "Yeast makes the dough rise"
+      },
+      {
+       "icon": "🧀",
+       "name": "Cheese, pickles",
+       "eg": "Made with help from bacteria"
+      }
+     ]
+    },
+    "say": [
+     "A little curd added to warm milk makes the whole bowl into curd.",
+     "Lactobacillus bacteria in the curd multiply and do the work."
+    ]
+   },
+   {
+    "title": "How yeast makes dough rise",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🍬",
+       "text": "Yeast is added to dough with a little sugar"
+      },
+      {
+       "icon": "🫧",
+       "text": "Yeast grows and gives off carbon dioxide gas"
+      },
+      {
+       "icon": "🍞",
+       "text": "Gas bubbles fill the dough, so it becomes soft and spongy"
+      }
+     ]
+    },
+    "say": [
+     "Yeast changes sugar into alcohol and carbon dioxide. This is called fermentation.",
+     "Louis Pasteur discovered fermentation in 1857."
+    ],
+    "remember": "Fermentation: yeast turns sugar into alcohol and carbon dioxide."
+   },
+   {
+    "title": "Medicines from microbes",
+    "pic": {
+     "kind": "compare",
+     "rows": [
+      "What it does",
+      "Example",
+      "Discovered by"
+     ],
+     "cols": [
+      {
+       "head": "Antibiotic",
+       "icon": "💊",
+       "cells": [
+        "Kills or stops disease-causing bacteria",
+        "Penicillin, streptomycin",
+        "Alexander Fleming (penicillin, 1929)"
+       ]
+      },
+      {
+       "head": "Vaccine",
+       "icon": "💉",
+       "cells": [
+        "Trains the body to fight a disease in future",
+        "Smallpox, polio vaccines",
+        "Edward Jenner (smallpox, 1798)"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Antibiotics are made from bacteria and fungi.",
+     "Antibiotics do NOT work against colds and flu, because these are caused by viruses."
+    ]
+   },
+   {
+    "title": "Helpers for the planet",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🌱",
+       "text": "Enrich the soil",
+       "sub": "Some bacteria and blue-green algae fix nitrogen"
+      },
+      {
+       "icon": "🍂",
+       "text": "Clean up waste",
+       "sub": "Decompose dead plants and animals into manure"
+      }
+     ]
+    },
+    "say": [
+     "Microbes break down dead plants, animals and kitchen waste into simple substances.",
+     "Plants can use these substances again."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Lactobacillus makes curd; yeast makes bread rise and makes alcohol by fermentation.",
+   "Antibiotics and vaccines come from or use microbes.",
+   "Microbes enrich the soil and clean the environment by decomposing waste."
+  ],
+  "quiz": [
+   {
+    "q": "Which microbe turns milk into curd?",
+    "options": [
+     "Lactobacillus",
+     "Yeast",
+     "Virus",
+     "Amoeba"
+    ],
+    "answer": 0,
+    "why": "Lactobacillus bacteria multiply in milk and turn it into curd."
+   },
+   {
+    "q": "Why does bread dough rise when yeast is added?",
+    "options": [
+     "Yeast gives off carbon dioxide",
+     "Yeast adds water",
+     "Yeast makes the dough cold",
+     "Yeast removes air"
+    ],
+    "answer": 0,
+    "why": "Yeast breathes out carbon dioxide; its bubbles make the dough rise."
+   },
+   {
+    "q": "Should you take antibiotics for a common cold?",
+    "options": [
+     "No, colds are caused by viruses",
+     "Yes, always",
+     "Only at night",
+     "Only with milk"
+    ],
+    "answer": 0,
+    "why": "Antibiotics work against bacteria, not viruses like the cold virus."
+   }
+  ]
+ },
+ "2.4": {
+  "crux": "Some microbes cause diseases in people, animals and plants, and some spoil food; disease-causing microbes are called pathogens.",
+  "cards": [
+   {
+    "title": "How germs spread",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🤧",
+       "text": "Air",
+       "sub": "Sneezes and coughs: TB, measles, chicken pox"
+      },
+      {
+       "icon": "💧",
+       "text": "Water and food",
+       "sub": "Cholera, typhoid, hepatitis B"
+      },
+      {
+       "icon": "🤝",
+       "text": "Contact",
+       "sub": "Touching a sick person or their things"
+      },
+      {
+       "icon": "🦟",
+       "text": "Carriers",
+       "sub": "Insects that carry germs"
+      }
+     ]
+    },
+    "say": [
+     "Diseases that spread from one person to another are called communicable diseases."
+    ]
+   },
+   {
+    "title": "Carriers",
+    "pic": {
+     "kind": "compare",
+     "rows": [
+      "Carries",
+      "Disease"
+     ],
+     "cols": [
+      {
+       "head": "Housefly",
+       "icon": "🪰",
+       "cells": [
+        "Germs from garbage to food",
+        "Many stomach diseases"
+       ]
+      },
+      {
+       "head": "Female Anopheles",
+       "icon": "🦟",
+       "cells": [
+        "Malaria parasite (a protozoan)",
+        "Malaria"
+       ]
+      },
+      {
+       "head": "Female Aedes",
+       "icon": "🦟",
+       "cells": [
+        "Dengue virus",
+        "Dengue"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Mosquitoes breed in stagnant water.",
+     "Keep surroundings clean and don't let water collect."
+    ],
+    "remember": "No stagnant water = fewer mosquitoes = less malaria and dengue."
+   },
+   {
+    "title": "Diseases in humans",
+    "pic": {
+     "kind": "compare",
+     "rows": [
+      "Tuberculosis",
+      "Cholera, typhoid",
+      "Measles, chicken pox, polio",
+      "Malaria"
+     ],
+     "cols": [
+      {
+       "head": "Caused by",
+       "icon": "🦠",
+       "cells": [
+        "Bacteria",
+        "Bacteria",
+        "Viruses",
+        "Protozoa"
+       ]
+      },
+      {
+       "head": "Prevention",
+       "icon": "🛡️",
+       "cells": [
+        "Vaccine, keep patient separate",
+        "Clean water, hygiene, vaccine",
+        "Vaccines",
+        "Mosquito nets, no stagnant water"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Many of these diseases can be prevented by vaccines and hygiene."
+    ]
+   },
+   {
+    "title": "In animals and plants",
+    "pic": {
+     "kind": "groups",
+     "root": "Microbes harm animals and crops too",
+     "items": [
+      {
+       "icon": "🐄",
+       "name": "Anthrax",
+       "eg": "Bacteria; in humans and cattle"
+      },
+      {
+       "icon": "🐂",
+       "name": "Foot and mouth",
+       "eg": "Virus; in cattle"
+      },
+      {
+       "icon": "🍋",
+       "name": "Citrus canker",
+       "eg": "Bacteria; in lemon trees"
+      },
+      {
+       "icon": "🌾",
+       "name": "Rust of wheat",
+       "eg": "Fungus"
+      },
+      {
+       "icon": "🫑",
+       "name": "Yellow vein mosaic",
+       "eg": "Virus; in okra (bhindi)"
+      }
+     ]
+    },
+    "say": [
+     "Crop diseases lower the harvest and can cause big losses to farmers."
+    ]
+   },
+   {
+    "title": "Food poisoning",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🍲",
+       "text": "Food is left out or kept badly"
+      },
+      {
+       "icon": "🦠",
+       "text": "Microbes grow on it and make poisonous substances"
+      },
+      {
+       "icon": "🤢",
+       "text": "Eating it makes a person very ill"
+      }
+     ]
+    },
+    "say": [
+     "Spoiled food can smell bad, taste sour or show fungus.",
+     "That is why food must be preserved properly."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Pathogens are microbes that cause disease.",
+   "Germs spread through air, water, food, contact and carriers like flies and mosquitoes.",
+   "Microbes also cause diseases in animals and plants and spoil food."
+  ],
+  "quiz": [
+   {
+    "q": "Which insect carries the malaria parasite?",
+    "options": [
+     "Female Anopheles mosquito",
+     "Housefly",
+     "Honeybee",
+     "Ant"
+    ],
+    "answer": 0,
+    "why": "The female Anopheles mosquito carries the protozoan that causes malaria."
+   },
+   {
+    "q": "Cholera and typhoid usually spread through…",
+    "options": [
+     "Dirty water and food",
+     "Sunlight",
+     "Mosquito bites",
+     "Reading books"
+    ],
+    "answer": 0,
+    "why": "These bacteria spread through contaminated water and food."
+   }
+  ]
+ },
+ "2.5": {
+  "crux": "We preserve food by stopping microbes from growing, using salt, sugar, oil and vinegar, heating, cold, pasteurisation and airtight packs.",
+  "cards": [
+   {
+    "title": "Ways to keep food fresh",
+    "pic": {
+     "kind": "groups",
+     "root": "Food preservation",
+     "items": [
+      {
+       "icon": "🧂",
+       "name": "Salt",
+       "eg": "Fish, meat, amla, raw mango, tamarind"
+      },
+      {
+       "icon": "🍯",
+       "name": "Sugar",
+       "eg": "Jams, jellies, squashes"
+      },
+      {
+       "icon": "🫙",
+       "name": "Oil and vinegar",
+       "eg": "Pickles"
+      },
+      {
+       "icon": "🧪",
+       "name": "Chemicals",
+       "eg": "Sodium benzoate in jams and squashes"
+      },
+      {
+       "icon": "❄️",
+       "name": "Cold",
+       "eg": "Refrigerator"
+      },
+      {
+       "icon": "🔥",
+       "name": "Heat",
+       "eg": "Boiling milk"
+      }
+     ]
+    },
+    "say": [
+     "Salt and sugar pull water out of food, and microbes can't grow without water.",
+     "Oil and vinegar stop bacteria from living in pickles."
+    ]
+   },
+   {
+    "title": "Pasteurised milk",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🥛",
+       "text": "Milk is heated to about 70°C for 15 to 30 seconds"
+      },
+      {
+       "icon": "🧊",
+       "text": "Then it is suddenly chilled"
+      },
+      {
+       "icon": "📦",
+       "text": "It is packed and stored cold"
+      }
+     ]
+    },
+    "say": [
+     "Heating kills the microbes; sudden cooling stops new ones growing.",
+     "Louis Pasteur discovered this method, so it is called pasteurisation."
+    ],
+    "remember": "Pasteurised milk can be drunk without boiling."
+   },
+   {
+    "title": "Packing keeps germs out",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🥫",
+       "text": "Airtight cans"
+      },
+      {
+       "icon": "🌰",
+       "text": "Sealed packs of nuts"
+      },
+      {
+       "icon": "🫙",
+       "text": "Closed jars"
+      }
+     ]
+    },
+    "say": [
+     "Airtight packs stop microbes from reaching the food."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Preservation stops microbes from growing on food.",
+   "Salt, sugar, oil, vinegar and chemicals are common preservatives.",
+   "Heating, cold, pasteurisation and airtight packing also keep food safe."
+  ],
+  "quiz": [
+   {
+    "q": "Pasteurised milk is…",
+    "options": [
+     "Heated to about 70°C, then suddenly chilled",
+     "Frozen solid",
+     "Mixed with salt",
+     "Boiled for an hour"
+    ],
+    "answer": 0,
+    "why": "Pasteurisation heats milk briefly to kill microbes, then cools it quickly."
+   },
+   {
+    "q": "Why does sugar keep jam from spoiling?",
+    "options": [
+     "It removes the water microbes need",
+     "It adds microbes",
+     "It makes jam warm",
+     "It adds air"
+    ],
+    "answer": 0,
+    "why": "Sugar draws out moisture, so bacteria can't grow."
+   }
+  ]
+ },
+ "2.6": {
+  "crux": "Plants need nitrogen but can't take it from the air; bacteria like Rhizobium in root nodules and blue-green algae fix it into the soil.",
+  "cards": [
+   {
+    "title": "Nitrogen: everywhere but locked away",
+    "pic": {
+     "kind": "bars",
+     "unit": "%",
+     "items": [
+      {
+       "label": "Nitrogen",
+       "icon": "🌫️",
+       "value": 78,
+       "color": "blue"
+      },
+      {
+       "label": "Oxygen",
+       "icon": "💨",
+       "value": 21,
+       "color": "sky"
+      },
+      {
+       "label": "Other gases",
+       "icon": "☁️",
+       "value": 1,
+       "color": "grey"
+      }
+     ]
+    },
+    "say": [
+     "Air is about 78% nitrogen.",
+     "Plants and animals need nitrogen to make proteins, but they can't use nitrogen gas directly from the air."
+    ]
+   },
+   {
+    "title": "Bacteria in root nodules",
+    "pic": {
+     "kind": "scene",
+     "scene": "root_nodules",
+     "labels": [
+      {
+       "at": "plant",
+       "name": "Legume plant",
+       "note": "Beans, peas, gram"
+      },
+      {
+       "at": "root",
+       "name": "Roots"
+      },
+      {
+       "at": "nodule",
+       "name": "Root nodule",
+       "note": "A small lump on the root"
+      },
+      {
+       "at": "bacteria",
+       "name": "Rhizobium bacteria",
+       "note": "Live inside the nodules"
+      },
+      {
+       "at": "soil",
+       "name": "Soil"
+      }
+     ]
+    },
+    "say": [
+     "Rhizobium bacteria live inside small lumps (nodules) on the roots of pea and bean plants.",
+     "They take nitrogen from the air and turn it into compounds the plant can use."
+    ],
+    "remember": "Rhizobium + legume roots = nitrogen fixed in the soil."
+   },
+   {
+    "title": "Ways nitrogen gets fixed",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🫘",
+       "text": "Rhizobium",
+       "sub": "In root nodules of legumes"
+      },
+      {
+       "icon": "🟢",
+       "text": "Blue-green algae",
+       "sub": "In soil and water"
+      },
+      {
+       "icon": "⚡",
+       "text": "Lightning",
+       "sub": "Also fixes some nitrogen"
+      }
+     ]
+    },
+    "say": [
+     "Changing nitrogen gas into usable compounds is called nitrogen fixation.",
+     "This is why farmers grow legumes: they make the soil richer."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Air is mostly nitrogen, but plants can't use it directly.",
+   "Rhizobium bacteria in legume root nodules fix nitrogen into the soil.",
+   "Blue-green algae and lightning also fix nitrogen."
+  ],
+  "quiz": [
+   {
+    "q": "What is marked '?' on the roots?",
+    "pic": {
+     "kind": "scene",
+     "scene": "root_nodules",
+     "ask": "nodule"
+    },
+    "options": [
+     "Root nodule",
+     "A seed",
+     "A stone",
+     "A leaf"
+    ],
+    "answer": 0,
+    "why": "These small lumps are root nodules, where Rhizobium bacteria live."
+   },
+   {
+    "q": "Which bacterium fixes nitrogen in the roots of legumes?",
+    "options": [
+     "Rhizobium",
+     "Lactobacillus",
+     "Yeast",
+     "Virus"
+    ],
+    "answer": 0,
+    "why": "Rhizobium lives in the root nodules of leguminous plants."
+   }
+  ]
+ },
+ "2.7": {
+  "crux": "Nitrogen keeps moving in a loop: from air into soil, into plants and animals, and back to the air when bacteria break down their remains.",
+  "cards": [
+   {
+    "title": "Why living things need nitrogen",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "💪",
+       "text": "Proteins",
+       "sub": "Build muscles, skin and hair"
+      },
+      {
+       "icon": "🍃",
+       "text": "Chlorophyll",
+       "sub": "The green pigment plants use to make food"
+      },
+      {
+       "icon": "🧬",
+       "text": "Nucleic acids",
+       "sub": "Carry information in every cell"
+      },
+      {
+       "icon": "💊",
+       "text": "Vitamins",
+       "sub": "Keep the body working"
+      }
+     ]
+    },
+    "say": [
+     "Nitrogen is an essential part of proteins, chlorophyll, nucleic acids and vitamins.",
+     "So every plant and animal needs a steady supply of it."
+    ]
+   },
+   {
+    "title": "The nitrogen cycle",
+    "pic": {
+     "kind": "cycle",
+     "centre": "N₂",
+     "steps": [
+      {
+       "icon": "🌫️",
+       "short": "Air",
+       "text": "The air has a huge store of nitrogen gas."
+      },
+      {
+       "icon": "🦠",
+       "short": "Fixed",
+       "text": "Bacteria, blue-green algae and lightning turn it into compounds in the soil."
+      },
+      {
+       "icon": "🌱",
+       "short": "Plants",
+       "text": "Plants take in these compounds through their roots to make proteins."
+      },
+      {
+       "icon": "🐄",
+       "short": "Animals",
+       "text": "Animals get nitrogen by eating plants."
+      },
+      {
+       "icon": "🍂",
+       "short": "Decay",
+       "text": "When plants and animals die, bacteria and fungi break them down into compounds in the soil."
+      },
+      {
+       "icon": "↩️",
+       "short": "Back to air",
+       "text": "Some bacteria change these compounds back into nitrogen gas."
+      }
+     ]
+    },
+    "say": [
+     "Because nitrogen keeps going round, the amount in the air stays almost the same."
+    ],
+    "remember": "Air → soil → plants → animals → decay → air."
+   },
+   {
+    "title": "Decomposers close the loop",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🌳",
+       "text": "Dead leaves, plants and animals"
+      },
+      {
+       "icon": "🍄",
+       "text": "Bacteria and fungi decompose them"
+      },
+      {
+       "icon": "🟫",
+       "text": "Nitrogen compounds return to the soil for new plants"
+      }
+     ]
+    },
+    "say": [
+     "Without decomposers, nitrogen would stay locked in dead bodies."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Nitrogen moves between air, soil and living things in a cycle.",
+   "Fixation puts nitrogen into soil; plants take it up and animals eat plants.",
+   "Decomposers and some bacteria return nitrogen to the soil and air."
+  ],
+  "quiz": [
+   {
+    "q": "How do animals get nitrogen?",
+    "options": [
+     "By eating plants or other animals",
+     "By breathing nitrogen gas",
+     "From sunlight",
+     "From drinking water only"
+    ],
+    "answer": 0,
+    "why": "Animals can't use nitrogen gas; they get it from the proteins in their food."
+   },
+   {
+    "q": "Who returns nitrogen from dead plants and animals to the soil?",
+    "options": [
+     "Bacteria and fungi (decomposers)",
+     "Lightning",
+     "Rain",
+     "Birds"
+    ],
+    "answer": 0,
+    "why": "Decomposers break down dead remains into nitrogen compounds in the soil."
+   }
+  ]
+ }
+}

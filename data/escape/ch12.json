@@ -1,0 +1,210 @@
+{
+ "chapter": 12,
+ "title": "The Slippery Slope",
+ "story": "You and NOVA are designing a toy-car track when the workshop locks. NOVA must understand friction before the door will open, because its car keeps either sliding out of control or getting stuck.",
+ "escaped": "The workshop opens. NOVA now reads friction data, sorts ways to change friction and knows why friction is useful.",
+ "locks": [
+  {
+   "kind": "pattern",
+   "skill": "data",
+   "topic": "12.2",
+   "title": "Which surface stops the car?",
+   "intro": "A toy car was released from the same ramp onto different surfaces. NOVA measured how far it rolled.",
+   "table": {
+    "cols": [
+     "Surface",
+     "Distance rolled"
+    ],
+    "rows": [
+     [
+      "Glass",
+      "120 cm"
+     ],
+     [
+      "Wood",
+      "90 cm"
+     ],
+     [
+      "Cloth",
+      "60 cm"
+     ],
+     [
+      "Sand",
+      "30 cm"
+     ]
+    ]
+   },
+   "question": "What conclusion fits the data?",
+   "options": [
+    "The rougher the surface, the more friction, so the shorter the distance.",
+    "The colour of the surface decides the distance.",
+    "Sand makes cars go faster.",
+    "Friction is the same on every surface."
+   ],
+   "answer": 0,
+   "hint": "Put the surfaces in order from smoothest to roughest and compare the distances.",
+   "learn": "AI finds patterns like this by comparing many results. The pattern matches the science: rough surfaces interlock more, so friction is greater."
+  },
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "12.4",
+   "title": "More friction or less?",
+   "intro": "NOVA must sort ideas into ways to increase friction and ways to reduce it. Choose its clues.",
+   "labels": [
+    "Increases friction",
+    "Reduces friction"
+   ],
+   "features": [
+    {
+     "key": "grip",
+     "text": "Makes surfaces rougher or gives more grip"
+    },
+    {
+     "key": "sport",
+     "text": "Used in sports"
+    },
+    {
+     "key": "vehicle",
+     "text": "Used on vehicles or machines"
+    }
+   ],
+   "train": [
+    {
+     "name": "Treaded tyres",
+     "label": 0,
+     "f": {
+      "grip": 1,
+      "sport": 0,
+      "vehicle": 1
+     }
+    },
+    {
+     "name": "Grooved shoe soles",
+     "label": 0,
+     "f": {
+      "grip": 1,
+      "sport": 0,
+      "vehicle": 0
+     }
+    },
+    {
+     "name": "Brake pads",
+     "label": 0,
+     "f": {
+      "grip": 1,
+      "sport": 0,
+      "vehicle": 1
+     }
+    },
+    {
+     "name": "Oil in moving parts",
+     "label": 1,
+     "f": {
+      "grip": 0,
+      "sport": 0,
+      "vehicle": 1
+     }
+    },
+    {
+     "name": "Powder on a carrom board",
+     "label": 1,
+     "f": {
+      "grip": 0,
+      "sport": 1,
+      "vehicle": 0
+     }
+    },
+    {
+     "name": "Ball bearings",
+     "label": 1,
+     "f": {
+      "grip": 0,
+      "sport": 0,
+      "vehicle": 1
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "Gymnast's coarse powder on the hands",
+     "label": 0,
+     "f": {
+      "grip": 1,
+      "sport": 1,
+      "vehicle": 0
+     }
+    },
+    {
+     "name": "Grease on a bicycle axle",
+     "label": 1,
+     "f": {
+      "grip": 0,
+      "sport": 0,
+      "vehicle": 1
+     }
+    }
+   ],
+   "hint": "The carrom board and the gymnast both use powder in sport, yet they want opposite things.",
+   "learn": "'Used in sports' or 'used on vehicles' says where something is used, not what it does to friction. NOVA needs the clue about grip."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "12.3",
+   "title": "Check NOVA's big idea",
+   "intro": "NOVA has a plan to get rid of friction everywhere. Is it right? Decide and pick the fact that settles it.",
+   "claim": "Friction is always bad. A world without friction would be better.",
+   "confidence": "89% sure",
+   "verdict": 1,
+   "evidence": [
+    "Without friction we couldn't walk, write or hold things; friction is a necessary evil.",
+    "Friction produces heat.",
+    "Ball bearings reduce friction.",
+    "Friction depends on how rough the surfaces are."
+   ],
+   "right": 0,
+   "hint": "Could you walk on a floor with no friction at all?",
+   "learn": "A claim that is partly true (friction wastes energy as heat) can lead to a bad conclusion. Look for the evidence that tests the WHOLE claim."
+  },
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "12.6",
+   "title": "Fix NOVA's notes on fluid friction",
+   "intro": "NOVA has notes about friction in air and water. Tick the notes that are wrong.",
+   "rows": [
+    {
+     "item": "Fish",
+     "label": "Have a streamlined body shape"
+    },
+    {
+     "item": "Aeroplane",
+     "label": "Is streamlined to reduce drag"
+    },
+    {
+     "item": "Boat",
+     "label": "Is shaped to reduce fluid friction"
+    },
+    {
+     "item": "Air",
+     "label": "Causes no friction on moving things",
+     "wrong": true,
+     "why": "air resistance is a kind of fluid friction"
+    },
+    {
+     "item": "Bird",
+     "label": "Has a body shaped to reduce drag in flight"
+    },
+    {
+     "item": "Water",
+     "label": "Doesn't slow swimmers down at all",
+     "wrong": true,
+     "why": "water exerts fluid friction (drag) on swimmers"
+    }
+   ],
+   "hint": "Fluids are liquids AND gases. Do both of them push back on moving objects?",
+   "learn": "Absolute words like 'no' and 'at all' in training data are worth double-checking. They are often where the mistakes hide."
+  }
+ ]
+}

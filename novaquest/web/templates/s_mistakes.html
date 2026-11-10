@@ -1,0 +1,64 @@
+{% extends "student.html" %}
+{# My mistakes (1.31.0): questions got wrong in released work, kept until they're right on a redo. #}
+{% block title %}My mistakes{% endblock %}
+{% block eyebrow %}<span class="small"><a href="/student/progress">{{ tr("My progress") }}</a></span>{% endblock %}
+{% block heading %}{{ tr("My mistakes") }}{% endblock %}
+{% block main %}
+<p class="small muted">Every question you got wrong in work whose results are out stays here until you get it right. Redoing is practice: it never changes your score.</p>
+<div class="grid-3" style="grid-template-columns:repeat(2,1fr)">
+  <div class="tile"><span class="k">To fix</span><span class="v">{{ ov.todo }}</span></div>
+  <div class="tile"><span class="k">Fixed</span><span class="v up">{{ ov.fixed }}</span></div>
+</div>
+{% if round %}
+<form method="post" class="stack" data-steps>
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <h2>Redo {{ round|length }} question{{ "s" if round|length != 1 }}</h2>
+  <div class="deck-progress" data-progress hidden><span class="track"><span class="fill"></span></span><span class="count small muted"></span></div>
+  {% for q in round %}
+  <section class="qcard" data-step aria-labelledby="m{{ q.question_id }}">
+    <input type="hidden" name="qid[]" value="{{ q.question_id }}"><input type="hidden" name="order_{{ q.question_id }}" value="{{ q.order|join(',') }}">
+    <span class="tiny muted">{{ tr("Question {n} of {m}", n=loop.index, m=round|length) }} · {{ q.topic }}</span>
+    <h2 id="m{{ q.question_id }}" class="qtitle">{{ q.prompt }}</h2>
+    <fieldset class="stack-sm"><legend class="sr-only">Choose one</legend>
+    {% for o in q.options %}<label class="choice"><input type="radio" name="a_{{ q.question_id }}" value="{{ loop.index0 }}">{{ o }}</label>{% endfor %}</fieldset>
+  </section>
+  {% endfor %}
+  <section class="qcard" data-step data-review aria-labelledby="rv-h">
+    <h2 id="rv-h" class="qtitle">{{ tr("All done?") }}</h2>
+    <button class="btn warm block" type="submit">Check my answers</button>
+  </section>
+  <nav class="deck-nav" data-nav hidden aria-label="Questions">
+    <button class="btn ghost" type="button" data-prev>{{ tr("Back") }}</button>
+    <button class="btn" type="button" data-next>{{ tr("Next") }}</button>
+  </nav>
+</form>
+{% elif ov.redo == 0 and ov.todo == 0 %}
+<p class="note ok">No mistakes to fix. 🎉 When results come out, anything you got wrong shows up here.</p>
+{% endif %}
+{% set written = [] %}{% for g in ov.groups %}{% for r in g["items"] if r.kind not in ("mcq", "ai_moment") or not r.options %}{% set _ = written.append(r) %}{% endfor %}{% endfor %}
+{% if written %}
+<section class="stack-sm" aria-labelledby="written">
+  <h2 id="written">Written answers to read again</h2>
+  <p class="small muted">Read the strong answer, then say when you understand it.</p>
+  {% for r in written %}
+  <article class="qcard stack-sm">
+    <span class="tiny muted">{{ r.subject }} · {{ r.topic }} · {{ r.assignment }}</span>
+    <b>{{ r.prompt }}</b>
+    {% if r.answer and r.answer.text %}<p class="small"><b>You wrote:</b> {{ r.answer.text }}</p>{% endif %}
+    {% if r.key and r.key.model %}<p class="small note info"><b>A strong answer:</b> {{ r.key.model }}</p>
+    {% elif r.key and r.key.worked %}<p class="small note info"><b>Worked solution:</b> {{ r.key.worked }}</p>{% endif %}
+    <div class="row">
+      <form method="post" action="/student/mistakes/{{ r.question_id }}/understood"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small" type="submit">I understand it now</button></form>
+      <a class="small" href="/student/questions?q={{ r.question_id }}#ask">Ask my teacher</a>
+      <a class="small" href="/student/learn/{{ r.topic_id }}">Revise the topic</a>
+    </div>
+  </article>
+  {% endfor %}
+</section>
+{% endif %}
+{% if ov.groups %}
+<details class="card"><summary><b>All my mistakes by topic</b></summary>
+  <div class="stack-sm" style="margin-top:8px">{% for g in ov.groups %}<div class="topic-row"><span class="stack-sm" style="gap:1px"><span>{{ g.topic }}</span><span class="tiny muted">{{ g.subject }} · {{ g["items"]|length }} to fix</span></span><a class="small" href="/student/mistakes?topic={{ g.topic_id }}">Redo these</a></div>{% endfor %}</div>
+</details>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"top_mirror":[180,52],"bottom_mirror":[180,244],"tube":[200,150],"eye":[70,244],"object":[330,52]}'>
+<path d="M150 20 H214 V276 H150 Z" fill="#ECEFF1" stroke="#455A64" stroke-width="4"/>
+<path d="M152 24 L212 84" stroke="#4FC3F7" stroke-width="8"/><path d="M152 216 L212 276" stroke="#4FC3F7" stroke-width="8"/>
+<path d="M150 30 V80 M150 220 V270 M214 30 V80" stroke="#ECEFF1" stroke-width="5"/>
+<path d="M150 214 V270" stroke="#ECEFF1" stroke-width="6"/>
+<g stroke="#E0541A" stroke-width="3" fill="none"><path d="M320 54 H182 V246 H80"/><path d="M92 238 l-12 8 l12 8"/></g>
+<text x="330" y="44" font-size="30" text-anchor="middle" font-family="Segoe UI Emoji, Noto Color Emoji, sans-serif">🚢</text>
+<text x="60" y="256" font-size="30" text-anchor="middle" font-family="Segoe UI Emoji, Noto Color Emoji, sans-serif">👁️</text>
+</svg>

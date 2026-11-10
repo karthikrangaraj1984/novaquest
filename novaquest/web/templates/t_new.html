@@ -1,0 +1,70 @@
+{% extends "staff.html" %}
+{% block title %}Create assignment{% endblock %}
+{% block main %}
+{% set main_kinds = {"mission": ("AI-guided mission", "A short story with questions, hints while they work"),
+                     "quiz": ("Quiz", "Quick multiple-choice questions"),
+                     "short": ("Written answers", "Students write; the AI marks and you check")} %}
+{% set more_kinds = {"viva": "Understanding check (explain and apply)", "learn": "Learn a topic (lesson + checks)", "teach": "Teach NOVA",
+                     "escape": "Escape room (the chapter's room; done when they escape)"} %}
+{% set kind = f.kind or "mission" %}
+<div class="stack-sm"><a class="small" href="/teacher/assignments">← Assignments</a><h1>Create an assignment</h1>
+  <p class="muted small">Pick topics and a type. NovaQuest writes the questions from the textbook; you check them before anything reaches students.</p></div>
+{% if error %}<div class="note warn" role="alert">{{ error }}</div>{% endif %}
+{% if for_students %}<div class="note info small">Revision for {{ for_students.split(",")|length }} chosen student{{ "s" if for_students.split(",")|length != 1 }}. When you schedule it, it goes to just them.</div>{% endif %}
+<form method="post" class="cols">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  {% if for_students %}<input type="hidden" name="for_students" value="{{ for_students }}">{% endif %}
+  <section class="main card stack" aria-labelledby="topics-h">
+    <div class="row-between"><h2 id="topics-h">1. Topics</h2><span class="small muted" data-topic-count>{{ chosen|length }} chosen</span></div>
+    {% if teaching|length > 1 %}
+    <div class="field"><label for="for">Class and subject</label>
+      <select id="for" name="for" data-reload-param="for">{% for t in teaching %}<option value="{{ t.key }}" {% if cur and t.key == cur.key %}selected{% endif %}>{{ t.name }}</option>{% endfor %}</select>
+      <noscript><span class="small">{% for t in teaching %}<a href="?for={{ t.key }}">{{ t.name }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</span></noscript></div>
+    {% elif cur %}<input type="hidden" name="for" value="{{ cur.key }}"><p class="small muted">For class {{ cur.class_label }} · {{ cur.book.label }}</p>
+    {% else %}<p class="note warn small">You aren't mapped to a class and subject yet. Ask your school admin.</p>{% endif %}
+    {% if others and not for_students %}
+    <fieldset class="stack-sm"><legend class="small"><b>Also set it for</b> <span class="muted">(you teach {{ cur.book.subject }} here too; same questions, each class gets its own dates)</span></legend>
+      <div class="chips">{% for o in others %}<label class="choice" style="min-height:40px"><input type="checkbox" name="sections[]" value="{{ o.cid }}" {% if o.cid in ticked %}checked{% endif %}>{{ o.class_label }}</label>{% endfor %}</div>
+    </fieldset>
+    {% endif %}
+    <div class="field"><label for="topic-search">Find a topic</label><input id="topic-search" type="search" data-topic-search placeholder="e.g. cell, friction, sound" autocomplete="off"></div>
+    {% if from_plan %}<p class="note info small">Started with the chapter in class now (from your term plan). Untick any topics you don't want.</p>{% endif %}
+    <div class="tree" data-topic-tree>
+      {% for ch in tree %}
+      {% set ids = ch.topics|map(attribute='id')|list %}
+      <details {% if (ids|select('in', chosen)|list) or (not chosen and ch.meta.demo) %}open{% endif %}>
+        <summary>{{ ch|inpart }}{{ ch.code }}. {{ ch.title }}{% if in_class and ch.id in in_class %} <span class="pill l2">In class now</span>{% endif %}</summary>
+        {% for t in ch.topics %}
+        <label class="check-row"><input type="checkbox" name="topics[]" value="{{ t.id }}" {% if t.id in chosen %}checked{% endif %}>{{ t|pc }} {{ t.title }}</label>
+        {% endfor %}
+      </details>
+      {% endfor %}
+    </div>
+  </section>
+  <section class="aside card stack" aria-labelledby="setup-h">
+    <h2 id="setup-h">2. Type</h2>
+    <fieldset class="stack-sm"><legend class="sr-only">Type</legend>
+      <div class="kind-grid">
+      {% for k, (label, about) in main_kinds.items() %}
+      <label class="choice kind"><input type="radio" name="kind" value="{{ k }}" {% if kind == k %}checked{% endif %}><span class="stack-sm" style="gap:1px"><b>{{ label }}</b><span class="small muted">{{ about }}</span></span></label>
+      {% endfor %}
+      {% for k, label in more_kinds.items() %}
+      <label class="choice kind"><input type="radio" name="kind" value="{{ k }}" {% if kind == k %}checked{% endif %}><span class="stack-sm" style="gap:1px"><b>{{ label.split(" (")[0] }}</b>{% if " (" in label %}<span class="small muted">{{ label.split(" (")[1].rstrip(")")|capitalize }}</span>{% endif %}</span></label>
+      {% endfor %}
+      </div>
+      <p class="tiny muted">Need a printed test? <a href="/teacher/papers/new{% if cur %}?for={{ cur.key }}{% endif %}">Make an exam paper</a>.</p>
+    </fieldset>
+    <details {% if f.difficulty or f.title %}open{% endif %}><summary class="small" style="cursor:pointer;font-weight:600;color:var(--primary)">Options: difficulty, number of questions, title</summary>
+      <div class="stack" style="margin-top:10px">
+        <fieldset><legend>Difficulty</legend><div class="seg" role="radiogroup">
+          {% for d in ["easy", "medium", "hard"] %}<label class="choice" style="min-height:40px"><input type="radio" name="difficulty" value="{{ d }}" {% if (f.difficulty or 'medium') == d %}checked{% endif %}>{{ d|capitalize }}</label>{% endfor %}
+        </div></fieldset>
+        <div class="field"><label for="count">Number of questions</label><input id="count" name="count" type="number" min="1" max="20" value="{{ f.count or 6 }}"><span class="hint">Learn and Teach NOVA use one item per topic; an escape room is one room for the chapter.</span></div>
+        <div class="field"><label for="title">Title <span class="hint">(optional)</span></label><input id="title" name="title" type="text" value="{{ f.title or '' }}" placeholder="We'll suggest one"></div>
+      </div>
+    </details>
+    <button class="btn block" type="submit">Write the questions</button>
+    <p class="tiny muted">Next you'll check the questions, then choose who gets it and when.</p>
+  </section>
+</form>
+{% endblock %}

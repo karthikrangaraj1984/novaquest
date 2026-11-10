@@ -1,0 +1,46 @@
+{% extends "staff.html" %}
+{% from "_class.html" import class_head with context %}
+{# Weekly class briefing (1.18.0): the last seven days of a class, and a ten-minute reteach activity. #}
+{% block title %}Briefing {{ label }}{% endblock %}
+{% block main %}
+{{ class_head(cid, label, students_n, "briefing") }}
+<div class="row-between"><p class="small muted">{{ b.from.strftime("%d %b") }} – {{ b.to.strftime("%d %b %Y") }}. Sent to you every Monday morning; this page always shows the last seven days.</p>
+  <a class="btn small quiet" href="?format=pdf">Download (PDF)</a></div>
+
+<section class="kpis" aria-label="This week">
+  <div class="kpi"><span class="k">Active</span><span class="v">{{ b.activity.active }}</span><span class="d">of {{ b.activity.students }} students</span></div>
+  <div class="kpi"><span class="k">Handed in</span><span class="v">{{ b.activity.handed }}</span><span class="d">pieces of work</span></div>
+  <div class="kpi"><span class="k">Daily 5</span><span class="v">{{ b.activity.daily }}</span><span class="d">reviews done</span></div>
+  <div class="kpi"><span class="k">To check on</span><span class="v">{{ b.slipping|length }}</span><span class="d">students</span></div>
+</section>
+
+{% if b.quiet %}<div class="card stack-sm"><b>A quiet week.</b><span class="small muted">No mix-ups, hard topics or students slipping in the last seven days.</span></div>{% endif %}
+
+<div class="cols">
+  <div class="main stack">
+    {% if b.focus %}
+    <section class="card stack-sm" aria-labelledby="rt-h">
+      <h2 id="rt-h">{{ b.focus.minutes }}-minute reteach: {{ b.focus.topic }}</h2>
+      {% if b.focus.mixup %}<p class="small muted">For this week's biggest mix-up: {{ b.focus.mixup }}.</p>{% else %}<p class="small muted">For this week's hardest topic.</p>{% endif %}
+      <ol class="stack-sm reteach">
+        {% for s in b.focus.steps %}<li><b>{{ s.name }} ({{ s.min }} min).</b> {{ s.text }}
+          {% if s.question %}<div class="note small"><b>{{ s.question }}</b><ol type="A">{% for o in s.options %}<li>{{ o }}{% if loop.index0 == s.answer %} <span class="muted">(answer)</span>{% endif %}</li>{% endfor %}</ol></div>{% endif %}</li>{% endfor %}
+      </ol>
+    </section>
+    {% endif %}
+    <section class="card stack-sm" aria-labelledby="mx-h"><h2 id="mx-h">Top mix-ups</h2>
+      {% for m in b.mixups %}<div class="row-between small"><span>{{ m.label }} <span class="muted">· {{ m.topic }}</span></span><span>{{ m.students }} student{{ "s" if m.students != 1 }}</span></div>
+      {% else %}<p class="small muted">No mix-ups found in this week's answers.</p>{% endfor %}
+    </section>
+    <section class="card stack-sm" aria-labelledby="hd-h"><h2 id="hd-h">Hardest topics</h2>
+      {% for h in b.hard %}<div class="row-between small"><span>{{ h.chapter }}. {{ h.title }}</span><span>{{ h.pct }}% · {{ h.students }} students</span></div>
+      {% else %}<p class="small muted">No topic averaged below 60% this week.</p>{% endfor %}
+    </section>
+  </div>
+  <aside class="aside stack"><section class="card stack-sm" aria-labelledby="sl-h"><h2 id="sl-h">Students to check on</h2>
+    {% for s in b.slipping %}<div class="stack-sm" style="gap:2px"><a href="/teacher/students/{{ s.id }}">{{ s.roll_no }}. {{ s.name }}</a>
+      {% for r in s.reasons %}<span class="small muted">{{ r }}</span>{% endfor %}</div>
+    {% else %}<p class="small muted">Nobody is slipping this week.</p>{% endfor %}
+  </section></aside>
+</div>
+{% endblock %}

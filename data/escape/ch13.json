@@ -1,0 +1,210 @@
+{
+ "chapter": 13,
+ "title": "The Echo Hall",
+ "story": "You and NOVA are recording sounds in the school's music hall when the doors lock. NOVA is learning to recognise sounds. It must get them right to open the doors.",
+ "escaped": "The doors swing open. NOVA now sorts sounds by frequency, knows sound needs a medium and predicts pitch from data.",
+ "locks": [
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "13.6",
+   "title": "Can we hear it?",
+   "intro": "NOVA must sort sounds into audible (we can hear them) and inaudible for humans. Choose its clues.",
+   "labels": [
+    "Audible to humans",
+    "Inaudible to humans"
+   ],
+   "features": [
+    {
+     "key": "range",
+     "text": "Frequency between 20 Hz and 20,000 Hz"
+    },
+    {
+     "key": "animal",
+     "text": "Made by an animal"
+    },
+    {
+     "key": "loud",
+     "text": "Very loud"
+    }
+   ],
+   "train": [
+    {
+     "name": "Human speech",
+     "label": 0,
+     "f": {
+      "range": 1,
+      "animal": 0,
+      "loud": 0
+     }
+    },
+    {
+     "name": "A beating drum",
+     "label": 0,
+     "f": {
+      "range": 1,
+      "animal": 0,
+      "loud": 1
+     }
+    },
+    {
+     "name": "A whistle",
+     "label": 0,
+     "f": {
+      "range": 1,
+      "animal": 0,
+      "loud": 0
+     }
+    },
+    {
+     "name": "A dog whistle",
+     "label": 1,
+     "f": {
+      "range": 0,
+      "animal": 0,
+      "loud": 0
+     }
+    },
+    {
+     "name": "A bat's ultrasonic call",
+     "label": 1,
+     "f": {
+      "range": 0,
+      "animal": 1,
+      "loud": 0
+     }
+    },
+    {
+     "name": "An ultrasound scanner",
+     "label": 1,
+     "f": {
+      "range": 0,
+      "animal": 0,
+      "loud": 0
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "A lion's roar",
+     "label": 0,
+     "f": {
+      "range": 1,
+      "animal": 1,
+      "loud": 1
+     }
+    },
+    {
+     "name": "An earthquake's deep rumble below 20 Hz",
+     "label": 1,
+     "f": {
+      "range": 0,
+      "animal": 0,
+      "loud": 1
+     }
+    }
+   ],
+   "hint": "A lion is an animal and an earthquake rumble is loud. What really decides whether our ears can hear a sound?",
+   "learn": "We can only hear frequencies from about 20 to 20,000 vibrations per second. Clues like 'made by an animal' fitted NOVA's examples by accident."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "13.3",
+   "title": "Check NOVA's Moon plan",
+   "intro": "NOVA is planning a Moon mission. Is this right? Decide and pick the fact that settles it.",
+   "claim": "Astronauts on the Moon can talk to each other directly, without radios.",
+   "confidence": "93% sure",
+   "verdict": 1,
+   "evidence": [
+    "Sound needs a medium (a solid, liquid or gas) to travel; it can't travel through a vacuum, and the Moon has no air.",
+    "The Moon has no light of its own.",
+    "Sound is produced by vibrating objects.",
+    "Our ears have an eardrum."
+   ],
+   "right": 0,
+   "hint": "What does sound need to travel through?",
+   "learn": "An AI that hasn't connected two facts (sound needs a medium; the Moon has no air) can make dangerous plans. Checking each step of the reasoning catches it."
+  },
+  {
+   "kind": "pattern",
+   "skill": "data",
+   "topic": "13.5",
+   "title": "Predict the pitch",
+   "intro": "NOVA measured how many times different things vibrate each second.",
+   "table": {
+    "cols": [
+     "Sound source",
+     "Vibrations per second (Hz)",
+     "Pitch"
+    ],
+    "rows": [
+     [
+      "Large drum",
+      "100",
+      "Low"
+     ],
+     [
+      "Guitar string",
+      "400",
+      "Medium"
+     ],
+     [
+      "Bird's whistle",
+      "3,000",
+      "High"
+     ]
+    ]
+   },
+   "question": "A flute note vibrates 1,500 times a second. What will its pitch be?",
+   "options": [
+    "Higher than the guitar string, lower than the bird's whistle.",
+    "Lower than the drum.",
+    "Exactly the same as the guitar string.",
+    "There's no way to tell."
+   ],
+   "answer": 0,
+   "hint": "Where does 1,500 fit between 400 and 3,000?",
+   "learn": "The pattern (more vibrations per second, higher pitch) lets NOVA place a new sound it hasn't heard."
+  },
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "13.8",
+   "title": "Fix NOVA's noise facts",
+   "intro": "NOVA has notes on noise pollution. Tick the wrong ones.",
+   "rows": [
+    {
+     "item": "Loud noise for a long time",
+     "label": "Can cause lack of sleep"
+    },
+    {
+     "item": "Constant traffic noise",
+     "label": "Can cause high blood pressure"
+    },
+    {
+     "item": "Noise pollution",
+     "label": "Can cause anxiety"
+    },
+    {
+     "item": "Planting trees along roads",
+     "label": "Makes a place noisier",
+     "wrong": true,
+     "why": "trees reduce noise"
+    },
+    {
+     "item": "Silencers in vehicles",
+     "label": "Increase noise",
+     "wrong": true,
+     "why": "silencers reduce engine noise"
+    },
+    {
+     "item": "Keeping the TV volume low",
+     "label": "Reduces noise"
+    }
+   ],
+   "hint": "Which of these are ways the textbook suggests to REDUCE noise?",
+   "learn": "Two notes say the opposite of the truth. An AI trained on them would recommend the wrong actions."
+  }
+ ]
+}

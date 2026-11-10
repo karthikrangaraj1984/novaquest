@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"sun":[44,40],"sunlight":[120,120],"gases":[200,86],"heat_out":[352,40],"heat_trapped":[282,160],"earth":[200,262]}'>
+<defs><marker id="gh" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10z" fill="context-stroke"/></marker></defs>
+<rect width="400" height="300" fill="#E3F2FD"/>
+<circle cx="44" cy="40" r="26" fill="#FFB300"/>
+<path d="M0 232 Q200 196 400 232 V300 H0 Z" fill="#81C784"/>
+<path d="M0 100 Q200 64 400 100" fill="none" stroke="#90A4AE" stroke-width="18" opacity=".55"/>
+<path d="M66 62 L190 206" stroke="#F9A825" stroke-width="5" marker-end="url(#gh)"/>
+<path d="M214 210 L246 98" stroke="#E0541A" stroke-width="5" marker-end="url(#gh)"/>
+<path d="M258 98 L290 206" stroke="#E0541A" stroke-width="5" marker-end="url(#gh)"/>
+<path d="M318 212 L346 30" stroke="#E0541A" stroke-width="4" opacity=".45" marker-end="url(#gh)"/>
+<g fill="#546E7A" font-size="12" font-family="sans-serif"><text x="120" y="70">CO₂</text><text x="196" y="62">CO₂</text><text x="282" y="70">CO₂</text></g>
+</svg>

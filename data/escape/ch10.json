@@ -1,0 +1,215 @@
+{
+ "chapter": 10,
+ "title": "The Health Centre",
+ "story": "You and NOVA are volunteering at a school health centre when the doors lock for a fire check. NOVA is learning to answer students' questions about growing up. Its answers must be accurate before the doors open.",
+ "escaped": "The doors open. NOVA now knows the glands and their hormones, uses data honestly and checks claims before answering questions about growing up.",
+ "locks": [
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "10.7",
+   "title": "Fix NOVA's gland chart",
+   "intro": "NOVA has matched endocrine glands to the hormones they make. Tick the matches that are wrong.",
+   "rows": [
+    {
+     "item": "Thyroid",
+     "label": "Thyroxine"
+    },
+    {
+     "item": "Pancreas",
+     "label": "Thyroxine",
+     "wrong": true,
+     "why": "the pancreas makes insulin"
+    },
+    {
+     "item": "Adrenal glands",
+     "label": "Insulin",
+     "wrong": true,
+     "why": "the adrenal glands make adrenalin"
+    },
+    {
+     "item": "Pituitary",
+     "label": "Growth hormone"
+    },
+    {
+     "item": "Testes",
+     "label": "Testosterone"
+    },
+    {
+     "item": "Ovaries",
+     "label": "Estrogen"
+    }
+   ],
+   "hint": "Which gland is linked with diabetes when it doesn't make enough of its hormone?",
+   "learn": "Health answers built on mislabelled data could mislead people. That is why AI used for health must be trained on carefully checked information."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "10.6",
+   "title": "Check NOVA's claim",
+   "intro": "A student asks NOVA how a baby's sex is decided. Is NOVA right? Decide and pick the fact that settles it.",
+   "claim": "The mother decides whether the baby will be a boy or a girl.",
+   "confidence": "90% sure",
+   "verdict": 1,
+   "evidence": [
+    "The baby's sex depends on whether the fertilised egg gets an X or a Y chromosome from the father's sperm.",
+    "Every unfertilised egg has an X chromosome.",
+    "Puberty usually begins between about 10 and 12 years of age.",
+    "The thyroid gland makes thyroxine."
+   ],
+   "right": 0,
+   "hint": "Which parent's chromosome can be either X or Y?",
+   "learn": "An AI can repeat a wrong belief that many people hold. The textbook is clear: the mother is not responsible for the baby's sex. Checking against science stops AI spreading unfair ideas."
+  },
+  {
+   "kind": "pattern",
+   "skill": "predicting",
+   "topic": "10.2",
+   "title": "Predict full height",
+   "intro": "The textbook gives the share of full adult height boys and girls usually reach at each age. NOVA wants to use it.",
+   "table": {
+    "cols": [
+     "Age (years)",
+     "Boys: % of full height",
+     "Girls: % of full height"
+    ],
+    "rows": [
+     [
+      "11",
+      "81",
+      "88"
+     ],
+     [
+      "12",
+      "84",
+      "91"
+     ],
+     [
+      "13",
+      "88",
+      "95"
+     ],
+     [
+      "14",
+      "92",
+      "98"
+     ]
+    ]
+   },
+   "question": "A 12-year-old boy is 126 cm tall. What should NOVA tell him?",
+   "options": [
+    "He'll probably reach about 150 cm (126 ÷ 84 × 100), but it's only an estimate: the table shows an average and people grow differently.",
+    "He will be exactly 150.0 cm tall.",
+    "He has stopped growing, so 126 cm.",
+    "Tables can't be used for anything."
+   ],
+   "answer": 0,
+   "hint": "He has reached 84% of his full height. And is everyone exactly average?",
+   "learn": "Predictions from averages are useful but never exact for one person. An honest AI gives the estimate and says how sure it can be, as the textbook does."
+  },
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "10.7",
+   "title": "Endocrine gland or not?",
+   "intro": "NOVA must sort body parts into endocrine glands (release hormones into the blood) and other organs. Choose its clues.",
+   "labels": [
+    "Endocrine gland",
+    "Not an endocrine gland"
+   ],
+   "features": [
+    {
+     "key": "hormones",
+     "text": "Releases hormones into the blood"
+    },
+    {
+     "key": "neck",
+     "text": "Is in the neck"
+    },
+    {
+     "key": "abdomen",
+     "text": "Is in the abdomen"
+    }
+   ],
+   "train": [
+    {
+     "name": "Thyroid",
+     "label": 0,
+     "f": {
+      "hormones": 1,
+      "neck": 1,
+      "abdomen": 0
+     }
+    },
+    {
+     "name": "Pituitary",
+     "label": 0,
+     "f": {
+      "hormones": 1,
+      "neck": 0,
+      "abdomen": 0
+     }
+    },
+    {
+     "name": "Adrenal glands",
+     "label": 0,
+     "f": {
+      "hormones": 1,
+      "neck": 0,
+      "abdomen": 1
+     }
+    },
+    {
+     "name": "Heart",
+     "label": 1,
+     "f": {
+      "hormones": 0,
+      "neck": 0,
+      "abdomen": 0
+     }
+    },
+    {
+     "name": "Lungs",
+     "label": 1,
+     "f": {
+      "hormones": 0,
+      "neck": 0,
+      "abdomen": 0
+     }
+    },
+    {
+     "name": "Stomach",
+     "label": 1,
+     "f": {
+      "hormones": 0,
+      "neck": 0,
+      "abdomen": 1
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "Pancreas",
+     "label": 0,
+     "f": {
+      "hormones": 1,
+      "neck": 0,
+      "abdomen": 1
+     }
+    },
+    {
+     "name": "Voice box (larynx)",
+     "label": 1,
+     "f": {
+      "hormones": 0,
+      "neck": 1,
+      "abdomen": 0
+     }
+    }
+   ],
+   "hint": "The voice box is in the neck, like the thyroid. The pancreas is in the abdomen, like the stomach.",
+   "learn": "Where an organ sits doesn't tell you what it does. NOVA needs the clue that defines an endocrine gland: releasing hormones into the blood."
+  }
+ ]
+}

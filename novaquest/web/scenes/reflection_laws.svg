@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"mirror":[300,250],"incident":[120,140],"reflected":[280,140],"normal":[200,90],"angle_i":[180,190],"angle_r":[220,190],"point":[200,236]}'>
+<rect x="40" y="236" width="320" height="12" fill="#B3E5FC" stroke="#455A64" stroke-width="2"/>
+<g stroke="#455A64" stroke-width="2"><path d="M50 248 l-10 14 M80 248 l-10 14 M110 248 l-10 14 M140 248 l-10 14 M170 248 l-10 14 M200 248 l-10 14 M230 248 l-10 14 M260 248 l-10 14 M290 248 l-10 14 M320 248 l-10 14 M350 248 l-10 14"/></g>
+<path d="M200 236 V40" stroke="#5A6178" stroke-width="2" stroke-dasharray="6 5"/>
+<path d="M60 56 L200 236" stroke="#E0541A" stroke-width="4"/><path d="M122 126 l14 2 l-4 -14" fill="none" stroke="#E0541A" stroke-width="4"/>
+<path d="M200 236 L340 56" stroke="#2B4BD8" stroke-width="4"/><path d="M270 146 l2 -14 l-14 4" fill="none" stroke="#2B4BD8" stroke-width="4"/>
+<path d="M200 186 A50 50 0 0 0 169 197" fill="none" stroke="#E0541A" stroke-width="2.5"/>
+<path d="M200 186 A50 50 0 0 1 231 197" fill="none" stroke="#2B4BD8" stroke-width="2.5"/>
+</svg>

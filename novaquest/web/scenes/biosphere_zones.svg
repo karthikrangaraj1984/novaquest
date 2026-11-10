@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"core":[200,150],"buffer":[200,74],"transition":[200,24],"village":[330,250],"research":[96,150]}'>
+<ellipse cx="200" cy="150" rx="190" ry="140" fill="#E8F5E9" stroke="#81C784" stroke-width="3"/>
+<ellipse cx="200" cy="150" rx="130" ry="94" fill="#C8E6C9" stroke="#4CAF50" stroke-width="3"/>
+<ellipse cx="200" cy="150" rx="68" ry="50" fill="#66BB6A" stroke="#2E7D32" stroke-width="3"/>
+<text x="200" y="136" font-size="26" text-anchor="middle" font-family="Segoe UI Emoji, Noto Color Emoji, sans-serif">🐅🌳</text>
+<text x="330" y="236" font-size="24" text-anchor="middle" font-family="Segoe UI Emoji, Noto Color Emoji, sans-serif">🏘️</text>
+<text x="96" y="140" font-size="20" text-anchor="middle" font-family="Segoe UI Emoji, Noto Color Emoji, sans-serif">🔬</text>
+</svg>

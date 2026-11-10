@@ -1,0 +1,212 @@
+{
+ "chapter": 8,
+ "title": "The Locked Cell Lab",
+ "story": "You and NOVA are in the biology lab when the door jams. NOVA is learning to recognise cells with a microscope camera, but it keeps getting them wrong. Teach it, check it and fix it to open four locks.",
+ "escaped": "The lab door clicks open. NOVA now looks for real differences between cells and knows not to judge everything from a few samples.",
+ "locks": [
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "8.6",
+   "title": "Plant cell or animal cell?",
+   "intro": "NOVA must sort cells into plant cells and animal cells. Choose the clues it should look at, then test it on two new cells.",
+   "labels": [
+    "Plant cell",
+    "Animal cell"
+   ],
+   "features": [
+    {
+     "key": "wall",
+     "text": "Has a cell wall"
+    },
+    {
+     "key": "green",
+     "text": "Looks green"
+    },
+    {
+     "key": "vacuole",
+     "text": "Has a large central vacuole"
+    },
+    {
+     "key": "nucleus",
+     "text": "Has a nucleus"
+    }
+   ],
+   "train": [
+    {
+     "name": "Leaf cell",
+     "label": 0,
+     "f": {
+      "wall": 1,
+      "green": 1,
+      "vacuole": 1,
+      "nucleus": 1
+     }
+    },
+    {
+     "name": "Moss cell",
+     "label": 0,
+     "f": {
+      "wall": 1,
+      "green": 1,
+      "vacuole": 1,
+      "nucleus": 1
+     }
+    },
+    {
+     "name": "Cheek cell",
+     "label": 1,
+     "f": {
+      "wall": 0,
+      "green": 0,
+      "vacuole": 0,
+      "nucleus": 1
+     }
+    },
+    {
+     "name": "Nerve cell",
+     "label": 1,
+     "f": {
+      "wall": 0,
+      "green": 0,
+      "vacuole": 0,
+      "nucleus": 1
+     }
+    },
+    {
+     "name": "Muscle cell",
+     "label": 1,
+     "f": {
+      "wall": 0,
+      "green": 0,
+      "vacuole": 0,
+      "nucleus": 1
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "Onion peel cell",
+     "label": 0,
+     "f": {
+      "wall": 1,
+      "green": 0,
+      "vacuole": 1,
+      "nucleus": 1
+     }
+    },
+    {
+     "name": "White blood cell",
+     "label": 1,
+     "f": {
+      "wall": 0,
+      "green": 0,
+      "vacuole": 0,
+      "nucleus": 1
+     }
+    }
+   ],
+   "hint": "Onion peel cells are plant cells, but they aren't green. And every cell here has a nucleus.",
+   "learn": "'Looks green' fitted every plant cell NOVA was shown, but onion cells aren't green. The real differences, a cell wall and a large vacuole, sort every cell. An AI is only as good as the clues it uses."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "8.3",
+   "title": "Check NOVA's claim about big animals",
+   "intro": "NOVA explains why elephants are big. Is it right? Decide and pick the fact that settles it.",
+   "claim": "Elephants are bigger than ants because their cells are much bigger.",
+   "confidence": "95% sure",
+   "verdict": 1,
+   "evidence": [
+    "The size of cells has no relation to the size of the body; an elephant's cells are not necessarily bigger than a rat's.",
+    "Some organisms are made of just one cell.",
+    "A nerve cell is long and branched.",
+    "Cells were first seen by Robert Hooke."
+   ],
+   "right": 0,
+   "hint": "What does the textbook say about cell size and body size?",
+   "learn": "A guess that sounds logical can still be wrong. Bigger animals have MORE cells, not bigger ones. Evidence beats a confident guess."
+  },
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "8.5",
+   "title": "Fix NOVA's cell-part jobs",
+   "intro": "NOVA has matched cell parts to their jobs. Tick the matches that are wrong.",
+   "rows": [
+    {
+     "item": "Cell membrane",
+     "label": "Separates the cell from its surroundings and lets materials in and out"
+    },
+    {
+     "item": "Nucleus",
+     "label": "Controls the activities of the cell"
+    },
+    {
+     "item": "Chloroplasts",
+     "label": "Contain chlorophyll for making food"
+    },
+    {
+     "item": "Cytoplasm",
+     "label": "Carries genes from parents to offspring",
+     "wrong": true,
+     "why": "genes are on the chromosomes in the nucleus"
+    },
+    {
+     "item": "Cell wall",
+     "label": "Gives plant cells extra protection"
+    },
+    {
+     "item": "Vacuole",
+     "label": "Controls what enters and leaves the cell",
+     "wrong": true,
+     "why": "that is the cell membrane's job"
+    }
+   ],
+   "hint": "Where are genes found? Which part decides what goes in and out?",
+   "learn": "Mixed-up labels teach an AI mixed-up facts. Fixing the data is often better than building a cleverer AI."
+  },
+  {
+   "kind": "pattern",
+   "skill": "data",
+   "topic": "8.3",
+   "title": "Is all pond life single-celled?",
+   "intro": "NOVA looked at three drops of pond water under a microscope.",
+   "table": {
+    "cols": [
+     "Drop",
+     "Organism seen",
+     "Number of cells"
+    ],
+    "rows": [
+     [
+      "1",
+      "Amoeba",
+      "1"
+     ],
+     [
+      "2",
+      "Paramecium",
+      "1"
+     ],
+     [
+      "3",
+      "Chlamydomonas",
+      "1"
+     ]
+    ]
+   },
+   "question": "NOVA says: 'Every living thing in the pond is single-celled.' What is the honest conclusion?",
+   "options": [
+    "NOVA is right: all three samples agree.",
+    "These drops had single-celled organisms, but fish, frogs and pond plants are multicellular. Three drops can't speak for everything in the pond.",
+    "Single-celled organisms aren't really alive.",
+    "Microscopes can only see single cells."
+   ],
+   "answer": 1,
+   "hint": "What else lives in a pond that wouldn't fit in a drop of water?",
+   "learn": "An AI trained on a small or one-sided sample makes wide claims that are wrong. Ask: what did the data leave out?"
+  }
+ ]
+}

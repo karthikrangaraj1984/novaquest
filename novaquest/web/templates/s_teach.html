@@ -1,0 +1,56 @@
+{% extends "student.html" %}
+{% block title %}Teach NOVA{% endblock %}
+{% block header %}
+<header class="teach-head">
+  <div class="row" style="flex-wrap:nowrap">
+    <a class="icon-btn" href="/student/learn/{{ topic.id }}" aria-label="Back to the lesson" style="background:transparent;border-color:var(--navy-line);color:#fff">←</a>
+    <div style="flex:1"><span class="small muted">{{ topic.title }}</span><h1 style="font-size:20px;color:#fff">Teach NOVA</h1></div>
+    <span class="small muted">about 5 min</span>
+  </div>
+  <div class="stack-sm" style="gap:6px">
+    <span class="small" style="color:#D6DAF0">NOVA's ideas fixed: {{ fixed }} of {{ total }}</span>
+    <div class="ideas">
+      {% set now_done = namespace(found=false) %}
+      {% for p in progress %}
+        {% if p.status == "resolved" %}<div class="done"><span class="b" aria-hidden="true"></span>{{ p.label }} ✓</div>
+        {% elif not now_done.found %}{% set now_done.found = true %}<div class="now"><span class="b" aria-hidden="true"></span>{{ p.label }}</div>
+        {% else %}<div><span class="b" aria-hidden="true"></span>Coming up</div>{% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</header>
+{% endblock %}
+{% block tabbar %}{% endblock %}
+{% block main %}
+<section id="chat" class="chat" aria-label="Conversation with NOVA" aria-live="polite">
+  {% for t in turns %}
+    {% if t.role == "nova" %}<div class="row" style="flex-wrap:nowrap;align-items:flex-end"><span class="nova-avatar" aria-hidden="true"><i></i><i></i></span><p class="msg them" id="nova-{{ loop.index }}"><b>NOVA:</b> {{ t.body }} <button type="button" class="say-btn" data-say="nova-{{ loop.index }}" aria-label="{{ tr('Read aloud') }}" aria-pressed="false" hidden>🔊</button></p></div>
+    {% else %}<p class="msg me">{{ t.body }}</p>
+      {% if t.verdict == "correct" %}<div class="status-chip ok">✓ NOVA changed its mind</div>{% elif t.verdict == "incorrect" %}<div class="status-chip warn">NOVA is confused. Check your idea!</div>{% endif %}
+    {% endif %}
+  {% endfor %}
+</section>
+{% if session.status == "active" %}
+<form class="composer" data-chat="/api/teach/{{ session.id }}/turn" data-mode="teach" data-list="chat" data-done="/student/teach/session/{{ session.id }}" aria-label="Your reply to NOVA">
+  <button type="button" class="btn small quiet talk-btn" data-talk="form.composer" data-talk-list="#chat" aria-pressed="false" hidden>🗣 {{ tr("Talk with NOVA") }}</button>
+  <div class="chips" aria-label="Sentence starters">{% for s in starters %}<button type="button" class="chip" data-starter="reply">{{ s }}</button>{% endfor %}</div>
+  <div class="inputs">
+    <label class="sr-only" for="reply">Explain it to NOVA</label>
+    <input id="reply" name="message" type="text" placeholder="Tell NOVA in your words…" autocomplete="off">
+    <button type="button" class="icon-btn" data-voice="reply" aria-label="Speak your answer" aria-pressed="false">🎤</button>
+    <button type="submit" class="icon-btn send" aria-label="Send to NOVA" style="color:#fff">➜</button>
+  </div>
+</form>
+{% else %}
+<section class="card stack-sm" aria-labelledby="done-h">
+  <h2 id="done-h">{% if session.status == "passed" %}NOVA passed the check!{% else %}Session finished{% endif %}</h2>
+  <p>{{ session.summary }}</p>
+  {% if session.scores %}
+  <div class="grid-3" style="grid-template-columns:repeat(2,1fr)">
+    {% for k in ["accuracy", "completeness", "clarity", "examples"] %}<div class="tile"><span class="k">{{ k|capitalize }}</span><span class="v">{{ (session.scores[k] * 100)|round|int }}%</span></div>{% endfor %}
+  </div>{% endif %}
+  <a class="btn block" href="/student/learn">Back to Learn</a>
+  <a class="btn block ghost" href="/student/teach/{{ topic.id }}?new=1">Teach NOVA again</a>
+</section>
+{% endif %}
+{% endblock %}

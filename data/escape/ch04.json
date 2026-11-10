@@ -1,0 +1,218 @@
+{
+ "chapter": 4,
+ "title": "The Metal Vault",
+ "story": "You and NOVA are locked in a metals vault. Its four locks test whether NOVA understands metals and non-metals. NOVA's guesses so far have set off the alarm twice.",
+ "escaped": "The vault door swings open. NOVA now uses real properties, not looks, and knows rust needs both air and water.",
+ "locks": [
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "4.1",
+   "title": "Metal or non-metal?",
+   "intro": "NOVA must sort elements into metals and non-metals. Choose the clues it should use, then test it on gold and iodine.",
+   "labels": [
+    "Metal",
+    "Non-metal"
+   ],
+   "features": [
+    {
+     "key": "shiny",
+     "text": "Shiny (lustrous)"
+    },
+    {
+     "key": "conducts",
+     "text": "Conducts electricity"
+    },
+    {
+     "key": "grey",
+     "text": "Grey or silver in colour"
+    }
+   ],
+   "train": [
+    {
+     "name": "Iron",
+     "label": 0,
+     "f": {
+      "shiny": 1,
+      "conducts": 1,
+      "grey": 1
+     }
+    },
+    {
+     "name": "Copper",
+     "label": 0,
+     "f": {
+      "shiny": 1,
+      "conducts": 1,
+      "grey": 0
+     }
+    },
+    {
+     "name": "Aluminium",
+     "label": 0,
+     "f": {
+      "shiny": 1,
+      "conducts": 1,
+      "grey": 1
+     }
+    },
+    {
+     "name": "Sulphur",
+     "label": 1,
+     "f": {
+      "shiny": 0,
+      "conducts": 0,
+      "grey": 0
+     }
+    },
+    {
+     "name": "Coal (carbon)",
+     "label": 1,
+     "f": {
+      "shiny": 0,
+      "conducts": 0,
+      "grey": 0
+     }
+    },
+    {
+     "name": "Phosphorus",
+     "label": 1,
+     "f": {
+      "shiny": 0,
+      "conducts": 0,
+      "grey": 0
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "Gold",
+     "label": 0,
+     "f": {
+      "shiny": 1,
+      "conducts": 1,
+      "grey": 0
+     }
+    },
+    {
+     "name": "Iodine",
+     "label": 1,
+     "f": {
+      "shiny": 1,
+      "conducts": 0,
+      "grey": 1
+     }
+    }
+   ],
+   "hint": "Iodine is a non-metal, yet it is shiny and greyish. Which property do all the metals share that iodine doesn't?",
+   "learn": "Looks can fool an AI. Iodine shines like a metal and gold isn't grey. Conducting electricity is a real property of metals, so it sorts both correctly."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "4.2",
+   "title": "Check NOVA's chemistry",
+   "intro": "NOVA explains what happens when metals burn in air. Is it right? Decide and pick the fact that settles it.",
+   "claim": "When metals burn in oxygen they make acidic oxides.",
+   "confidence": "92% sure",
+   "verdict": 1,
+   "evidence": [
+    "Magnesium oxide dissolves in water and turns red litmus blue, so metal oxides are basic.",
+    "Metals can be beaten into sheets and drawn into wires.",
+    "Sulphur dioxide dissolves in water and turns blue litmus red.",
+    "Copper is used to make electric wires."
+   ],
+   "right": 0,
+   "hint": "Sulphur is not a metal. Which fact is about a metal's oxide?",
+   "learn": "A fact about something similar (sulphur's acidic oxide) can make a wrong claim sound right. The evidence must be about the exact thing claimed: a metal's oxide."
+  },
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "4.3",
+   "title": "Fix NOVA's list of uses",
+   "intro": "NOVA is learning what metals and non-metals are used for. Tick the examples that are wrong.",
+   "rows": [
+    {
+     "item": "Aluminium",
+     "label": "Wrapping food (foil)"
+    },
+    {
+     "item": "Copper",
+     "label": "Electric wires"
+    },
+    {
+     "item": "Sulphur",
+     "label": "Electric wires",
+     "wrong": true,
+     "why": "sulphur is a non-metal and doesn't conduct electricity"
+    },
+    {
+     "item": "Gold",
+     "label": "Jewellery"
+    },
+    {
+     "item": "Iron",
+     "label": "Bridges and machinery"
+    },
+    {
+     "item": "Chlorine",
+     "label": "Purifying water"
+    },
+    {
+     "item": "Iron",
+     "label": "Jewellery that never rusts",
+     "wrong": true,
+     "why": "iron rusts; gold and silver are used for jewellery"
+    }
+   ],
+   "hint": "Think about which materials conduct electricity and which ones rust.",
+   "learn": "Some wrong examples break a rule the AI should know (non-metals don't conduct). Catching them before training stops NOVA from learning something impossible."
+  },
+  {
+   "kind": "pattern",
+   "skill": "data",
+   "topic": "4.2",
+   "title": "What makes iron rust?",
+   "intro": "Three iron nails were kept in test tubes for a week. NOVA has the results.",
+   "table": {
+    "cols": [
+     "Tube",
+     "Air?",
+     "Water?",
+     "Rusted after a week?"
+    ],
+    "rows": [
+     [
+      "A",
+      "Yes",
+      "No",
+      "No"
+     ],
+     [
+      "B",
+      "No",
+      "Yes",
+      "No"
+     ],
+     [
+      "C",
+      "Yes",
+      "Yes",
+      "Yes"
+     ]
+    ]
+   },
+   "question": "NOVA says: 'Water makes iron rust.' What does the data really show?",
+   "options": [
+    "NOVA is right: tube B proves it.",
+    "Iron rusted only when it had both air and water (tube C); neither alone was enough.",
+    "Air alone makes iron rust.",
+    "Rusting is random."
+   ],
+   "answer": 1,
+   "hint": "Tube B had water but didn't rust. Which tube rusted, and what did it have?",
+   "learn": "An AI must look at all the data, not just the case that fits its idea. Tube B rules out 'water alone'; the pattern is that rusting needs both air (oxygen) and water."
+  }
+ ]
+}

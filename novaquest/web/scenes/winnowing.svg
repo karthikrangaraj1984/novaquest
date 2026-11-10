@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"farmer":[78,96],"basket":[150,74],"wind":[300,60],"grain":[154,250],"chaff":[300,236]}'>
+<rect x="0" y="262" width="400" height="38" fill="#E7D3B0"/>
+<circle cx="78" cy="58" r="16" fill="#8A5A2B"/><path d="M78 74 L78 170 M78 100 L134 76 M78 104 L124 92 M78 170 L60 262 M78 170 L98 262" stroke="#8A5A2B" stroke-width="9" stroke-linecap="round" fill="none"/>
+<path d="M120 62 Q154 96 192 62 Z" fill="#D9B36A" stroke="#8A5A2B" stroke-width="3"/>
+<g fill="#C9962E"><circle cx="152" cy="110" r="3"/><circle cx="156" cy="140" r="3"/><circle cx="150" cy="170" r="3"/><circle cx="155" cy="200" r="3"/><circle cx="151" cy="228" r="3"/></g>
+<path d="M120 262 Q154 222 190 262 Z" fill="#C9962E"/>
+<g fill="#E8DFC8" stroke="#BBAE8C" stroke-width="1"><path d="M190 110 l10 3 l-9 2z"/><path d="M220 140 l10 3 l-9 2z"/><path d="M250 170 l10 3 l-9 2z"/><path d="M276 200 l10 3 l-9 2z"/><path d="M230 120 l10 3 l-9 2z"/><path d="M262 150 l10 3 l-9 2z"/></g>
+<path d="M260 262 Q300 236 350 262 Z" fill="#E8DFC8" stroke="#BBAE8C"/>
+<g stroke="#8EA4FF" stroke-width="3" fill="none" stroke-linecap="round"><path d="M220 50 h120 m-12 -8 l12 8 l-12 8"/><path d="M240 80 h100"/></g>
+</svg>

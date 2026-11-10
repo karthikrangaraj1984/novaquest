@@ -1,0 +1,26 @@
+{# Header for a class: name, size and its tabs (UX-1). #}
+{% macro class_head(cid, label, students, active, classes=None) -%}
+<div class="stack-sm" style="gap:6px">
+  {% if actor.role == "leader" %}
+  <span class="muted small"><a href="/leader">Overview</a> · {{ students }} students</span>
+  <h1>Class {{ label }}</h1>
+  <nav class="tabs" aria-label="Class {{ label }}">
+    <a href="/leader/classes/{{ cid }}" {% if active == "summary" %}aria-current="page"{% endif %}>Summary</a>
+    <a href="/teacher/classes/{{ cid }}/mastery" {% if active == "progress" %}aria-current="page"{% endif %}>Progress</a>
+    <a href="/teacher/classes/{{ cid }}/growth" {% if active == "growth" %}aria-current="page"{% endif %}>Growth</a>
+    <a href="/teacher/classes/{{ cid }}/briefing" {% if active == "briefing" %}aria-current="page"{% endif %}>Briefing</a>
+    <a href="/teacher/classes/{{ cid }}/escape" {% if active == "escape" %}aria-current="page"{% endif %}>Escape rooms</a>
+  {% else %}
+  <span class="muted small"><a href="/teacher/classes">Classes</a> · {{ students }} students</span>
+  <h1>Class {{ label }}</h1>
+  <nav class="tabs" aria-label="Class {{ label }}">
+    <a href="/teacher/classes/{{ cid }}/students" {% if active == "students" %}aria-current="page"{% endif %}>Students</a>
+    <a href="/teacher/classes/{{ cid }}/mastery" {% if active == "progress" %}aria-current="page"{% endif %}>Progress</a>
+    <a href="/teacher/classes/{{ cid }}/growth" {% if active == "growth" %}aria-current="page"{% endif %}>Growth</a>
+    <a href="/teacher/classes/{{ cid }}/briefing" {% if active == "briefing" %}aria-current="page"{% endif %}>Briefing</a>
+    <a href="/teacher/classes/{{ cid }}/escape" {% if active == "escape" %}aria-current="page"{% endif %}>Escape rooms</a>
+    {% if actor.role == "teacher" %}<a href="/teacher/plan?class={{ cid }}">Term plan</a>{% endif %}
+  {% endif %}
+  </nav>
+</div>
+{%- endmacro %}

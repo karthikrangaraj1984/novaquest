@@ -1,0 +1,26 @@
+{% extends "staff.html" %}
+{# Students' questions (1.31.0): what students asked about a topic or a question they got wrong, oldest first. #}
+{% block title %}Students' questions{% endblock %}
+{% block main %}
+<div class="stack-sm" style="gap:2px"><a class="small" href="/teacher">← Today</a><h1>Students' questions</h1>
+  <span class="muted small">From your classes, in the subjects you teach. A short reply is enough; the student sees it in their bell.</span></div>
+<section class="stack-sm" aria-labelledby="w-h">
+  <h2 id="w-h">Waiting for you ({{ waiting|length }})</h2>
+  {% for d in waiting %}
+  <article class="card stack-sm">
+    <span class="small muted"><b>{{ d.student }}</b>{% if d.roll_no %} (roll {{ d.roll_no }}){% endif %} · {{ d.class_label }}{% if d.subject %} · {{ d.subject }}{% endif %}{% if d.topic %} · {{ d.topic }}{% endif %} · {{ d.created_at|ago }}</span>
+    {% if d.question %}<div class="note info small"><b>About this question:</b> {{ d.question }}{% if d.options and d.key and d.key.index is defined %}<br>Answer: {{ d.options[d.key.index] }}{% endif %}</div>{% endif %}
+    <p><b>{{ d.body }}</b></p>
+    <form method="post" class="stack-sm"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="doubt" value="{{ d.id }}">
+      <label for="r{{ d.id }}" class="sr-only">Reply to {{ d.student }}</label>
+      <textarea id="r{{ d.id }}" name="reply" rows="2" required placeholder="Your reply"></textarea>
+      <button class="btn small" type="submit" style="align-self:flex-start">Send reply</button></form>
+  </article>
+  {% else %}<p class="small muted">No questions waiting. 👍</p>{% endfor %}
+</section>
+{% if answered %}
+<details class="card"><summary><b>Answered recently</b></summary>
+  <div class="stack-sm" style="margin-top:8px">{% for d in answered %}<div class="stack-sm" style="gap:2px"><span class="small muted">{{ d.student }} · {{ d.class_label }} · {{ d.replied_at|ago }}</span><span class="small"><b>{{ d.body }}</b></span><span class="small">↳ {{ d.reply }}</span></div>{% endfor %}</div>
+</details>
+{% endif %}
+{% endblock %}

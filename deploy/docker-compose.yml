@@ -1,0 +1,40 @@
+# One-command local stack for a machine with Docker: docker compose -f deploy/docker-compose.yml up -d
+# Then: docker compose -f deploy/docker-compose.yml run --rm web python -m tools.nq init
+# NOTE: provided for convenience; the release was tested with the native launcher (tools/nq.py), not with Docker.
+name: novaquest
+services:
+  db:
+    image: pgvector/pgvector:0.8.0-pg16
+    environment:
+      POSTGRES_PASSWORD: ${NQ_PG_SUPERUSER_PASSWORD:-change-me}
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck: {test: ["CMD", "pg_isready", "-U", "postgres"], interval: 5s, retries: 20}
+  mailpit:
+    image: axllent/mailpit:v1.27.10
+    ports: ["127.0.0.1:8025:8025"]
+  ollama:
+    image: ollama/ollama:0.12.6
+    volumes: [ollama:/root/.ollama]
+    profiles: [embeddings]
+  web: &app
+    build: {context: .., dockerfile: deploy/Dockerfile}
+    environment: &env
+      NQ_DATABASE_URL: postgresql://nq_owner:${NQ_OWNER_PASSWORD:-nq_owner}@db:5432/novaquest
+      NQ_APP_DATABASE_URL: postgresql://nq_app:${NQ_APP_PASSWORD:-nq_app}@db:5432/novaquest
+      NQ_ADMIN_DATABASE_URL: postgresql://postgres:${NQ_PG_SUPERUSER_PASSWORD:-change-me}@db:5432/postgres
+      NQ_SECRET_KEY: ${NQ_SECRET_KEY:?set NQ_SECRET_KEY in .env}
+      NQ_BASE_URL: ${NQ_BASE_URL:-https://localhost:8443}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      NQ_SMTP_HOST: mailpit
+      NQ_EMBED_URL: ${NQ_EMBED_URL:-}
+    depends_on: {db: {condition: service_healthy}, mailpit: {condition: service_started}}
+  worker:
+    <<: *app
+    command: ["python", "-m", "novaquest.worker"]
+  caddy:
+    image: caddy:2.10.2
+    ports: ["8443:8443"]
+    environment: {NQ_APP_UPSTREAM: "web:8000", NQ_LAN_SITE: "${NQ_LAN_SITE:-127.0.0.1:8443}"}
+    volumes: [./Caddyfile:/etc/caddy/Caddyfile:ro, caddy:/data]
+    depends_on: [web]
+volumes: {pgdata: {}, ollama: {}, caddy: {}}

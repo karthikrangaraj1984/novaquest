@@ -1,0 +1,23 @@
+{% extends "staff.html" %}
+{% block title %}Question bank{% endblock %}
+{% block main %}
+<div class="stack-sm" style="gap:2px"><h1>Question bank</h1><span class="muted">Every question you've approved is saved here. Build an assignment from it with no AI needed.</span></div>
+<form method="post" class="stack">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <div class="card table-wrap"><table>
+    <thead><tr><th scope="col"><span class="sr-only">Choose</span></th><th scope="col">Question</th><th scope="col">Topic</th><th scope="col">Type</th><th scope="col">Level</th></tr></thead>
+    <tbody>
+    {% for q in items %}
+      <tr><td><input type="checkbox" name="questions[]" value="{{ q.id }}" aria-label="Choose question {{ loop.index }}" style="width:18px;height:18px"></td><td>{{ q.prompt }}</td><td class="small">{{ q.topic_code }} {{ q.topic_title }}</td>
+        <td class="small">{{ {'mcq': 'Multiple choice', 'short': 'Short answer', 'viva': 'Understanding check', 'numeric': 'Number problem', 'ai_moment': 'AI moment'}[q.kind] }}</td><td class="small">{{ q.difficulty|capitalize }} · {{ q.thinking_level }}</td></tr>
+    {% else %}<tr><td colspan="5" class="muted">Approve questions in an assignment to start your bank.</td></tr>{% endfor %}
+    </tbody></table></div>
+  {% if items %}
+  <div class="sticky-foot">
+    <div class="row"><label for="bc">Class</label><select id="bc" name="class_id">{% for c in classes %}<option value="{{ c.id }}">{{ c.label }}</option>{% endfor %}</select>
+      <label for="bt" class="sr-only">Title</label><input id="bt" name="title" type="text" placeholder="Assignment title" style="width:260px"></div>
+    <button class="btn" type="submit">Make an assignment</button>
+  </div>
+  {% endif %}
+</form>
+{% endblock %}

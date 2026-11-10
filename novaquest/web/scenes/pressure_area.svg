@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"force":[100,40],"small_area":[100,214],"big_area":[300,190],"sink":[100,250],"no_sink":[300,240]}'>
+<rect x="0" y="230" width="400" height="70" fill="#E7D3B0"/>
+<g fill="#8A90A6" stroke="#4A5168" stroke-width="3"><path d="M84 70 H116 V200 L100 238 L84 200 Z"/><rect x="250" y="150" width="100" height="70"/></g>
+<rect x="76" y="58" width="48" height="14" rx="4" fill="#4A5168"/>
+<g stroke="#E0541A" stroke-width="6" fill="#E0541A"><path d="M100 10 V44"/><path d="M90 40 l10 14 l10 -14z"/><path d="M300 100 V134"/><path d="M290 130 l10 14 l10 -14z"/></g>
+<path d="M80 232 Q100 262 120 232" fill="#C9AE85"/>
+<text x="100" y="292" font-size="13" text-anchor="middle" fill="#5A6178" font-family="sans-serif">same push, tiny area</text>
+<text x="300" y="292" font-size="13" text-anchor="middle" fill="#5A6178" font-family="sans-serif">same push, big area</text>
+</svg>

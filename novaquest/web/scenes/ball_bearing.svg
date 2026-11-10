@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"outer_ring":[200,32],"balls":[262,96],"inner_ring":[200,104],"axle":[200,150]}'>
+<circle cx="200" cy="150" r="124" fill="#B0BEC5" stroke="#455A64" stroke-width="4"/>
+<circle cx="200" cy="150" r="98" fill="#ECEFF1" stroke="#455A64" stroke-width="3"/>
+<circle cx="200" cy="150" r="62" fill="#B0BEC5" stroke="#455A64" stroke-width="4"/>
+<circle cx="200" cy="150" r="30" fill="#455A64"/>
+<g fill="#CFD8DC" stroke="#263238" stroke-width="3">
+<circle cx="200" cy="70" r="16"/><circle cx="262" cy="96" r="16"/><circle cx="280" cy="150" r="16"/><circle cx="262" cy="204" r="16"/><circle cx="200" cy="230" r="16"/><circle cx="138" cy="204" r="16"/><circle cx="120" cy="150" r="16"/><circle cx="138" cy="96" r="16"/></g>
+<g fill="#fff" opacity=".8"><circle cx="196" cy="65" r="4"/><circle cx="258" cy="91" r="4"/><circle cx="276" cy="145" r="4"/><circle cx="258" cy="199" r="4"/><circle cx="196" cy="225" r="4"/><circle cx="134" cy="199" r="4"/><circle cx="116" cy="145" r="4"/><circle cx="134" cy="91" r="4"/></g>
+</svg>

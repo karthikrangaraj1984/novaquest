@@ -1,0 +1,181 @@
+"""The requirement catalogue used for traceability. IDs match the MVP requirements document;
+NF-* are the non-functional requirements. Out-of-scope items say why."""
+from __future__ import annotations
+
+REQUIREMENTS: dict[str, str] = {
+    "ON-1": "NovaQuest admin creates an institution with its own isolated data space",
+    "ON-2": "Institution admin sets up classes (grade + section)",
+    "ON-3": "Institution admin creates teacher and leadership accounts by form or CSV; staff get an invite and log in",
+    "ON-4": "Map teachers to subject + class; a teacher sees only their own classes",
+    "ON-5": "Academic year rollover with history kept",
+    "ST-1": "Teacher adds students by form or CSV; 40 in under a minute with row-level errors",
+    "ST-2": "Login per student (roll number + PIN) and printable login slips",
+    "ST-3": "Teacher resets a student's PIN; student can log in again immediately",
+    "ST-4": "Parental consent recorded before a Grade 8 account can be used",
+    "ST-5": "Teacher deactivates or moves a student; history kept",
+    "SY-1": "Syllabus tree: subject → chapter → topic → learning outcome",
+    "SY-2": "Each topic shows source material and a coverage marker",
+    "SY-3": "Teacher uploads notes/PDFs to a topic as citable AI source material",
+    "SY-4": "NovaQuest admin loads and versions a syllabus without breaking assignments",
+    "SY-5": "School admin uploads its own textbook (any board, subject, grade; one PDF or one per chapter); NovaQuest "
+            "drafts chapters and topics, the admin reviews and publishes, and Claude drafts lessons for approval",
+    "SY-6": "Each class studies one or more books; students, teachers, Ask NOVA and reports follow the class's books",
+    "AS-1": "Pick topics, difficulty, type and count; draft generated in under 60 seconds",
+    "AS-2": "Assignment types: mission, quiz, short answer, understanding check (+ Learn, Teach NOVA)",
+    "AS-4": "Every question tagged with learning outcome, thinking level and syllabus source",
+    "AS-5": "Teacher reviews each question (approve, edit, regenerate, remove) before publishing",
+    "AS-6": "Approved questions saved to a reusable question bank",
+    "AS-7": "Printable worksheet of an assignment (name and roll lines, writing lines, answer key on its own page) "
+            "and a projector view: one question per screen, answer revealed on demand with the class's result",
+    "AS-8": "Exam paper builder: teacher sets the pattern (sections of n questions at m marks), difficulty and topics; three "
+            "different papers to compare, swap any question, choose one, print as PDF with a separate answer key and marking scheme",
+    "SC-1": "Assign to a whole class, a group or individual students",
+    "SC-2": "Open and expiry date-time in Indian time",
+    "SC-3": "Optional time limit and number of attempts enforced",
+    "SC-4": "Extend the deadline for everyone or one student",
+    "SC-5": "States draft → scheduled → open → closed → reviewed on the teacher's list",
+    "SX-1": "Student sees open assignments with time left, sorted by expiry",
+    "SX-2": "AI tutor gives hints, never answers, during an assignment",
+    "SX-3": "Answers autosave; resume within the window; nothing lost on refresh or dropped connection",
+    "SX-4": "Reminder before expiry (in-app and email) for students who haven't finished",
+    "SX-5": "Scorecard after release: every answer vs the correct answer, by concept",
+    "SX-6": "Shareable one-page progress report for parents",
+    "SX-8": "Students see topic levels (Learning, Practised, Mastered) as their measure of learning: results say how many "
+            "were right and each topic's level, a topic page says which step reaches the next level (1.31.0: their own "
+            "score trend per subject is shown alongside, on My progress)",
+    "SX-7": "Student can sign out from every screen; a shared phone keeps no session or unsent answers of the last student",
+    "NR-1": "Teacher notified on completion with a digest, not one email per student",
+    "NR-2": "Teacher notified at expiry with who didn't complete",
+    "NR-3": "Review screen with AI marking, rationale and teacher override that updates progress",
+    "NR-4": "Answers the AI is unsure about are flagged first",
+    "NR-5": "Teacher feedback and release; students see results only after release",
+    "DB-1": "Teacher: per-assignment results, completion and per-student drill-down",
+    "DB-2": "Teacher: class mastery by outcome, weakest outcomes, top misconceptions",
+    "DB-3": "Leadership: class/subject/teacher comparison, trend, engagement on one screen",
+    "DB-4": "Export dashboards to CSV and PDF matching the screen",
+    "DB-5": "AI concepts tracked as their own section",
+    "DB-8": "AI skills measured from escape-room locks (tries and hints) per student, class and school; teachers see "
+            "who escaped which room and an answer guide for every room",
+    "DB-9": "Principal: an overview that leads somewhere (every class, teacher and student row opens a page, no "
+            "dead ends), 'needs your attention' worked out from the data, a read-only page per class, and a friendly "
+            "reminder to a teacher",
+    "DB-10": "Principal: a weekly summary (bell and email, Monday morning) and a one-page monthly report PDF for "
+             "management meetings",
+    "DB-6": "Results question by question: share of the class right, most chosen wrong answer, who got it wrong and "
+            "what they mixed up, and the questions worth teaching again",
+    "DB-7": "Term plan: dates for each chapter per class and book (typed or spread over the term by topic count); "
+            "shows what's in class now and chapters that are behind; students see the chapter taught in class now",
+    "LN-1": "Guided lesson with source, worked example and adaptive quick checks",
+    "LN-2": "Ask the tutor: grounded, cited, off-syllabus declined",
+    "LN-3": "Interactive practice: game-style mission per topic",
+    "LN-4": "Understanding check (explain + apply) sets mastery",
+    "LN-5": "Mastery levels shown to student and teacher",
+    "LN-6": "'Learn' as an assignment type; teacher notified when done",
+    "LN-7": "Teacher opens/locks topics for self-study and reads tutor conversations",
+    "LN-8": "Adaptive next step after each understanding check",
+    "LN-9": "Revision plan from the weakest outcomes",
+    "LN-11": "Book pages: students open a topic's real textbook pages (figures and tables as printed); shown for free "
+             "books, and for a school's own books only after the admin confirms the right to show them",
+    "LN-12": "Escape rooms (learn AI through AI): a room per chapter with four locks, each joining a science idea with an "
+             "AI skill and each an activity (train a sorter, clean training data, check a claim with evidence, read a "
+             "pattern); locks open in order and each gives a digit of the door code",
+    "LN-10": "Learn in pictures: every topic taught in simple words with labelled diagrams, flows and comparisons, "
+             "ending with the crux and a picture quiz",
+    "TA-1": "AI student persona: friendly, consistent, age-appropriate",
+    "TA-2": "Planned misconceptions from the topic's reviewed list",
+    "TA-3": "Probing follow-ups for vague or partial explanations",
+    "TA-4": "Never learns wrong ideas; tested against deliberately wrong explanations",
+    "TA-5": "Clear ending: NOVA passes a short check, with a summary",
+    "TA-6": "Teaching scored on accuracy, completeness, clarity and examples; feeds mastery",
+    "TA-7": "Teaching confidence indicator separate from quiz scores",
+    "TA-8": "Available in Learn mode and as an assignment type",
+    "TA-9": "Teacher view: transcript, misconceptions resolved, errors made",
+    "TA-10": "Voice input and guided sentence starters",
+    "TA-11": "Guardrails: on-topic, filters for minors, every session logged",
+    "MB-1": "Maths books keep their maths when read: powers (3², 10⁻³) and stacked fractions (1/10, bc/a)",
+    "MB-2": "Maths chapter titles over several lines, hyphens at line breaks, and bold headings as topics",
+    "MB-3": "Maths questions without Claude: multiple choice with typical-slip options, worked short and long answers",
+    "MB-4": "Number problems in exam papers, with worked solutions and method marks in the answer key; powers print",
+    "MB-5": "Claude's instructions for maths: reasoning and calculation questions, credit for method steps",
+    "FG-1": "The book's own figures found on its pages with their captions, cut out in the background and kept; logos and page furniture left out",
+    "FG-2": "Book figures on teachers' slides (after the key point they show) and prep pages, only when the school allows it; never cached by the browser",
+    "FG-3": "Claude draws checked diagrams for each topic's key points, shown beside the point on its slide and on the prep page",
+    "TT-1": "Teacher's weekly timetable: lessons added for several days at once, clashes refused, removable, shown as a week grid",
+    "TT-2": "Today lists the day's lessons in time order (done, now, later, next flagged), each class at its own period with "
+            "a Present button for that period; without a timetable, every class the teacher teaches",
+    "TT-3": "Lesson plans count the lessons the timetable gives a chapter; homework closes just before the class next meets",
+    "MC-1": "The same work set for several sections at once: one draft and one approval, each class with its own dates and "
+            "results, sections linked, one to-do row",
+    "MC-2": "One lesson plan per chapter shared by a teacher's sections, each section at its own period (on its chip and period)",
+    "MC-3": "Term plan dates copied to the teacher's other sections in one step; each section's status shown",
+    "QW-1": "Results page: natural roll order, release and class message only once work arrives, open work opens on its "
+            "results; to-do rows name the class and subject",
+    "QW-2": "Pickers apply on change (no Show button); assignments filter by stage and class; every assignment type visible",
+    "SD-1": "Principal and admin see every class against every subject (understanding, practised, term plan, work and "
+            "hand-in), a summary by grade, weekly active students and each teacher's activity, filtered by grade and subject",
+    "DM-1": "A full demo school (several classes, teachers, subjects, timetables and eight weeks of data) from one command, "
+            "with the sign-ins written out",
+    "SG-1": "Student fixes: released work not handed in is 'Missed' and My progress always opens; one status per topic "
+            "(its level) everywhere, a mastered topic offers revision; results highlight Tasks; no word-swapped Daily 5 questions",
+    "SG-2": "Home lists work due in the next two days with plain deadlines and new results with the change from last time; "
+            "Tasks lists every result with its score; My progress shows score trends per subject, best, strong and weak topics",
+    "SG-3": "My mistakes: wrong answers from released work redone until right (written answers marked understood), never "
+            "changing scores; Learn opens on the chapter taught in class now",
+    "SG-4": "Exam mode (countdown, revision plan of weakest topics, timed practice papers) and Ask my teacher (questions to "
+            "the subject teacher, replies in the bell)",
+    "SG-5": "Reflection after each result (how it felt, what next; the teacher sees class counts) and a weekly goal",
+    "OC-1": "Teachers open or lock whole chapters for self-study, open only chosen chapters, or open chapters with the term plan; books can start closed",
+    "OC-2": "Escape rooms follow their chapter; a chapter's room can be set as an assignment, handed in when the student escapes",
+    "PD-1": "Chapter presentation per period from the lesson plan: question, key points, picture cards, textbook pages, activity, check with reveal, wrap-up; notes and timing per slide",
+    "PD-2": "Presentation shown only in the app: presenter view in step with the projector, no download/print/save/copy, watermark, not cached, each opening recorded",
+    "UP-1": "Unit prep pack from the book: per topic objective, hook, key points, pages, check and mix-ups; periods with a timed flow",
+    "UP-2": "The book's activities found and written up for teachers: title, demo or student activity, materials, steps, questions, safety",
+    "UP-3": "Claude writes a fuller prep pack once per school in the background, checked against the book; safe demos only",
+    "UP-4": "Prepare to teach page from Syllabus and term plan: PDF, teacher's own notes, one-click opening quiz",
+    "BP-1": "A book in parts (Part 1, Part 2): part chosen on upload or read from the cover; one tick links all parts to a class; teachers mapped to every part; a part published later joins",
+    "BP-2": "A book in parts is one subject for students: Learn lists every part's chapters ('Part 2 · 1.'), tasks share one subject tag",
+    "BP-3": "A book in parts is one subject for teachers: topics from any part in assignments, papers, term plan, progress and growth ('P2·1.1')",
+    "MA-1": "Number answers read as students write them (fractions, decimals, powers of ten, Indian grouping, units)",
+    "MA-2": "Number marking: unit conversion, tolerance, half marks for a missing unit or rounding, common slips named",
+    "MA-3": "Each student's own numbers from ranges and a formula, with hints and a worked solution in those numbers",
+    "MA-4": "Number problems for teachers (drafted, ready-made or their own) and students (keypad, symbols, step hints)",
+    "VO-1": "Read aloud: questions with their options and NOVA's messages, in the student's language, on the device",
+    "VO-2": "Talk with NOVA: NOVA's replies read aloud and the student's spoken answer sent, hands-free",
+    "LG-1": "Students choose their language (English and 8 Indian languages); main student screens in Hindi and Tamil",
+    "LG-2": "NOVA (Ask NOVA, hints, Teach NOVA) replies in the student's language via Claude, translations kept",
+    "LG-3": "Questions readable in the student's language; questions asked in it searched in English; English underneath",
+    "PW-1": "Paper work: a student's answer photos (or PDF scan) uploaded per student, checked and marked like online work",
+    "PW-2": "Claude reads handwriting exactly as written (not corrected), unclear answers flagged for the teacher",
+    "PW-3": "Without Claude the teacher types answers beside the photos; nothing is marked until the teacher checks it",
+    "PW-4": "Paper work pages, photos deleted with the school's retention period and on erasure",
+    "PR-1": "Consent register: each student's parental consent (who, how, when), CSV download, consent withdrawal",
+    "PR-2": "A student's data exported in one file on a parent's request",
+    "PR-3": "A student's personal data erased on request; marks kept without a name",
+    "PR-4": "Retention: AI conversations and leavers' data deleted after the school's chosen period, checked daily",
+    "PR-5": "AI conversation log for the principal and school admin, with each look audited",
+    "PR-6": "Parent notice and consent form (PDF) describing data, AI use, retention and rights",
+    "NF-ISO": "Each institution sees only its own data, enforced in the database",
+    "NF-SEC": "Hashed secrets, sessions, CSRF, lockout, secure headers, role checks",
+    "NF-AUD": "Audit log of logins and data changes",
+    "NF-PRIV": "Minimum data for minors (no student email or phone)",
+    "NF-AI": "AI safety: topic lock, content filters, answer-leak guard, validation",
+    "NF-MODEL": "One model interface (Claude, fast/strong tiers, caching); offline fallback",
+    "NF-COST": "AI usage recorded per institution, daily cap, cost dashboard",
+    "NF-EMBED": "Local embeddings (Ollama) in pgvector, fused with full-text search",
+    "NF-PERF": "Server render < 300 ms, light pages, fast search and hints",
+    "NF-SCALE": "100 students working at the same time",
+    "NF-MEM": "Bounded memory (size-limited caches, capped password hashing)",
+    "NF-A11Y": "Accessible: labels, one h1, contrast, keyboard use, phone layout",
+    "NF-OFF": "Works on slow/flaky Wi-Fi: offline answer queue",
+    "NF-PWA": "Installable web app (manifest, service worker)",
+    "NF-LOCAL": "Whole stack runs locally from one command; only the AI is external",
+    "UX-1": "Simple flows: one clear next action for students (Up next, a 4-step path per topic, one question per screen) "
+            "and teachers (4-item menu, to-do home, one main action per assignment stage)",
+    "NF-WIN": "Windows: one installer sets up all prerequisites with verified downloads; launcher and schema work there "
+              "(pgvector optional)",
+}
+
+OUT_OF_SCOPE: dict[str, str] = {
+    "AS-3": "MSc coding exercises with a sandbox: PSG MSc track, scheduled for a later release",
+    "NR-6": "MSc similarity check across submissions: PSG MSc track, scheduled for a later release",
+}

@@ -1,0 +1,214 @@
+{
+ "chapter": 17,
+ "title": "The Observatory",
+ "story": "You and NOVA are on a night visit to the observatory when the dome door locks. NOVA is learning astronomy to help the telescope find objects. Get it right to open the dome.",
+ "escaped": "The dome slides open to the stars. NOVA now sorts planets, predicts the Moon's phases and knows its comets from its satellites.",
+ "locks": [
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "17.4",
+   "title": "Inner or outer planet?",
+   "intro": "NOVA must sort planets into inner planets and outer planets. Choose its clues, then test it on Mars and Neptune.",
+   "labels": [
+    "Inner planet",
+    "Outer planet"
+   ],
+   "features": [
+    {
+     "key": "inside",
+     "text": "Closer to the Sun than the asteroid belt"
+    },
+    {
+     "key": "moons",
+     "text": "Has moons"
+    },
+    {
+     "key": "rings",
+     "text": "Has a ring system"
+    }
+   ],
+   "train": [
+    {
+     "name": "Mercury",
+     "label": 0,
+     "f": {
+      "inside": 1,
+      "moons": 0,
+      "rings": 0
+     }
+    },
+    {
+     "name": "Venus",
+     "label": 0,
+     "f": {
+      "inside": 1,
+      "moons": 0,
+      "rings": 0
+     }
+    },
+    {
+     "name": "Earth",
+     "label": 0,
+     "f": {
+      "inside": 1,
+      "moons": 1,
+      "rings": 0
+     }
+    },
+    {
+     "name": "Jupiter",
+     "label": 1,
+     "f": {
+      "inside": 0,
+      "moons": 1,
+      "rings": 1
+     }
+    },
+    {
+     "name": "Saturn",
+     "label": 1,
+     "f": {
+      "inside": 0,
+      "moons": 1,
+      "rings": 1
+     }
+    },
+    {
+     "name": "Uranus",
+     "label": 1,
+     "f": {
+      "inside": 0,
+      "moons": 1,
+      "rings": 1
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "Mars",
+     "label": 0,
+     "f": {
+      "inside": 1,
+      "moons": 1,
+      "rings": 0
+     }
+    },
+    {
+     "name": "Neptune",
+     "label": 1,
+     "f": {
+      "inside": 0,
+      "moons": 1,
+      "rings": 1
+     }
+    }
+   ],
+   "hint": "Earth has a moon too. Which clue really separates the inner four from the outer four?",
+   "learn": "'Has moons' can't separate the groups, because Earth and Mars have moons. Clues that match how the groups are defined (position, or ring systems) work."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "17.2",
+   "title": "Check NOVA's sky claim",
+   "intro": "NOVA explains the daytime sky. Is it right? Decide and pick the fact that settles it.",
+   "claim": "The stars disappear during the day.",
+   "confidence": "85% sure",
+   "verdict": 1,
+   "evidence": [
+    "Stars are in the sky in the daytime too, but the bright sunlight makes them invisible.",
+    "The pole star doesn't seem to move.",
+    "Stars twinkle.",
+    "The Sun is a star."
+   ],
+   "right": 0,
+   "hint": "Not seeing something isn't the same as it not being there.",
+   "learn": "An AI that only learns from what it 'sees' can confuse 'can't see' with 'isn't there'. Knowing the reason (sunlight) corrects it."
+  },
+  {
+   "kind": "pattern",
+   "skill": "predicting",
+   "topic": "17.1",
+   "title": "Predict the full moon",
+   "intro": "NOVA recorded the Moon's shape after a full moon.",
+   "table": {
+    "cols": [
+     "Days after full moon",
+     "Moon's shape"
+    ],
+    "rows": [
+     [
+      "0",
+      "Full moon"
+     ],
+     [
+      "7",
+      "Half moon"
+     ],
+     [
+      "15",
+      "New moon (not seen)"
+     ],
+     [
+      "22",
+      "Half moon"
+     ]
+    ]
+   },
+   "question": "About how many days after the last full moon will the next full moon be?",
+   "options": [
+    "About 22 days",
+    "About 29 to 30 days",
+    "About 15 days",
+    "About 45 days"
+   ],
+   "answer": 1,
+   "hint": "The pattern repeats: full, half, new, half, then ...?",
+   "learn": "The Moon's phases repeat about every 29.5 days, so a pattern found in the data lets NOVA predict the next full moon. Patterns that come from regular motion are very predictable."
+  },
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "17.5",
+   "title": "Fix NOVA's sky catalogue",
+   "intro": "NOVA has a catalogue of objects in the solar system. Tick the entries that are wrong.",
+   "rows": [
+    {
+     "item": "Comet",
+     "label": "Grows a long, glowing tail near the Sun"
+    },
+    {
+     "item": "Meteor",
+     "label": "A 'shooting star' that burns up in the air"
+    },
+    {
+     "item": "Asteroid belt",
+     "label": "Lies between Mars and Jupiter"
+    },
+    {
+     "item": "Halley's comet",
+     "label": "Seen about every 76 years"
+    },
+    {
+     "item": "The Moon",
+     "label": "An artificial satellite",
+     "wrong": true,
+     "why": "the Moon is a natural satellite"
+    },
+    {
+     "item": "Meteorite",
+     "label": "Never reaches the Earth",
+     "wrong": true,
+     "why": "meteorites are the pieces that do reach the Earth"
+    },
+    {
+     "item": "Aryabhata",
+     "label": "An artificial satellite"
+    }
+   ],
+   "hint": "Which satellites are made by people? What makes a meteorite different from a meteor?",
+   "learn": "Words that look alike (meteor, meteorite) are easy to mix up when labelling. Careful labels help AI and people alike."
+  }
+ ]
+}

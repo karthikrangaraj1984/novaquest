@@ -1,0 +1,215 @@
+{
+ "chapter": 3,
+ "title": "The Plastic Maze",
+ "story": "You and NOVA took a wrong turn in a recycling plant and the shutters came down. To get out, help NOVA understand fibres and plastics well enough to sort the plant's waste.",
+ "escaped": "The shutters roll up. NOVA can now sort plastics by how they behave, clean its fibre data and judge a survey fairly.",
+ "locks": [
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "3.4",
+   "title": "Sort the plastics",
+   "intro": "NOVA must sort plastics into thermoplastics (soften and can be reshaped on heating) and thermosetting plastics (don't soften). Choose its clues.",
+   "labels": [
+    "Thermoplastic",
+    "Thermosetting plastic"
+   ],
+   "features": [
+    {
+     "key": "reshape",
+     "text": "Softens and can be reshaped when heated"
+    },
+    {
+     "key": "kitchen",
+     "text": "Used in the kitchen"
+    },
+    {
+     "key": "insulator",
+     "text": "Doesn't conduct electricity"
+    }
+   ],
+   "train": [
+    {
+     "name": "Polythene",
+     "label": 0,
+     "f": {
+      "reshape": 1,
+      "kitchen": 1,
+      "insulator": 1
+     }
+    },
+    {
+     "name": "PVC",
+     "label": 0,
+     "f": {
+      "reshape": 1,
+      "kitchen": 0,
+      "insulator": 1
+     }
+    },
+    {
+     "name": "Bakelite",
+     "label": 1,
+     "f": {
+      "reshape": 0,
+      "kitchen": 1,
+      "insulator": 1
+     }
+    },
+    {
+     "name": "Melamine",
+     "label": 1,
+     "f": {
+      "reshape": 0,
+      "kitchen": 1,
+      "insulator": 1
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "A bucket that bends when heated",
+     "label": 0,
+     "f": {
+      "reshape": 1,
+      "kitchen": 0,
+      "insulator": 1
+     }
+    },
+    {
+     "name": "A saucepan handle",
+     "label": 1,
+     "f": {
+      "reshape": 0,
+      "kitchen": 1,
+      "insulator": 1
+     }
+    },
+    {
+     "name": "An electric switch",
+     "label": 1,
+     "f": {
+      "reshape": 0,
+      "kitchen": 0,
+      "insulator": 1
+     }
+    }
+   ],
+   "hint": "All plastics here are insulators. What does heat do to each kind?",
+   "learn": "Good clues come from what makes the groups different. Where a plastic is used doesn't decide its type; how it behaves when heated does."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "3.6",
+   "title": "Check NOVA's litter advice",
+   "intro": "NOVA is advising a picnic group. It sounds sure. Is it right? Decide and pick the fact that settles it.",
+   "claim": "It's fine to leave plastic bags in the park: everything rots away in the soil within a year.",
+   "confidence": "97% sure",
+   "verdict": 1,
+   "evidence": [
+    "Plastic is non-biodegradable: it takes several years to break down.",
+    "Plastics are light, strong and durable.",
+    "Nylon is used to make parachutes.",
+    "Rayon is made from wood pulp."
+   ],
+   "right": 0,
+   "hint": "Does plastic break down quickly in soil?",
+   "learn": "AI can repeat a common belief as fact. 'Everything rots' is true for peels and paper, not for plastic. Check a claim against what is known about that exact thing."
+  },
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "3.2",
+   "title": "Fix NOVA's fibre list",
+   "intro": "NOVA is learning which fibres are natural and which are synthetic (made by people from chemicals). Tick the examples labelled wrongly.",
+   "rows": [
+    {
+     "item": "Cotton",
+     "label": "Natural"
+    },
+    {
+     "item": "Nylon",
+     "label": "Synthetic"
+    },
+    {
+     "item": "Wool",
+     "label": "Natural"
+    },
+    {
+     "item": "Polyester",
+     "label": "Synthetic"
+    },
+    {
+     "item": "Silk",
+     "label": "Synthetic",
+     "wrong": true,
+     "why": "silk comes from silkworms: it is natural"
+    },
+    {
+     "item": "Acrylic",
+     "label": "Natural",
+     "wrong": true,
+     "why": "acrylic is synthetic, made to look like wool"
+    },
+    {
+     "item": "Jute",
+     "label": "Natural"
+    }
+   ],
+   "hint": "Which of these comes from a plant or an animal? Which is made in a factory from chemicals?",
+   "learn": "Some wrong labels look believable (acrylic feels like wool). An AI trained on them would be wrong in exactly the cases that are hardest to spot, so check the tricky examples first."
+  },
+  {
+   "kind": "pattern",
+   "skill": "cause",
+   "topic": "3.6",
+   "title": "Did the talk work?",
+   "intro": "Classes collected plastic waste for a week. Two classes had a talk about plastics first. NOVA looked at the results.",
+   "table": {
+    "cols": [
+     "Class",
+     "Had the talk?",
+     "Students",
+     "Bags of plastic collected"
+    ],
+    "rows": [
+     [
+      "8A",
+      "Yes",
+      "45",
+      "9"
+     ],
+     [
+      "8B",
+      "Yes",
+      "42",
+      "8"
+     ],
+     [
+      "8C",
+      "No",
+      "30",
+      "5"
+     ],
+     [
+      "8D",
+      "No",
+      "28",
+      "5"
+     ]
+    ]
+   },
+   "question": "NOVA says: 'The talk made classes collect almost twice as much.' What is the honest conclusion?",
+   "options": [
+    "The talk definitely caused the difference.",
+    "The classes with the talk also had more students. Per student, all four collected about the same, so the data doesn't show the talk made a difference.",
+    "Talks make plastic waste.",
+    "The data can't tell us anything at all."
+   ],
+   "answer": 1,
+   "hint": "Work out bags per student for each class: 9 ÷ 45, 8 ÷ 42, 5 ÷ 30, 5 ÷ 28.",
+   "learn": "When two groups differ in more than one way (the talk AND class size), an AI can credit the wrong cause. Comparing fairly, per student, shows the real picture."
+  }
+ ]
+}

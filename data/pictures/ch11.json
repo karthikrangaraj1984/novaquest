@@ -1,0 +1,258 @@
+{
+  "11.1": {
+    "crux": "A force is a push or a pull on an object.",
+    "cards": [
+      {"title": "Push or pull?", "pic": {"kind": "compare", "cols": [
+          {"head": "Push", "icon": "🫸", "cells": ["Kicking a football", "Closing a door", "Pushing a cart"]},
+          {"head": "Pull", "icon": "🫷", "cells": ["Opening a drawer", "Drawing water from a well", "A horse pulling a cart"]}]},
+       "say": ["Every time we move something, we push it or pull it.", "A push or a pull on an object is called a force."],
+       "remember": "Force = push or pull."},
+      {"title": "Forces all day", "pic": {"kind": "icons", "items": [
+          {"icon": "🏏", "text": "Hitting a ball", "sub": "Push"}, {"icon": "🪢", "text": "Tug of war", "sub": "Pull"},
+          {"icon": "🚪", "text": "Opening a door", "sub": "Pull or push"}, {"icon": "🎒", "text": "Lifting a bag", "sub": "Pull up"}]},
+       "say": ["Look around: you'll find pushes and pulls everywhere."],
+       "think": "Is lifting a bucket a push or a pull?"},
+      {"title": "What a force can do", "pic": {"kind": "groups", "root": "A force can…", "items": [
+          {"icon": "▶️", "name": "Start motion", "eg": "Kick a ball at rest"},
+          {"icon": "⏹️", "name": "Stop motion", "eg": "Catch a ball"},
+          {"icon": "⏩", "name": "Change speed", "eg": "Push a swing harder"},
+          {"icon": "↪️", "name": "Change direction", "eg": "Hit a ball with a bat"},
+          {"icon": "🫓", "name": "Change shape", "eg": "Roll out dough"}]},
+       "say": ["We will explore each of these effects in the next topics."]}
+    ],
+    "crux_points": ["A force is a push or a pull.", "Forces act all around us in daily life.", "A force can start, stop, speed up, turn or reshape objects."],
+    "quiz": [
+      {"q": "Opening a drawer is an example of…", "options": ["A pull", "A push", "No force", "Pressure only"], "answer": 0, "why": "You pull the drawer towards you."},
+      {"q": "A force is…", "options": ["A push or a pull", "Only a push", "Only a pull", "A kind of energy drink"], "answer": 0, "why": "Any push or pull on an object is a force."}
+    ]
+  },
+  "11.2": {
+    "crux": "A force always comes from an interaction between at least two objects.",
+    "cards": [
+      {"title": "It takes two", "pic": {"kind": "equation", "parts": [
+          {"icon": "🧍", "text": "You", "color": "blue"}, "+", {"icon": "🚗", "text": "A car", "color": "grey"}, "→", {"icon": "🫸", "text": "A push on the car", "color": "orange"}]},
+       "say": ["A car standing alone won't move by itself.", "When you push it, you and the car interact: that's when a force acts."]},
+      {"title": "Interactions everywhere", "pic": {"kind": "icons", "items": [
+          {"icon": "🐄🧑‍🌾", "text": "Farmer and cow", "sub": "The farmer pulls the cow"},
+          {"icon": "🪢", "text": "Two teams", "sub": "Pull a rope in opposite directions"},
+          {"icon": "🧲", "text": "Two magnets", "sub": "Attract or repel"}]},
+       "say": ["At least two objects must interact for a force to come into play."],
+       "remember": "No interaction, no force."},
+      {"title": "Both feel it", "pic": {"kind": "flow", "steps": [
+          {"icon": "🫸", "text": "You push a wall"},
+          {"icon": "🧱", "text": "The wall pushes back on your hands"},
+          {"icon": "✋", "text": "You can feel the push on your palms"}]},
+       "say": ["In an interaction, both objects feel a force."]}
+    ],
+    "crux_points": ["A force needs at least two interacting objects.", "Examples: a person pushing a car, two teams in tug of war.", "Both objects in an interaction feel a force."],
+    "quiz": [
+      {"q": "How many objects are needed for a force to act?", "options": ["At least two", "One", "None", "Exactly three"], "answer": 0, "why": "A force arises from an interaction between at least two objects."},
+      {"q": "A ball lying alone on the floor…", "options": ["Won't move unless something interacts with it", "Moves by itself", "Floats up", "Pushes itself"], "answer": 0, "why": "Without an interaction, there is no force to move it."}
+    ]
+  },
+  "11.3": {
+    "crux": "A force has a size (magnitude) and a direction; forces in the same direction add up, and forces in opposite directions work against each other.",
+    "cards": [
+      {"title": "Same direction: forces add", "pic": {"kind": "equation", "parts": [
+          {"icon": "🫸", "text": "Your push", "color": "blue"}, "+", {"icon": "🫸", "text": "Friend's push", "color": "blue"}, "=", {"icon": "📦", "text": "Bigger push: box moves easily", "color": "green"}]},
+       "say": ["Two friends pushing a heavy box the same way move it more easily."]},
+      {"title": "Opposite directions: forces fight", "pic": {"kind": "compare", "cols": [
+          {"head": "Equal pulls", "icon": "🟰", "cells": ["Both teams pull equally hard", "Rope doesn't move", "Net force is zero"]},
+          {"head": "Unequal pulls", "icon": "➡️", "cells": ["One team pulls harder", "Rope moves towards the stronger team", "Net force = difference"]}]},
+       "say": ["In a tug of war, forces act in opposite directions.", "The overall force left over is called the net force."],
+       "remember": "Same direction: add. Opposite directions: subtract."},
+      {"title": "Size and direction", "pic": {"kind": "icons", "items": [
+          {"icon": "💪", "text": "Magnitude", "sub": "How strong the force is"},
+          {"icon": "🧭", "text": "Direction", "sub": "Which way it acts"}]},
+       "say": ["To describe a force fully, we need both its strength (magnitude) and its direction.", "If either changes, the effect changes."]}
+    ],
+    "crux_points": ["Forces have magnitude (size) and direction.", "Forces in the same direction add up.", "Opposite forces subtract; equal opposite forces cancel out."],
+    "quiz": [
+      {"q": "Two teams pull a rope equally hard in opposite directions. What happens?", "options": ["The rope doesn't move", "It moves left", "It moves right", "It breaks"], "answer": 0, "why": "Equal and opposite forces cancel, so the net force is zero."},
+      {"q": "Why is it easier for two people to push a box together in the same direction?", "options": ["Their forces add up", "Their forces cancel", "The box gets lighter", "Friction disappears"], "answer": 0, "why": "Forces in the same direction add to a bigger net force."}
+    ]
+  },
+  "11.4": {
+    "crux": "A force can change an object's state of motion: start it, stop it, speed it up, slow it down or change its direction.",
+    "cards": [
+      {"title": "State of motion", "pic": {"kind": "compare", "cols": [
+          {"head": "At rest", "icon": "⚽", "cells": ["Not moving", "Speed is zero"]},
+          {"head": "In motion", "icon": "💨", "cells": ["Moving", "Has a speed and a direction"]}]},
+       "say": ["The state of motion of an object is described by its speed and its direction.", "Being at rest means having zero speed."]},
+      {"title": "Changes a force can make", "pic": {"kind": "flow", "steps": [
+          {"icon": "🦶", "text": "Kick a ball at rest: it starts moving"},
+          {"icon": "⏩", "text": "Kick it again in the same direction: it speeds up"},
+          {"icon": "🧤", "text": "Goalkeeper catches it: it stops"},
+          {"icon": "↪️", "text": "A player heads it sideways: its direction changes"}]},
+       "say": ["One game of football shows every kind of change in motion."],
+       "remember": "A force can change speed, direction, or both."},
+      {"title": "A force doesn't always move things", "pic": {"kind": "icons", "items": [
+          {"icon": "🧱", "text": "Pushing a wall", "sub": "Nothing moves"},
+          {"icon": "🚛", "text": "Pushing a loaded truck", "sub": "Too heavy to move"}]},
+       "say": ["A force may be too small to move a heavy object.", "But it still acts on it."]}
+    ],
+    "crux_points": ["State of motion = speed and direction (rest means zero speed).", "A force can start, stop, speed up, slow down or turn a moving object.", "A force does not always cause motion."],
+    "quiz": [
+      {"q": "A batsman hits a ball and it changes direction. This shows a force can…", "options": ["Change the direction of motion", "Change the colour", "Make the ball lighter", "Do nothing"], "answer": 0, "why": "The bat's force changes the ball's direction (and speed)."},
+      {"q": "An object at rest has a speed of…", "options": ["Zero", "One", "Infinity", "It depends on its colour"], "answer": 0, "why": "Being at rest means not moving: zero speed."}
+    ]
+  },
+  "11.5": {
+    "crux": "A force can change the shape of an object, like squeezing a balloon, stretching a rubber band or rolling out dough.",
+    "cards": [
+      {"title": "Shapes change", "pic": {"kind": "icons", "items": [
+          {"icon": "🎈", "text": "Squeeze a balloon"}, {"icon": "🫓", "text": "Roll out dough for chapati"},
+          {"icon": "🪀", "text": "Stretch a rubber band"}, {"icon": "🪥", "text": "Squeeze toothpaste"},
+          {"icon": "🧽", "text": "Press a sponge"}, {"icon": "🏺", "text": "Shape clay into a pot"}]},
+       "say": ["When you press, squeeze or stretch something, you change its shape."]},
+      {"title": "Back or not?", "pic": {"kind": "compare", "cols": [
+          {"head": "Springs back", "icon": "🔁", "cells": ["Rubber band", "Sponge", "Spring"]},
+          {"head": "Stays changed", "icon": "🔒", "cells": ["Dough", "Clay", "Crushed can"]}]},
+       "say": ["Some objects return to their shape when the force is removed. Others stay changed."]},
+      {"title": "All the effects of force", "pic": {"kind": "icons", "items": [
+          {"icon": "▶️", "text": "Move a still object"}, {"icon": "⏩", "text": "Change speed"}, {"icon": "↪️", "text": "Change direction"}, {"icon": "🫓", "text": "Change shape"}]},
+       "say": ["A force can do one or more of these things at the same time."],
+       "remember": "Force can change motion AND shape."}
+    ],
+    "crux_points": ["A force can change the shape of an object.", "Some objects spring back; others stay changed.", "Force affects speed, direction and shape."],
+    "quiz": [
+      {"q": "Rolling out dough to make a chapati shows that force can…", "options": ["Change shape", "Change colour", "Make heat only", "Stop time"], "answer": 0, "why": "Pressing the dough changes its shape."},
+      {"q": "Which object returns to its shape after you stop pressing?", "options": ["A sponge", "Clay", "Dough", "A crushed can"], "answer": 0, "why": "A sponge springs back; clay and dough stay changed."}
+    ]
+  },
+  "11.6": {
+    "crux": "Contact forces act only when objects touch: muscular force from our muscles, and friction, which slows moving things down.",
+    "cards": [
+      {"title": "Muscular force", "pic": {"kind": "icons", "items": [
+          {"icon": "🏋️", "text": "Lifting weights"}, {"icon": "🚴", "text": "Cycling"}, {"icon": "🐂", "text": "Bullocks pulling a plough"}, {"icon": "🫁", "text": "Breathing"}]},
+       "say": ["The force from the action of muscles is called muscular force.", "We use it to walk, lift, run and even to breathe and digest food."]},
+      {"title": "Friction", "pic": {"kind": "flow", "steps": [
+          {"icon": "⚽", "text": "A ball rolls along the ground"},
+          {"icon": "🐢", "text": "It slowly slows down"},
+          {"icon": "⏹️", "text": "It stops: friction from the ground acted against its motion"}]},
+       "say": ["Friction acts between two surfaces in contact and opposes motion.", "A ball rolling on a rough field stops sooner than on a smooth floor."],
+       "remember": "Friction always acts against motion."},
+      {"title": "Contact needed", "pic": {"kind": "compare", "cols": [
+          {"head": "Contact forces", "icon": "🤝", "cells": ["Act only when objects touch", "Muscular force, friction"]},
+          {"head": "Non-contact forces", "icon": "🧲", "cells": ["Act from a distance", "Magnetic, electrostatic, gravity"]}]},
+       "say": ["Next topic: forces that act without touching."]}
+    ],
+    "crux_points": ["Contact forces act when objects touch each other.", "Muscular force comes from muscles.", "Friction acts between surfaces and opposes motion."],
+    "quiz": [
+      {"q": "A rolling ball slowly stops because of…", "options": ["Friction", "Magnetism", "Gravity pulling it up", "Muscular force"], "answer": 0, "why": "Friction between the ball and the ground opposes its motion."},
+      {"q": "Which is a contact force?", "options": ["Muscular force", "Magnetic force", "Gravity", "Electrostatic force"], "answer": 0, "why": "Muscular force works only when you touch the object."}
+    ]
+  },
+  "11.7": {
+    "crux": "Non-contact forces act from a distance: magnetic force, electrostatic force and the gravitational force of the Earth (gravity).",
+    "cards": [
+      {"title": "Three non-contact forces", "pic": {"kind": "groups", "root": "Forces from a distance", "items": [
+          {"icon": "🧲", "name": "Magnetic", "eg": "A magnet attracts iron, or repels another magnet's like pole"},
+          {"icon": "⚡", "name": "Electrostatic", "eg": "A rubbed comb or straw attracts bits of paper"},
+          {"icon": "🍎", "name": "Gravitational", "eg": "The Earth pulls everything towards it"}]},
+       "say": ["These forces act even when the objects don't touch."]},
+      {"title": "Gravity", "pic": {"kind": "icons", "items": [
+          {"icon": "🍎", "text": "Fruit falls down"}, {"icon": "💧", "text": "Water flows downhill"},
+          {"icon": "🏀", "text": "A ball thrown up comes down"}, {"icon": "🌍", "text": "Every object pulls every other"}]},
+       "say": ["The Earth pulls every object towards itself. This pull is called gravity.", "In fact, every object in the universe attracts every other object."],
+       "remember": "Gravity is an attractive force: it always pulls."},
+      {"title": "Charged objects", "pic": {"kind": "flow", "steps": [
+          {"icon": "🪮", "text": "Rub a plastic straw or comb with paper or hair"},
+          {"icon": "⚡", "text": "It becomes charged"},
+          {"icon": "📃", "text": "Bring it near small bits of paper: they jump towards it"}]},
+       "say": ["The force from a charged object is called electrostatic force."]}
+    ],
+    "crux_points": ["Non-contact forces act from a distance.", "Magnetic and electrostatic forces can attract or repel.", "Gravity is the Earth's pull on everything; every object attracts every other."],
+    "quiz": [
+      {"q": "A mango falls from a tree because of…", "options": ["Gravity", "Friction", "Muscular force", "Magnetism"], "answer": 0, "why": "The Earth's gravitational pull brings it down."},
+      {"q": "A comb rubbed on hair attracts bits of paper. This is…", "options": ["Electrostatic force", "Friction", "Gravity", "Muscular force"], "answer": 0, "why": "The rubbed comb gets charged; charged objects exert electrostatic force."}
+    ]
+  },
+  "11.8": {
+    "crux": "Pressure is force acting on a unit area; the same force pressing on a smaller area gives a bigger pressure.",
+    "cards": [
+      {"title": "Same push, different effect", "pic": {"kind": "scene", "scene": "pressure_area", "labels": [
+          {"at": "force", "name": "Same force on both"},
+          {"at": "small_area", "name": "Pointed tip", "note": "Tiny area"},
+          {"at": "sink", "name": "Sinks in", "note": "High pressure"},
+          {"at": "big_area", "name": "Flat base", "note": "Large area"},
+          {"at": "no_sink", "name": "Hardly sinks", "note": "Low pressure"}]},
+       "say": ["Push a pointed nail and a flat block with the same force.", "The nail sinks in, because its force is concentrated on a small area."]},
+      {"title": "The pressure rule", "pic": {"kind": "equation", "parts": [
+          {"icon": "💪", "text": "Pressure", "color": "orange"}, "=", {"icon": "🫸", "text": "Force", "color": "blue"}, "÷", {"icon": "⬜", "text": "Area", "color": "grey"}]},
+       "say": ["Pressure = force ÷ area on which it acts.", "Smaller area → bigger pressure. Bigger area → smaller pressure."],
+       "remember": "Sharp = small area = high pressure."},
+      {"title": "Pressure in daily life", "pic": {"kind": "compare", "cols": [
+          {"head": "Small area: more pressure", "icon": "📌", "cells": ["Pointed nail tips", "Sharp knife edges", "Thin needle"]},
+          {"head": "Large area: less pressure", "icon": "🎒", "cells": ["Wide school-bag straps", "Porter's round cloth on the head", "Wide tyres"]}]},
+       "say": ["A sharp knife cuts easily because its thin edge has a tiny area.", "Wide straps spread the bag's weight, so it presses less on your shoulders."]}
+    ],
+    "crux_points": ["Pressure = force ÷ area.", "The same force on a smaller area gives more pressure.", "Sharp tools have small areas; wide straps spread force over large areas."],
+    "quiz": [
+      {"q": "Why do school bags have wide straps?", "options": ["They spread the force over a large area, so less pressure", "To look nice", "To make the bag heavier", "To increase pressure"], "answer": 0, "why": "A larger area means less pressure on the shoulders."},
+      {"q": "Which part is marked '?'", "pic": {"kind": "scene", "scene": "pressure_area", "ask": "small_area"}, "options": ["The pointed tip: small area, high pressure", "The flat base: large area", "The hammer", "The ground"], "answer": 0, "why": "The nail's point has a tiny area, so the pressure there is large."}
+    ]
+  },
+  "11.9": {
+    "crux": "Liquids and gases press on the walls of their containers; liquid pressure increases with depth.",
+    "cards": [
+      {"title": "Deeper means more pressure", "pic": {"kind": "scene", "scene": "water_bottle", "labels": [
+          {"at": "top_hole", "name": "Top hole", "note": "Least depth"},
+          {"at": "short_jet", "name": "Weak jet", "note": "Falls close by"},
+          {"at": "bottom_hole", "name": "Bottom hole", "note": "Most depth"},
+          {"at": "long_jet", "name": "Strong jet", "note": "Shoots farthest"}]},
+       "say": ["Make holes at different heights in a bottle full of water.", "Water from the lowest hole shoots out farthest: pressure is greatest at the bottom."],
+       "remember": "Liquid pressure increases with depth."},
+      {"title": "Pushing on the walls", "pic": {"kind": "flow", "steps": [
+          {"icon": "🧴", "text": "Make holes all around a bottle at the same height"},
+          {"icon": "💦", "text": "Fill it with water"},
+          {"icon": "↔️", "text": "Water comes out of every hole equally far"}]},
+       "say": ["Liquids press on the walls of the container in all directions.", "At the same depth, the pressure is the same."]},
+      {"title": "Gases press too", "pic": {"kind": "icons", "items": [
+          {"icon": "🎈", "text": "Balloon", "sub": "Air inside pushes the walls out"},
+          {"icon": "🚲", "text": "Bicycle tube", "sub": "Air pressure keeps it firm"},
+          {"icon": "🏀", "text": "Football", "sub": "Pumped-up air presses outwards"}]},
+       "say": ["Gases also exert pressure on the walls of their containers."]},
+      {"title": "Why dams are wide at the bottom", "pic": {"kind": "layers", "items": [
+          {"name": "Top of dam", "note": "Little water pressure: wall can be thin", "color": "sky"},
+          {"name": "Middle", "note": "More pressure", "color": "blue"},
+          {"name": "Bottom of dam", "note": "Greatest pressure: wall must be thickest", "color": "navy"}]},
+       "say": ["Because pressure increases with depth, dams are built much thicker at the bottom."]}
+    ],
+    "crux_points": ["Liquids and gases exert pressure on the walls of their containers.", "Liquid pressure increases with depth.", "At the same depth, liquid pressure is the same in all directions."],
+    "quiz": [
+      {"q": "Which hole's jet is marked '?'", "pic": {"kind": "scene", "scene": "water_bottle", "ask": "long_jet"}, "options": ["The bottom hole's jet: the farthest", "The top hole's jet", "No jet", "The middle hole's jet"], "answer": 0, "why": "Pressure is greatest at the bottom, so that jet shoots farthest."},
+      {"q": "Why is a dam thicker at the bottom?", "options": ["Water pressure is greatest at the bottom", "To save cement", "To look strong", "Fish live there"], "answer": 0, "why": "Liquid pressure increases with depth."}
+    ]
+  },
+  "11.10": {
+    "crux": "The air around us presses on everything; this atmospheric pressure is very large, but we don't feel crushed because the pressure inside our bodies balances it.",
+    "cards": [
+      {"title": "Air has pressure", "pic": {"kind": "layers", "items": [
+          {"name": "Atmosphere", "note": "A blanket of air many kilometres high", "color": "sky"},
+          {"name": "Its weight presses down", "note": "On everything on Earth", "color": "blue"},
+          {"name": "Us on the ground", "note": "Living under all this air", "color": "green"}]},
+       "say": ["The pressure exerted by the air around us is called atmospheric pressure."]},
+      {"title": "The rubber sucker", "pic": {"kind": "flow", "steps": [
+          {"icon": "🫸", "text": "Press a rubber sucker on a smooth surface"},
+          {"icon": "💨", "text": "Most of the air between them is pushed out"},
+          {"icon": "🧲", "text": "Air pressure outside holds the sucker firmly in place"}]},
+       "say": ["It's hard to pull the sucker off because atmospheric pressure presses on it from outside."],
+       "remember": "The air outside pushes; there's little air inside to push back."},
+      {"title": "Why aren't we crushed?", "pic": {"kind": "compare", "cols": [
+          {"head": "Outside", "icon": "⬇️", "cells": ["Air presses on our body"]},
+          {"head": "Inside", "icon": "⬆️", "cells": ["Pressure inside our body is equal", "It balances the outside pressure"]}]},
+       "say": ["The air on a 15 cm × 15 cm area presses with a force as large as the pull of gravity on 225 kg!", "We're not crushed because the pressure inside our bodies is equal to it."]},
+      {"title": "A famous experiment", "pic": {"kind": "flow", "steps": [
+          {"icon": "🥣", "text": "Otto von Guericke joined two metal hemispheres"},
+          {"icon": "💨", "text": "He pumped out the air from inside"},
+          {"icon": "🐎", "text": "Eight horses on each side couldn't pull them apart"}]},
+       "say": ["Atmospheric pressure pushed the halves together so strongly."]}
+    ],
+    "crux_points": ["Air exerts pressure: atmospheric pressure.", "It holds a rubber sucker to a wall.", "We aren't crushed because the pressure inside our bodies balances it."],
+    "quiz": [
+      {"q": "What holds a rubber sucker against the wall?", "options": ["Atmospheric pressure", "Glue", "Gravity alone", "Friction only"], "answer": 0, "why": "Air pressure outside presses it on; there is little air inside to push back."},
+      {"q": "Why don't we feel crushed by atmospheric pressure?", "options": ["The pressure inside our body balances it", "There is no air pressure", "We are too strong", "Clouds protect us"], "answer": 0, "why": "Our body's internal pressure equals the atmospheric pressure."}
+    ]
+  }
+}

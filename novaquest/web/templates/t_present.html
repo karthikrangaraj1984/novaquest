@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{# Projector view (teacher review, item 11): one question per screen in large type; arrow keys or buttons move,
+   'Show answer' reveals the answer and, once students have handed in, how many got it right. #}
+{% block title %}Projector: {{ assignment.title }}{% endblock %}
+{% block body %}
+<main id="main" class="present" data-slides>
+  <section class="slide" data-slide>
+    <p class="present-kicker">Class {{ assignment.class_label }}</p>
+    <h1>{{ assignment.title }}</h1>
+    {% if topics %}<p class="present-sub">{{ topics|join(" · ") }}</p>{% endif %}
+    <p class="present-sub">{{ questions|length }} question{{ "s" if questions|length != 1 }}</p>
+  </section>
+  {% for q in questions %}
+  <section class="slide" data-slide hidden aria-label="Question {{ q.no }}">
+    <p class="present-kicker">Question {{ q.no }} of {{ questions|length }} · {{ q.topic_title }}</p>
+    {% set sc = q.scenario|scene %}{% if sc %}<p class="present-scene">{{ sc }}</p>{% endif %}
+    <h2 class="present-q">{{ q.prompt }}</h2>
+    {% if q.letters %}<ol class="present-opts">{% for l, o in q.letters %}<li class="{{ 'right' if l == q.right_letter }}"><span class="ring">{{ l }}</span>{{ o }}</li>{% endfor %}</ol>{% endif %}
+    <div class="present-answer" data-answer hidden>
+      {% if q.right_letter %}{# the right option is already highlighted above, so the answer line stays short #}
+      <p><b>Answer: ({{ q.right_letter }})</b>{% if results.get(q.id) is not none %} · <span class="present-stat">{{ results[q.id] }}% of the class got this right</span>{% endif %}</p>
+      {% else %}{% if q.model %}<p><b>A good answer:</b> {{ q.model }}</p>{% endif %}{% if q.points %}<ul>{% for p in q.points %}<li>{{ p }}</li>{% endfor %}</ul>{% endif %}
+      {% if results.get(q.id) is not none %}<p class="present-stat">{{ results[q.id] }}% of the class got this right</p>{% endif %}{% endif %}
+    </div>
+  </section>
+  {% endfor %}
+  <nav class="present-nav" aria-label="Slides">
+    <a class="btn small quiet" href="/teacher/assignments/{{ assignment.id }}">Exit</a>
+    <button class="btn small quiet" type="button" data-slide-prev>← Back</button>
+    <span class="present-count" data-slide-count aria-live="polite">1 / {{ questions|length + 1 }}</span>
+    <button class="btn small ghost" type="button" data-slide-reveal hidden>Show answer</button>
+    <button class="btn small" type="button" data-slide-next>Next →</button>
+    <button class="btn small quiet" type="button" data-fullscreen>Full screen</button>
+  </nav>
+</main>
+{% endblock %}

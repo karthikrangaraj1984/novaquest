@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="{{ lang if lang and lang != 'en' else 'en' }}-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="csrf" content="{{ csrf }}">
+<meta name="theme-color" content="#1D2240">
+<title>{% block title %}NovaQuest{% endblock %} · NovaQuest</title>
+<link rel="stylesheet" href="/static/app.css?v={{ version }}">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/static/icon.svg">
+<script src="/static/app.js?v={{ version }}" defer></script>
+{% block head %}{% endblock %}
+</head>
+<body data-say-label="{{ tr('Read aloud') if tr is defined else 'Read aloud' }}">
+<a class="skip" href="#main">Skip to content</a>
+{% block body %}{% endblock %}
+</body>
+</html>

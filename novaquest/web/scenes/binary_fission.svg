@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"one":[52,150],"nucleus_divides":[148,150],"pinches":[250,150],"two":[352,150]}'>
+<g fill="#E1F5FE" stroke="#0277BD" stroke-width="3">
+<path d="M22 150 c0 -26 20 -38 32 -36 c18 2 30 18 28 36 c-2 22 -18 34 -32 32 c-16 -2 -28 -12 -28 -32z"/>
+<ellipse cx="148" cy="150" rx="44" ry="34"/>
+<path d="M200 150 c0 -26 18 -34 34 -32 c10 2 14 14 16 22 c2 -8 6 -20 16 -22 c16 -2 34 6 34 32 c0 26 -18 34 -34 32 c-10 -2 -14 -14 -16 -22 c-2 8 -6 20 -16 22 c-16 2 -34 -6 -34 -32z"/>
+<circle cx="336" cy="120" r="24"/><circle cx="352" cy="190" r="24"/></g>
+<g fill="#0277BD"><circle cx="52" cy="150" r="9"/><ellipse cx="134" cy="150" rx="7" ry="9"/><ellipse cx="162" cy="150" rx="7" ry="9"/><circle cx="226" cy="150" r="8"/><circle cx="274" cy="150" r="8"/><circle cx="336" cy="120" r="7"/><circle cx="352" cy="190" r="7"/></g>
+<g stroke="#5A6178" stroke-width="2" fill="none"><path d="M88 150 h10 m-4 -4 l4 4 l-4 4"/><path d="M194 150 h4"/><path d="M306 150 h10 m-4 -4 l4 4 l-4 4"/></g>
+</svg>

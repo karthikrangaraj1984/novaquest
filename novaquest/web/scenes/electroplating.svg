@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"battery":[200,30],"copper_plate":[120,180],"object":[280,180],"solution":[200,262],"positive":[150,40],"negative":[252,40]}'>
+<rect x="160" y="16" width="80" height="30" rx="4" fill="#FFE082" stroke="#2A3150" stroke-width="3"/>
+<text x="176" y="37" font-size="16" font-weight="700" fill="#2A3150" font-family="sans-serif">+</text><text x="218" y="37" font-size="18" font-weight="700" fill="#2A3150" font-family="sans-serif">–</text>
+<path d="M160 30 H120 V120" fill="none" stroke="#C62828" stroke-width="4"/><path d="M240 30 H280 V120" fill="none" stroke="#2A3150" stroke-width="4"/>
+<path d="M60 100 V270 Q60 284 74 284 H326 Q340 284 340 270 V100" fill="none" stroke="#5A6178" stroke-width="3"/>
+<path d="M62 150 H338 V270 Q338 282 326 282 H74 Q62 282 62 270 Z" fill="#4FA3E8" opacity=".75"/>
+<rect x="108" y="112" width="24" height="130" fill="#C9753D" stroke="#7E3F17" stroke-width="2"/>
+<rect x="268" y="112" width="24" height="130" fill="#B0BEC5" stroke="#455A64" stroke-width="2"/>
+<rect x="266" y="150" width="28" height="92" fill="none" stroke="#C9753D" stroke-width="4"/>
+<g fill="#C9753D"><circle cx="170" cy="200" r="4"/><circle cx="200" cy="190" r="4"/><circle cx="230" cy="210" r="4"/></g>
+<path d="M150 200 H250 m-10 -6 l10 6 l-10 6" stroke="#7E3F17" stroke-width="2" fill="none"/>
+</svg>

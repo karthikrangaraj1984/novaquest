@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"sun":[50,150],"head":[230,170],"tail":[330,220],"orbit":[150,60]}'>
+<rect width="400" height="300" fill="#121735"/>
+<circle cx="50" cy="150" r="30" fill="#FFB300"/>
+<ellipse cx="200" cy="150" rx="180" ry="96" fill="none" stroke="#3A4170" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M230 170 L392 246 L398 216 Z" fill="#B3E5FC" opacity=".55"/>
+<path d="M230 170 L392 226 L396 206 Z" fill="#E1F5FE" opacity=".7"/>
+<circle cx="230" cy="170" r="10" fill="#E1F5FE"/>
+</svg>

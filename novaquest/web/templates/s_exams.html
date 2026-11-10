@@ -1,0 +1,26 @@
+{% extends "student.html" %}
+{# Exam mode (1.31.0): the student's exams, and a form to add one. #}
+{% block title %}Exam mode{% endblock %}
+{% block eyebrow %}<span class="small"><a href="/student/progress">{{ tr("My progress") }}</a></span>{% endblock %}
+{% block heading %}{{ tr("Exam mode") }}{% endblock %}
+{% block main %}
+<p class="small muted">Tell NovaQuest when your exam is and which chapters come in it. You get a countdown, a little revision for each day (your weakest topics first) and timed practice papers.</p>
+{% if error %}<div class="note warn" role="alert">{{ error }}</div>{% endif %}
+{% for e in exams %}
+<a class="topic-row" href="/student/exams/{{ e.id }}"><span class="stack-sm" style="gap:2px"><b>📅 {{ e.title }}</b><span class="small muted">{{ e.exam_on.strftime("%a %d %b") }} · {% if e.days_left == 0 %}today{% elif e.days_left == 1 %}tomorrow{% else %}in {{ e.days_left }} days{% endif %}</span></span><span aria-hidden="true">›</span></a>
+{% endfor %}
+<form method="post" class="card stack-sm" aria-labelledby="new-h" id="new">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <h2 id="new-h">{{ "Add another exam" if exams else "Add my exam" }}</h2>
+  <div class="field"><label for="ex-t">Name</label><input id="ex-t" name="title" type="text" maxlength="60" placeholder="e.g. Half-yearly Science" value="{{ f.get('title', '') }}"></div>
+  <div class="field"><label for="ex-d">Date of the exam</label><input id="ex-d" name="exam_on" type="date" min="{{ today }}" required value="{{ f.get('exam_on', '') }}"></div>
+  {% for c in choices %}
+  <fieldset class="stack-sm"><legend><label class="choice" style="min-height:40px"><input type="radio" name="book" value="{{ c.book.id }}" {% if (f.get('book') or (choices[0].book.id|string)) == c.book.id|string %}checked{% endif %}><b>{{ c.book.subject }}</b></label></legend>
+    <details {% if loop.first %}open{% endif %}><summary class="small">Chapters in the exam</summary>
+      <div class="stack-sm" style="margin-top:6px">{% for ch in c.chapters %}<label class="check-row"><input type="checkbox" name="chapters[]" value="{{ ch.id }}" {% if ch.id|string in (f.get('chapters[]') or []) %}checked{% endif %}>{{ ch|inpart }}{{ ch.code }}. {{ ch.title }}</label>{% endfor %}</div></details>
+  </fieldset>
+  {% else %}<p class="small muted">Your class doesn't have a subject yet.</p>{% endfor %}
+  <p class="tiny muted">Tick chapters under the subject you chose.</p>
+  <button class="btn" type="submit">Make my plan</button>
+</form>
+{% endblock %}

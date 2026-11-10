@@ -1,0 +1,201 @@
+{
+  "15.1": {
+    "crux": "Lightning is a giant electric spark, the same kind of thing as the tiny sparks you sometimes see when you take off a sweater.",
+    "cards": [
+      {"title": "A huge spark", "pic": {"kind": "compare", "cols": [
+          {"head": "Small spark", "icon": "🧥", "cells": ["Taking off a woollen sweater in the dark", "Tiny crackle"]},
+          {"head": "Giant spark", "icon": "🌩️", "cells": ["Lightning in a thunderstorm", "Huge flash and thunder"]}]},
+       "say": ["Both are caused by electric charges.", "Lightning is just the same thing on a gigantic scale."]},
+      {"title": "Franklin's discovery", "pic": {"kind": "flow", "steps": [
+          {"icon": "📜", "text": "Long ago, people feared lightning and didn't know its cause"},
+          {"icon": "🪁", "text": "In 1752, Benjamin Franklin flew a kite in a thunderstorm and showed lightning is electric"},
+          {"icon": "💡", "text": "Now we know how lightning forms and how to stay safe"}]},
+       "say": ["Franklin showed that lightning and the spark from your clothes are the same kind of thing."],
+       "remember": "Lightning = an electric spark."},
+      {"title": "An old observation", "pic": {"kind": "icons", "items": [
+          {"icon": "🟡", "text": "Amber rubbed with fur", "sub": "Attracts light things like hair"},
+          {"icon": "🏛️", "text": "Ancient Greeks", "sub": "Noticed this about 600 BC"}]},
+       "say": ["People have noticed charged objects for thousands of years."]}
+    ],
+    "crux_points": ["Lightning is an electric spark on a huge scale.", "Benjamin Franklin showed lightning is electric.", "Sparks from clothes are the same kind of thing, much smaller."],
+    "quiz": [
+      {"q": "Lightning is…", "options": ["A giant electric spark", "Burning gas from the Sun", "Reflected moonlight", "A falling star"], "answer": 0, "why": "Lightning is an electric discharge, a spark on a huge scale."},
+      {"q": "Who showed that lightning is electrical?", "options": ["Benjamin Franklin", "Isaac Newton", "Louis Braille", "Robert Hooke"], "answer": 0, "why": "Benjamin Franklin did this with his famous kite experiment."}
+    ]
+  },
+  "15.2": {
+    "crux": "Rubbing two objects together can give them an electric charge, and charged objects attract small, light things.",
+    "cards": [
+      {"title": "Try it yourself", "pic": {"kind": "flow", "steps": [
+          {"icon": "🪮", "text": "Rub a plastic comb in your dry hair, or a refill with polythene"},
+          {"icon": "⚡", "text": "It becomes charged"},
+          {"icon": "📃", "text": "Bring it near tiny bits of paper: they jump up to it"}]},
+       "say": ["Objects that get charges by rubbing are called charged objects.", "The charges are called electric charges."],
+       "remember": "Rubbing can charge objects."},
+      {"title": "What can be charged?", "pic": {"kind": "compare", "cols": [
+          {"head": "Gets charged easily", "icon": "✅", "cells": ["Plastic comb", "Balloon", "Plastic refill", "Plastic straw"]},
+          {"head": "Not easily", "icon": "❌", "cells": ["Metal spoon (held in hand)", "Steel key"]}]},
+       "say": ["Rub different things and test them on bits of paper."]},
+      {"title": "Static charges", "pic": {"kind": "icons", "items": [
+          {"icon": "⏸️", "text": "Static charge", "sub": "Stays on the object, doesn't flow"},
+          {"icon": "➡️", "text": "Electric current", "sub": "Charges moving through a wire"}]},
+       "say": ["Charges made by rubbing stay where they are: they are static charges.", "When charges move, they make an electric current."]}
+    ],
+    "crux_points": ["Rubbing can give objects an electric charge.", "Charged objects attract light objects like bits of paper.", "Charges that stay in place are static; moving charges form a current."],
+    "quiz": [
+      {"q": "A balloon rubbed on hair sticks to a wall because…", "options": ["It has become charged", "It is wet", "It is magnetic", "It is heavy"], "answer": 0, "why": "Rubbing charges the balloon, and charged objects attract other things."},
+      {"q": "Charges that do not move are called…", "options": ["Static charges", "Electric currents", "Magnets", "Sparks"], "answer": 0, "why": "Static means not moving; moving charges are a current."}
+    ]
+  },
+  "15.3": {
+    "crux": "There are two kinds of charge, positive and negative; like charges repel each other and unlike charges attract.",
+    "cards": [
+      {"title": "Two kinds of charge", "pic": {"kind": "compare", "rows": ["Example", "Sign"], "cols": [
+          {"head": "Positive", "icon": "➕", "cells": ["Glass rod rubbed with silk", "+"]},
+          {"head": "Negative", "icon": "➖", "cells": ["The other kind", "–"]}]},
+       "say": ["By convention, the charge on a glass rod rubbed with silk is called positive.", "The other kind is called negative."]},
+      {"title": "Attract or repel?", "pic": {"kind": "groups", "root": "Rule of charges", "items": [
+          {"icon": "➕➕", "name": "Like charges", "eg": "Repel (push apart)"},
+          {"icon": "➖➖", "name": "Like charges", "eg": "Repel (push apart)"},
+          {"icon": "➕➖", "name": "Unlike charges", "eg": "Attract (pull together)"}]},
+       "say": ["Two balloons rubbed with the same cloth carry the same charge, so they push each other away."],
+       "remember": "Like charges repel; unlike charges attract."},
+      {"title": "Balloon experiment", "pic": {"kind": "flow", "steps": [
+          {"icon": "🎈", "text": "Rub two balloons with a woollen cloth"},
+          {"icon": "🎈", "text": "Hang them near each other"},
+          {"icon": "↔️", "text": "They move apart: same charges repel"}]},
+       "say": ["Repulsion is the sure test that two objects have the same charge."]}
+    ],
+    "crux_points": ["Charges are of two kinds: positive and negative.", "Like charges repel; unlike charges attract.", "A glass rod rubbed with silk is positively charged."],
+    "quiz": [
+      {"q": "Two charged balloons push away from each other. Their charges are…", "options": ["The same (like charges)", "Different", "Zero", "Magnetic"], "answer": 0, "why": "Like charges repel each other."},
+      {"q": "A positive charge and a negative charge will…", "options": ["Attract", "Repel", "Ignore each other", "Explode"], "answer": 0, "why": "Unlike charges attract."}
+    ]
+  },
+  "15.4": {
+    "crux": "Charge can move from one object to another through a metal; an electroscope shows this, and passing charge to the earth is called earthing.",
+    "cards": [
+      {"title": "The electroscope", "pic": {"kind": "scene", "scene": "electroscope", "labels": [
+          {"at": "charged", "name": "Charged refill or rod"},
+          {"at": "clip", "name": "Metal paper clip", "note": "Charge travels down it"},
+          {"at": "cardboard", "name": "Cardboard lid"},
+          {"at": "strips", "name": "Aluminium foil strips", "note": "Spread apart when charged"},
+          {"at": "jar", "name": "Glass jar"}]},
+       "say": ["Touch the clip with a charged object.", "Charge moves through the metal to both foil strips. Same charge on both → they repel and spread apart."],
+       "remember": "Spread strips = charge present."},
+      {"title": "Earthing", "pic": {"kind": "flow", "steps": [
+          {"icon": "🍃", "text": "Foil strips are spread apart (charged)"},
+          {"icon": "✋", "text": "Touch the clip with your hand"},
+          {"icon": "🌍", "text": "The charge flows through your body into the earth"},
+          {"icon": "⬇️", "text": "The strips collapse: they have lost their charge"}]},
+       "say": ["Transferring charge to the earth is called earthing.", "Buildings have earthing to protect us from shocks if electricity leaks."]},
+      {"title": "Discharge", "pic": {"kind": "icons", "items": [
+          {"icon": "⚡", "text": "Losing charge", "sub": "Called discharge"},
+          {"icon": "🌩️", "text": "Lightning", "sub": "A huge discharge between clouds and earth"}]},
+       "say": ["Next, we'll see how lightning is a massive discharge."]}
+    ],
+    "crux_points": ["Charge can be transferred through metals.", "An electroscope's strips spread apart when charged (like charges repel).", "Earthing passes charge safely into the earth."],
+    "quiz": [
+      {"q": "What is marked '?' in the electroscope?", "pic": {"kind": "scene", "scene": "electroscope", "ask": "strips"}, "options": ["Foil strips, spread apart by like charges", "The cardboard lid", "The glass jar", "A battery"], "answer": 0, "why": "The foil strips get the same charge and repel each other."},
+      {"q": "When you touch a charged electroscope, the strips collapse because…", "options": ["The charge flows through you to the earth", "Your hand is magnetic", "The jar breaks", "More charge is added"], "answer": 0, "why": "This is earthing: the charge goes to the earth."}
+    ]
+  },
+  "15.5": {
+    "crux": "In a thunderstorm, moving air and water separate charges: negative charges gather at the bottom of clouds and positive charges near the ground, until a giant spark, lightning, jumps between them.",
+    "cards": [
+      {"title": "Charges in a storm cloud", "pic": {"kind": "scene", "scene": "lightning_cloud", "labels": [
+          {"at": "top_positive", "name": "Positive charges", "note": "Collect near the top of the cloud"},
+          {"at": "bottom_negative", "name": "Negative charges", "note": "Collect near the bottom"},
+          {"at": "ground_positive", "name": "Positive charges near the ground"},
+          {"at": "bolt", "name": "Lightning", "note": "Charges meet in a giant spark"}]},
+       "say": ["During a thunderstorm, air currents move up and water droplets move down.", "These strong movements separate the charges."]},
+      {"title": "Step by step", "pic": {"kind": "flow", "steps": [
+          {"icon": "🌬️", "text": "Air rushes up, water drops fall down"},
+          {"icon": "➕➖", "text": "Charges separate: + at the top of the cloud, – at the bottom"},
+          {"icon": "🌍", "text": "Positive charges gather near the ground below"},
+          {"icon": "⚡", "text": "When too much charge builds up, air can't hold it back: a flash of lightning"},
+          {"icon": "🔊", "text": "The huge heat makes the air expand: we hear thunder"}]},
+       "say": ["This sudden flow of charge is called an electric discharge."],
+       "remember": "Lightning = electric discharge between cloud and ground (or between clouds)."},
+      {"title": "Light before sound", "pic": {"kind": "compare", "cols": [
+          {"head": "Lightning", "icon": "⚡", "cells": ["Light reaches us almost instantly"]},
+          {"head": "Thunder", "icon": "🔊", "cells": ["Sound travels slower, so it arrives later"]}]},
+       "say": ["That's why we see the flash first and hear thunder afterwards."]}
+    ],
+    "crux_points": ["Air currents and water drops separate charges in storm clouds.", "Negative charges gather at the bottom of clouds; positive charges near the ground.", "When the build-up is huge, a discharge (lightning) occurs."],
+    "quiz": [
+      {"q": "Which charges collect at the bottom of a thundercloud?", "pic": {"kind": "scene", "scene": "lightning_cloud", "ask": "bottom_negative"}, "options": ["Negative", "Positive", "None", "Magnetic"], "answer": 0, "why": "Negative charges gather near the lower edge of the cloud."},
+      {"q": "Why do we see lightning before we hear thunder?", "options": ["Light travels much faster than sound", "Thunder happens later", "Our ears are slow", "Clouds block sound"], "answer": 0, "why": "Both happen together, but light reaches us far sooner than sound."}
+    ]
+  },
+  "15.6": {
+    "crux": "No open place is safe in lightning: go inside a building or a closed car, avoid tall trees and open fields, and if caught outside, squat low.",
+    "cards": [
+      {"title": "Safe and unsafe places", "pic": {"kind": "compare", "cols": [
+          {"head": "Safer", "icon": "✅", "cells": ["Inside a house or building", "Inside a car or bus with windows and doors shut", "Under shorter trees in a forest"]},
+          {"head": "Unsafe", "icon": "❌", "cells": ["Open fields", "Under tall trees", "Open vehicles: bikes, tractors", "Hilltops and high places", "Holding an umbrella"]}]},
+       "say": ["When you hear thunder, rush to a safer place.", "Wait a while after the last thunder before going out again."]},
+      {"title": "Caught in the open?", "pic": {"kind": "flow", "steps": [
+          {"icon": "🌳", "text": "Stay away from trees and poles"},
+          {"icon": "🚫", "text": "Do NOT lie flat on the ground"},
+          {"icon": "🧎", "text": "Squat low, hands on your knees, head between your hands"}]},
+       "say": ["Squatting makes you the smallest possible target."],
+       "remember": "Squat low, don't lie down."},
+      {"title": "Indoors too", "pic": {"kind": "icons", "items": [
+          {"icon": "🚿", "text": "Avoid bathing or running water"},
+          {"icon": "🔌", "text": "Unplug TVs and computers", "sub": "Lights can stay on"},
+          {"icon": "☎️", "text": "Avoid corded phones and metal pipes"},
+          {"icon": "📱", "text": "Mobile phones are safe"}]},
+       "say": ["Lightning can travel through wires and pipes into a house."]},
+      {"title": "Lightning conductor", "pic": {"kind": "scene", "scene": "lightning_conductor", "labels": [
+          {"at": "rod", "name": "Metal rod", "note": "Taller than the building"},
+          {"at": "conductor", "name": "Conducting strip down the wall"},
+          {"at": "earth", "name": "Buried deep in the earth"},
+          {"at": "building", "name": "Building stays safe"}]},
+       "say": ["A lightning conductor gives the charge an easy, safe path into the earth.", "Metal columns, wiring and water pipes in buildings also help protect us to some extent."]}
+    ],
+    "crux_points": ["Shelter in a building or a closed car; avoid open fields, tall trees and high places.", "If caught outside, squat low with your head between your hands; don't lie down.", "Lightning conductors carry the discharge safely to the earth."],
+    "quiz": [
+      {"q": "Where is it safest during a thunderstorm?", "options": ["Inside a building", "Under a tall tree", "In an open field", "On a motorbike"], "answer": 0, "why": "Buildings and closed cars give the best protection."},
+      {"q": "Which part of the lightning conductor is marked '?'", "pic": {"kind": "scene", "scene": "lightning_conductor", "ask": "rod"}, "options": ["Metal rod above the building", "The door", "A window", "A tree"], "answer": 0, "why": "The tall metal rod catches the lightning and carries it to the earth."}
+    ]
+  },
+  "15.7": {
+    "crux": "Earthquakes are sudden shakes of the ground caused by movements of huge plates deep in the Earth's crust; they can't be predicted, so we must build safely and know what to do.",
+    "cards": [
+      {"title": "Why the ground shakes", "pic": {"kind": "scene", "scene": "earth_plates", "labels": [
+          {"at": "plate_a", "name": "Plate", "note": "The Earth's outer layer is broken into plates"},
+          {"at": "plate_b", "name": "Another plate", "note": "Plates are always slowly moving"},
+          {"at": "fault", "name": "Fault (weak zone)", "note": "Where plates meet"},
+          {"at": "focus", "name": "Where the slip happens", "note": "Deep underground"},
+          {"at": "waves", "name": "Waves of shaking", "note": "Spread outwards"}]},
+       "say": ["When plates brush past, collide or slide under one another, the crust is disturbed.", "We feel this disturbance as an earthquake."]},
+      {"title": "Measuring earthquakes", "pic": {"kind": "icons", "items": [
+          {"icon": "📈", "text": "Seismograph", "sub": "Records the shaking as wavy lines"},
+          {"icon": "📏", "text": "Richter scale", "sub": "Gives the strength (magnitude)"},
+          {"icon": "⚠️", "text": "Above 7", "sub": "Very destructive"}]},
+       "say": ["The Bhuj (2001) and Kashmir (2005) earthquakes were stronger than 7.5.", "The scale isn't simple counting: magnitude 6 carries about 1000 times the destructive energy of magnitude 4."]},
+      {"title": "Danger zones in India", "pic": {"kind": "icons", "items": [
+          {"icon": "🏔️", "text": "Kashmir and the Himalayas"}, {"icon": "🌄", "text": "The North-East"}, {"icon": "🏜️", "text": "Rann of Kutch, Rajasthan"},
+          {"icon": "🌾", "text": "Indo-Gangetic plain"}, {"icon": "📍", "text": "Some parts of South India"}]},
+       "say": ["Earthquakes are more likely near plate boundaries, called seismic or fault zones."]},
+      {"title": "Stay safe", "pic": {"kind": "compare", "cols": [
+          {"head": "Indoors", "icon": "🏠", "cells": ["Take shelter under a strong table", "Stay away from tall, heavy furniture", "If in bed, stay there and cover your head with a pillow"]},
+          {"head": "Outdoors", "icon": "🌳", "cells": ["Move to a clear spot", "Away from buildings, trees and power lines", "Drop to the ground"]}]},
+       "say": ["In a car or bus, stay inside and drive slowly to a clear spot."],
+       "remember": "Earthquakes can't be predicted, so be prepared."},
+      {"title": "Build to resist", "pic": {"kind": "icons", "items": [
+          {"icon": "🏗️", "text": "Earthquake-resistant design", "sub": "Ask qualified engineers"},
+          {"icon": "🪵", "text": "Light roofs", "sub": "Mud or timber better than heavy materials in danger zones"},
+          {"icon": "🗄️", "text": "Fix cupboards to walls", "sub": "So they don't fall"},
+          {"icon": "🖼️", "text": "Hang frames and clocks carefully"}]},
+       "say": ["Most injuries come from falling objects and collapsing buildings."]}
+    ],
+    "crux_points": ["Earthquakes are caused by moving plates in the Earth's crust.", "They are measured by a seismograph and on the Richter scale; they can't be predicted.", "Build resistant structures; indoors shelter under a table, outdoors move to a clear spot."],
+    "quiz": [
+      {"q": "What causes most earthquakes?", "options": ["Movement of plates in the Earth's crust", "Lightning", "Strong winds", "The Moon's light"], "answer": 0, "why": "Plates moving past or into each other disturb the crust."},
+      {"q": "During an earthquake indoors, you should…", "options": ["Take shelter under a strong table", "Stand near a tall cupboard", "Use the lift", "Run onto the balcony"], "answer": 0, "why": "A strong table protects you from falling objects."},
+      {"q": "Which instrument records earthquake waves?", "options": ["Seismograph", "Electroscope", "Periscope", "Thermometer"], "answer": 0, "why": "A seismograph records the tremors as wavy lines."}
+    ]
+  }
+}

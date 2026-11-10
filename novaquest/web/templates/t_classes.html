@@ -1,0 +1,17 @@
+{% extends "staff.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}Classes{% endblock %}
+{% block main %}
+<div class="row-between" style="align-items:flex-end"><h1>Classes</h1><a class="btn ghost" href="/teacher/plan">{{ icon("calendar") }} Term plan</a></div>
+<div class="grid">
+  {% for c in classes %}
+  <a class="card stack-sm class-card" href="/teacher/classes/{{ c.id }}/students">
+    <div class="row-between"><b class="h2like">Class {{ c.label }}</b><span class="small muted">{{ c.students }} students</span></div>
+    <div class="stackbar" role="img" aria-label="Of the whole syllabus for the whole class: mastered {{ c.mastery.mastered|share }}, practised {{ c.mastery.practised|share }}, learning {{ c.mastery.learning|share }}">
+      <span class="s3" style="width:{{ c.mastery.mastered }}%"></span><span class="s2" style="width:{{ c.mastery.practised }}%"></span><span class="s1" style="width:{{ c.mastery.learning }}%"></span></div>
+    <span class="tiny muted">{{ c.mastery.started_students }} of {{ c.mastery.students }} students started · {{ c.mastery.practised_or_better|share }} of the syllabus practised or mastered</span>
+    <span class="small" style="color:var(--primary)">Open class →</span>
+  </a>
+  {% else %}<p class="empty">You aren't mapped to a class yet. Ask your school admin.</p>{% endfor %}
+</div>
+{% endblock %}

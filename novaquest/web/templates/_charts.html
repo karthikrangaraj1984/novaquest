@@ -1,0 +1,30 @@
+{# Small charts (1.30.3): each value is printed on the chart (above its bar or point), and only the first, middle and
+   last dates sit under it, so the reader doesn't match a list of numbers to marks. `rows` are dicts; `when` and `val`
+   name the date and the percentage fields; `title` is the screen reader's summary. #}
+{% macro bar_chart(rows, when, val, title, unit="%") -%}
+{% set n = rows|length %}{% set slot = 300 / n %}{% set bw = [slot * 0.62, 34]|min %}
+<svg class="mini-chart" role="img" aria-label="{{ title }}: {% for r in rows %}{{ r[when]|ist('%d %b') }} {{ r[val] }}{{ unit }}{% if not loop.last %}, {% endif %}{% endfor %}" viewBox="0 0 300 156">
+  <line x1="0" y1="128.5" x2="300" y2="128.5" class="ch-axis"/>
+  {% for r in rows %}{% set h = (100 * ([r[val]|float, 0]|max) / 100)|round(1) %}{% set cx = slot * loop.index0 + slot / 2 %}
+  <rect x="{{ (cx - bw / 2)|round(1) }}" y="{{ (128 - h)|round(1) }}" width="{{ bw|round(1) }}" height="{{ [h, 1.5]|max }}" rx="4" class="ch-bar"><title>{{ r[when]|ist('%d %b') }}: {{ r[val] }}{{ unit }}</title></rect>
+  <text x="{{ cx|round(1) }}" y="{{ (128 - h - 5)|round(1) }}" text-anchor="middle" class="ch-val">{{ r[val] }}{{ unit }}</text>
+  {% endfor %}
+  {% for r in rows %}{% if loop.first or loop.last or (n > 4 and loop.index0 == n // 2) %}<text x="{{ (slot * loop.index0 + slot / 2)|round(1) }}" y="148" text-anchor="middle" class="ch-tick">{{ r[when]|ist('%d %b') }}</text>{% endif %}{% endfor %}
+</svg>
+{%- endmacro %}
+
+{% macro line_chart(rows, when, val, title, unit="%") -%}
+{% set n = rows|length %}
+{% set vals = rows|map(attribute=val)|map("float")|list %}
+{% set lo = [([vals|min - 15, 0]|max) // 10 * 10, 0]|max %}{% set hi = [([vals|max + 10, 100]|min), lo + 20]|max %}
+{% set step = 260 / ((n - 1) or 1) %}
+<svg class="mini-chart" role="img" aria-label="{{ title }}: {% for r in rows %}{{ r[when]|ist('%d %b') }} {{ r[val] }}{{ unit }}{% if not loop.last %}, {% endif %}{% endfor %}" viewBox="0 0 300 156">
+  <line x1="0" y1="128.5" x2="300" y2="128.5" class="ch-axis"/>
+  <polyline class="ch-line" points="{% for v in vals %}{{ (20 + step * loop.index0)|round(1) }},{{ (124 - 96 * (v - lo) / (hi - lo))|round(1) }} {% endfor %}"/>
+  {% for r in rows %}{% set v = vals[loop.index0] %}{% set cx = 20 + step * loop.index0 %}{% set cy = 124 - 96 * (v - lo) / (hi - lo) %}
+  <circle cx="{{ cx|round(1) }}" cy="{{ cy|round(1) }}" r="4" class="ch-dot"><title>{{ r[when]|ist('%d %b') }}: {{ r[val] }}{{ unit }}</title></circle>
+  <text x="{{ cx|round(1) }}" y="{{ (cy - 9)|round(1) }}" text-anchor="middle" class="ch-val">{{ r[val] }}{{ unit }}</text>
+  {% endfor %}
+  {% for r in rows %}{% if loop.first or loop.last or (n > 4 and loop.index0 == n // 2) %}<text x="{{ (20 + step * loop.index0)|round(1) }}" y="148" text-anchor="middle" class="ch-tick">{{ r[when]|ist('%d %b') }}</text>{% endif %}{% endfor %}
+</svg>
+{%- endmacro %}

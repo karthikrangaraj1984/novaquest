@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{# What a parent sees from a share link (SX-6): readable on a phone, no account, the PDF one tap away. #}
+{% block title %}{{ student.name }}'s progress{% endblock %}
+{% block body %}
+<main id="main" class="parent">
+  <p class="small muted">{{ inst }} · Class {{ student.class_label }}</p>
+  <h1>{{ student.name }}'s learning progress</h1>
+  <p class="small muted">From NovaQuest, the school's science practice app. These show learning progress, not exam marks.</p>
+  <a class="btn block" href="/r/{{ token }}.pdf">Download as PDF</a>
+
+  <section class="card stack-sm" aria-labelledby="done-h">
+    <div class="row-between"><h2 id="done-h">What {{ student.name.split()[0] }} has done</h2>{% if ov.streak %}<span class="pill streak">🔥 {{ ov.streak }} week{{ "s" if ov.streak != 1 }} in a row</span>{% endif %}</div>
+    <div class="grid-3" style="grid-template-columns:repeat(2,1fr)">
+      <div class="tile"><span class="k">Picture lessons</span><span class="v">{{ ov.done.pictures }}</span></div>
+      <div class="tile"><span class="k">Topics practised</span><span class="v">{{ ov.done.practised }}</span></div>
+      <div class="tile"><span class="k">Understanding checks</span><span class="v">{{ ov.done.checked }}</span></div>
+      <div class="tile"><span class="k">Taught NOVA</span><span class="v">{{ ov.done.taught }}</span></div>
+    </div>
+  </section>
+
+  <section class="card stack-sm" aria-labelledby="ch-h">
+    <h2 id="ch-h">Chapters</h2>
+    {% for c in ov.chapters %}
+    <div class="stack-sm" style="gap:4px"><div class="row-between small"><b>{{ c.no }}. {{ c.title }}</b><span class="muted">{{ c.started }} of {{ c.total }} topics</span></div>
+      <div class="bar stacked" role="img" aria-label="{{ c.mastered }} mastered, {{ c.practised }} practised, {{ c.learning }} learning, of {{ c.total }} topics"><span class="m" style="width:{{ (100 * c.mastered / c.total)|round }}%"></span><span class="p" style="width:{{ (100 * c.practised / c.total)|round }}%"></span><span class="l" style="width:{{ (100 * c.learning / c.total)|round }}%"></span></div>
+      <span class="tiny muted">{{ c.mastered }} mastered · {{ c.practised }} practised · {{ c.learning }} learning</span></div>
+    {% else %}<p class="small muted">No chapters started yet.</p>{% endfor %}
+  </section>
+
+  <section class="card stack-sm" aria-labelledby="res-h">
+    <h2 id="res-h">Recent results</h2>
+    {% for r in ov.released_scores %}<div class="row-between small"><span>{{ r.title }}</span><b>{{ r.result_txt }}</b></div>
+    {% if r.note %}<p class="small note info"><b>{{ r.teacher }}:</b> {{ r.note }}</p>{% endif %}
+    {% else %}<p class="small muted">No results released by the teacher yet.</p>{% endfor %}
+  </section>
+
+  {% if ov.plan %}
+  <section class="card stack-sm" aria-labelledby="rev-h">
+    <h2 id="rev-h">Worth revising together</h2>
+    <ul class="small plain">{% for p in ov.plan %}<li>{{ p.title }} <span class="muted">({{ p.chapter }}){% if p.why %} · {{ p.why }}{% endif %}</span></li>{% endfor %}</ul>
+  </section>
+  {% endif %}
+
+  <p class="tiny muted">This private link works until {{ expires_at|ist("%d %b %Y") }}. Please don't forward it. Questions? Ask the class teacher.</p>
+</main>
+{% endblock %}

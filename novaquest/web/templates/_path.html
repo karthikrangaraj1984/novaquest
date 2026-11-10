@@ -1,0 +1,31 @@
+{# The learning path: one topic = 4 steps in order, always one next step (UX-1). #}
+{% macro path_steps(steps) -%}
+<ol class="path" aria-label="Steps for this topic">
+  {% for s in steps %}
+  <li class="step {{ s.state }}">
+    <a href="{{ s.url }}">
+      <span class="dot" aria-hidden="true">{% if s.done %}✓{% else %}{{ s.no }}{% endif %}</span>
+      <span class="stack-sm" style="gap:1px"><b>{{ s.name }}</b><span class="small muted">{{ s.about }}</span></span>
+      <span class="state small">{% if s.done %}Done{% if s.score is not none %} · {{ s.score }}%{% endif %}{% elif s.state == "next" %}{% if s.tried %}Try again{% else %}Up next{% endif %}{% endif %}</span>
+    </a>
+  </li>
+  {% endfor %}
+</ol>
+{%- endmacro %}
+
+{% macro path_dots(done, total) -%}
+<span class="dots" aria-label="{{ done }} of {{ total }} steps done">{% for i in range(total) %}<i class="{{ 'on' if i < done }}"></i>{% endfor %}</span>
+{%- endmacro %}
+
+{# "Next step" bar shown at the end of each step's screen. #}
+{% macro next_step(topic, path, current) -%}
+{% set nxt = path.next %}
+<nav class="next-step stack-sm" aria-label="What next">
+  {% if nxt and nxt.key != current %}
+  <a class="btn block" href="{{ nxt.url }}">Next: {{ nxt.name }} →</a>
+  {% elif path.complete %}
+  <p class="note ok small">🎉 You've finished every step of “{{ topic.title }}”.</p>
+  {% endif %}
+  <a class="btn block quiet" href="/student/learn/{{ topic.id }}">Back to {{ topic.title }}</a>
+</nav>
+{%- endmacro %}

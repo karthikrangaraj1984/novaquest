@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"plate_a":[90,120],"plate_b":[310,120],"fault":[200,128],"focus":[200,200],"epicentre":[200,90],"waves":[290,226]}'>
+<rect x="0" y="0" width="400" height="80" fill="#E3F2FD"/>
+<path d="M0 80 H196 L204 300 H0 Z" fill="#BCAAA4" stroke="#6D4C41" stroke-width="3"/>
+<path d="M204 80 H400 V300 H212 Z" fill="#D7CCC8" stroke="#6D4C41" stroke-width="3"/>
+<g fill="#795548"><rect x="40" y="56" width="26" height="24"/><rect x="290" y="50" width="30" height="30"/></g>
+<path d="M196 80 L210 300" stroke="#C62828" stroke-width="5" stroke-dasharray="10 6"/>
+<circle cx="204" cy="200" r="10" fill="#E0541A"/>
+<g fill="none" stroke="#E0541A" stroke-width="2.5"><circle cx="204" cy="200" r="30"/><circle cx="204" cy="200" r="56" opacity=".7"/><circle cx="204" cy="200" r="86" opacity=".45"/></g>
+<g stroke="#2A3150" stroke-width="4" fill="#2A3150"><path d="M60 150 H130"/><path d="M126 142 l12 8 l-12 8z"/><path d="M340 170 H270"/><path d="M274 162 l-12 8 l12 8z"/></g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"pituitary":[200,34],"thyroid":[200,82],"adrenal":[230,146],"pancreas":[204,178],"ovary_testis":[200,232]}'>
+<circle cx="200" cy="34" r="26" fill="#F5E6DA" stroke="#8A6A55" stroke-width="3"/>
+<rect x="190" y="58" width="20" height="20" fill="#F5E6DA" stroke="#8A6A55" stroke-width="3"/>
+<path d="M150 80 H250 Q262 80 262 94 L256 210 Q254 240 236 250 L228 296 H172 L164 250 Q146 240 144 210 L138 94 Q138 80 150 80 Z" fill="#F5E6DA" stroke="#8A6A55" stroke-width="3"/>
+<path d="M138 94 L104 190 M262 94 L296 190" stroke="#8A6A55" stroke-width="16" stroke-linecap="round"/>
+<path d="M138 94 L104 190 M262 94 L296 190" stroke="#F5E6DA" stroke-width="10" stroke-linecap="round"/>
+<circle cx="200" cy="34" r="6" fill="#7448C8"/>
+<path d="M188 82 q12 10 24 0" stroke="#E0541A" stroke-width="8" fill="none" stroke-linecap="round"/>
+<g fill="#B39DDB"><ellipse cx="174" cy="160" rx="10" ry="14"/><ellipse cx="226" cy="160" rx="10" ry="14"/></g>
+<g fill="#F6D58E"><path d="M168 148 l12 -6 l6 10z"/><path d="M220 146 l12 6 l-14 6z"/></g>
+<path d="M164 176 Q200 166 232 178 Q200 186 164 176 Z" fill="#FFB74D"/>
+<g fill="#F48FB1"><circle cx="182" cy="232" r="8"/><circle cx="218" cy="232" r="8"/></g>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"big_dipper":[100,100],"pointers":[196,104],"pole_star":[228,30],"orion":[340,250],"orion_belt":[300,200],"cassiopeia":[96,250]}'>
+<rect width="400" height="300" fill="#121735"/>
+<g stroke="#5C6BC0" stroke-width="1.5" fill="none"><path d="M40 70 L76 84 L112 96 L140 112 L150 150 L196 158 L196 116 L140 112"/><path d="M196 116 L228 30" stroke-dasharray="4 4"/>
+<path d="M270 150 L330 150 L340 250 L260 250 Z M282 200 L300 200 L318 200 M300 150 L300 128"/><path d="M40 240 L70 270 L96 240 L122 270 L150 236"/></g>
+<g fill="#FFF8E1"><circle cx="40" cy="70" r="3.5"/><circle cx="76" cy="84" r="3.5"/><circle cx="112" cy="96" r="3.5"/><circle cx="140" cy="112" r="3.5"/><circle cx="150" cy="150" r="3.5"/><circle cx="196" cy="158" r="4"/><circle cx="196" cy="116" r="4"/>
+<circle cx="228" cy="30" r="6"/><circle cx="270" cy="150" r="4.5"/><circle cx="330" cy="150" r="4"/><circle cx="340" cy="250" r="4.5"/><circle cx="260" cy="250" r="4"/><circle cx="282" cy="200" r="3.5"/><circle cx="300" cy="200" r="3.5"/><circle cx="318" cy="200" r="3.5"/><circle cx="300" cy="128" r="3"/>
+<circle cx="40" cy="240" r="3.5"/><circle cx="70" cy="270" r="3.5"/><circle cx="96" cy="240" r="3.5"/><circle cx="122" cy="270" r="3.5"/><circle cx="150" cy="236" r="3.5"/></g>
+</svg>

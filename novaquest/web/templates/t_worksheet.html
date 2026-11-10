@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{# Printable worksheet (teacher review, item 11): A4, name and roll lines, writing lines, answer key on its own page. #}
+{% block title %}Worksheet: {{ assignment.title }}{% endblock %}
+{% block body %}
+<div class="sheet-bar no-print" role="toolbar" aria-label="Worksheet">
+  <a class="btn small quiet" href="/teacher/assignments/{{ assignment.id }}">← Back</a>
+  <button class="btn small" type="button" data-print>Print</button>
+  {% if key %}<a class="btn small ghost" href="?">Worksheet only</a>{% else %}<a class="btn small ghost" href="?key=1">Add the answer key</a>{% endif %}
+  <a class="btn small ghost" href="/teacher/assignments/{{ assignment.id }}/present">Show on projector</a>
+  {% if waiting %}<span class="small muted">{{ waiting }} question{{ "s" if waiting != 1 }} still waiting for your approval {{ "aren't" if waiting != 1 else "isn't" }} included.</span>{% endif %}
+</div>
+<main id="main" class="sheet">
+  <header class="sheet-head">
+    <div class="row-between"><span class="small">{{ school }}</span><span class="small">Class {{ assignment.class_label }}</span></div>
+    <h1>{{ assignment.title }}</h1>
+    {% if topics %}<p class="small">{{ topics|join(" · ") }}</p>{% endif %}
+    <div class="sheet-who"><span>Name: <i></i></span><span>Roll no.: <i class="short"></i></span><span>Date: <i class="short"></i></span></div>
+  </header>
+  {% for q in questions %}
+  <section class="sheet-q" aria-label="Question {{ q.no }}">
+    {% set sc = q.scenario|scene %}{% if sc %}<p class="sheet-scene">{{ sc }}</p>{% endif %}
+    <p class="sheet-prompt"><b>{{ q.no }}.</b> {{ q.prompt }}</p>
+    {% if q.letters %}<ol class="sheet-opts">{% for l, o in q.letters %}<li><span class="ring">{{ l }}</span>{{ o }}</li>{% endfor %}</ol>
+    {% else %}<div class="sheet-lines" aria-hidden="true">{% for _ in range(q.lines) %}<i></i>{% endfor %}</div>{% endif %}
+  </section>
+  {% else %}<p class="empty">Approve some questions first: only approved questions go on the worksheet.</p>{% endfor %}
+  {% if key and questions %}
+  <section class="sheet-key" aria-labelledby="key-h">
+    <h2 id="key-h">Answer key: {{ assignment.title }}</h2>
+    <ol class="sheet-keylist">{% for q in questions %}<li>
+      {% if q.right_letter %}<b>({{ q.right_letter }})</b> {{ q.right_text }}
+      {% else %}{% if q.model %}{{ q.model }}{% endif %}{% if q.points %}<ul>{% for p in q.points %}<li>{{ p }}</li>{% endfor %}</ul>{% endif %}{% endif %}
+    </li>{% endfor %}</ol>
+  </section>
+  {% endif %}
+</main>
+{% endblock %}

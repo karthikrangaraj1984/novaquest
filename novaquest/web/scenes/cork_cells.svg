@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"cell":[178,140],"wall":[214,118],"slice":[64,250]}'>
+<rect x="20" y="214" width="96" height="62" rx="6" fill="#C89B6D" stroke="#8A5A2B" stroke-width="3"/>
+<path d="M30 230 h76 M30 246 h76 M30 262 h76" stroke="#A97A4C" stroke-width="2"/>
+<path d="M116 244 L150 220" stroke="#5A6178" stroke-width="2" stroke-dasharray="5 4"/>
+<g transform="translate(150 30)" fill="#F7E7D2" stroke="#8A5A2B" stroke-width="5">
+<rect x="0" y="0" width="64" height="44"/><rect x="64" y="0" width="70" height="44"/><rect x="134" y="0" width="62" height="44"/>
+<rect x="0" y="44" width="58" height="48"/><rect x="58" y="44" width="72" height="48"/><rect x="130" y="44" width="66" height="48"/>
+<rect x="0" y="92" width="66" height="46"/><rect x="66" y="92" width="64" height="46"/><rect x="130" y="92" width="66" height="46"/>
+<rect x="0" y="138" width="60" height="46"/><rect x="60" y="138" width="74" height="46"/><rect x="134" y="138" width="62" height="46"/>
+</g>
+<circle cx="248" cy="122" r="118" fill="none" stroke="#2A3150" stroke-width="3" opacity=".25"/>
+</svg>

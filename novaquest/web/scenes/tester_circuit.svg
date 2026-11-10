@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"cell":[90,50],"bulb":[310,50],"wire":[200,24],"free_ends":[200,200],"liquid":[200,250],"beaker":[290,236]}'>
+<path d="M120 50 H200 V24 H290" fill="none" stroke="#2A3150" stroke-width="4"/>
+<path d="M70 50 H40 V150 H176 V200" fill="none" stroke="#2A3150" stroke-width="4"/>
+<path d="M330 50 H360 V150 H224 V200" fill="none" stroke="#2A3150" stroke-width="4"/>
+<rect x="70" y="36" width="50" height="28" rx="4" fill="#FFE082" stroke="#2A3150" stroke-width="3"/><rect x="120" y="44" width="6" height="12" fill="#2A3150"/>
+<circle cx="310" cy="40" r="20" fill="#FFF59D" stroke="#2A3150" stroke-width="3"/><path d="M302 58 h16 v10 h-16z" fill="#8A90A6"/>
+<path d="M290 24 V40 M330 50 H322" stroke="#2A3150" stroke-width="4"/>
+<g stroke="#F6C342" stroke-width="2"><path d="M310 8 v-6 M286 18 l-6 -4 M334 18 l6 -4"/></g>
+<path d="M130 170 V270 Q130 280 140 280 H260 Q270 280 270 270 V170" fill="none" stroke="#5A6178" stroke-width="3"/>
+<path d="M132 220 H268 V270 Q268 278 260 278 H140 Q132 278 132 270 Z" fill="#B3E5FC" opacity=".9"/>
+</svg>

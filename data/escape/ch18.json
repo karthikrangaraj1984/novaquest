@@ -1,0 +1,219 @@
+{
+ "chapter": 18,
+ "title": "The Clean Air Lab",
+ "story": "You and NOVA are at the city's environment lab when the air-lock doors seal. NOVA is preparing a report on pollution. It must use data honestly and get its facts right before the doors open.",
+ "escaped": "The air-lock opens. NOVA now treats patterns with care, sorts waste correctly and checks claims about drinking water.",
+ "locks": [
+  {
+   "kind": "pattern",
+   "skill": "cause",
+   "topic": "18.2",
+   "title": "Cars and coughs",
+   "intro": "NOVA found city data for ten years.",
+   "table": {
+    "cols": [
+     "Year",
+     "Cars in the city",
+     "Children treated for asthma"
+    ],
+    "rows": [
+     [
+      "2014",
+      "50,000",
+      "800"
+     ],
+     [
+      "2017",
+      "80,000",
+      "1,100"
+     ],
+     [
+      "2020",
+      "120,000",
+      "1,500"
+     ],
+     [
+      "2023",
+      "150,000",
+      "1,900"
+     ]
+    ]
+   },
+   "question": "NOVA concludes: 'Asthma makes people buy more cars.' What is the honest conclusion?",
+   "options": [
+    "NOVA is right: the numbers rise together.",
+    "More likely the other way: more cars, more smoke, more breathing problems. But rising together isn't proof alone, so check other pollution sources too.",
+    "Cars and asthma have nothing to do with air.",
+    "Ten years of data proves everything beyond doubt."
+   ],
+   "answer": 1,
+   "hint": "Both numbers rise together. Which way round makes sense, and could anything else also play a part?",
+   "learn": "Two numbers rising together (correlation) doesn't show which causes which, or that there's no third cause. Science (vehicle smoke harms breathing) helps choose the sensible explanation."
+  },
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "18.9",
+   "title": "Will it rot away?",
+   "intro": "NOVA must sort waste into biodegradable (broken down by microorganisms) and non-biodegradable. Choose its clues.",
+   "labels": [
+    "Biodegradable",
+    "Non-biodegradable"
+   ],
+   "features": [
+    {
+     "key": "living",
+     "text": "Made from plants or animals"
+    },
+    {
+     "key": "soft",
+     "text": "Soft"
+    },
+    {
+     "key": "kitchen",
+     "text": "Comes from the kitchen"
+    }
+   ],
+   "train": [
+    {
+     "name": "Vegetable peels",
+     "label": 0,
+     "f": {
+      "living": 1,
+      "soft": 1,
+      "kitchen": 1
+     }
+    },
+    {
+     "name": "Paper",
+     "label": 0,
+     "f": {
+      "living": 1,
+      "soft": 1,
+      "kitchen": 0
+     }
+    },
+    {
+     "name": "Cotton cloth",
+     "label": 0,
+     "f": {
+      "living": 1,
+      "soft": 1,
+      "kitchen": 0
+     }
+    },
+    {
+     "name": "Plastic bag",
+     "label": 1,
+     "f": {
+      "living": 0,
+      "soft": 1,
+      "kitchen": 1
+     }
+    },
+    {
+     "name": "Glass bottle",
+     "label": 1,
+     "f": {
+      "living": 0,
+      "soft": 0,
+      "kitchen": 1
+     }
+    },
+    {
+     "name": "Aluminium can",
+     "label": 1,
+     "f": {
+      "living": 0,
+      "soft": 0,
+      "kitchen": 1
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "A wooden toy",
+     "label": 0,
+     "f": {
+      "living": 1,
+      "soft": 0,
+      "kitchen": 0
+     }
+    },
+    {
+     "name": "A polythene sheet",
+     "label": 1,
+     "f": {
+      "living": 0,
+      "soft": 1,
+      "kitchen": 0
+     }
+    }
+   ],
+   "hint": "A wooden toy is hard; a polythene sheet is soft. What decides whether microorganisms can break it down?",
+   "learn": "Softness and where waste comes from are surface details. Microorganisms break down things that came from plants or animals, so that is the clue that works."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "18.8",
+   "title": "Check NOVA's water advice",
+   "intro": "NOVA is advising a village about drinking water. Is it right? Decide and pick the fact that settles it.",
+   "claim": "If water looks clear, it is safe to drink.",
+   "confidence": "94% sure",
+   "verdict": 1,
+   "evidence": [
+    "Water can look clear and still carry disease-causing microorganisms; boiling or chlorination makes it safe to drink.",
+    "Water is filtered through layers of sand and gravel.",
+    "The Ganga Action Plan began in 1985.",
+    "Some factories release waste into rivers."
+   ],
+   "right": 0,
+   "hint": "Can you see microorganisms with your eyes?",
+   "learn": "Judging by looks is risky for people and for AI. Microorganisms are invisible, so the evidence must come from tests and treatment, not appearance."
+  },
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "18.4",
+   "title": "Fix NOVA's pollutant facts",
+   "intro": "NOVA has notes on air pollutants. Tick the notes that are wrong.",
+   "rows": [
+    {
+     "item": "Sulphur dioxide",
+     "label": "Causes acid rain"
+    },
+    {
+     "item": "Nitrogen dioxide",
+     "label": "Causes acid rain"
+    },
+    {
+     "item": "Carbon monoxide",
+     "label": "Reduces the blood's ability to carry oxygen"
+    },
+    {
+     "item": "CFCs",
+     "label": "Damage the ozone layer"
+    },
+    {
+     "item": "Carbon dioxide",
+     "label": "Makes the ozone layer thicker",
+     "wrong": true,
+     "why": "carbon dioxide is a greenhouse gas that traps heat"
+    },
+    {
+     "item": "Oxygen",
+     "label": "Main cause of the greenhouse effect",
+     "wrong": true,
+     "why": "greenhouse gases like carbon dioxide cause it"
+    },
+    {
+     "item": "Smog",
+     "label": "Causes breathing problems"
+    }
+   ],
+   "hint": "Which gases trap heat in the greenhouse effect? Which harms the ozone layer?",
+   "learn": "A report built on wrong facts would push the wrong solutions. Checking the training data is the first step to an AI you can trust."
+  }
+ ]
+}

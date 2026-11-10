@@ -1,0 +1,68 @@
+{% extends "staff.html" %}
+{% block title %}{{ student.name }}{% endblock %}
+{% block main %}
+<div class="stack-sm">
+  <a class="small no-print" href="{{ '/leader/classes/' ~ student.class_id if actor.role == 'leader' else '/teacher/classes/' ~ student.class_id ~ '/students' }}">← Class {{ student.class_label }}</a>
+  <div class="row-between"><div class="stack-sm" style="gap:2px"><h1>{{ student.name }}</h1>
+    <span class="muted">Class {{ student.class_label }} · Roll {{ student.roll_no }} · Last signed in {{ student.last_login_at|ist if student.last_login_at else "never" }}</span></div>
+    <div class="row no-print"><button class="btn small quiet" type="button" data-print>Print for a parent meeting</button>
+      <a class="btn small quiet" href="/teacher/students/{{ student.id }}/report.pdf">Parent report (PDF)</a>
+      <a class="btn small quiet" href="/teacher/students/{{ student.id }}/tutor">Tutor log</a></div></div>
+  <p class="small muted">Learning-progress indicators, not exam marks.</p>
+</div>
+
+<section class="kpis" aria-label="Summary">
+  <div class="kpi"><span class="k">Mastered</span><span class="v">{{ counts.mastered }}</span><span class="d">of {{ counts.total }} topics</span></div>
+  <div class="kpi"><span class="k">Practised</span><span class="v">{{ counts.practised }}</span></div>
+  <div class="kpi"><span class="k">Learning</span><span class="v">{{ counts.learning }}</span></div>
+  <div class="kpi"><span class="k">Handed in</span><span class="v">{{ handed }}{% if due %}/{{ due }}{% endif %}</span><span class="d">{% if missed %}{{ missed|length }} missed{% else %}none missed{% endif %}</span></div>
+  <div class="kpi"><span class="k">Taught NOVA</span><span class="v">{{ taught }}</span><span class="d">topic{{ "s" if taught != 1 }}</span></div>
+</section>
+
+<section class="card stack-sm needs" aria-labelledby="ni-h">
+  <h2 id="ni-h">Needs to improve</h2>
+  {% for n in needs %}
+  {% if needs|length > 1 %}<h3 style="font-size:15px">{{ n.book.label }}</h3>{% endif %}
+  {% if n.topics %}
+  <ol class="stack-sm plain">{% for t in n.topics %}
+    <li class="row-between" style="align-items:flex-start"><span class="stack-sm" style="gap:2px"><b>{{ t.code }} {{ t.title }}</b>
+      <span class="small muted">{{ t.chapter }} · {{ levels[t.level] if t.level else "Not started" }}</span>
+      <span class="small">{{ t.reasons|join(" · ") }}</span></span></li>{% endfor %}</ol>
+  {% if n.more %}<p class="small muted">And {{ n.more }} more below under Topics.</p>{% endif %}
+  {% if actor.role == "teacher" %}<a class="btn small no-print" href="/teacher/assignments/new?for={{ student.class_id }}:{{ n.book.id }}&topics={{ n.topics[:3]|map(attribute='id')|join(',') }}&students={{ student.id }}&kind=quiz">Set {{ student.name.split()[0] }} a revision task on the top {{ [n.topics|length, 3]|min }}</a>{% endif %}
+  {% else %}<p class="small muted">Nothing stands out{% if needs|length > 1 %} in {{ n.book.label }}{% endif %}: no weak scores, mix-ups or missed topics so far.</p>{% endif %}
+  {% else %}<p class="small muted">The class has no subjects yet.</p>{% endfor %}
+  <p class="tiny muted">From assignment answers (below 60% on a topic's questions), practice and checks, mix-ups in their answers, and topics the class had work on that {{ student.name.split()[0] }} hasn't started. Mastered topics are left out.</p>
+</section>
+
+<div class="cols">
+  <section class="main stack">
+    <div class="card stack-sm" aria-labelledby="tp-h"><h2 id="tp-h">Topics</h2>
+      {% for b in books %}{% if books|length > 1 %}<h3 style="font-size:15px">{{ b.label }}</h3>{% endif %}
+        {% for ch in b.chapters %}
+        <h3 class="small" style="margin-top:6px">{{ ch|inpart }}{{ ch.no }}. {{ ch.title }}</h3>
+        <div class="table-wrap"><table><tbody>
+          {% for t in ch.topics %}<tr><th scope="row" style="font-weight:500">{{ t.code }} {{ t.title }}{% if t.taught %} <span class="pill ai">Taught NOVA</span>{% endif %}</th>
+            <td><span class="pill l{{ t.level }}">{{ levels[t.level] }}</span></td>
+            <td class="small muted">{% if t.last_kind %}Last: {{ {"check": "quick check", "practice": "practice", "understanding": "understanding check", "teach": "Teach NOVA", "assignment": "assignment"}.get(t.last_kind, t.last_kind) }} {{ t.last_score }}% · {{ t.last_at|ist }}{% endif %}</td></tr>{% endfor %}
+        </tbody></table></div>
+        {% else %}<p class="small muted">No learning activity yet{% if books|length > 1 %} in {{ b.label }}{% endif %}.</p>{% endfor %}
+      {% endfor %}
+    </div>
+  </section>
+  <aside class="aside stack">
+    <section class="card stack-sm" aria-labelledby="w-h"><h2 id="w-h">Assignments</h2>
+      {% for w in work %}<div class="row-between small"><span>{% if w.released or w.done %}<a href="/teacher/assignments/{{ w.id }}/review">{{ w.title }}</a>{% else %}{{ w.title }}{% endif %}</span>
+        {% if w.done %}<span class="pill {{ 'l0' if w.pct is none else ('ok' if w.pct >= 60 else ('l1' if w.pct >= 40 else 'warn')) }}">{{ w.pct ~ "%" if w.pct is not none else "Handed in" }}</span>{% elif w.missed %}<span class="pill warn">Missed</span>{% elif w.open %}<span class="pill l1">Not yet</span>{% else %}<span class="pill l0">Upcoming</span>{% endif %}</div>
+      {% else %}<p class="small muted">No assignments yet.</p>{% endfor %}
+    </section>
+    <section class="card stack-sm" aria-labelledby="mx-h"><h2 id="mx-h">Mixed up</h2>
+      {% for m in mixups %}<div class="row-between small" style="flex-wrap:nowrap"><span>{{ m.label }}</span><b style="flex:none">{{ m.times }}×</b></div>{% else %}<p class="small muted">No common mix-ups seen in their answers.</p>{% endfor %}
+    </section>
+    <section class="card stack-sm" aria-labelledby="q-h"><h2 id="q-h">Recent questions to NOVA</h2>
+      {% for q in asked %}<p class="small">“{{ q.body|truncate(120) }}” <span class="muted">{% if q.topic %}· {{ q.topic }} {% endif %}· {{ q.created_at|ist }}</span></p>{% else %}<p class="small muted">None yet.</p>{% endfor %}
+      <a class="small no-print" href="/teacher/students/{{ student.id }}/tutor">See every conversation →</a>
+    </section>
+  </aside>
+</div>
+{% endblock %}

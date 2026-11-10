@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"support":[200,24],"thread":[200,120],"bob":[200,224],"left":[110,206],"right":[290,206],"mean":[200,262]}'>
+<rect x="120" y="14" width="160" height="12" rx="3" fill="#4A5168"/>
+<g stroke="#5A6178" stroke-width="2" stroke-dasharray="5 5"><path d="M200 26 L110 206"/><path d="M200 26 L290 206"/></g>
+<path d="M200 26 L200 210" stroke="#2A3150" stroke-width="3"/>
+<circle cx="200" cy="224" r="18" fill="#E0541A"/>
+<g fill="#F4B79A"><circle cx="110" cy="206" r="16"/><circle cx="290" cy="206" r="16"/></g>
+<path d="M118 248 Q200 284 282 248" fill="none" stroke="#2B4BD8" stroke-width="3" marker-end="url(#pa)" marker-start="url(#pa)"/>
+<defs><marker id="pa" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10z" fill="#2B4BD8"/></marker></defs>
+</svg>

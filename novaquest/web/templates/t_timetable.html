@@ -1,0 +1,51 @@
+{% extends "staff.html" %}
+{# Timetable (1.30.0): when the teacher meets each class for each subject. Optional: with it, Today lists the day's
+   lessons in order, lesson plans count real lessons, and homework closes before the class meets again. #}
+{% block title %}Timetable{% endblock %}
+{% block main %}
+{% from "_teach.html" import teach_head with context %}
+{{ teach_head("timetable", teaching, cur) }}
+<div class="stack-sm" style="gap:2px"><span class="muted">When you meet each class</span><h1>Your timetable</h1></div>
+{% if error %}<div class="note warn" role="alert">{{ error }}</div>{% endif %}
+<div class="cols">
+  <section class="main stack">
+    <div class="card stack-sm">
+      <h2>Your week</h2>
+      {% if rows %}
+      <div class="table-wrap"><table class="tt-grid">
+        <thead><tr><th scope="col">Starts</th>{% for d in grid.days %}<th scope="col">{{ d }}</th>{% endfor %}</tr></thead>
+        <tbody>{% for r in grid.rows %}<tr><th scope="row">{{ r.time.strftime("%H:%M") }}</th>
+          {% for c in r.cells %}<td>{% if c %}<div class="tt-cell"><b>{{ c.class_label }}</b><span class="tiny">{{ c.subject }} · {{ c.minutes }} min</span>
+            <form method="post"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="action" value="remove"><input type="hidden" name="slot" value="{{ c.id }}">
+              <button class="btn small quiet" style="min-height:28px;padding:2px 8px" type="submit" aria-label="Remove {{ c.class_label }} {{ c.subject }} on {{ c.day }} at {{ c.starts_at.strftime('%H:%M') }}">Remove</button></form></div>{% endif %}</td>{% endfor %}</tr>{% endfor %}</tbody>
+      </table></div>
+      <p class="small muted">{% for t in teaching %}{{ t.short }}: {{ per_week.get(t.key, 0) }} lesson{{ "s" if per_week.get(t.key, 0) != 1 }} a week{% if not loop.last %} · {% endif %}{% endfor %}</p>
+      {% else %}
+      <p class="small muted">Nothing yet. Add your lessons on the right: tick every day you meet a class at the same time, so a whole week takes a few clicks.</p>
+      {% endif %}
+    </div>
+    <div class="card stack-sm"><h2>What the timetable does</h2>
+      <ul class="small" style="margin:0;padding-left:18px">
+        <li><b>Today</b> lists only today's lessons, in order, with the next one first and its own <b>Present</b> button.</li>
+        <li><b>Lesson plans</b> count the lessons each chapter really gets, and show which period each class is on.</li>
+        <li><b>Homework</b> you set closes just before the class meets again (you can change it).</li>
+      </ul></div>
+  </section>
+  <aside class="aside stack">
+    <form method="post" class="card stack-sm" aria-labelledby="add-h">
+      <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="action" value="add">
+      <h2 id="add-h">Add lessons</h2>
+      {% if not teaching %}<p class="small muted">You aren't mapped to a class yet. Ask your school admin.</p>{% else %}
+      <div class="field"><label for="tt-for">Class and subject</label><select id="tt-for" name="for">{% for t in teaching %}<option value="{{ t.key }}" {% if f.get("for") == t.key %}selected{% endif %}>{{ t.short }}</option>{% endfor %}</select></div>
+      <fieldset class="stack-sm"><legend class="small">Days</legend>
+        <div class="chips">{% for d in days %}<label class="choice" style="min-height:40px"><input type="checkbox" name="days[]" value="{{ loop.index0 }}" {% if loop.index0|string in (f.get("days[]") or []) %}checked{% endif %}>{{ d[:3] }}</label>{% endfor %}</div></fieldset>
+      <div class="row">
+        <div class="field"><label for="tt-at">Starts</label><input id="tt-at" name="starts_at" type="time" value="{{ f.get('starts_at', '09:00') }}" required></div>
+        <div class="field"><label for="tt-min">Minutes</label><select id="tt-min" name="minutes">{% for m in lengths %}<option value="{{ m }}" {% if (f.get("minutes") or "40")|int == m %}selected{% endif %}>{{ m }}</option>{% endfor %}</select></div>
+      </div>
+      <button class="btn" type="submit">Add</button>
+      {% endif %}
+    </form>
+  </aside>
+</div>
+{% endblock %}

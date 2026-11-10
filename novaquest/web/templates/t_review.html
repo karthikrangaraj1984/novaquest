@@ -1,0 +1,144 @@
+{% extends "staff.html" %}
+{% from "_assign.html" import assign_head with context %}
+{% from "_messages.html" import starters %}
+{% block title %}Review {{ assignment.title }}{% endblock %}
+{% block main %}
+{{ assign_head(assignment, "results", kinds, show_action=False) }}
+<div class="row-between" style="align-items:center">
+  <span class="muted">{{ summary.submitted }} of {{ summary.total }} handed in · {% if assignment.released_at %}Results released{% else %}Results not yet visible to students{% endif %}</span>
+  {% if actor.role == "teacher" and not assignment.released_at and not summary.submitted %}
+  <span class="small muted">You can release results and write to the class once work is handed in.</span>
+  {% elif actor.role == "teacher" and not assignment.released_at %}
+  <form method="post" action="/teacher/assignments/{{ assignment.id }}/release" class="stack-sm" style="width:min(440px,100%)">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    {% if to_check %}<button class="btn" type="button" disabled aria-describedby="rel-why">Release results to students</button><span id="rel-why" class="small muted">Check the {{ to_check }} flagged answer{{ 's' if to_check > 1 }} first</span>
+    {% else %}<label for="cm" class="small">Message to the class (optional)</label>
+    <textarea id="cm" name="message" maxlength="1000" rows="2" placeholder="e.g. Well done, everyone! Revise 8.3 before Friday's test.">{{ assignment.class_message or "" }}</textarea>
+    {{ starters("cm") }}
+    <button class="btn" type="submit" data-confirm="Release results? Students will see their scorecards and your message.">Release results to students</button>{% endif %}
+  </form>
+  {% endif %}
+</div>
+{% if siblings %}
+<div class="sections" aria-label="Sections this was set for">
+  {% for x in siblings %}<a class="section-chip" href="/teacher/assignments/{{ x.id }}/review" {% if x.id == assignment.id %}aria-current="page"{% endif %}><b>{{ x.class_label }}</b><span class="tiny">{{ x.submitted }} of {{ x.targets }} handed in{% if x.released_at %} · released{% endif %}</span></a>{% endfor %}
+</div>
+{% endif %}
+{% if assignment.released_at and actor.role == "teacher" %}
+<section class="card stack-sm" aria-labelledby="cm-h"><h2 id="cm-h">Message to the class</h2>
+  <form method="post" action="/teacher/assignments/{{ assignment.id }}/message" class="stack-sm"><input type="hidden" name="csrf" value="{{ csrf }}">
+    <label for="cm2" class="sr-only">Message to the class</label><textarea id="cm2" name="message" maxlength="1000" rows="2" placeholder="A note every student sees at the top of their results">{{ assignment.class_message or "" }}</textarea>
+    {{ starters("cm2") }}
+    <button class="btn small" type="submit">{{ "Update message" if assignment.class_message else "Send message" }}</button></form>
+  <p class="small muted">Every student who handed in sees it at the top of their results, and gets a notification. To write to one student, open them under Students.</p>
+</section>
+{% endif %}
+<section class="grid" aria-label="Class summary">
+  <div class="kpi"><span class="k">Science understanding</span><span class="v" style="color:var(--primary-dark)">{{ summary.science|pct }}</span>{% if summary.science is none %}<span class="d">Shown once students hand in</span>{% endif %}</div>
+  <div class="kpi"><span class="k">AI skills</span><span class="v" style="color:var(--ai)">{{ summary.ai|pct }}</span>{% if summary.ai is none %}<span class="d">{{ "Shown once students hand in" if summary.has_ai else "This task has no AI questions" }}</span>{% endif %}</div>
+  <div class="kpi"><span class="k">Completion</span><span class="v">{{ summary.completion }}%</span><span class="d">{{ summary.submitted }} of {{ summary.total }}</span></div>
+  <div class="kpi"><span class="k">Didn't submit</span><span class="v">{{ summary.missing|length }}</span>{% if summary.missing %}<span class="d">{{ summary.missing|length }} student{{ "s" if summary.missing|length != 1 }} below</span>{% endif %}</div>
+</section>
+{% if summary.missing %}
+<section class="card stack-sm" aria-labelledby="miss-h">
+  <div class="row-between"><h2 id="miss-h">Not handed in yet ({{ summary.missing|length }})</h2>
+    {% if assignment.live_state == "open" and actor.role == "teacher" %}<form method="post" action="/teacher/assignments/{{ assignment.id }}/remind"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small" type="submit">{{ "Remind them" if summary.missing|length > 1 else "Remind" }}</button></form>{% endif %}</div>
+  <p class="small">{% for m in summary.missing %}{{ m.roll_no }}. {{ m.name }}{% if not loop.last %} · {% endif %}{% endfor %}</p>
+  {% if assignment.live_state == "open" %}<p class="small muted">A reminder appears on each student's Home and bell. You can also give extra time below.</p>{% endif %}
+</section>
+{% endif %}
+{% if feelings and feelings.n %}
+<p class="small"><b>How students found it</b> ({{ feelings.n }} said): 😀 {{ feelings.feelings.easy }} easy · 🙂 {{ feelings.feelings.okay }} okay · 😣 {{ feelings.feelings.hard }} hard{% if feelings.next.ask %} · {{ feelings.next.ask }} plan to ask you{% endif %}</p>
+{% endif %}
+<p class="small muted" style="margin-top:-12px">AI scores show learning progress. They are not official marks.</p>
+<div class="seg" role="tablist" aria-label="Review views">
+  <a href="?tab=check" role="tab" {% if tab == "check" %}aria-current="page" aria-selected="true"{% endif %}>To check ({{ to_check }})</a>
+  <a href="?tab=all" role="tab" {% if tab == "all" %}aria-current="page" aria-selected="true"{% endif %}>All answers ({{ responses|length }})</a>
+  <a href="?tab=questions" role="tab" {% if tab == "questions" %}aria-current="page" aria-selected="true"{% endif %}>By question</a>
+  <a href="?tab=students" role="tab" {% if tab == "students" %}aria-current="page" aria-selected="true"{% endif %}>By student</a>
+  {% if sessions %}<a href="?tab=teach" role="tab" {% if tab == "teach" %}aria-current="page" aria-selected="true"{% endif %}>Teaching sessions</a>{% endif %}
+</div>
+<div class="cols">
+  <section class="main stack-sm" aria-label="Answers">
+  {% if tab == "students" %}
+    <div class="card table-wrap"><table>
+      <thead><tr><th scope="col">Roll</th><th scope="col">Student</th><th scope="col">Status</th><th scope="col">Progress</th><th scope="col"></th></tr></thead>
+      <tbody>{% for s in results.students %}<tr><td>{{ s.roll_no }}</td><th scope="row">{{ s.name }}</th><td>{{ {'submitted': 'Submitted', 'in_progress': 'Working', 'expired': 'Time ran out'}.get(s.status, 'Not started') }}</td>
+        <td>{{ s.pct|pct if s.pct is not none else "—" }}</td><td>{% if s.status == "submitted" %}<a href="/teacher/assignments/{{ assignment.id }}/students/{{ s.id }}">Scorecard</a> · {% endif %}<a href="/teacher/students/{{ s.id }}/tutor">Tutor log</a></td></tr>{% endfor %}</tbody></table></div>
+  {% elif tab == "questions" %}
+    {% if breakdown.reteach %}
+    <section class="card stack-sm focus" aria-labelledby="rt-h"><h2 id="rt-h">Worth teaching again</h2>
+      <p class="small muted">Fewer than half the class got these right.</p>
+      {% for q in breakdown.reteach %}<a class="topic-row" href="#q{{ q.id }}"><span>Q{{ q.ord }} · {{ q.prompt[:90] }}{{ "…" if q.prompt|length > 90 }}<br><span class="small muted">{{ q.topic_title }}</span></span><span class="pill warn">{{ q.pct_right }}% right</span></a>{% endfor %}
+      {% if actor.role == "teacher" %}<a class="btn small ghost" href="/teacher/assignments/new?for={{ assignment.class_id }}:{{ assignment.syllabus_id }}&amp;topics={{ breakdown.reteach|map(attribute='topic_id')|unique|join(',') }}">Make a revision task on these topics</a>{% endif %}
+    </section>
+    {% endif %}
+    {% for q in breakdown.questions %}
+    <article class="card stack-sm" id="q{{ q.id }}" aria-labelledby="qh{{ q.id }}">
+      <div class="row-between" style="align-items:flex-start"><h3 id="qh{{ q.id }}" style="font-size:15px">Q{{ q.ord }} · {{ q.prompt }}</h3>
+        {% if q.answered %}<span class="pill {{ 'ok' if q.pct_right >= 75 else ('l1' if q.pct_right >= 50 else 'warn') }}" style="flex:none">{{ q.pct_right }}% right</span>{% endif %}</div>
+      <span class="small muted">{{ q.topic_title }} · {{ q.answered }} answered{% if not q.options and q.avg is not none %} · average {{ q.avg }}% of the marks{% endif %}</span>
+      {% if q.options %}
+        <div class="stack-sm" style="gap:6px" role="list" aria-label="How the class answered">
+        {% for o in q.options %}<div role="listitem" class="stack-sm" style="gap:3px"><div class="row-between small"><span>{% if o.right %}<b>✓ {{ o.text }}</b>{% else %}{{ o.text }}{% endif %}</span><span>{{ o.count }}</span></div>
+          <div class="bar {{ '' if o.right else 'warn' }}"><span style="width:{{ o.pct }}%"></span></div></div>{% endfor %}
+        </div>
+        {% if q.common_wrong %}<p class="note warn small">Most common wrong answer: <b>{{ q.common_wrong.text }}</b> ({{ q.common_wrong.count }} student{{ "s" if q.common_wrong.count != 1 }})</p>{% endif %}
+      {% elif q.model %}<p class="small"><b>Model answer:</b> {{ q.model }}</p>{% endif %}
+      {% if q.mixups %}<p class="small">Mixed up: {% for label, n in q.mixups %}{{ label }} ({{ n }}){% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
+      {% if q.wrong %}<details><summary class="small">Who didn't get it ({{ q.wrong|length }})</summary>
+        <ul class="small plain">{% for w in q.wrong %}<li><a href="/teacher/students/{{ w.id }}">{{ w.roll_no }}. {{ w.name }}</a>{% if w.said %}: “{{ w.said[:140] }}”{% endif %}</li>{% endfor %}</ul></details>{% endif %}
+    </article>
+    {% else %}<p class="empty">No questions to show.</p>{% endfor %}
+  {% elif tab == "teach" %}
+    {% for s in sessions %}<a class="topic-row" href="/teacher/teach/{{ s.id }}"><span><b>{{ s.name }}</b> · {{ s.topic_title }}<br><span class="small muted">{{ s.summary or "In progress" }}</span></span><span class="pill {{ 'ok' if s.status == 'passed' else 'l0' }}">{{ s.status|capitalize }}</span></a>{% else %}<p class="empty">No sessions yet.</p>{% endfor %}
+  {% else %}
+    {% set shown = responses if tab == "all" else responses|selectattr("flagged")|list %}
+    {% if tab != "all" and not to_check %}<div class="note ok">All flagged answers are checked.{% if not assignment.released_at %} You can release results.{% endif %}</div>{% endif %}
+    {% for r in shown %}
+    {% set needs = r.flagged and not r.reviewed_at %}
+    <article class="card stack-sm {{ 'focus' if needs }}" aria-labelledby="r{{ r.id }}">
+      <div class="row-between"><h3 id="r{{ r.id }}" style="font-size:15px">Q{{ r.ord }} · {{ r.prompt[:110] }}</h3><span class="small muted">{{ r.student_name }} · roll {{ r.roll_no }}</span></div>
+      {% if r.options %}
+        <p class="small">Chose: <b>{{ r.options[r.answer.index] if r.answer and r.answer.index is not none else "No answer" }}</b>{% if r.key %} · Correct: {{ r.key.text }}{% endif %}</p>
+      {% elif r.answer and r.answer.text is defined %}
+        <blockquote style="margin:0;padding:10px 14px;background:var(--bg);border-left:4px solid #8A93AE;border-radius:0 10px 10px 0">“{{ r.answer.text }}”</blockquote>
+      {% endif %}
+      <div class="note small"><b>AI suggests: {{ r.ai_score|float|round(1) }} of {{ r.max_score|float|round(1) }}{% if r.flagged %} · not sure{% endif %}</b><br>{{ r.ai_rationale }}{% if r.citation %}<br><span class="tiny">Source: {{ r.citation[0].ref }}</span>{% endif %}</div>
+      {% if r.reviewed_at %}<span class="pill ok">✓ Checked: {{ r.teacher_score|float|round(1) }}{% if r.teacher_comment %} · “{{ r.teacher_comment }}”{% endif %}</span>{% endif %}
+      {% if actor.role == "teacher" %}
+      <form method="post" action="/teacher/responses/{{ r.id }}/override" class="stack-sm">
+        <input type="hidden" name="csrf" value="{{ csrf }}">
+        <fieldset><legend class="small">Your decision</legend><div class="row">
+          <label class="choice" style="min-height:42px"><input type="radio" name="score" value="ai" {% if not r.reviewed_at %}checked{% endif %}>Agree with AI</label>
+          {% for v in range(0, (r.max_score|float|int) + 1) %}<label class="choice" style="min-height:42px"><input type="radio" name="score" value="{{ v }}" {% if r.reviewed_at and r.teacher_score|float == v %}checked{% endif %}>{{ v }}</label>{% endfor %}
+        </div></fieldset>
+        <label for="c{{ r.id }}" class="small">Note to {{ r.student_name.split()[0] }} <span class="hint">(optional, shown on the scorecard)</span></label>
+        <input id="c{{ r.id }}" type="text" name="comment" value="{{ r.teacher_comment or '' }}">
+        <button class="btn small" type="submit" style="align-self:flex-start">Save</button>
+      </form>
+      {% endif %}
+    </article>
+    {% else %}<p class="empty">{{ "No answers yet." if tab == "all" else "Nothing flagged. The AI was confident about every answer." }}</p>{% endfor %}
+  {% endif %}
+  </section>
+  <aside class="aside stack">
+    <section class="card stack-sm" aria-labelledby="mx-h"><h2 id="mx-h">What the class mixed up</h2>
+      {% for m in misconceptions %}<div class="stack-sm" style="gap:4px"><div class="row-between small"><b>{{ m.label }}</b><b>{{ m.students }}</b></div>
+        <div class="bar warn"><span style="width:{{ (100 * m.students / (summary.submitted or 1))|round }}%"></span></div></div>
+      {% else %}<p class="small muted">No common mix-ups yet.</p>{% endfor %}
+      {% if misconceptions and actor.role == "teacher" %}<a class="btn small ghost" href="/teacher/assignments/new?topic={{ assignment.topic_ids[0] }}">Make a 5-minute revision task</a>{% endif %}
+    </section>
+    {% if actor.role == "teacher" and not assignment.released_at %}
+    <section class="card stack-sm" aria-labelledby="ex-h"><h2 id="ex-h">Extend the deadline</h2>
+      <form method="post" action="/teacher/assignments/{{ assignment.id }}/extend" class="stack-sm">
+        <input type="hidden" name="csrf" value="{{ csrf }}">
+        <label for="ext" class="small">New closing time (IST)</label><input id="ext" type="datetime-local" name="expires_at" value="{{ default_extend }}" required>
+        <label for="ext-s" class="small">For</label><select id="ext-s" name="student_id"><option value="">Everyone</option>{% for s in results.students %}<option value="{{ s.id }}">{{ s.roll_no }}. {{ s.name }}</option>{% endfor %}</select>
+        <button class="btn small quiet" type="submit">Extend</button>
+      </form></section>
+    {% endif %}
+    <section class="card stack-sm"><h2>How the AI scored</h2><p class="small muted">{{ responses|length - flagged_total }} answers scored with high confidence. {{ flagged_total }} sent to you. You can change any score.</p></section>
+  </aside>
+</div>
+{% endblock %}

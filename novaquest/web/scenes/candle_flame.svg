@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"outer":[200,38],"middle":[226,120],"inner":[200,170],"wick":[200,206],"wax":[200,260]}'>
+<path d="M200 20 C252 90 262 150 238 196 C226 214 174 214 162 196 C138 150 148 90 200 20 Z" fill="#B3D4FF" stroke="#4F7BD8" stroke-width="3"/>
+<path d="M200 46 C240 104 244 152 228 188 C218 204 182 204 172 188 C156 152 160 104 200 46 Z" fill="#FFD54F"/>
+<path d="M200 120 C216 144 218 168 210 186 C206 194 194 194 190 186 C182 168 184 144 200 120 Z" fill="#3E2723"/>
+<path d="M200 214 V194" stroke="#212121" stroke-width="4"/>
+<rect x="160" y="214" width="80" height="80" rx="4" fill="#FFF8E1" stroke="#C9A64A" stroke-width="3"/>
+<path d="M176 214 q4 10 0 18 M222 214 q4 14 0 22" stroke="#E8D9A8" stroke-width="5" fill="none"/>
+</svg>

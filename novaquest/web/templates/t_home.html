@@ -1,0 +1,79 @@
+{% extends "staff.html" %}
+{# Today (1.30.0): the classes taught today first (each at its own place in the lesson plan, one Present button each),
+   then what needs attention (each row names its class and subject), then how each class is doing. #}
+{% block title %}Today{% endblock %}
+{% block main %}
+{% set t = today %}
+<div class="row-between" style="align-items:flex-end">
+  <div class="stack-sm" style="gap:2px"><span class="muted">{{ t.day }}{% if subjects %} · {{ subjects|join(", ") }}{% endif %}</span><h1>Good to see you, {{ actor.name }}</h1></div>
+  <a class="btn" href="/teacher/assignments/new">+ New assignment</a>
+</div>
+
+<section class="stack-sm" aria-labelledby="today-h">
+  <div class="row-between"><h2 id="today-h">{% if t.timetable %}Today's classes{% else %}Your classes{% endif %}</h2>
+    <a class="small" href="/teacher/timetable">{% if t.timetable %}Timetable{% else %}Add your timetable{% endif %} →</a></div>
+  {% if t.timetable and not t.rows %}
+  <div class="card stack-sm"><b>{% if t.weekend %}No classes today: it's Sunday.{% else %}No lessons in your timetable today.{% endif %}</b>
+    <span class="small muted">Plan ahead from <a href="/teacher/prep">Teach</a>, or <a href="/teacher/timetable">check your timetable</a>.</span></div>
+  {% elif not t.rows %}
+  <div class="card stack-sm"><b>You aren't mapped to a class yet.</b><span class="small muted">Ask your school admin to give you your classes and subjects.</span></div>
+  {% else %}
+  <ul class="card lessons{{ ' no-time' if not t.timetable }}" aria-label="{% if t.timetable %}Today's lessons{% else %}Your classes{% endif %}">
+    {% for r in t.rows %}
+    {% set main = (r.slot and r.slot.next) or (not t.timetable and loop.first) %}
+    <li class="lesson-row{{ ' next' if main }}{{ ' past' if r.slot and r.slot.when == 'past' }}">
+      {% if r.slot %}<span class="lesson-time">{{ r.slot.starts_at.strftime("%H:%M") }}{% if r.slot.when == "now" %}<span class="pill l2">Now</span>{% elif r.slot.when == "past" %}<span class="tiny muted">done</span>{% endif %}</span>{% endif %}
+      <span class="lesson-class"><b>{{ r.class_label }}</b> <span class="muted">{{ r.book.subject }}</span></span>
+      <span class="lesson-what">
+        {% if r.chapter %}<span>{{ r.chapter|inpart }}Ch {{ r.chapter.code }} {{ r.chapter.title }}</span>
+          <span class="small muted">{% if r.pos and not r.pos.started %}Starts {{ r.pos.starts_on.strftime("%d %b") }} · {% endif %}{% if r.pos %}Period {{ r.pos.period }} of {{ r.pos.of }}{% if r.period_title %}: {{ r.period_title }}{% endif %}{% if r.pos.done %} · all periods taught: review or move on{% endif %}{% else %}{{ r.period_title or "" }}{% endif %}</span>
+        {% elif r.planned %}<span class="muted">No chapter planned for today</span>{% if r.next_chapter %}<span class="small muted">Next: Ch {{ r.next_chapter.code }} {{ r.next_chapter.title }} from {{ r.next_chapter.starts_on.strftime("%d %b") }}</span>{% endif %}
+        {% else %}<span class="muted">No term plan yet</span><span class="small muted">Add chapter dates to see where this class is.</span>{% endif %}
+      </span>
+      <span class="lesson-go">
+        {% if r.present %}<a class="btn small{{ '' if main else ' ghost' }}" href="{{ r.present }}">Present</a><a class="small" href="{{ r.plan }}">Plan</a>
+        {% elif r.planned %}<a class="btn small ghost" href="{{ r.plan }}">Open plan</a>
+        {% else %}<a class="btn small ghost" href="{{ r.term_plan }}">Plan the term</a>{% endif %}
+      </span>
+    </li>
+    {% endfor %}
+  </ul>
+  {% if not t.timetable %}<p class="small muted">Add your weekly timetable and this list shows only today's lessons, in order, with the next one first.</p>{% endif %}
+  {% endif %}
+</section>
+
+<section class="stack-sm" aria-labelledby="todo-h">
+  <h2 id="todo-h">To do</h2>
+  {% if attention %}
+  <ul class="todo card">
+    {% for a in attention %}
+    <li class="todo-row {{ a.kind }}">
+      <span class="todo-mark" aria-hidden="true"></span>
+      <span class="stack-sm" style="gap:2px"><b>{{ a.title }}</b><span class="small muted">{{ a.item.title }} · <span class="cls-tag">{{ a.classes|join(", ") }} · {{ a.item.subject }}</span> · {{ a.text }}</span></span>
+      <a class="btn small{% if a.rank > 2 %} ghost{% endif %}" href="{{ a.link }}">{{ a.action }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% if more %}<a class="small" href="/teacher/assignments?show=action">{{ more }} more →</a>{% endif %}
+  {% else %}
+  <p class="card small muted" style="margin:0">You're all caught up: nothing to check, approve or release.</p>
+  {% endif %}
+</section>
+
+<section class="stack-sm" aria-labelledby="cls-h">
+  <div class="row-between"><h2 id="cls-h">How your classes are doing</h2><a class="small" href="/teacher/classes">All classes →</a></div>
+  <div class="grid">
+    {% for c in classes|sort(attribute="label") %}
+    <a class="card stack-sm class-card" href="/teacher/classes/{{ c.id }}/mastery">
+      <div class="row-between"><b class="h2like">{{ c.label }}</b><span class="small muted">{{ c.students }} students</span></div>
+      <div class="stackbar" role="img" aria-label="Of the whole syllabus for the whole class: mastered {{ c.mastery.mastered|share }}, practised {{ c.mastery.practised|share }}, learning {{ c.mastery.learning|share }}">
+        <span class="s3" style="width:{{ c.mastery.mastered }}%"></span><span class="s2" style="width:{{ c.mastery.practised }}%"></span><span class="s1" style="width:{{ c.mastery.learning }}%"></span></div>
+      <span class="tiny muted">{{ c.mastery.started_students }} of {{ c.mastery.students }} students started · {{ c.mastery.practised_or_better|share }} of the syllabus practised or mastered</span>
+      {% if c.plan.planned %}<span class="small">{% if c.plan.behind %}<b style="color:#8A4B00">{{ c.plan.behind }} chapter{{ "s" if c.plan.behind != 1 }} behind the term plan</b>{% else %}On track with the term plan{% endif %}</span>
+      {% else %}<span class="small muted">No term plan yet</span>{% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  {% if classes %}<p class="small">This week's briefing (mix-ups, students to check on, a 10-minute reteach): {% for c in classes|sort(attribute="label") %}<a href="/teacher/classes/{{ c.id }}/briefing">{{ c.label }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}
+</section>
+{% endblock %}

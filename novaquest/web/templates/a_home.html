@@ -1,0 +1,69 @@
+{% extends "staff.html" %}
+{% block title %}School setup{% endblock %}
+{% block main %}
+<div class="stack-sm" style="gap:2px"><span class="muted">{{ inst.board }} · {{ inst.academic_year }} · school code <span class="mono">{{ inst.school_code }}</span></span><h1>{{ inst.name }}: setup</h1></div>
+{% if invite %}<div class="note info stack-sm"><b>Invite link</b><span class="small">It has been emailed. You can also share it directly:</span>
+  <div class="row" style="flex-wrap:nowrap"><label class="sr-only" for="inv">Invite link</label><input id="inv" type="text" readonly value="{{ invite }}"><button class="btn small quiet" type="button" data-copy="inv">Copy</button></div></div>{% endif %}
+<div class="cols">
+  <section class="main stack">
+    <div class="card stack-sm" aria-labelledby="c-h"><h2 id="c-h">Classes</h2>
+      <div class="table-wrap"><table><thead><tr><th scope="col">Class</th><th scope="col">Subjects</th><th scope="col">Students</th><th scope="col"></th></tr></thead>
+        <tbody>{% for c in classes %}<tr><th scope="row">{{ c.label }}<br><span class="tiny muted">{{ c.academic_year }}</span></th>
+          <td><details><summary class="small">{% for b in c.books %}{{ b.subject }} <span class="muted">({{ b.board }})</span>{% if not loop.last %}, {% endif %}{% else %}<span class="pill warn">No subject yet</span>{% endfor %} · <span class="link">change</span></summary>
+            <form method="post" action="/admin/subjects" class="stack-sm" style="margin-top:8px"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="class_id" value="{{ c.id }}">
+              <fieldset class="subject-list"><legend class="sr-only">Books for {{ c.label }}</legend>
+              {% for b in available %}<label class="check-row small"><input type="checkbox" name="books[]" value="{{ b.ids|join(',') }}" {% if b.id in c.book_ids %}checked{% endif %}>{{ b.subject }} · {{ b.board }} Grade {{ b.grade }}{% if b.parts|length > 1 or b.part %} <span class="muted">(Part {{ b.parts|map(attribute="part")|join(" + ") }})</span>{% endif %}{% if b.institution_id %} <span class="muted">(your book)</span>{% endif %}</label>{% else %}<p class="small muted">No published books yet. Upload one on <a href="/admin/books">Books</a>.</p>{% endfor %}
+              </fieldset>
+              <button class="btn small quiet" type="submit">Save subjects</button></form></details></td>
+          <td>{{ c.students }}</td><td><a href="/teacher/classes/{{ c.id }}/students">Students</a></td></tr>{% else %}<tr><td colspan="4" class="muted">Add your first class below.</td></tr>{% endfor %}</tbody></table></div>
+      <p class="small muted">Upload your school's books on <a href="/admin/books">Books</a>, publish them, then tick each class's books (subjects) here.</p>
+      <form method="post" action="/admin/class" class="row"><input type="hidden" name="csrf" value="{{ csrf }}">
+        <label for="g" class="sr-only">Grade</label><input id="g" name="grade" type="text" value="8" style="width:90px">
+        <label for="s" class="sr-only">Section</label><input id="s" name="section" type="text" placeholder="Section, e.g. B" style="width:160px" required>
+        <button class="btn small" type="submit">Add class</button></form></div>
+    <div class="card stack-sm" aria-labelledby="s-h"><h2 id="s-h">Staff</h2>
+      <div class="table-wrap"><table><thead><tr><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Roles</th><th scope="col">Teaches</th><th scope="col">Status</th></tr></thead>
+        <tbody>{% for u in staff %}<tr><th scope="row">{{ u.name }}</th><td class="small">{{ u.email }}</td><td class="small">{{ u.roles|map("replace", "inst_admin", "admin")|map("replace", "leader", "principal / HOD")|join(", ") }}</td><td>{{ u.classes or "—" }}</td><td><span class="pill {{ 'ok' if u.status == 'active' else 'l1' }}">{{ "Active" if u.status == "active" else "Invited" }}</span></td></tr>{% endfor %}</tbody></table></div></div>
+  </section>
+  <aside class="aside stack">
+    <section class="card stack-sm" aria-labelledby="i-h"><h2 id="i-h">Invite staff</h2>
+      <form method="post" action="/admin/staff" class="stack-sm"><input type="hidden" name="csrf" value="{{ csrf }}">
+        <div class="field"><label for="n">Name</label><input id="n" name="name" type="text" required></div>
+        <div class="field"><label for="e">Email</label><input id="e" name="email" type="email" required></div>
+        <fieldset><legend class="small">Roles</legend>
+          <label class="check-row"><input type="checkbox" name="roles[]" value="teacher" checked>Teacher</label>
+          <label class="check-row"><input type="checkbox" name="roles[]" value="leader">Principal / HOD (read-only dashboards)</label>
+          <label class="check-row"><input type="checkbox" name="roles[]" value="inst_admin">School admin</label></fieldset>
+        <button class="btn small" type="submit">Send invite</button></form>
+      <form method="post" action="/admin/staff_csv" enctype="multipart/form-data" class="stack-sm"><input type="hidden" name="csrf" value="{{ csrf }}">
+        <label for="sf" class="small">…or upload a CSV (name, email, role)</label><input id="sf" name="file" type="file" accept=".csv"><button class="btn small quiet" type="submit">Invite from CSV</button></form></section>
+    <section class="card stack-sm" aria-labelledby="m-h"><h2 id="m-h">Who teaches what</h2>
+      <form method="post" action="/admin/map" class="stack-sm"><input type="hidden" name="csrf" value="{{ csrf }}">
+        <label for="mt" class="small">Teacher</label><select id="mt" name="teacher_id">{% for u in staff if "teacher" in u.roles %}<option value="{{ u.id }}">{{ u.name }}</option>{% endfor %}</select>
+        <label for="mc" class="small">Class</label><select id="mc" name="class_id">{% for c in classes %}<option value="{{ c.id }}">{{ c.label }}</option>{% endfor %}</select>
+        <label for="mb" class="small">Subject (book)</label><select id="mb" name="syllabus_id" required>{% for b in available %}<option value="{{ b.id }}">{{ b.subject }} · {{ b.board }} Grade {{ b.grade }}{% if b.parts|length > 1 or b.part %} (Part {{ b.parts|map(attribute="part")|join(" + ") }}){% endif %}</option>{% endfor %}</select>
+        <button class="btn small quiet" type="submit">Map teacher</button></form></section>
+    <section class="card stack-sm" aria-labelledby="ai-h"><h2 id="ai-h">Claude AI use</h2>
+      {% if not usage.configured %}<p class="small muted">Claude isn't set up on this NovaQuest computer, so NovaQuest uses its built-in (offline) engine. Run <span class="mono">nq set-key</span> to add a Claude API key.</p>
+      {% else %}
+      <div class="stack-sm" style="gap:4px"><div class="row-between small"><span>Today</span><b>{{ "{:,}".format(usage.today) }} of {{ "{:,}".format(usage.cap) }} tokens</b></div>
+        <span class="track wide" role="img" aria-label="{{ usage.today_pct }}% of today's limit used"><span class="fill" style="width:{{ usage.today_pct }}%"></span></span>
+        {% if usage.today_pct >= 100 %}<span class="small" style="color:var(--warn)">Today's limit is reached: NovaQuest uses its offline engine until midnight.</span>{% endif %}</div>
+      <div class="row-between small"><span>Last 30 days</span><b>{{ "{:,}".format(usage.calls) }} requests · about ${{ "%.2f"|format(usage.cost_usd) }}</b></div>
+      {% if usage.fallbacks %}<p class="small muted">{{ usage.fallbacks }} time{{ "s" if usage.fallbacks != 1 }} the offline engine stood in (Claude busy or unavailable, or the daily limit).</p>{% endif %}
+      <p class="tiny muted">The cost is an estimate from Claude's list prices; your Anthropic invoice is the real figure.</p>
+      {% endif %}</section>
+    <section class="card stack-sm" aria-labelledby="r-h"><h2 id="r-h">New academic year</h2><p class="small muted">Move every student to their next class. Their history and logins are kept.</p>
+      {% set movable = classes|selectattr("students")|list %}
+      {% set pairs = [] %}{% for c in movable %}{% set n = next_class(classes, c) %}{% if n %}{% set _ = pairs.append((c, n)) %}{% endif %}{% endfor %}
+      {% if not movable %}<p class="small muted">No class has students yet.</p>
+      {% else %}
+      {% if not pairs %}<p class="note small">First add next year's classes above (for example {{ movable[0].grade|int + 1 if movable[0].grade|int else "9" }}{{ movable[0].section }}), then move each class up.</p>{% endif %}
+      <form method="post" action="/admin/rollover" class="stack-sm" data-confirm="Move every student in the chosen class up? The old class is archived; histories and logins are kept."><input type="hidden" name="csrf" value="{{ csrf }}">
+        <label for="rf" class="small">Move the students of</label><select id="rf" name="from_class_id">{% for c in movable %}<option value="{{ c.id }}" {% if pairs and pairs[0][0].id == c.id %}selected{% endif %}>{{ c.label }} ({{ c.academic_year }}) · {{ c.students }} students</option>{% endfor %}</select>
+        <label for="rt" class="small">Up into</label><select id="rt" name="to_class_id" required><option value="">Choose next year's class…</option>{% for c in classes %}<option value="{{ c.id }}" {% if pairs and pairs[0][1].id == c.id %}selected{% endif %}>{{ c.label }} ({{ c.academic_year }})</option>{% endfor %}</select>
+        <button class="btn small quiet" type="submit">Move students up</button></form>
+      {% endif %}</section>
+  </aside>
+</div>
+{% endblock %}

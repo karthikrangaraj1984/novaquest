@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"sprinkler":[100,98],"spray":[48,84],"main_pipe":[100,262],"drip_pipe":[372,222],"drip":[290,234],"roots":[330,254]}'>
+<rect x="0" y="230" width="400" height="70" fill="#C89B6D"/><rect x="0" y="222" width="400" height="10" fill="#7FB55B"/>
+<line x1="200" y1="20" x2="200" y2="300" stroke="#D7DCE8" stroke-width="2" stroke-dasharray="6 6"/>
+<rect x="20" y="256" width="170" height="10" rx="4" fill="#4A5168"/>
+<rect x="96" y="104" width="8" height="152" fill="#6B7390"/>
+<path d="M88 104 h24 l-4 -10 h-16 z" fill="#2A3150"/>
+<g fill="none" stroke="#5AA4C8" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 7"><path d="M100 96 Q60 50 24 120"/><path d="M100 96 Q140 50 176 120"/><path d="M100 96 Q80 40 50 70"/><path d="M100 96 Q120 40 150 70"/></g>
+<g fill="#4E9A3A"><path d="M30 222 q6 -30 0 -48 q-8 20 0 48z"/><path d="M60 222 q6 -34 0 -54 q-8 22 0 54z"/><path d="M140 222 q6 -34 0 -54 q-8 22 0 54z"/><path d="M170 222 q6 -30 0 -48 q-8 20 0 48z"/></g>
+<rect x="210" y="218" width="180" height="8" rx="4" fill="#4A5168"/>
+<g fill="#4E9A3A"><path d="M250 218 q8 -40 0 -66 q-10 28 0 66z"/><path d="M330 218 q8 -40 0 -66 q-10 28 0 66z"/></g>
+<g fill="#5AA4C8"><path d="M250 228 q-4 8 0 12 q4 -4 0 -12z"/><path d="M290 228 q-4 8 0 12 q4 -4 0 -12z"/><path d="M330 228 q-4 8 0 12 q4 -4 0 -12z"/></g>
+<g stroke="#8A5A2B" stroke-width="2" fill="none"><path d="M250 232 l-8 22 M250 232 l8 26 M330 232 l-8 26 M330 232 l8 22"/></g>
+</svg>

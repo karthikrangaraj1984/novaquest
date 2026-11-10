@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"top_positive":[200,42],"bottom_negative":[200,118],"ground_positive":[200,276],"bolt":[160,200],"cloud":[300,70]}'>
+<path d="M70 120 C40 120 36 80 70 74 C70 40 116 30 136 50 C150 20 210 18 226 48 C250 26 300 34 302 70 C340 68 350 118 316 124 Z" fill="#90A4AE" stroke="#546E7A" stroke-width="3"/>
+<g font-size="18" font-weight="700" font-family="sans-serif"><g fill="#C62828"><text x="120" y="66">+</text><text x="170" y="54">+</text><text x="226" y="58">+</text><text x="270" y="70">+</text></g>
+<g fill="#1565C0"><text x="96" y="114">–</text><text x="146" y="118">–</text><text x="196" y="122">–</text><text x="246" y="118">–</text><text x="290" y="114">–</text></g>
+<g fill="#C62828"><text x="60" y="284">+</text><text x="140" y="284">+</text><text x="220" y="284">+</text><text x="300" y="284">+</text></g></g>
+<path d="M176 124 L144 196 L170 196 L140 262 L210 176 L182 176 L208 124 Z" fill="#FFEB3B" stroke="#F9A825" stroke-width="2"/>
+<rect x="0" y="262" width="400" height="38" fill="#A5D6A7" opacity=".7"/>
+</svg>

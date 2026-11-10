@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"rig":[200,24],"rock":[60,110],"gas":[252,204],"oil":[140,232],"water":[200,282],"pipe":[200,122]}'>
+<rect x="0" y="54" width="400" height="246" fill="#A1887F"/>
+<path d="M10 300 Q200 70 390 300 Z" fill="#6D4C41"/>
+<path d="M40 300 Q200 110 360 300 Z" fill="#64B5F6"/>
+<path d="M40 300 Q200 110 360 300 L330 300 Q200 150 70 300Z" fill="#64B5F6"/>
+<path d="M70 250 Q200 112 330 250 Q200 196 70 250 Z" fill="#212121"/>
+<path d="M100 200 Q200 112 300 200 Q200 160 100 200 Z" fill="#E3F2FD"/>
+<path d="M70 250 Q200 112 330 250" fill="none" stroke="#212121" stroke-width="2"/>
+<rect x="196" y="40" width="9" height="152" fill="#4A5168"/>
+<path d="M180 56 L200 4 L221 56 Z M186 42 h29 M192 26 h17" fill="none" stroke="#2A3150" stroke-width="4"/>
+<rect x="0" y="54" width="400" height="6" fill="#7FB55B"/>
+</svg>

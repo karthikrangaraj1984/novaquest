@@ -1,0 +1,35 @@
+{% extends "student.html" %}
+{% block title %}Practice mission{% endblock %}
+{% block eyebrow %}<span class="small"><a href="/student/learn/{{ topic.id }}">{{ topic.title }}</a><span class="muted"> · Step 2: Practise</span></span>{% endblock %}
+{% block heading %}Practice mission{% endblock %}
+{% block main %}
+{% set story = questions|story %}
+<p class="note info small">Just practice: your teacher doesn't see these marks, so try freely.</p>
+{% if story %}<p class="small muted">{{ story }}</p>{% endif %}
+<form method="post" class="stack" data-steps>
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <div class="deck-progress" data-progress hidden><span class="track"><span class="fill"></span></span><span class="count small muted"></span><button type="button" class="ask-mini" data-ask-open aria-haspopup="dialog" aria-label="Ask NOVA">💬</button></div>
+  {% for q in questions %}
+  <section class="qcard" data-step aria-labelledby="p{{ q.i }}">
+    <span class="tiny muted">Question {{ loop.index }} of {{ questions|length }}</span>
+    {% set sc = q.scenario|scene %}{% if sc %}<p class="scenario{% if q.kind == 'ai_moment' %} ai{% endif %}">{{ sc }}</p>{% endif %}
+    <h2 id="p{{ q.i }}" class="qtitle">{{ q.prompt }}</h2>
+    {% if q.options %}
+      <fieldset class="stack-sm"><legend class="sr-only">Choose one</legend>
+      {% for o in q.options %}<label class="choice"><input type="radio" name="q{{ q.i }}" value="{{ loop.index0 }}">{{ o }}</label>{% endfor %}</fieldset>
+    {% else %}
+      <label class="sr-only" for="t{{ q.i }}">Your answer</label><textarea id="t{{ q.i }}" name="q{{ q.i }}" placeholder="Write your answer in your own words"></textarea>
+    {% endif %}
+  </section>
+  {% endfor %}
+  <section class="qcard" data-step data-review aria-labelledby="rev-h">
+    <h2 id="rev-h" class="qtitle">All done?</h2>
+    <ol class="review-list">{% for q in questions %}<li><button type="button" class="link-btn" data-goto="{{ loop.index0 }}">Question {{ loop.index }}</button> <span class="small" data-answered="{{ loop.index0 }}"></span></li>{% endfor %}</ol>
+    <button class="btn warm block" type="submit">Finish mission</button>
+  </section>
+  <nav class="deck-nav" data-nav hidden aria-label="Questions">
+    <button class="btn ghost" type="button" data-prev>Back</button>
+    <button class="btn" type="button" data-next>Next</button>
+  </nav>
+</form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "staff.html" %}
+{% from "_pictures.html" import deck %}
+{% block title %}{{ topic.title }} · picture lesson{% endblock %}
+{% block main %}
+<div class="stack" style="max-width:620px">
+  <a class="small" href="/teacher/syllabus?topic={{ topic.id }}#detail">← Back to the syllabus board</a>
+  <div class="stack-sm">
+    <span class="eyebrow">Picture lesson preview · {{ topic|pc }} · {{ topic|inpart }}Chapter {{ topic.chapter_no }}, {{ topic.chapter_title }}</span>
+    <h1>{{ topic.title }}</h1>
+    <p class="small muted">This is exactly what students see in “Learn in pictures”, with the quiz answers shown. Use Back and Next under each card to step through them.</p>
+  </div>
+  {{ deck(topic, lesson, "preview") }}
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"blue":[64,214],"nail_before":[96,120],"green":[268,236],"nail_after":[300,112],"coating":[300,206]}'>
+<g fill="none" stroke="#5A6178" stroke-width="3"><path d="M40 90 V270 Q40 280 50 280 H142 Q152 280 152 270 V90"/><path d="M244 90 V270 Q244 280 254 280 H346 Q356 280 356 270 V90"/></g>
+<path d="M42 150 H150 V270 Q150 278 142 278 H50 Q42 278 42 270 Z" fill="#5C9DE8" opacity=".85"/>
+<path d="M246 150 H354 V270 Q354 278 346 278 H254 Q246 278 246 270 Z" fill="#7CC79A" opacity=".85"/>
+<g stroke="#6B7390" stroke-width="7" stroke-linecap="round"><path d="M96 60 V240"/><path d="M300 60 V240"/></g>
+<path d="M300 150 V240" stroke="#B5653A" stroke-width="9" stroke-linecap="round"/>
+<rect x="88" y="54" width="16" height="8" rx="2" fill="#4A5168"/><rect x="292" y="54" width="16" height="8" rx="2" fill="#4A5168"/>
+<path d="M170 180 h50 m-10 -8 l10 8 l-10 8" stroke="#2A3150" stroke-width="3" fill="none"/>
+<text x="196" y="166" font-size="12" fill="#5A6178" text-anchor="middle" font-family="sans-serif">after some time</text>
+</svg>

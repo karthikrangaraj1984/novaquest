@@ -1,0 +1,37 @@
+{% extends "staff.html" %}
+{% block title %}Assignments{% endblock %}
+{% block main %}
+{% set q_cls = ("&class=" ~ cls) if cls else "" %}
+<div class="row-between"><h1>Assignments</h1><a class="btn" href="/teacher/assignments/new">+ New assignment</a></div>
+<div class="filters">
+  <nav class="seg" aria-label="Stage">
+    {% for k, label in (("all", "All"), ("action", "Needs you"), ("open", "Open"), ("draft", "Drafts"), ("done", "Done")) %}
+    <a href="?show={{ k }}{{ q_cls }}" {% if show == k %}aria-current="page"{% endif %}>{{ label }} ({{ counts[k] }})</a>{% endfor %}
+  </nav>
+  {% if classes|length > 1 %}<nav class="chips" aria-label="Class">
+    <a class="chip" href="?show={{ show }}" {% if not cls %}aria-current="page"{% endif %}>All classes</a>
+    {% for c in classes %}<a class="chip" href="?show={{ show }}&amp;class={{ c.id }}" {% if cls == c.id %}aria-current="page"{% endif %}>{{ c.label }}</a>{% endfor %}
+  </nav>{% endif %}
+</div>
+<div class="card table-wrap">
+<table>
+  <thead><tr><th scope="col">Assignment</th><th scope="col">Class</th><th scope="col">Stage</th><th scope="col">Handed in</th><th scope="col">Closes</th><th scope="col">Next step</th></tr></thead>
+  <tbody>
+  {% for a in items %}
+    {% set nxt = ("Check " ~ a.flagged ~ " answer" ~ ("s" if a.flagged > 1 else ""), "/review", "") if a.flagged else
+                 (("Approve and schedule", "", "") if a.live_state == "draft" else
+                 (("Release results", "/review", "") if a.live_state == "closed" else
+                 (("See answers", "/review", "ghost") if a.live_state == "open" else
+                 (("View results", "/review", "ghost") if a.live_state == "reviewed" else ("Edit", "", "ghost"))))) %}
+    <tr {% if a.flagged %}class="warn-row"{% endif %}><th scope="row"><a href="/teacher/assignments/{{ a.id }}">{{ a.title }}</a>{% if a.batch_id %} <span class="pill l0" title="Set for several sections together">Sections</span>{% endif %}</th>
+      <td>{{ a.class_label }} <span class="small muted">· {{ a.subject }}</span>{% if a.section_labels %}<br><span class="tiny muted">+ {{ a.section_labels|join(", ") }} when scheduled</span>{% endif %}</td>
+      <td><span class="pill {{ {'draft': 'l1', 'scheduled': 'l0', 'open': 'l2', 'closed': 'warn', 'reviewed': 'ok'}[a.live_state] }}">{{ {'draft': 'Draft', 'scheduled': 'Scheduled', 'open': 'Open', 'closed': 'Closed', 'reviewed': 'Released'}[a.live_state] }}</span></td>
+      <td>{% if a.live_state in ("draft", "scheduled") %}—{% else %}{{ a.submitted }} of {{ a.targets }}{% endif %}</td>
+      <td>{{ a.expires_at|ist if a.expires_at else "—" }}</td>
+      <td>{% if a.live_state != "scheduled" %}<a class="btn small {{ nxt[2] }}" href="/teacher/assignments/{{ a.id }}{{ nxt[1] }}">{{ nxt[0] }}</a>{% else %}<span class="small muted">Opens {{ a.opens_at|ist }}</span>{% endif %}</td></tr>
+  {% else %}<tr><td colspan="6" class="muted">{% if show != "all" or cls %}Nothing here. <a href="/teacher/assignments">Show all</a>.{% else %}No assignments yet. <a href="/teacher/assignments/new">Create your first one</a>.{% endif %}</td></tr>{% endfor %}
+  </tbody>
+</table>
+</div>
+<p class="small"><a href="/teacher/bank">Reuse saved questions</a> · <a href="/teacher/papers">Exam papers</a></p>
+{% endblock %}

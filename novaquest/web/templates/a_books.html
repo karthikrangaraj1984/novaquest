@@ -1,0 +1,55 @@
+{% extends "staff.html" %}
+{% block title %}Books{% endblock %}
+{% block main %}
+<div class="stack-sm" style="gap:2px"><h1>Books</h1>
+  <p class="muted">Upload the textbook for any board, subject and grade. NovaQuest reads it and drafts its chapters and topics; you check them, publish the book, and give it to classes.</p></div>
+{% if error %}<div class="note warn" role="alert">{{ error }}</div>{% endif %}
+<div class="cols">
+  <section class="main stack" aria-labelledby="own-h">
+    <div class="card stack-sm">
+      <h2 id="own-h">Your school's books</h2>
+      {% if items %}
+      <div class="table-wrap"><table><thead><tr><th scope="col">Book</th><th scope="col">Chapters · topics</th><th scope="col">Classes</th><th scope="col">State</th></tr></thead>
+        <tbody>{% for b in items %}<tr>
+          <th scope="row"><a href="/admin/books/{{ b.id }}">{{ b.title }}</a><br><span class="small muted">{{ b.label }}</span></th>
+          <td>{% if b.status in ("processing", "failed") %}—{% else %}{{ b.chapters }} · {{ b.topics }}{% endif %}</td>
+          <td class="small">{{ b.classes or "—" }}</td>
+          <td>{% if b.status == "processing" %}<span class="pill l1">Reading…</span>
+              {% elif b.status == "review" %}<span class="pill warn">Check and publish</span>
+              {% elif b.status == "published" %}<span class="pill ok">Published</span>{% if b.drafts %} <span class="pill l1">{{ b.drafts }} to approve</span>{% endif %}
+              {% elif b.status == "failed" %}<span class="pill bad">Couldn't read</span>
+              {% else %}<span class="pill l0">Archived</span>{% endif %}</td>
+        </tr>{% endfor %}</tbody></table></div>
+      {% else %}<p class="empty">No books yet. Upload your first one.</p>{% endif %}
+    </div>
+    {% if shared %}
+    <div class="card stack-sm"><h2>Ready-made books</h2>
+      <p class="small muted">Provided by NovaQuest with full picture lessons. Give them to classes on <a href="/admin">School setup</a>.</p>
+      <ul class="stack-sm">{% for b in shared %}<li>{{ b.title }} <span class="small muted">· {{ b.label }}</span></li>{% endfor %}</ul></div>
+    {% endif %}
+  </section>
+  <aside class="aside stack">
+    <section class="card stack-sm" aria-labelledby="up-h"><h2 id="up-h">Upload a book</h2>
+      <form method="post" action="/admin/books" enctype="multipart/form-data" class="stack-sm" data-upload>
+        <input type="hidden" name="csrf" value="{{ csrf }}">
+        <div class="field"><label for="b-board">Board</label><input type="text" id="b-board" name="board" list="boards" value="{{ f.board or '' }}" required placeholder="e.g. CBSE">
+          <datalist id="boards">{% for b in boards %}<option value="{{ b }}">{% endfor %}</datalist></div>
+        <div class="row" style="flex-wrap:nowrap">
+          <div class="field" style="flex:2"><label for="b-subject">Subject</label><input type="text" id="b-subject" name="subject" list="subjects" value="{{ f.subject or '' }}" required placeholder="e.g. Science">
+            <datalist id="subjects">{% for s in items|map(attribute="subject")|unique %}<option value="{{ s }}">{% endfor %}</datalist></div>
+          <div class="field" style="flex:1"><label for="b-grade">Grade</label><input type="text" id="b-grade" name="grade" value="{{ f.grade or '' }}" required placeholder="8"></div>
+          <div class="field" style="flex:1"><label for="b-part">Part</label><select id="b-part" name="part">
+            <option value="">Whole book</option>{% for n in range(1, 5) %}<option value="{{ n }}" {% if (f.part or '')|string == n|string %}selected{% endif %}>Part {{ n }}</option>{% endfor %}</select></div>
+        </div>
+        <p class="small muted">A book printed in parts (like NCERT Maths Part 1 and Part 2)? Upload each part with the same board, subject and grade and choose its part: students and teachers then see one subject. NovaQuest also spots “Part-I” / “Part-II” on the cover.</p>
+        <div class="field"><label for="b-title">Book title <span class="muted small">(optional)</span></label><input type="text" id="b-title" name="title" value="{{ f.title or '' }}" placeholder="e.g. Curiosity: Science for Grade 8"></div>
+        <div class="field"><label for="b-files">PDF files</label><input id="b-files" name="files[]" type="file" accept="application/pdf,.pdf" multiple required>
+          <span class="small muted">The whole book as one PDF, or one PDF per chapter (any names). Up to {{ 40 }} files.</span></div>
+        <button class="btn" type="submit" data-busy="Uploading…">Upload and read</button>
+      </form>
+      <p class="small muted">{% if claude %}Claude will draft the topics. You can then ask it to draft picture lessons, quick checks and NOVA's mix-ups for you to approve.{% else %}Without a Claude API key, topics come from the book's own headings, and picture lessons can't be drafted. Practice, Ask NOVA and assignments still work.{% endif %}</p>
+      <p class="note info small">Upload only books your school has the right to use. NCERT books are free to use; most ICSE and IGCSE textbooks belong to their publishers.</p>
+    </section>
+  </aside>
+</div>
+{% endblock %}

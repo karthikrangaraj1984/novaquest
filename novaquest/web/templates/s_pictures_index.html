@@ -1,0 +1,28 @@
+{% extends "student.html" %}
+{% from "_books.html" import book_tabs %}
+{% block title %}Learn in pictures{% endblock %}
+{% block eyebrow %}<span class="small muted">{{ book.label if book else "" }}</span>{% endblock %}
+{% block heading %}Learn in pictures{% endblock %}
+{% block main %}
+{{ book_tabs(books, book, "/student/pictures") }}
+<section class="card dark stack-sm">
+  <p>Every topic, one picture at a time. Each lesson explains the idea in simple words, then ends with the crux and a picture quiz.</p>
+  {% set total = chapters|map(attribute="topics")|map("length")|sum %}
+  {% set finished = chapters|map(attribute="done")|sum %}
+  <div class="row-between small"><span>{{ finished }} of {{ total }} topics finished</span>
+    <span class="track wide" aria-hidden="true"><span class="fill" style="width:{{ (100 * finished / total)|round(0) if total else 0 }}%"></span></span></div>
+</section>
+{% for ch in chapters %}
+<details class="chapter" {% if ch.demo or loop.first %}open{% endif %}>
+  <summary><span>{{ ch|inpart }}{{ ch.no }}. {{ ch.title }}</span><span class="small muted">{{ ch.done }}/{{ ch.topics|length }} done</span></summary>
+  {% for t in ch.topics %}
+  <a class="topic-row pic-row" href="/student/learn/{{ t.id }}/pictures">
+    <span class="stack-sm" style="gap:2px"><b>{{ t.title }}</b><span class="small muted">{{ t.crux }}</span></span>
+    <span class="pill {{ 'ok' if t.done }}">{% if t.done %}Done ✓{% else %}{{ t.cards + 2 }} cards{% endif %}</span>
+  </a>
+  {% endfor %}
+</details>
+{% else %}
+<p class="empty">No picture lessons here yet.</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "staff.html" %}
+{% from "_pictures.html" import deck %}
+{% block title %}{{ topic.title }} · check{% endblock %}
+{% block main %}
+<div class="stack" style="max-width:680px">
+  <a class="small" href="/admin/books/{{ book.id }}#n{{ topic.id }}">← {{ book.title }}</a>
+  <div class="stack-sm"><span class="eyebrow">Check before students see it · {{ topic.code }} · Chapter {{ topic.chapter_no }}, {{ topic.chapter_title }}</span>
+    <h1>{{ topic.title }}</h1>
+    <p class="small muted">Drafted by Claude from the book's text. Compare it with the passages at the bottom. Remove anything that is wrong, then approve.</p></div>
+  <form method="post" action="/admin/books/{{ book.id }}/approve" class="row"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="topic_id" value="{{ topic.id }}"><input type="hidden" name="stay" value="1">
+    <button class="btn" type="submit">Approve this topic</button>
+    <span class="small muted">{% if pictures and pictures.status == "approved" %}Approved: students can see it.{% endif %}</span></form>
+
+  <section class="card stack-sm" aria-labelledby="p-h"><div class="row-between"><h2 id="p-h">Learn in pictures</h2>
+    {% if pictures %}<form method="post" action="/admin/books/{{ book.id }}/discard" data-confirm="Remove this picture lesson?"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="topic_id" value="{{ topic.id }}"><input type="hidden" name="part" value="pictures"><button class="btn quiet small" type="submit">Remove</button></form>{% endif %}</div>
+    {% if pictures %}{{ deck(topic, pictures.data, "preview") }}
+    {% elif failed %}<p class="small muted">Claude's picture lesson for this topic didn't pass NovaQuest's checks, so it was left out. Students learn this topic with practice and the textbook text.</p>
+    {% else %}<p class="small muted">Not drafted yet.</p>{% endif %}
+  </section>
+
+  <section class="card stack-sm" aria-labelledby="l-h"><div class="row-between"><h2 id="l-h">Lesson and quick checks</h2>
+    {% if lesson %}<form method="post" action="/admin/books/{{ book.id }}/discard"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="topic_id" value="{{ topic.id }}"><input type="hidden" name="part" value="lesson"><button class="btn quiet small" type="submit">Remove</button></form>{% endif %}</div>
+    {% if lesson %}{% set d = lesson.data %}
+    <p>{{ d.explain }}</p>{% if d.example %}<p class="small"><b>Example:</b> {{ d.example }}</p>{% endif %}
+    <ol class="stack-sm">{% for c in d.checks %}<li>{{ c.q }}<ul class="small">{% for o in c.options %}<li>{{ o }}{% if loop.index0 == c.answer %} ✓{% endif %}</li>{% endfor %}</ul>{% if c.why %}<span class="small muted">{{ c.why }}</span>{% endif %}</li>{% endfor %}</ol>
+    {% else %}<p class="small muted">None drafted: students get checks made from the textbook text.</p>{% endif %}
+  </section>
+
+  <section class="card stack-sm" aria-labelledby="m-h"><h2 id="m-h">NOVA's mix-ups (Teach NOVA)</h2>
+    {% for m in mixups %}<div class="stack-sm" style="border-top:1px solid var(--line);padding-top:8px">
+      <div class="row-between"><b>{{ m.data.label }}</b>
+        <form method="post" action="/admin/books/{{ book.id }}/discard"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="topic_id" value="{{ topic.id }}"><input type="hidden" name="part" value="mixup"><input type="hidden" name="code" value="{{ m.code }}"><button class="btn quiet small" type="submit">Remove</button></form></div>
+      <p class="small"><b>NOVA says:</b> {{ m.data.nova_says }}</p><p class="small"><b>Right idea:</b> {{ m.data.correct_idea }}</p>
+      <span class="pill {{ 'ok' if m.status == 'approved' else 'l1' }}" style="align-self:flex-start">{{ "Approved" if m.status == "approved" else "Draft" }}</span></div>
+    {% else %}<p class="small muted">None. Without one, this topic has no Teach NOVA step.</p>{% endfor %}
+  </section>
+
+  <section class="card stack-sm"><div class="row-between"><h2>From the book</h2><a class="small" href="/teacher/syllabus/topics/{{ topic.id }}/pages">📄 See the book pages</a></div>
+    {% for p in passages %}<blockquote class="small"><span class="muted">{{ p.ref }}</span><br>{{ p.body }}</blockquote>{% endfor %}</section>
+</div>
+{% endblock %}

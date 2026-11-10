@@ -1,0 +1,29 @@
+{% extends "student.html" %}
+{# Ask my teacher (1.31.0): write a question; replies come here and in the bell. #}
+{% block title %}Ask my teacher{% endblock %}
+{% block eyebrow %}<span class="small"><a href="/student/progress">{{ tr("My progress") }}</a></span>{% endblock %}
+{% block heading %}{{ tr("Ask my teacher") }}{% endblock %}
+{% block main %}
+{% if error %}<div class="note warn" role="alert">{{ error }}</div>{% endif %}
+<form method="post" class="card stack-sm" id="ask" aria-labelledby="ask-h">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  {% if qid %}<input type="hidden" name="q" value="{{ qid }}">{% endif %}{% if topic %}<input type="hidden" name="topic" value="{{ topic }}">{% endif %}
+  {% if assignment %}<input type="hidden" name="assignment" value="{{ assignment }}">{% endif %}
+  <h2 id="ask-h">Your question</h2>
+  {% if about %}<p class="small note info"><b>About:</b> {{ about.prompt }}</p>{% endif %}
+  <label for="body" class="sr-only">Your question</label>
+  <textarea id="body" name="body" rows="3" maxlength="600" required placeholder="What's confusing? e.g. Why is the answer B and not C?">{{ f.get('body', '') }}</textarea>
+  <button class="btn" type="submit">Send to my teacher</button>
+  <p class="tiny muted">Your teacher for this subject sees it and replies here. You can also ask NOVA any time from a topic.</p>
+</form>
+<section class="stack-sm" aria-labelledby="mine-h"><h2 id="mine-h">My questions</h2>
+  {% for d in mine %}
+  <article class="qcard stack-sm">
+    <span class="tiny muted">{{ d.created_at|ist('%d %b') }}{% if d.topic %} · {{ d.topic }}{% endif %}</span>
+    {% if d.question %}<span class="small muted">About: {{ d.question|truncate(120) }}</span>{% endif %}
+    <p><b>{{ d.body }}</b></p>
+    {% if d.reply %}<p class="note ok small"><b>{{ d.teacher }}:</b> {{ d.reply }}</p>{% else %}<span class="pill l0">Waiting for a reply</span>{% endif %}
+  </article>
+  {% else %}<p class="small muted">No questions yet.</p>{% endfor %}
+</section>
+{% endblock %}

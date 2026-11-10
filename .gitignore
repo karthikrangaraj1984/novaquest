@@ -1,0 +1,14 @@
+.env
+var/
+dist/
+.vendor/
+__pycache__/
+*.pyc
+data/source/*.pdf
+.venv/
+nq.cmd
+.env.*
+!.env.example
+*.exe
+*.zip
+!installer/windows/assets/*.zip

@@ -1,0 +1,14 @@
+{# Student work lists: a subject tag, and one row per open assignment with its progress and deadline. #}
+{% macro subject_tag(label, colour) %}<span class="subj subj-{{ colour }}">{{ label }}</span>{% endmacro %}
+
+{% macro progress(a) %}{% if a.started and a.questions %}<span class="tprog" role="img" aria-label="{{ a.answered }} of {{ a.questions }} answered"><span class="track"><span class="fill" style="width:{{ (100 * a.answered / a.questions)|round(0) }}%"></span></span><span class="small">{{ a.answered }}/{{ a.questions }}</span></span>{% endif %}{% endmacro %}
+
+{% macro due_text(a) %}<span class="small {{ 'due-soon' if a.closes_soon else 'muted' }}">{{ a.student_expires_at|due }}</span>{% endmacro %}
+
+{% macro task_row(a) %}
+<a class="task-row" href="/student/assignments/{{ a.id }}">
+  <span class="stack-sm" style="gap:3px;min-width:0"><span class="row" style="gap:6px;flex-wrap:wrap">{{ subject_tag(a.subject_label, a.subject_colour) }}<b>{{ a.title }}</b></span>
+    <span class="row" style="gap:10px">{{ progress(a) }}{{ due_text(a) }}{% if a.time_limit_min %}<span class="small muted">{{ a.time_limit_min }} min limit</span>{% endif %}</span></span>
+  <span class="pill {{ 'l2' if a.started else 'warn' }}">{{ "Continue" if a.started else "Start" }}</span>
+</a>
+{% endmacro %}

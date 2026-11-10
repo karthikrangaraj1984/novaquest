@@ -1,0 +1,778 @@
+{
+ "17.1": {
+  "crux": "The Moon has no light of its own; it reflects sunlight, and as it goes round the Earth we see different amounts of its lit half: the phases of the Moon.",
+  "cards": [
+   {
+    "title": "Phases of the Moon",
+    "pic": {
+     "kind": "cycle",
+     "centre": "≈ 29.5 days",
+     "steps": [
+      {
+       "icon": "🌑",
+       "short": "New moon",
+       "text": "No Moon is seen (amavasya)."
+      },
+      {
+       "icon": "🌒",
+       "short": "Crescent",
+       "text": "A thin sliver appears and grows (waxing)."
+      },
+      {
+       "icon": "🌓",
+       "short": "Half moon",
+       "text": "Half of the disc is bright."
+      },
+      {
+       "icon": "🌕",
+       "short": "Full moon",
+       "text": "The whole disc is bright (purnima)."
+      },
+      {
+       "icon": "🌗",
+       "short": "Half again",
+       "text": "The bright part shrinks (waning)."
+      },
+      {
+       "icon": "🌘",
+       "short": "Crescent",
+       "text": "A thin sliver, then the next new moon."
+      }
+     ]
+    },
+    "say": [
+     "The changing shapes of the bright part of the Moon are called phases of the Moon.",
+     "From one full moon to the next takes a little more than 29 days."
+    ]
+   },
+   {
+    "title": "Why the shape changes",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "☀️",
+       "text": "The Sun always lights up half of the Moon"
+      },
+      {
+       "icon": "🌍",
+       "text": "The Moon goes round the Earth"
+      },
+      {
+       "icon": "👀",
+       "text": "We see different amounts of the lit half from Earth"
+      }
+     ]
+    },
+    "say": [
+     "The Moon doesn't change shape: we just see more or less of its sunlit side."
+    ],
+    "remember": "The Moon reflects sunlight; phases come from our changing view."
+   },
+   {
+    "title": "The Moon's surface",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🕳️",
+       "text": "Craters",
+       "sub": "Many of all sizes"
+      },
+      {
+       "icon": "⛰️",
+       "text": "Steep, high mountains"
+      },
+      {
+       "icon": "🌫️",
+       "text": "No air",
+       "sub": "No atmosphere"
+      },
+      {
+       "icon": "💧",
+       "text": "No water",
+       "sub": "Can't support life"
+      }
+     ]
+    },
+    "say": [
+     "The Moon's surface is dusty and barren."
+    ]
+   },
+   {
+    "title": "Visiting the Moon",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🚀",
+       "text": "On 21 July 1969, Neil Armstrong became the first person to land on the Moon"
+      },
+      {
+       "icon": "👣",
+       "text": "Edwin Aldrin followed him"
+      },
+      {
+       "icon": "🌓",
+       "text": "We always see the same side of the Moon from Earth"
+      }
+     ]
+    },
+    "say": [
+     "The Moon turns once on its axis in the same time it takes to go round the Earth, so the same side always faces us."
+    ]
+   }
+  ],
+  "crux_points": [
+   "The Moon reflects sunlight; it has no light of its own.",
+   "Phases (new moon to full moon and back) happen as we see different parts of its lit half.",
+   "The Moon has no air or water; Neil Armstrong landed there in 1969."
+  ],
+  "quiz": [
+   {
+    "q": "Why does the Moon shine?",
+    "options": [
+     "It reflects sunlight",
+     "It burns gas",
+     "It is a star",
+     "It has lamps"
+    ],
+    "answer": 0,
+    "why": "The Moon has no light of its own; it reflects light from the Sun."
+   },
+   {
+    "q": "The night with no Moon in the sky is called…",
+    "options": [
+     "New moon (amavasya)",
+     "Full moon",
+     "Half moon",
+     "Crescent"
+    ],
+    "answer": 0,
+    "why": "On new moon night the Moon's lit side faces away from us."
+   }
+  ]
+ },
+ "17.2": {
+  "crux": "Stars are like the Sun but very far away; they seem to move from east to west because the Earth spins, and their huge distances are measured in light years.",
+  "cards": [
+   {
+    "title": "The Sun is a star",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "The Sun",
+       "icon": "☀️",
+       "cells": [
+        "The nearest star",
+        "Light takes about 8 minutes to reach us"
+       ]
+      },
+      {
+       "head": "Other stars",
+       "icon": "✨",
+       "cells": [
+        "Millions of times farther away",
+        "Their light takes years to reach us"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Stars give out their own light, like the Sun.",
+     "Stars are in the sky during the day too, but sunlight is too bright to see them."
+    ]
+   },
+   {
+    "title": "Light year",
+    "pic": {
+     "kind": "equation",
+     "parts": [
+      {
+       "icon": "💡",
+       "text": "Speed of light: 300,000 km per second",
+       "color": "amber"
+      },
+      "×",
+      {
+       "icon": "📅",
+       "text": "One year",
+       "color": "blue"
+      },
+      "=",
+      {
+       "icon": "📏",
+       "text": "One light year",
+       "color": "violet"
+      }
+     ]
+    },
+    "say": [
+     "A light year is the distance light travels in one year. It measures distance, not time.",
+     "Alpha Centauri, a nearby star, is about 4.3 light years away."
+    ],
+    "remember": "Light year = a distance."
+   },
+   {
+    "title": "Why stars seem to move",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🌍",
+       "text": "The Earth spins from west to east"
+      },
+      {
+       "icon": "✨",
+       "text": "So stars appear to move from east to west"
+      },
+      {
+       "icon": "⭐",
+       "text": "The Pole Star lies along the Earth's axis, so it seems to stay still"
+      }
+     ]
+    },
+    "say": [
+     "The Pole Star (Dhruv tara) is above the North Pole and helps us find the north."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Stars give out their own light; the Sun is the nearest star.",
+   "A light year is the distance light travels in one year.",
+   "Stars seem to move east to west because the Earth spins west to east; the Pole Star seems fixed."
+  ],
+  "quiz": [
+   {
+    "q": "A light year is a unit of…",
+    "options": [
+     "Distance",
+     "Time",
+     "Brightness",
+     "Speed"
+    ],
+    "answer": 0,
+    "why": "It's the distance light travels in a year."
+   },
+   {
+    "q": "Why does the Pole Star seem not to move?",
+    "options": [
+     "It lies along the Earth's axis",
+     "It is very small",
+     "It is the Sun",
+     "It is a planet"
+    ],
+    "answer": 0,
+    "why": "It is in line with the axis around which the Earth spins."
+   }
+  ]
+ },
+ "17.3": {
+  "crux": "Constellations are groups of stars that form recognisable shapes; well-known ones are Ursa Major, Orion and Cassiopeia.",
+  "cards": [
+   {
+    "title": "Famous constellations",
+    "pic": {
+     "kind": "scene",
+     "scene": "constellations",
+     "labels": [
+      {
+       "at": "big_dipper",
+       "name": "Ursa Major (Saptarshi)",
+       "note": "Seven bright stars; seen in summer evenings"
+      },
+      {
+       "at": "pointers",
+       "name": "Pointer stars",
+       "note": "Point towards the Pole Star"
+      },
+      {
+       "at": "pole_star",
+       "name": "Pole Star"
+      },
+      {
+       "at": "orion",
+       "name": "Orion (the Hunter)",
+       "note": "Seen in winter evenings"
+      },
+      {
+       "at": "orion_belt",
+       "name": "Orion's belt",
+       "note": "Three stars in a row"
+      },
+      {
+       "at": "cassiopeia",
+       "name": "Cassiopeia",
+       "note": "A 'W' shape in the northern sky"
+      }
+     ]
+    },
+    "say": [
+     "Ancient people joined bright stars into shapes and gave them names."
+    ]
+   },
+   {
+    "title": "Finding the Pole Star",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🔭",
+       "text": "Find Ursa Major in the northern sky"
+      },
+      {
+       "icon": "➡️",
+       "text": "Join the two pointer stars at the end of its bowl"
+      },
+      {
+       "icon": "⭐",
+       "text": "Extend the line about five times: you reach the Pole Star"
+      }
+     ]
+    },
+    "say": [
+     "Travellers used this to find the north at night."
+    ],
+    "remember": "Ursa Major's pointers lead to the Pole Star."
+   },
+   {
+    "title": "When to look",
+    "pic": {
+     "kind": "compare",
+     "rows": [
+      "Best seen",
+      "Shape"
+     ],
+     "cols": [
+      {
+       "head": "Ursa Major",
+       "icon": "🐻",
+       "cells": [
+        "Summer, early night",
+        "Big ladle or bear"
+       ]
+      },
+      {
+       "head": "Orion",
+       "icon": "🏹",
+       "cells": [
+        "Winter, late evening",
+        "Hunter with a belt"
+       ]
+      },
+      {
+       "head": "Cassiopeia",
+       "icon": "👑",
+       "cells": [
+        "Winter, early night",
+        "W or M"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Sirius, the brightest star in the night sky, is near Orion."
+    ]
+   }
+  ],
+  "crux_points": [
+   "A constellation is a group of stars forming a recognisable shape.",
+   "Ursa Major's pointer stars lead to the Pole Star.",
+   "Orion (with its belt) and Cassiopeia (a W) are seen in winter."
+  ],
+  "quiz": [
+   {
+    "q": "Which constellation is marked '?'",
+    "pic": {
+     "kind": "scene",
+     "scene": "constellations",
+     "ask": "cassiopeia"
+    },
+    "options": [
+     "Cassiopeia",
+     "Orion",
+     "Ursa Major",
+     "Leo"
+    ],
+    "answer": 0,
+    "why": "Cassiopeia looks like a W (or a distorted M)."
+   },
+   {
+    "q": "Which stars help us find the Pole Star?",
+    "options": [
+     "The pointer stars of Ursa Major",
+     "Orion's belt",
+     "The Sun",
+     "Sirius"
+    ],
+    "answer": 0,
+    "why": "A line through the two pointer stars leads to the Pole Star."
+   }
+  ]
+ },
+ "17.4": {
+  "crux": "The solar system is the Sun and everything that goes round it, including eight planets that move in fixed paths called orbits.",
+  "cards": [
+   {
+    "title": "Eight planets",
+    "pic": {
+     "kind": "scene",
+     "scene": "solar_system",
+     "labels": [
+      {
+       "at": "sun",
+       "name": "Sun",
+       "note": "A star at the centre"
+      },
+      {
+       "at": "mercury",
+       "name": "Mercury",
+       "note": "Nearest and smallest"
+      },
+      {
+       "at": "venus",
+       "name": "Venus",
+       "note": "Brightest planet"
+      },
+      {
+       "at": "earth",
+       "name": "Earth",
+       "note": "Has life"
+      },
+      {
+       "at": "mars",
+       "name": "Mars",
+       "note": "The red planet"
+      },
+      {
+       "at": "asteroids",
+       "name": "Asteroid belt"
+      },
+      {
+       "at": "jupiter",
+       "name": "Jupiter",
+       "note": "Largest"
+      },
+      {
+       "at": "saturn",
+       "name": "Saturn",
+       "note": "Beautiful rings"
+      },
+      {
+       "at": "uranus",
+       "name": "Uranus"
+      },
+      {
+       "at": "neptune",
+       "name": "Neptune",
+       "note": "Farthest"
+      }
+     ]
+    },
+    "say": [
+     "Each planet moves round the Sun in its own path, called an orbit.",
+     "Pluto was once called a planet, but since 2006 it is called a dwarf planet."
+    ]
+   },
+   {
+    "title": "Revolution and rotation",
+    "pic": {
+     "kind": "compare",
+     "rows": [
+      "Meaning",
+      "For Earth"
+     ],
+     "cols": [
+      {
+       "head": "Revolution",
+       "icon": "🔄",
+       "cells": [
+        "One trip round the Sun",
+        "About 365 days: one year"
+       ]
+      },
+      {
+       "head": "Rotation",
+       "icon": "🌀",
+       "cells": [
+        "One spin on its own axis",
+        "About 24 hours: one day"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "The time for one revolution is the planet's period of revolution."
+    ],
+    "remember": "Revolve = go round the Sun. Rotate = spin."
+   },
+   {
+    "title": "Planet facts",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🌑",
+       "text": "Mercury",
+       "sub": "Closest to the Sun; no moon"
+      },
+      {
+       "icon": "🌕",
+       "text": "Venus",
+       "sub": "Brightest planet; 'morning or evening star'; spins east to west"
+      },
+      {
+       "icon": "🌍",
+       "text": "Earth",
+       "sub": "Only planet known to have life; one moon"
+      },
+      {
+       "icon": "🔴",
+       "text": "Mars",
+       "sub": "Reddish; two small moons"
+      },
+      {
+       "icon": "🟠",
+       "text": "Jupiter",
+       "sub": "So big about 1300 Earths could fit inside"
+      },
+      {
+       "icon": "🪐",
+       "text": "Saturn",
+       "sub": "Rings; less dense than water"
+      }
+     ]
+    },
+    "say": [
+     "Uranus and Neptune are so far away we need a telescope to see them."
+    ]
+   },
+   {
+    "title": "Inner and outer planets",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Inner planets",
+       "icon": "🪨",
+       "cells": [
+        "Mercury, Venus, Earth, Mars",
+        "Close to the Sun",
+        "Few or no moons"
+       ]
+      },
+      {
+       "head": "Outer planets",
+       "icon": "🪐",
+       "cells": [
+        "Jupiter, Saturn, Uranus, Neptune",
+        "Far from the Sun",
+        "Rings and many moons"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "The asteroid belt separates the inner and outer planets."
+    ]
+   }
+  ],
+  "crux_points": [
+   "The solar system is the Sun and all bodies that revolve around it.",
+   "There are eight planets, from Mercury (nearest) to Neptune (farthest).",
+   "Planets revolve round the Sun in orbits and rotate on their axes."
+  ],
+  "quiz": [
+   {
+    "q": "Which planet is marked '?'",
+    "pic": {
+     "kind": "scene",
+     "scene": "solar_system",
+     "ask": "jupiter"
+    },
+    "options": [
+     "Jupiter, the largest",
+     "Mars",
+     "Earth",
+     "Mercury"
+    ],
+    "answer": 0,
+    "why": "Jupiter is the biggest planet, just beyond the asteroid belt."
+   },
+   {
+    "q": "Which planet is nearest to the Sun?",
+    "options": [
+     "Mercury",
+     "Venus",
+     "Earth",
+     "Neptune"
+    ],
+    "answer": 0,
+    "why": "Mercury is the closest planet to the Sun."
+   },
+   {
+    "q": "Which planet is known as the red planet?",
+    "options": [
+     "Mars",
+     "Venus",
+     "Saturn",
+     "Uranus"
+    ],
+    "answer": 0,
+    "why": "Mars looks reddish."
+   }
+  ]
+ },
+ "17.5": {
+  "crux": "Besides planets, the solar system has asteroids, comets and meteors, and people have launched artificial satellites round the Earth.",
+  "cards": [
+   {
+    "title": "Comets",
+    "pic": {
+     "kind": "scene",
+     "scene": "comet",
+     "labels": [
+      {
+       "at": "sun",
+       "name": "Sun"
+      },
+      {
+       "at": "head",
+       "name": "Head of the comet"
+      },
+      {
+       "at": "tail",
+       "name": "Tail",
+       "note": "Always points away from the Sun"
+      },
+      {
+       "at": "orbit",
+       "name": "Long, stretched orbit"
+      }
+     ]
+    },
+    "say": [
+     "Comets go round the Sun in very long, stretched orbits.",
+     "Halley's comet appears about every 76 years; it was last seen in 1986."
+    ],
+    "remember": "A comet's tail always points away from the Sun."
+   },
+   {
+    "title": "Asteroids, meteors, meteorites",
+    "pic": {
+     "kind": "groups",
+     "root": "Smaller members",
+     "items": [
+      {
+       "icon": "🪨",
+       "name": "Asteroids",
+       "eg": "Small rocky bodies between Mars and Jupiter"
+      },
+      {
+       "icon": "🌠",
+       "name": "Meteors",
+       "eg": "Burn up in our air: 'shooting stars'"
+      },
+      {
+       "icon": "☄️",
+       "name": "Meteorites",
+       "eg": "Meteors that reach the ground"
+      }
+     ]
+    },
+    "say": [
+     "A meteor heats up from friction with the air and burns, leaving a bright streak."
+    ]
+   },
+   {
+    "title": "Artificial satellites",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🌦️",
+       "text": "Weather forecasts"
+      },
+      {
+       "icon": "📺",
+       "text": "TV and radio signals"
+      },
+      {
+       "icon": "📞",
+       "text": "Telecommunication"
+      },
+      {
+       "icon": "🗺️",
+       "text": "Remote sensing",
+       "sub": "Studying land and resources"
+      }
+     ]
+    },
+    "say": [
+     "Satellites made by people go round the Earth, much closer than the Moon.",
+     "India's satellites include Aryabhata, INSAT, IRS, Kalpana-1 and EDUSAT."
+    ]
+   },
+   {
+    "title": "Busting a myth",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Myth",
+       "icon": "❌",
+       "cells": [
+        "Comets bring disasters"
+       ]
+      },
+      {
+       "head": "Fact",
+       "icon": "✅",
+       "cells": [
+        "Comets are natural members of the solar system and cause no disasters"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Science helps us replace fear with understanding."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Asteroids orbit between Mars and Jupiter.",
+   "Comets have long orbits and tails that point away from the Sun.",
+   "Meteors burn up in the air; artificial satellites serve weather, communication and remote sensing."
+  ],
+  "quiz": [
+   {
+    "q": "Which way does a comet's tail point?",
+    "pic": {
+     "kind": "scene",
+     "scene": "comet",
+     "ask": "tail"
+    },
+    "options": [
+     "Away from the Sun",
+     "Towards the Sun",
+     "Towards the Earth",
+     "Straight down"
+    ],
+    "answer": 0,
+    "why": "A comet's tail always points away from the Sun."
+   },
+   {
+    "q": "'Shooting stars' are actually…",
+    "options": [
+     "Meteors burning in our atmosphere",
+     "Falling stars",
+     "Satellites",
+     "Planets"
+    ],
+    "answer": 0,
+    "why": "Meteors heat up and burn as they enter the air."
+   }
+  ]
+ }
+}

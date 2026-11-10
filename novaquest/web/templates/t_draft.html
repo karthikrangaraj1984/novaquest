@@ -1,0 +1,156 @@
+{% extends "staff.html" %}
+{% from "_assign.html" import assign_head with context %}
+{% block title %}{{ a.title }}{% endblock %}
+{% macro number_fields(p, key) -%}
+{% set tpl = key.get("template") or {} %}
+<div class="row"><div class="field"><label for="{{ p }}-v">Answer <span class="hint">(if the numbers are fixed)</span></label><input id="{{ p }}-v" name="value" type="text" inputmode="decimal" value="{{ key.value|nicenum if key.get('value') is not none and not tpl else '' }}"></div>
+  <div class="field"><label for="{{ p }}-u">Unit</label><input id="{{ p }}-u" name="unit" type="text" placeholder="cm², km/h, ₹…" value="{{ key.get('unit', '') }}" style="width:130px"></div>
+  <div class="field"><label for="{{ p }}-t">How close <span class="hint">(e.g. 0.1 or 1%)</span></label><input id="{{ p }}-t" name="tolerance" type="text" value="{{ key.abs|nicenum if key.get('abs') else ((key.tol * 100)|nicenum ~ '%' if key.get('tol') else '') }}" style="width:120px"></div></div>
+<details {% if tpl %}open{% endif %}><summary class="small link">Give each student their own numbers</summary>
+  <p class="tiny muted">Write the question with {letters} where the numbers go, e.g. “A field is {l} m long and {b} m wide…”.</p>
+  <div class="field"><label for="{{ p }}-r">Number ranges</label><input id="{{ p }}-r" name="vars" type="text" placeholder="l = 20..60 step 5, b = 10..30" value="{% for k, v in (tpl.vars or {}).items() %}{{ k }} = {{ v[0]|nicenum }}..{{ v[1]|nicenum }}{% if v|length > 2 %} step {{ v[2]|nicenum }}{% endif %}{% if not loop.last %}, {% endif %}{% endfor %}"></div>
+  <div class="field"><label for="{{ p }}-f">Formula for the answer <span class="hint">(use * for ×, / for ÷)</span></label><input id="{{ p }}-f" name="formula" type="text" placeholder="l*b" value="{{ tpl.formula or '' }}"></div></details>
+<div class="field"><label for="{{ p }}-s">Hints, one per line <span class="hint">(the method, never the answer)</span></label><textarea id="{{ p }}-s" name="steps" style="min-height:60px">{% for s in (tpl.steps if tpl else key.get("steps", [])) %}{{ s }}
+{% endfor %}</textarea></div>
+<div class="field"><label for="{{ p }}-w">Worked solution <span class="hint">(students see it with their results; {answer} puts in their answer)</span></label><textarea id="{{ p }}-w" name="worked" style="min-height:50px">{{ tpl.worked if tpl else key.get("worked", "") }}</textarea></div>
+{%- endmacro %}
+{% block main %}
+{% set pending = qs|selectattr("status", "equalto", "draft")|list|length %}
+{{ assign_head(a, "questions", kinds, pending, csrf=csrf) }}
+<div class="cols">
+  <section class="main stack" id="q-list" aria-labelledby="ql-h">
+    <div class="row-between"><h2 id="ql-h">Questions</h2><span class="small muted">{{ approved }} of {{ qs|length }} approved</span></div>
+    <p class="small muted">{{ a.difficulty|capitalize }} · Thinking skills: {% for k, v in levels.items() %}{{ k|capitalize }} {{ v }}{% if not loop.last %} · {% endif %}{% endfor %}</p>
+    {% set basic = qs|selectattr("written_by", "equalto", "offline")|selectattr("status", "equalto", "draft")|list %}
+    {% if basic and a.state == "draft" and actor.role == "teacher" %}
+    <div class="note warn stack-sm" role="status"><b>{{ basic|length }} question{{ "s" if basic|length != 1 }} marked Basic.</b>
+      <span class="small">Claude couldn't write {{ "these" if basic|length != 1 else "this one" }}, so NovaQuest's basic writer did. Basic questions test the book's wording, not understanding.</span>
+      <form method="post" action="/teacher/assignments/{{ a.id }}/rewrite"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small" type="submit" data-busy="Claude is writing…">Rewrite basic questions with Claude</button></form></div>
+    {% endif %}
+    {% for q in qs %}
+    <article id="q{{ q.id }}" class="qreview {{ 'pending' if q.status == 'draft' else 'approved' }}" aria-labelledby="qh{{ q.id }}">
+      <div class="row-between"><h3 id="qh{{ q.id }}">Q{{ loop.index }} · {{ {'mcq': 'Multiple choice', 'short': 'Short answer', 'viva': 'Understanding check', 'ai_moment': 'AI moment', 'teach': 'Teach NOVA', 'learn': 'Learn', 'numeric': 'Number problem'}[q.kind] }}</h3>
+        <span class="row" style="gap:6px">{% if q.written_by == "offline" %}<span class="pill warn" title="Written without Claude: tests wording, not understanding">Basic</span>{% endif %}
+        {% if q.status == "approved" %}<span class="pill ok">✓ Approved</span>{% else %}<span class="pill l1">Needs your check</span>{% endif %}</span></div>
+      {% set sc = q.scenario|scene %}{% if sc %}<p class="scenario{% if q.ai_concept %} ai{% endif %}">{{ sc }}</p>{% endif %}
+      <p><b>{{ q.prompt }}</b></p>
+      {% if q.options %}<ol class="opts" type="A">{% for o in q.options %}<li class="{{ 'right' if loop.index0 == q.answer.index }}">{{ o }}{% if loop.index0 == q.answer.index %} ✓{% endif %}</li>{% endfor %}</ol>{% endif %}
+      {% if q.kind == "numeric" %}
+        <div class="note info small"><b>Answer:</b> {{ q.answer.value|nicenum }}{% if q.answer.unit %} {{ q.answer.unit }}{% endif %}{% if q.answer.abs %} (±{{ q.answer.abs|nicenum }}){% elif q.answer.tol %} (±{{ (q.answer.tol * 100)|nicenum }}%){% endif %}
+          {% if q.answer.worked %}<br><b>Worked solution:</b> {{ q.answer.worked }}{% endif %}</div>
+        {% if q.answer.steps %}<div class="small"><b>Hints, one at a time:</b><ol>{% for s in q.answer.steps %}<li>{{ s }}</li>{% endfor %}</ol></div>{% endif %}
+        {% set tpl = q.answer.template %}
+        {% if tpl %}<p class="tiny muted">Each student gets their own numbers{% if not tpl.derived %} ({% for k, v in tpl.vars.items() %}{{ k }} from {{ v[0]|nicenum }} to {{ v[1]|nicenum }}{% if not loop.last %}, {% endif %}{% endfor %}; answer = {{ tpl.formula }}){% endif %}, and the answer, hints and worked solution are worked out for each of them. Shown here with one set.</p>{% endif %}
+      {% endif %}
+      {% if q.kind in ("short", "viva") %}
+        <div class="note info small"><b>Model answer:</b> {{ q.answer.model }}</div>
+        <div class="small"><b>Marking points:</b><ul>{% for r in q.rubric %}<li>{{ r.point }}</li>{% endfor %}</ul></div>
+      {% endif %}
+      <details class="qmore"><summary>Details{% if a.state == "draft" %} and edit{% endif %}</summary>
+      <div class="stack-sm" style="margin-top:8px">
+      <div class="tags">
+        <span class="pill l0">{{ q.topic_code }} {{ q.topic_title }}</span>
+        <span class="pill">{{ q.thinking_level|capitalize }}</span>
+        {% if q.ai_concept %}<span class="pill ai">{{ q.ai_concept }}</span>{% endif %}
+        {% for m in q.misconception_codes %}<span class="pill warn">Targets: {{ mis.get(m, m) }}</span>{% endfor %}
+      </div>
+      <p class="tiny muted">Outcome: {{ q.outcome }}</p>
+      {% for c in q.citation[:1] %}<span class="src">📖 {{ c.ref }}{% if c.quote %}: “{{ c.quote[:120] }}…”{% endif %}</span>{% endfor %}
+      {% if a.state == "draft" and actor.role == "teacher" %}
+      <div class="row">
+        <form method="post" action="/teacher/questions/{{ q.id }}/regenerate"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="assignment_id" value="{{ a.id }}"><button class="btn small quiet" type="submit">Write a different one</button></form>
+        <form method="post" action="/teacher/questions/{{ q.id }}/remove" data-confirm="Remove this question?"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="assignment_id" value="{{ a.id }}"><button class="btn small danger" type="submit">Remove</button></form>
+      </div>
+      {% if q.kind not in ("teach", "learn", "escape") %}
+      <details><summary class="small" style="cursor:pointer;font-weight:600;color:var(--primary)">Edit the question</summary>
+        <form method="post" action="/teacher/questions/{{ q.id }}/edit" class="stack-sm" style="margin-top:10px">
+          <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="assignment_id" value="{{ a.id }}">
+          {% set tpl = (q.answer or {}).get("template") if q.kind == "numeric" else none %}
+          <div class="field"><label for="p{{ q.id }}">Question</label><textarea id="p{{ q.id }}" name="prompt" style="min-height:70px">{{ tpl.prompt if tpl else q.prompt }}</textarea></div>
+          {% if q.kind == "numeric" %}
+            {{ number_fields("e" ~ q.id, q.answer) }}
+          {% elif q.options %}
+            <fieldset class="stack-sm"><legend class="small">Options (choose the correct one)</legend>
+            {% for o in q.options %}<div class="row" style="flex-wrap:nowrap"><input type="radio" name="answer_index" value="{{ loop.index0 }}" aria-label="Correct answer: option {{ loop.index }}" {% if loop.index0 == q.answer.index %}checked{% endif %}><label class="sr-only" for="o{{ q.id }}-{{ loop.index0 }}">Option {{ loop.index }}</label><input id="o{{ q.id }}-{{ loop.index0 }}" type="text" name="options[]" value="{{ o }}"></div>{% endfor %}
+            </fieldset>
+          {% else %}
+            <div class="field"><label for="m{{ q.id }}">Model answer</label><textarea id="m{{ q.id }}" name="model_answer" style="min-height:70px">{{ q.answer.model if q.answer else "" }}</textarea></div>
+            <div class="field"><label for="r{{ q.id }}">Marking points (one per line)</label><textarea id="r{{ q.id }}" name="rubric" style="min-height:70px">{% for r in q.rubric or [] %}{{ r.point }}
+{% endfor %}</textarea></div>
+          {% endif %}
+          <button class="btn small" type="submit">Save and approve</button>
+        </form>
+      </details>
+      {% endif %}
+      {% endif %}
+      </div></details>
+      {% if a.state == "draft" and q.status == "draft" and actor.role == "teacher" %}<form method="post" action="/teacher/questions/{{ q.id }}/approve"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="assignment_id" value="{{ a.id }}"><button class="btn small" type="submit">Approve</button></form>{% endif %}
+    </article>
+    {% endfor %}
+    {% if a.state == "draft" and actor.role == "teacher" and a.kind not in ("learn", "teach", "escape") %}
+    <details class="card stack-sm" id="own"><summary style="cursor:pointer;font-weight:700;color:var(--primary)">+ Add your own question</summary>
+      <form method="post" action="/teacher/assignments/{{ a.id }}/own" class="stack-sm" style="margin-top:10px" data-own>
+        <input type="hidden" name="csrf" value="{{ csrf }}">
+        <div class="row"><div class="field"><label for="own-k">Type</label><select id="own-k" name="kind" data-own-kind><option value="mcq">Multiple choice</option><option value="short">Short answer</option><option value="numeric" {% if a.kind == "numeric" %}selected{% endif %}>Number problem</option></select></div>
+          <div class="field"><label for="own-t">Topic</label><select id="own-t" name="topic_id">{% for t in a.topic_ids %}{% set q0 = qs|selectattr("topic_id", "equalto", t)|first %}<option value="{{ t }}">{% if q0 %}{{ q0.topic_code }} {{ q0.topic_title }}{% else %}Topic {{ loop.index }}{% endif %}</option>{% endfor %}</select></div></div>
+        <div class="field"><label for="own-p">Question</label><textarea id="own-p" name="prompt" required style="min-height:70px"></textarea></div>
+        <fieldset class="stack-sm" data-own-for="mcq"><legend class="small">Options (choose the correct one)</legend>
+          {% for i in range(4) %}<div class="row" style="flex-wrap:nowrap"><input type="radio" name="answer_index" value="{{ i }}" aria-label="Correct answer: option {{ i + 1 }}" {% if i == 0 %}checked{% endif %}><label class="sr-only" for="own-o{{ i }}">Option {{ i + 1 }}</label><input id="own-o{{ i }}" type="text" name="options[]" placeholder="Option {{ 'ABCD'[i] }}{% if i > 1 %} (optional){% endif %}"></div>{% endfor %}
+        </fieldset>
+        <div class="stack-sm" data-own-for="numeric">{{ number_fields("own", {}) }}</div>
+        <div class="stack-sm" data-own-for="short">
+          <div class="field"><label for="own-m">Model answer</label><textarea id="own-m" name="model_answer" style="min-height:60px"></textarea></div>
+          <div class="field"><label for="own-r">Marking points (one per line)</label><textarea id="own-r" name="rubric" style="min-height:60px"></textarea></div>
+        </div>
+        <button class="btn small" type="submit">Add question</button>
+        <p class="tiny muted">Your questions are approved as they are. Fill in the part for the type you chose.</p>
+      </form></details>
+    {% endif %}
+  </section>
+  <aside class="aside stack">
+    {% if a.state == "draft" and actor.role == "teacher" %}
+    <section class="card stack" aria-labelledby="sch-h">
+      <h2 id="sch-h">Assign and schedule</h2>
+      {% if pending %}<div class="note" role="status">Check the {{ pending }} question{{ 's' if pending > 1 }} still waiting, then schedule.</div>{% endif %}
+      <form method="post" action="/teacher/assignments/{{ a.id }}/schedule" class="stack">
+        <input type="hidden" name="csrf" value="{{ csrf }}">
+        <fieldset class="stack-sm"><legend>Who{% if section_rows|length > 1 %} in {{ a.class_label }}{% endif %}</legend>
+          <label class="choice"><input type="radio" name="who" value="class" {% if not preselect %}checked{% endif %}>Whole class {{ a.class_label }}</label>
+          {% if groups %}<label class="choice"><input type="radio" name="who" value="group">A group</label>
+            <div class="stack-sm" style="padding-left:12px">{% for g in groups %}<label class="check-row"><input type="checkbox" name="groups[]" value="{{ g.id }}">{{ g.name }} ({{ g.members }})</label>{% endfor %}</div>{% endif %}
+          <label class="choice"><input type="radio" name="who" value="students" {% if preselect %}checked{% endif %}>Chosen students{% if preselect %} ({{ preselect|length }}){% endif %}</label>
+          <details {% if preselect %}open{% endif %}><summary class="small" style="cursor:pointer">Choose students</summary><div class="stack-sm" style="max-height:220px;overflow:auto;padding:6px 0">
+            {% for s in students %}<label class="check-row"><input type="checkbox" name="students[]" value="{{ s.student_id }}" {% if s.student_id in preselect %}checked{% endif %}>{{ s.roll_no }}. {{ s.name }}</label>{% endfor %}</div></details>
+        </fieldset>
+        {% if section_rows|length > 1 %}
+        <fieldset class="stack-sm"><legend>Classes and dates <span class="hint">(IST)</span></legend>
+          {% for r in section_rows %}
+          <div class="sec-row stack-sm">
+            {% if r.own %}<b>{{ r.label }}</b>{% else %}<label class="check-row"><input type="checkbox" name="sections[]" value="{{ r.id }}" {% if r.ticked %}checked{% endif %}><b>{{ r.label }}</b> <span class="small muted">(whole class)</span></label>{% endif %}
+            <div class="stack-sm" style="gap:6px">
+              <div class="field"><label class="tiny" for="{{ 'opens_at' if r.own else 'opens_' ~ r.id }}">Opens</label><input id="{{ 'opens_at' if r.own else 'opens_' ~ r.id }}" name="{{ 'opens_at' if r.own else 'opens_' ~ r.id }}" type="datetime-local" value="{{ r.opens }}" {% if r.own %}required{% endif %}></div>
+              <div class="field"><label class="tiny" for="{{ 'expires_at' if r.own else 'closes_' ~ r.id }}">Closes</label><input id="{{ 'expires_at' if r.own else 'closes_' ~ r.id }}" name="{{ 'expires_at' if r.own else 'closes_' ~ r.id }}" type="datetime-local" value="{{ r.closes }}" {% if r.own %}required{% endif %}></div>
+            </div>
+          </div>
+          {% endfor %}
+          <p class="tiny muted">{% if section_rows|selectattr("from_timetable")|list %}Each class closes just before its first lesson at least two days away (from your timetable). {% endif %}The same approved questions go to every ticked class; each has its own results.</p>
+        </fieldset>
+        {% else %}
+        <div class="field"><label for="opens_at">Opens (IST)</label><input id="opens_at" name="opens_at" type="datetime-local" value="{{ default_open }}" required></div>
+        <div class="field"><label for="expires_at">Closes (IST)</label><input id="expires_at" name="expires_at" type="datetime-local" value="{{ default_close }}" required>{% if section_rows and section_rows[0].from_timetable %}<span class="hint">Just before the class's next lesson at least two days away (your timetable).</span>{% endif %}</div>
+        {% endif %}
+        <div class="grid-3" style="grid-template-columns:1fr 1fr">
+          <div class="field"><label for="tl">Time limit <span class="hint">(min, optional)</span></label><input id="tl" name="time_limit_min" type="number" min="1" max="600"></div>
+          <div class="field"><label for="ma">Attempts</label><input id="ma" name="max_attempts" type="number" min="1" max="5" value="1"></div>
+        </div>
+        {% if pending %}<button class="btn" type="button" disabled aria-describedby="sch-why">Schedule</button><span id="sch-why" class="small muted">Approve every question first.</span>
+        {% else %}<button class="btn" type="submit">Schedule</button>{% endif %}
+      </form>
+    </section>
+    {% else %}
+    <section class="card stack-sm"><h2>Schedule</h2><p class="small">Opens {{ a.opens_at|ist }} · Closes {{ a.expires_at|ist }}</p>
+      {% if siblings %}<p class="small muted">Also set for: {% for x in siblings if x.id != a.id %}<a href="/teacher/assignments/{{ x.id }}/review">{{ x.class_label }}</a> (closes {{ x.expires_at|ist }}){% if not loop.last %} · {% endif %}{% endfor %}</p>{% endif %}</section>
+    {% endif %}
+  </aside>
+</div>
+{% endblock %}

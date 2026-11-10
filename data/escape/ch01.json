@@ -1,0 +1,223 @@
+{
+ "chapter": 1,
+ "title": "The Locked Seed Store",
+ "story": "A storm has slammed the door of the village seed store, and you and NOVA, the class's AI helper, are inside. NOVA is learning about farming, but it keeps making mistakes. Fix them to open four locks and get out before sowing time.",
+ "escaped": "The door swings open onto the fields. NOVA now sorts crops by season, learns from clean examples and knows that more fertiliser isn't always better.",
+ "locks": [
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "1.1",
+   "title": "Sort the crops by season",
+   "intro": "NOVA must sort crops into kharif (rainy season) and rabi (winter) crops. Choose the clues NOVA should look at, then see how it sorts three crops it has never seen.",
+   "labels": [
+    "Kharif crop",
+    "Rabi crop"
+   ],
+   "features": [
+    {
+     "key": "june",
+     "text": "Sown in June-July"
+    },
+    {
+     "key": "flooded",
+     "text": "Grown in standing water"
+    },
+    {
+     "key": "cereal",
+     "text": "Is a cereal (a grain)"
+    }
+   ],
+   "train": [
+    {
+     "name": "Paddy",
+     "label": 0,
+     "f": {
+      "june": 1,
+      "flooded": 1,
+      "cereal": 1
+     }
+    },
+    {
+     "name": "Maize",
+     "label": 0,
+     "f": {
+      "june": 1,
+      "flooded": 0,
+      "cereal": 1
+     }
+    },
+    {
+     "name": "Cotton",
+     "label": 0,
+     "f": {
+      "june": 1,
+      "flooded": 0,
+      "cereal": 0
+     }
+    },
+    {
+     "name": "Wheat",
+     "label": 1,
+     "f": {
+      "june": 0,
+      "flooded": 0,
+      "cereal": 1
+     }
+    },
+    {
+     "name": "Gram",
+     "label": 1,
+     "f": {
+      "june": 0,
+      "flooded": 0,
+      "cereal": 0
+     }
+    },
+    {
+     "name": "Mustard",
+     "label": 1,
+     "f": {
+      "june": 0,
+      "flooded": 0,
+      "cereal": 0
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "Soyabean",
+     "label": 0,
+     "f": {
+      "june": 1,
+      "flooded": 0,
+      "cereal": 0
+     }
+    },
+    {
+     "name": "Pea",
+     "label": 1,
+     "f": {
+      "june": 0,
+      "flooded": 0,
+      "cereal": 0
+     }
+    },
+    {
+     "name": "Groundnut",
+     "label": 0,
+     "f": {
+      "june": 1,
+      "flooded": 0,
+      "cereal": 0
+     }
+    }
+   ],
+   "hint": "Kharif and rabi are about WHEN a crop is sown. Paddy grows in water, but most kharif crops don't.",
+   "learn": "An AI sorts by the clues it is given. 'Grown in water' fitted paddy but not soyabean or groundnut, so NOVA got confused. The clue that defines the groups, the sowing season, works for every crop."
+  },
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "1.5",
+   "title": "Fix NOVA's manure list",
+   "intro": "NOVA is learning to tell manure (natural, made from plant and animal waste) from fertilisers (chemicals made in factories). Some of its examples are labelled wrongly. Tick them.",
+   "rows": [
+    {
+     "item": "Cow dung compost",
+     "label": "Manure"
+    },
+    {
+     "item": "Urea",
+     "label": "Fertiliser"
+    },
+    {
+     "item": "Vermicompost",
+     "label": "Manure"
+    },
+    {
+     "item": "NPK",
+     "label": "Fertiliser"
+    },
+    {
+     "item": "Ammonium sulphate",
+     "label": "Manure",
+     "wrong": true,
+     "why": "it is a chemical made in factories: a fertiliser"
+    },
+    {
+     "item": "Rotting plant waste in a pit",
+     "label": "Manure"
+    },
+    {
+     "item": "Superphosphate",
+     "label": "Manure",
+     "wrong": true,
+     "why": "it is a chemical salt made in factories: a fertiliser"
+    }
+   ],
+   "hint": "Ask of each example: was it made in a factory, or did it come from rotting plant and animal waste?",
+   "learn": "An AI copies its examples, mistakes included. With two fertilisers labelled as manure, NOVA would tell farmers chemicals are natural. Checking the labels in training data matters as much as the AI itself."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "1.9",
+   "title": "Check NOVA's storage advice",
+   "intro": "NOVA gives the farmer advice and sounds very sure. Is it right? Decide, then pick the fact that settles it.",
+   "claim": "Store freshly harvested grain straight away, without drying it, so it stays fresh.",
+   "confidence": "96% sure",
+   "verdict": 1,
+   "evidence": [
+    "Grains are separated from the chaff by threshing.",
+    "Freshly harvested grain stored without drying may get spoilt or attacked by microorganisms, so it becomes unfit to eat or sow.",
+    "Kharif crops are sown in the rainy season.",
+    "Dried neem leaves are used to store grain at home."
+   ],
+   "right": 1,
+   "hint": "What happens to wet grain in storage? Look for the fact about drying.",
+   "learn": "96% sure is not the same as right. AI tools can sound confident and still be wrong, so check what they say against a trusted fact: here, the textbook's reason for drying grain."
+  },
+  {
+   "kind": "pattern",
+   "skill": "predicting",
+   "topic": "1.5",
+   "title": "Predict the harvest",
+   "intro": "NOVA has data from test fields: how much fertiliser was added and how much grain grew. It wants to give a rule for the whole village.",
+   "table": {
+    "cols": [
+     "Fertiliser per field (kg)",
+     "Grain harvested (quintals)"
+    ],
+    "rows": [
+     [
+      "0",
+      "18"
+     ],
+     [
+      "50",
+      "24"
+     ],
+     [
+      "100",
+      "28"
+     ],
+     [
+      "150",
+      "29"
+     ]
+    ]
+   },
+   "question": "NOVA says: 'Doubling the fertiliser doubles the harvest, so use as much as possible.' What is the honest conclusion?",
+   "options": [
+    "NOVA is right: more fertiliser always means more grain.",
+    "Extra fertiliser helps less and less (100 to 150 kg added only 1 quintal), and too much harms the soil and water, so NOVA shouldn't predict beyond its data.",
+    "Fertiliser makes no difference to the harvest.",
+    "The harvest depends only on the rain."
+   ],
+   "answer": 1,
+   "hint": "Compare how much the harvest grew from 0 to 50 kg with how much it grew from 100 to 150 kg.",
+   "learn": "AI predictions are only as good as the data behind them. The data shows smaller and smaller gains, and the textbook warns that too much fertiliser makes soil less fertile and pollutes water."
+  }
+ ]
+}

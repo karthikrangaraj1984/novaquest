@@ -1,0 +1,8 @@
+{# Subject switcher: shown only when the class studies more than one book (SY-6). #}
+{% macro book_tabs(books, book, base) -%}
+{% if books|length > 1 %}
+<nav class="tabs subjects" aria-label="Subjects">
+  {% for b in books %}<a href="{{ base }}?book={{ b.id }}" {% if book and b.id == book.id %}aria-current="page"{% endif %}>{{ b.subject }}<span class="tiny muted"> {{ b.board }}</span></a>{% endfor %}
+</nav>
+{% endif %}
+{%- endmacro %}

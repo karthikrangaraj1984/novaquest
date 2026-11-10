@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"cell":[80,40],"dots":[146,140],"raised":[250,150],"finger":[330,70]}'>
+<rect x="30" y="56" width="100" height="166" rx="12" fill="#FFF8E1" stroke="#C9A64A" stroke-width="3"/>
+<g fill="#8D6E63" stroke="#5D4037" stroke-width="2"><circle cx="60" cy="90" r="13"/><circle cx="100" cy="90" r="13"/><circle cx="60" cy="140" r="13"/><circle cx="100" cy="140" r="13"/><circle cx="60" cy="190" r="13"/><circle cx="100" cy="190" r="13"/></g>
+<g fill="#8A6A3B" font-size="12" text-anchor="middle" font-family="sans-serif"><text x="40" y="94">1</text><text x="40" y="144">2</text><text x="40" y="194">3</text><text x="120" y="94">4</text><text x="120" y="144">5</text><text x="120" y="194">6</text></g>
+<rect x="180" y="160" width="200" height="40" fill="#ECEFF1" stroke="#90A4AE" stroke-width="2"/>
+<g fill="#ECEFF1" stroke="#455A64" stroke-width="2"><path d="M220 160 a10 10 0 0 1 20 0z"/><path d="M260 160 a10 10 0 0 1 20 0z"/><path d="M300 160 a10 10 0 0 1 20 0z"/></g>
+<text x="330" y="110" font-size="40" text-anchor="middle" font-family="Segoe UI Emoji, Noto Color Emoji, sans-serif">👆</text>
+<g font-size="12" fill="#5A6178" text-anchor="middle" font-family="sans-serif"><text x="80" y="246">one braille cell</text><text x="280" y="226">dots are raised, so fingers can feel them</text></g>
+</svg>

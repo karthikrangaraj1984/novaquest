@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"top_hole":[132,96],"middle_hole":[132,160],"bottom_hole":[132,224],"short_jet":[170,110],"long_jet":[270,262],"water":[90,150]}'>
+<path d="M60 40 Q60 26 74 26 H118 Q132 26 132 40 V260 Q132 272 120 272 H72 Q60 272 60 260 Z" fill="#E3F2FD" stroke="#5A6178" stroke-width="3"/>
+<path d="M62 60 H130 V260 Q130 270 120 270 H72 Q62 270 62 260 Z" fill="#64B5F6" opacity=".8"/>
+<g fill="none" stroke="#1E88E5" stroke-width="5" stroke-linecap="round"><path d="M134 96 Q160 100 176 150 Q182 200 186 270"/><path d="M134 160 Q190 164 214 220 Q222 250 226 272"/><path d="M134 224 Q230 226 270 264"/></g>
+<g fill="#2A3150"><circle cx="132" cy="96" r="4"/><circle cx="132" cy="160" r="4"/><circle cx="132" cy="224" r="4"/></g>
+<rect x="0" y="272" width="400" height="28" fill="#D7DCE8"/>
+</svg>

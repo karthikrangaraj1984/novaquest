@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"bacteria":[68,62],"fungi":[318,64],"protozoa":[72,206],"algae":[204,214],"virus":[330,214]}'>
+<g fill="#C8E6C9" stroke="#2E7D32" stroke-width="2.5"><rect x="30" y="40" width="40" height="16" rx="8"/><circle cx="96" cy="50" r="9"/><circle cx="114" cy="50" r="9"/><circle cx="105" cy="66" r="9"/></g>
+<path d="M30 84 q8 -10 16 0 t16 0 t16 0 t16 0" fill="none" stroke="#2E7D32" stroke-width="5" stroke-linecap="round"/>
+<g stroke="#6D4C41" stroke-width="2.5" fill="none"><path d="M290 110 V60 M310 110 V50 M330 110 V64 M350 110 V56"/><path d="M270 112 h100"/></g>
+<g fill="#5D4037"><circle cx="290" cy="56" r="8"/><circle cx="310" cy="46" r="8"/><circle cx="330" cy="60" r="8"/><circle cx="350" cy="52" r="8"/></g>
+<path d="M40 196 c6 -24 34 -26 44 -14 c14 -6 28 6 22 20 c14 8 6 30 -10 28 c-6 14 -30 14 -36 0 c-18 2 -28 -20 -20 -34 z" fill="#E1F5FE" stroke="#0277BD" stroke-width="2.5"/>
+<circle cx="72" cy="206" r="7" fill="#0277BD"/>
+<path d="M120 200 q30 -26 60 0 q-30 26 -60 0z" fill="#FFF3E0" stroke="#E65100" stroke-width="2.5"/>
+<g stroke="#E65100" stroke-width="1"><path d="M120 200 l-6 -3 M128 190 l-4 -5 M140 184 l-2 -6 M160 184 l2 -6 M172 190 l4 -5 M180 200 l6 -3 M128 210 l-4 5 M140 216 l-2 6 M160 216 l2 6 M172 210 l4 5"/></g>
+<ellipse cx="204" cy="214" rx="16" ry="20" fill="#AED581" stroke="#33691E" stroke-width="2.5"/><path d="M200 194 q-8 -18 -14 -24 M208 194 q8 -18 14 -24" stroke="#33691E" stroke-width="2" fill="none"/><circle cx="204" cy="220" r="5" fill="#33691E"/>
+<polygon points="330,196 344,204 344,222 330,230 316,222 316,204" fill="#F8BBD0" stroke="#AD1457" stroke-width="2.5"/>
+<g stroke="#AD1457" stroke-width="2"><path d="M330 230 v24 M322 254 l8 -6 l8 6 M322 244 l-6 10 M338 244 l6 10"/></g>
+<text x="200" y="290" font-size="11" fill="#5A6178" text-anchor="middle" font-family="sans-serif">(drawings much enlarged, not to scale)</text>
+</svg>

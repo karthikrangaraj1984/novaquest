@@ -1,0 +1,100 @@
+{% extends "staff.html" %}
+{% from "_class.html" import class_head with context %}
+{% block title %}Students {{ klass.label }}{% endblock %}
+{% block main %}
+{{ class_head(klass.id, klass.label, rows|length, "students") }}
+{% if check %}
+<ol class="stepper" aria-label="Steps"><li class="done"><span class="n">✓</span>Upload file</li><li class="now"><span class="n">2</span>Check rows</li><li><span class="n">3</span>Print login slips</li></ol>
+<section class="card stack" aria-labelledby="chk-h">
+  <div class="row-between"><div><h2 id="chk-h">{{ filename }} · {{ check.rows|length }} rows</h2>
+    <span class="small muted">{{ check.ready }} ready{% if check.to_fix %} · <b style="color:var(--warn)">{{ check.to_fix }} need a fix</b>{% endif %} · {{ check.rows|selectattr("status", "equalto", "duplicate")|list|length }} already in class</span></div></div>
+  {% if check.to_fix %}<div class="note warn" role="alert">Fix the highlighted rows here, or skip them and add those students later. Nothing is saved until you press Add.</div>{% endif %}
+  <form method="post" action="/teacher/classes/{{ klass.id }}/students/import" class="stack">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">Row</th><th scope="col">Roll no.</th><th scope="col">Student name</th><th scope="col">Parent email <span class="hint">(optional)</span></th><th scope="col">Status</th></tr></thead>
+      <tbody>
+      {% for r in check.rows %}
+        <tr {% if r.status == "fix" %}class="warn-row"{% endif %}>
+          <td class="muted">{{ r.row }}</td>
+          <td><label class="sr-only" for="roll{{ loop.index }}">Roll number, row {{ r.row }}</label><input id="roll{{ loop.index }}" name="roll_no[]" type="text" value="{{ r.roll_no }}" style="width:80px;min-height:38px" {% if r.status == "fix" and "Roll" in r.message %}aria-invalid="true" aria-describedby="e{{ loop.index }}"{% endif %}></td>
+          <td><label class="sr-only" for="name{{ loop.index }}">Name, row {{ r.row }}</label><input id="name{{ loop.index }}" name="name[]" type="text" value="{{ r.name }}" style="min-height:38px"></td>
+          <td><label class="sr-only" for="em{{ loop.index }}">Parent email, row {{ r.row }}</label><input id="em{{ loop.index }}" name="parent_email[]" type="text" value="{{ r.parent_email }}" style="min-height:38px" {% if r.status == "fix" and "email" in r.message %}aria-invalid="true" aria-describedby="e{{ loop.index }}"{% endif %}></td>
+          <td>{% if r.status == "ready" %}<span style="color:var(--ok-ink);font-weight:600">✓ Ready</span>{% elif r.status == "duplicate" %}<span class="muted">{{ r.message }}</span>{% else %}<span id="e{{ loop.index }}" class="error-text">{{ r.message }}</span>{% endif %}</td>
+        </tr>
+      {% endfor %}
+      </tbody></table></div>
+    <div class="sticky-foot">
+      <button class="btn quiet" type="submit" name="commit" value="check">Check again</button>
+      <div class="row">
+        {% if check.to_fix %}<button class="btn quiet" type="submit" name="commit" value="skip">Skip {{ check.to_fix }} and add {{ check.ready }}</button>{% endif %}
+        {% if check.to_fix %}<button class="btn" type="button" disabled aria-describedby="add-why">Add all students</button><span id="add-why" class="small muted">Fix {{ check.to_fix }} rows to add everyone</span>
+        {% else %}<button class="btn" type="submit" name="commit" value="all">Add {{ check.ready }} students</button>{% endif %}
+      </div>
+    </div>
+  </form>
+</section>
+{% else %}
+<div class="cols">
+  <section class="main card stack-sm" aria-labelledby="list-h">
+    <h2 id="list-h">Class list</h2>
+    <div class="table-wrap"><table class="cards">
+      <thead><tr><th scope="col">Roll</th><th scope="col">Name</th><th scope="col">Consent</th><th scope="col">Last sign-in</th><th scope="col">Actions</th></tr></thead>
+      <tbody>
+      {% for s in rows %}
+      <tr><td class="roll">{{ s.roll_no }}</td><th scope="row"><a href="/teacher/students/{{ s.student_id }}">{{ s.name }}</a></th>
+        <td data-label="Parent consent">{% if s.consent_status == "recorded" %}<span class="pill ok">Recorded</span>{% else %}
+          <details><summary class="pill warn" style="cursor:pointer">Needed</summary>
+            <form method="post" action="/teacher/enrolments/{{ s.enrolment_id }}/consent" class="stack-sm" style="margin-top:8px;min-width:220px">
+              <input type="hidden" name="csrf" value="{{ csrf }}">
+              <label for="pn{{ s.enrolment_id }}" class="small">Parent's name</label><input id="pn{{ s.enrolment_id }}" name="parent_name" type="text" required>
+              <label for="pm{{ s.enrolment_id }}" class="small">How</label><select id="pm{{ s.enrolment_id }}" name="method"><option value="signed_form">Signed form</option><option value="in_person">In person</option><option value="email_confirmation">Email confirmation</option></select>
+              <button class="btn small" type="submit">Record consent</button></form></details>{% endif %}</td>
+        <td class="small muted" data-label="Last sign-in">{{ s.last_login_at|ist if s.last_login_at else "Never" }}</td>
+        <td class="wide"><div class="row">
+          <form method="post" action="/teacher/enrolments/{{ s.enrolment_id }}/reset" data-confirm="Make a new PIN for {{ s.name }}?"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small quiet" type="submit">New PIN</button></form>
+          <a class="btn small quiet" href="/teacher/students/{{ s.student_id }}/tutor">Tutor log</a>
+          <details><summary class="small" style="cursor:pointer;color:var(--primary);font-weight:600">More</summary>
+            <div class="stack-sm" style="margin-top:8px;min-width:220px">
+              <a class="small" href="/teacher/students/{{ s.student_id }}/report.pdf">Parent report (PDF)</a>
+              {% if others %}<form method="post" action="/teacher/enrolments/{{ s.enrolment_id }}/move" class="stack-sm"><input type="hidden" name="csrf" value="{{ csrf }}">
+                <label for="mv{{ s.enrolment_id }}" class="small">Move to</label><select id="mv{{ s.enrolment_id }}" name="to_class_id">{% for o in others %}<option value="{{ o.id }}">{{ o.label }}</option>{% endfor %}</select>
+                <label for="mr{{ s.enrolment_id }}" class="small">New roll no.</label><input id="mr{{ s.enrolment_id }}" name="roll_no" type="text" required>
+                <button class="btn small quiet" type="submit">Move</button></form>{% endif %}
+              <form method="post" action="/teacher/enrolments/{{ s.enrolment_id }}/deactivate" data-confirm="Remove {{ s.name }}'s access? Their history is kept."><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small danger" type="submit">Deactivate</button></form>
+            </div></details>
+        </div></td></tr>
+      {% else %}<tr><td colspan="5" class="muted">No students yet. Add them on the right.</td></tr>{% endfor %}
+      </tbody></table></div>
+  </section>
+  <aside class="aside stack">
+    <section class="card stack-sm" aria-labelledby="up-h"><h2 id="up-h">Upload a class list</h2>
+      <p class="small muted">CSV or Excel with columns: roll number, student name, parent email (optional). We'll check every row before adding anyone.</p>
+      <form method="post" action="/teacher/classes/{{ klass.id }}/students/import" enctype="multipart/form-data" class="stack-sm">
+        <input type="hidden" name="csrf" value="{{ csrf }}"><label for="file" class="sr-only">Class list file</label><input id="file" name="file" type="file" accept=".csv,.xlsx" required>
+        <button class="btn" type="submit">Check the file</button></form></section>
+    <section class="card stack-sm" aria-labelledby="add-h"><h2 id="add-h">Add one student</h2>
+      <form method="post" action="/teacher/classes/{{ klass.id }}/students/add" class="stack-sm">
+        <input type="hidden" name="csrf" value="{{ csrf }}">
+        <div class="field"><label for="sn">Name</label><input id="sn" name="name" type="text" required></div>
+        <div class="field"><label for="sr">Roll number</label><input id="sr" name="roll_no" type="text" required></div>
+        <div class="field"><label for="se">Parent email <span class="hint">(optional)</span></label><input id="se" name="parent_email" type="email"></div>
+        <div class="field"><label for="sc">Parent consent given by <span class="hint">(name, if collected)</span></label><input id="sc" name="consent_by" type="text"></div>
+        <input type="hidden" name="consent_method" value="signed_form">
+        <button class="btn" type="submit">Add and print slip</button></form></section>
+    <section class="card stack-sm" aria-labelledby="par-h"><h2 id="par-h">Progress reports for parents</h2>
+      {% set reachable = rows|selectattr("consent_status", "equalto", "recorded")|selectattr("parent_email")|list|length %}
+      <p class="small muted">Each parent gets an email with a private link to their child's progress report (topics, work handed in, teachers' notes), valid for two weeks. Only for students with consent recorded and a parent email: {{ reachable }} of {{ rows|length }}.{% if last_emailed %} Last sent {{ last_emailed|ist("%d %b") }}.{% endif %}</p>
+      <form method="post" action="/teacher/classes/{{ klass.id }}/parent-reports" data-confirm="Email {{ reachable }} parents their child's progress report?"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn small quiet" type="submit" {% if not reachable %}disabled{% endif %}>Email reports to parents</button></form></section>
+    {% if actor.role == "teacher" %}
+    <section class="card stack-sm" aria-labelledby="grp-h"><h2 id="grp-h">Groups</h2>
+      {% for g in groups %}<div class="row-between small"><span>{{ g.name }}</span><span class="muted">{{ g.members }} students</span></div>{% endfor %}
+      <form method="post" action="/teacher/classes/{{ klass.id }}/groups" class="stack-sm"><input type="hidden" name="csrf" value="{{ csrf }}">
+        <label for="gn" class="small">New group name</label><input id="gn" name="name" type="text" required>
+        <details><summary class="small" style="cursor:pointer">Choose students</summary><div class="stack-sm" style="max-height:200px;overflow:auto">{% for s in rows %}<label class="check-row"><input type="checkbox" name="students[]" value="{{ s.student_id }}">{{ s.roll_no }}. {{ s.name }}</label>{% endfor %}</div></details>
+        <button class="btn small quiet" type="submit">Create group</button></form></section>
+    {% endif %}
+  </aside>
+</div>
+{% endif %}
+{% endblock %}

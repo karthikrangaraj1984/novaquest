@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{# Chapter presentation (1.27.0): one period of the chapter's lesson plan as slides, shown only inside NovaQuest.
+   The projector window shows the slides; the presenter window (view=presenter) shows the current slide small, its
+   speaker notes, the next slide and the period's timer. The two stay in step (same browser). No download, no print,
+   and a watermark with the school, teacher and date on every slide. #}
+{% block title %}Present: {{ deck[0].kicker }}{% endblock %}
+{% block head %}<meta name="robots" content="noindex, noarchive"><script src="/static/deck.js?v={{ version }}" defer></script>{% endblock %}
+{% block body %}
+{% macro opts(c) -%}
+<ol class="dopts">{% for o in c.options %}<li class="{{ 'right' if loop.index0 == c.answer }}"><span class="ring">{{ "ABCDEFGH"[loop.index0] }}</span>{{ o }}</li>{% endfor %}</ol>
+{%- endmacro %}
+<main id="main" class="deckshow{{ ' presenter' if presenter }}" data-deckshow data-channel="{{ channel }}" data-presenter="{{ '1' if presenter else '' }}"
+      data-minutes="{{ minutes }}" data-present-url="{{ base }}&amp;period={{ no }}&amp;view=presenter">
+  <div class="dstage" data-stage>
+  {% for s in deck %}
+  <section class="dslide k-{{ s.kind }}" data-dslide data-step="{{ s.step.name }}" data-step-min="{{ s.step.minutes }}" data-title="{{ s.label }}" {% if not loop.first %}hidden{% endif %} aria-label="Slide {{ s.no }}">
+    {% if s.kind == "cover" %}
+      <p class="dkicker">{{ s.kicker }}</p><h1>{{ s.title }}</h1><p class="dsub">{{ s.sub }}</p>
+    {% elif s.kind == "hook" %}
+      <p class="dkicker">Topic {{ s.code }} · {{ s.title }}</p><p class="dlabel">Let's think</p><p class="dbig">{{ s.text }}</p>
+    {% elif s.kind == "point" %}
+      <p class="dkicker">{{ s.title }} · {{ s.n }} of {{ s.of }}</p>
+      {% if s.pic %}<div class="dsplit"><p class="dbig">{{ s.text }}</p><div class="dpic">{{ picture(s.pic, "d" ~ s.no) }}</div></div>
+      {% else %}<p class="dbig">{{ s.text }}</p>{% endif %}
+    {% elif s.kind == "diagram" %}
+      <p class="dkicker">{{ s.title }}</p><div class="dpic dpic-big">{{ picture(s.pic, "d" ~ s.no) }}</div>
+    {% elif s.kind == "figure" %}
+      <p class="dkicker">{{ s.title }} · from the textbook, p. {{ s.page }}</p>
+      <div class="dpage dfig"><img src="/teacher/present/{{ chapter_id }}/fig/{{ s.topic_id }}/{{ s.page }}/{{ s.fig }}.jpg" alt="{{ s.caption or 'Figure from the textbook' }}" draggable="false" loading="lazy"></div>
+    {% elif s.kind == "card" %}
+      <h2>{{ s.title }}</h2>{% if s.card.pic %}<div class="dpic">{{ picture(s.card.pic, "d" ~ s.no) }}</div>{% endif %}
+      <div class="dsay">{% for x in s.card.say %}<p>{{ x }}</p>{% endfor %}</div>
+      {% if s.card.remember %}<p class="dremember"><b>Remember:</b> {{ s.card.remember }}</p>{% endif %}
+    {% elif s.kind == "page" %}
+      <p class="dkicker">{{ s.title }} · textbook p. {{ s.page }}</p>
+      <div class="dpage"><img src="/teacher/present/{{ chapter_id }}/page/{{ s.topic_id }}/{{ s.page }}.jpg" alt="Textbook page {{ s.page }}" draggable="false" loading="lazy"></div>
+    {% elif s.kind == "activity" %}
+      <p class="dkicker">{{ s.act.kind }}{% if s.act.ref %} · Activity {{ s.act.ref }}{% endif %}</p><h2>{{ s.act.title }}</h2>
+      {% if s.act.safety %}<p class="dsafety"><b>Safety:</b> {{ s.act.safety }}</p>{% endif %}
+      {% if s.act.materials %}<p class="dmat"><b>You need:</b> {{ s.act.materials|join("; ") }}</p>{% endif %}
+      <ol class="dsteps">{% for x in s.act.steps %}<li>{{ x }}</li>{% endfor %}</ol>
+      {% if s.act.ask %}<div class="dreveal" data-reveal hidden><b>Think:</b> {{ s.act.ask|join(" ") }}</div>{% endif %}
+    {% elif s.kind == "discuss" %}
+      <p class="dlabel">{{ s.title }}</p><p class="dbig">{{ s.text }}</p>
+    {% elif s.kind == "check" %}
+      <p class="dkicker">{{ s.title }}</p><h2 class="dq">{{ s.check.q }}</h2>
+      {% if s.check.options %}{{ opts(s.check) }}
+        <div class="dreveal" data-reveal hidden><b>Answer: {{ "ABCDEFGH"[s.check.answer] }}.</b> {{ s.check.why }}</div>
+      {% else %}<div class="dreveal" data-reveal hidden><b>A good answer says:</b> {{ (s.check.listen or [])|join(" ") }}</div>{% endif %}
+    {% elif s.kind == "mixup" %}
+      <p class="dlabel">True or false?</p><p class="dbig">“{{ s.mix.wrong }}”</p>
+      <div class="dreveal" data-reveal hidden><b>False.</b> {{ s.mix.right }}</div>
+    {% elif s.kind == "terms" %}
+      <h2>{{ s.title }}</h2><dl class="dterms">{% for t in s.terms %}<div><dt>{{ t.term }}</dt>{% if t.meaning %}<dd>{{ t.meaning }}</dd>{% endif %}</div>{% endfor %}</dl>
+    {% elif s.kind == "wrap" %}
+      <p class="dkicker">{{ s.title }}</p><h2>What we learnt</h2><ul class="dpoints">{% for x in s.points %}<li>{{ x }}</li>{% endfor %}</ul>
+    {% elif s.kind == "end" %}
+      <h1>{{ s.title }}</h1><p class="dsub">{{ s.sub }}</p>
+    {% endif %}
+    <aside class="dnotes" data-notes hidden>{{ s.notes }}</aside>
+  </section>
+  {% endfor %}
+  <div class="dwm" aria-hidden="true">{% for _ in range(24) %}<span>{{ watermark }}</span>{% endfor %}</div>
+  </div>
+  {% if presenter %}
+  <aside class="dpanel" aria-label="Presenter">
+    <div class="row-between"><span class="dclock" data-clock aria-live="off">00:00</span><button class="btn small quiet" type="button" data-clock-reset>Restart timer</button></div>
+    <p class="dstep" data-stepinfo></p>
+    <h2 class="small">Notes</h2><p class="dnote-now" data-note-now></p>
+    <h2 class="small">Next</h2><p class="dnext" data-next-title></p>
+  </aside>
+  {% endif %}
+  <nav class="dnav" aria-label="Slides">
+    <a class="btn small quiet" href="/teacher/prep?for={{ cur.key }}&amp;chapter={{ chapter_id }}">Exit</a>
+    <label class="sr-only" for="dper">Period</label>
+    <select id="dper" data-period>{% for l in lessons %}<option value="{{ base }}&amp;period={{ l.no }}{{ '&amp;view=presenter' if presenter }}" {% if l.no == no %}selected{% endif %}>Period {{ l.no }}: {{ l.title|truncate(40) }}</option>{% endfor %}</select>
+    <button class="btn small quiet" type="button" data-prev>← Back</button>
+    <span class="dcount" data-count aria-live="polite">1 / {{ deck|length }}</span>
+    <button class="btn small ghost" type="button" data-reveal-btn hidden>Show answer</button>
+    <button class="btn small" type="button" data-next>Next →</button>
+    {% if not presenter %}<button class="btn small quiet" type="button" data-open-presenter>Presenter view</button>
+    <button class="btn small quiet" type="button" data-full>Full screen</button>{% endif %}
+  </nav>
+  <p class="dprint">This presentation can only be shown inside NovaQuest.</p>
+</main>
+{% endblock %}

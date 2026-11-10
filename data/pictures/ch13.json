@@ -1,0 +1,223 @@
+{
+  "13.1": {
+    "crux": "Every sound is made by something vibrating, that is, moving quickly to and fro.",
+    "cards": [
+      {"title": "What is a vibration?", "pic": {"kind": "flow", "steps": [
+          {"icon": "🪀", "text": "Stretch a rubber band and pluck it"},
+          {"icon": "↔️", "text": "It moves rapidly to and fro: it vibrates"},
+          {"icon": "🔊", "text": "You hear a sound"},
+          {"icon": "🤚", "text": "Touch it to stop the vibration: the sound stops"}]},
+       "say": ["The rapid to and fro motion of an object is called vibration.", "No vibration, no sound."],
+       "remember": "Sound is produced by vibrating objects."},
+      {"title": "Musical instruments", "pic": {"kind": "compare", "rows": ["What vibrates"], "cols": [
+          {"head": "Veena, sitar", "icon": "🎸", "cells": ["Stretched strings"]},
+          {"head": "Tabla, dholak", "icon": "🥁", "cells": ["Stretched membrane"]},
+          {"head": "Flute", "icon": "🪈", "cells": ["The air inside"]}]},
+       "say": ["Every instrument has a part that vibrates to make sound."]},
+      {"title": "Feel it", "pic": {"kind": "icons", "items": [
+          {"icon": "🔔", "text": "A ringing bell", "sub": "Touch it gently: it trembles"},
+          {"icon": "🍽️", "text": "A struck steel plate", "sub": "Vibrates and rings"},
+          {"icon": "🗣️", "text": "Your throat", "sub": "Feel it buzz when you hum"}]},
+       "say": ["Sometimes the vibration is too small to see, but you can feel it."]}
+    ],
+    "crux_points": ["Sound is produced by vibrating objects.", "A vibration is a rapid to and fro motion.", "Instruments have strings, membranes or air columns that vibrate."],
+    "quiz": [
+      {"q": "Which part of a tabla vibrates to make sound?", "options": ["The stretched membrane", "The wooden base", "The player's hand", "The floor"], "answer": 0, "why": "Striking the membrane makes it vibrate."},
+      {"q": "When you stop a vibrating bell with your hand, the sound…", "options": ["Stops", "Gets louder", "Changes colour", "Goes on forever"], "answer": 0, "why": "No vibration means no sound."}
+    ]
+  },
+  "13.2": {
+    "crux": "We speak using the voice box (larynx), where two vocal cords vibrate as air from the lungs passes between them.",
+    "cards": [
+      {"title": "The voice box", "pic": {"kind": "scene", "scene": "larynx", "labels": [
+          {"at": "larynx", "name": "Larynx (voice box)", "note": "At the top of the windpipe"},
+          {"at": "vocal_cords", "name": "Vocal cords", "note": "Two stretched folds"},
+          {"at": "slit", "name": "Narrow slit", "note": "Air passes through here"},
+          {"at": "windpipe", "name": "Windpipe"},
+          {"at": "air", "name": "Air from the lungs"}]},
+       "say": ["The lungs push air through the slit between the vocal cords.", "The vocal cords vibrate and produce sound."],
+       "remember": "Voice = air from lungs + vibrating vocal cords."},
+      {"title": "Changing your voice", "pic": {"kind": "compare", "cols": [
+          {"head": "Tight, thin cords", "icon": "🔼", "cells": ["Higher-pitched sound"]},
+          {"head": "Loose, thick cords", "icon": "🔽", "cells": ["Lower-pitched sound"]}]},
+       "say": ["Muscles attached to the vocal cords make them tight or loose."]},
+      {"title": "Different voices", "pic": {"kind": "bars", "unit": "mm", "items": [
+          {"label": "Men", "icon": "👨", "value": 20, "show": "about 20 mm", "color": "blue"},
+          {"label": "Women", "icon": "👩", "value": 15, "show": "about 5 mm shorter", "color": "pink"}]},
+       "say": ["Men's vocal cords are about 20 mm long; women's are about 5 mm shorter.", "Children's are very short, which is why their voices are high."]}
+    ],
+    "crux_points": ["Humans produce sound in the larynx (voice box).", "Air from the lungs makes the vocal cords vibrate.", "Tighter, thinner, shorter cords give a higher voice."],
+    "quiz": [
+      {"q": "What is marked '?' in the voice box?", "pic": {"kind": "scene", "scene": "larynx", "ask": "vocal_cords"}, "options": ["Vocal cords", "Eardrum", "Lungs", "Tongue"], "answer": 0, "why": "The two folds across the voice box are the vocal cords."},
+      {"q": "Why do children have higher voices than men?", "options": ["Their vocal cords are shorter", "They shout more", "Their lungs are bigger", "They have no larynx"], "answer": 0, "why": "Shorter vocal cords vibrate faster, giving a higher pitch."}
+    ]
+  },
+  "13.3": {
+    "crux": "Sound needs a medium (a solid, a liquid or a gas) to travel; it cannot travel through empty space (a vacuum).",
+    "cards": [
+      {"title": "The bell jar experiment", "pic": {"kind": "flow", "steps": [
+          {"icon": "🔔", "text": "A ringing phone or bell is placed in a glass jar"},
+          {"icon": "💨", "text": "Air is pumped out of the jar"},
+          {"icon": "🔉", "text": "The sound becomes fainter and fainter"},
+          {"icon": "🔇", "text": "With almost no air left, hardly any sound is heard"}]},
+       "say": ["Sound needs something to travel through. This is called a medium.", "Space with no air at all is called a vacuum."],
+       "remember": "Sound cannot travel through a vacuum."},
+      {"title": "Three kinds of medium", "pic": {"kind": "groups", "root": "Sound travels through", "items": [
+          {"icon": "💨", "name": "Gases", "eg": "Air carries our voices"},
+          {"icon": "🐋", "name": "Liquids", "eg": "Whales and dolphins call underwater"},
+          {"icon": "🪵", "name": "Solids", "eg": "Ear on a table hears a tap; string telephone"}]},
+       "say": ["Put your ear to a table and ask a friend to scratch the other end: you hear it clearly through the wood."]},
+      {"title": "Silence on the Moon", "pic": {"kind": "compare", "cols": [
+          {"head": "On Earth", "icon": "🌍", "cells": ["Air carries sound", "We can talk normally"]},
+          {"head": "On the Moon", "icon": "🌕", "cells": ["No air", "Astronauts can't hear each other directly; they use radios"]}]},
+       "say": ["There is no atmosphere on the Moon, so sound can't travel there."]}
+    ],
+    "crux_points": ["Sound needs a medium to travel.", "It travels through solids, liquids and gases.", "It cannot travel through a vacuum, which is why the Moon is silent."],
+    "quiz": [
+      {"q": "Why can't astronauts on the Moon hear each other directly?", "options": ["There is no air to carry sound", "It's too cold", "Their ears don't work", "The Moon is too bright"], "answer": 0, "why": "Sound needs a medium; the Moon has no air."},
+      {"q": "Can sound travel through water?", "options": ["Yes", "No", "Only at night", "Only through ice"], "answer": 0, "why": "Liquids are a medium for sound; whales and dolphins use it."}
+    ]
+  },
+  "13.4": {
+    "crux": "Sound makes our eardrum vibrate; the inner ear turns these vibrations into signals that travel to the brain.",
+    "cards": [
+      {"title": "Inside the ear", "pic": {"kind": "scene", "scene": "human_ear", "labels": [
+          {"at": "outer_ear", "name": "Outer ear", "note": "Funnel that collects sound"},
+          {"at": "canal", "name": "Ear canal"},
+          {"at": "eardrum", "name": "Eardrum", "note": "A thin stretched membrane"},
+          {"at": "bones", "name": "Tiny ear bones", "note": "Pass vibrations on"},
+          {"at": "cochlea", "name": "Inner ear"},
+          {"at": "nerve", "name": "Nerve to the brain"}]},
+       "say": ["The outer ear is shaped like a funnel to collect sound."]},
+      {"title": "How we hear", "pic": {"kind": "flow", "steps": [
+          {"icon": "🔊", "text": "Sound enters the ear canal"},
+          {"icon": "🥁", "text": "It makes the eardrum vibrate"},
+          {"icon": "🦴", "text": "The vibrations pass to the inner ear"},
+          {"icon": "🧠", "text": "Signals go to the brain, and we hear the sound"}]},
+       "say": ["The eardrum is like a stretched rubber sheet that vibrates when sound hits it."],
+       "remember": "Sound → eardrum vibrates → inner ear → brain."},
+      {"title": "Protect your ears", "pic": {"kind": "icons", "items": [
+          {"icon": "🚫", "text": "No sharp objects", "sub": "A pin or stick can tear the eardrum"},
+          {"icon": "🔉", "text": "Keep volume low", "sub": "Loud sounds damage hearing"}]},
+       "say": ["A damaged eardrum can lead to hearing loss."]}
+    ],
+    "crux_points": ["The outer ear collects sound like a funnel.", "Sound makes the eardrum vibrate; vibrations go to the inner ear.", "Signals travel to the brain; never put sharp objects in your ears."],
+    "quiz": [
+      {"q": "Which part is marked '?'", "pic": {"kind": "scene", "scene": "human_ear", "ask": "eardrum"}, "options": ["Eardrum", "Outer ear", "Brain", "Vocal cords"], "answer": 0, "why": "The eardrum is the thin membrane at the end of the ear canal."},
+      {"q": "Why should you never put a pin in your ear?", "options": ["It can tear the eardrum", "It makes you taller", "It improves hearing", "It's too cold"], "answer": 0, "why": "The eardrum is thin and can be damaged easily."}
+    ]
+  },
+  "13.5": {
+    "crux": "The size of a vibration (amplitude) decides how loud a sound is; how many vibrations happen each second (frequency, in hertz) decides its pitch.",
+    "cards": [
+      {"title": "Oscillation and frequency", "pic": {"kind": "scene", "scene": "pendulum", "labels": [
+          {"at": "support", "name": "Support"},
+          {"at": "bob", "name": "Bob at rest position"},
+          {"at": "left", "name": "One end of the swing"},
+          {"at": "right", "name": "Other end"},
+          {"at": "mean", "name": "One oscillation", "note": "There and back again"}]},
+       "say": ["A to and fro motion like this is an oscillation (vibration).", "The number of oscillations per second is the frequency, measured in hertz (Hz).", "The time for one oscillation is the time period."],
+       "remember": "1 Hz = one oscillation per second."},
+      {"title": "Loud or soft, high or low", "pic": {"kind": "scene", "scene": "waves", "labels": [
+          {"at": "loud", "name": "Loud sound", "note": "Large amplitude"},
+          {"at": "soft", "name": "Soft sound", "note": "Small amplitude"},
+          {"at": "low", "name": "Low pitch", "note": "Low frequency"},
+          {"at": "high", "name": "High pitch", "note": "High frequency"},
+          {"at": "amplitude", "name": "Amplitude", "note": "Size of the vibration"}]},
+       "say": ["Bigger vibrations (larger amplitude) make louder sounds.", "Faster vibrations (higher frequency) make higher-pitched, shriller sounds."]},
+      {"title": "Pitch around us", "pic": {"kind": "compare", "cols": [
+          {"head": "High pitch", "icon": "🐦", "cells": ["A bird's song", "A baby's cry", "A whistle"]},
+          {"head": "Low pitch", "icon": "🦁", "cells": ["A lion's roar (loud, but low)", "A man's deep voice", "A drum"]}]},
+       "say": ["A lion's roar is loud but low-pitched; a bird's chirp is soft but high-pitched.", "Loudness and pitch are different things."]},
+      {"title": "Measuring loudness", "pic": {"kind": "bars", "unit": "dB", "items": [
+          {"label": "Normal breathing", "icon": "😮‍💨", "value": 10, "color": "green"},
+          {"label": "Soft whisper", "icon": "🤫", "value": 30, "color": "green"},
+          {"label": "Conversation", "icon": "🗣️", "value": 60, "color": "amber"},
+          {"label": "Busy traffic", "icon": "🚦", "value": 70, "color": "orange"},
+          {"label": "Factory", "icon": "🏭", "value": 80, "color": "red"}]},
+       "say": ["Loudness is measured in decibels (dB).", "Sounds above 80 dB become painful to hear."]}
+    ],
+    "crux_points": ["Frequency = oscillations per second (Hz); it decides pitch.", "Amplitude = size of the vibration; it decides loudness.", "Loudness is measured in decibels; above 80 dB is painful."],
+    "quiz": [
+      {"q": "Which wave is marked '?'", "pic": {"kind": "scene", "scene": "waves", "ask": "high"}, "options": ["High pitch: many waves close together", "Loud sound", "Soft sound", "Low pitch"], "answer": 0, "why": "Waves packed close together mean high frequency, so high pitch."},
+      {"q": "A sound becomes louder when the…", "options": ["Amplitude increases", "Frequency drops to zero", "Medium is removed", "Time stops"], "answer": 0, "why": "Larger vibrations (amplitude) give louder sounds."},
+      {"q": "A pendulum makes 5 complete swings in 1 second. Its frequency is…", "options": ["5 Hz", "1 Hz", "50 Hz", "0.5 Hz"], "answer": 0, "why": "Frequency is the number of oscillations each second: 5 per second = 5 Hz."}
+    ]
+  },
+  "13.6": {
+    "crux": "Humans can hear sounds from about 20 Hz to 20,000 Hz; sounds outside this range are inaudible to us, though some animals can hear them.",
+    "cards": [
+      {"title": "Our hearing range", "pic": {"kind": "segments", "ticks": ["", "20 Hz", "20,000 Hz", ""], "items": [
+          {"name": "Too low", "note": "Inaudible", "color": "grey"},
+          {"name": "Audible", "note": "We can hear these", "color": "green"},
+          {"name": "Too high", "note": "Inaudible (ultrasound)", "color": "violet"}]},
+       "say": ["Sounds below about 20 vibrations per second can't be heard by us.", "Sounds above about 20,000 Hz can't be heard either."],
+       "remember": "We hear from 20 Hz to 20,000 Hz."},
+      {"title": "Animals hear more", "pic": {"kind": "icons", "items": [
+          {"icon": "🐕", "text": "Dogs", "sub": "Can hear sounds above 20,000 Hz"},
+          {"icon": "🦇", "text": "Bats", "sub": "Use very high sounds"},
+          {"icon": "🐘", "text": "Elephants", "sub": "Use very low sounds"}]},
+       "say": ["Some animals can hear sounds that are inaudible to us."]},
+      {"title": "Ultrasound helps doctors", "pic": {"kind": "flow", "steps": [
+          {"icon": "🩺", "text": "A machine sends very high-frequency sound into the body"},
+          {"icon": "↩️", "text": "The sound bounces back from organs"},
+          {"icon": "🖥️", "text": "A picture of the inside of the body appears"}]},
+       "say": ["Sounds above 20,000 Hz are called ultrasound.", "Ultrasound is used to look inside the body safely."]}
+    ],
+    "crux_points": ["Humans hear sounds from about 20 Hz to 20,000 Hz.", "Sounds outside this range are inaudible to us.", "Some animals hear them; ultrasound is used in medicine."],
+    "quiz": [
+      {"q": "Can a person hear a sound of 10 Hz?", "options": ["No, it's below 20 Hz", "Yes, easily", "Only with one ear", "Only at night"], "answer": 0, "why": "Humans can't hear sounds below about 20 Hz."},
+      {"q": "Sounds above 20,000 Hz are called…", "options": ["Ultrasound", "Noise", "Music", "Echo"], "answer": 0, "why": "These very high sounds are ultrasound; they are inaudible to humans."}
+    ]
+  },
+  "13.7": {
+    "crux": "Pleasing sounds are music; unpleasant sounds are noise; even music becomes noise when it's too loud.",
+    "cards": [
+      {"title": "Music or noise?", "pic": {"kind": "compare", "cols": [
+          {"head": "Music", "icon": "🎶", "cells": ["Pleasant to hear", "Sitar, flute, singing", "Regular vibrations"]},
+          {"head": "Noise", "icon": "📢", "cells": ["Unpleasant", "Traffic horns, construction, crowds", "Irregular sounds"]}]},
+       "say": ["Whether a sound is music or noise depends on how pleasing it is to the ear."]},
+      {"title": "Too loud is noise", "pic": {"kind": "flow", "steps": [
+          {"icon": "🎵", "text": "Your favourite song at low volume: music"},
+          {"icon": "🔊", "text": "The same song blaring from a loudspeaker"},
+          {"icon": "😖", "text": "It becomes noise"}]},
+       "say": ["Loudness can turn music into noise."],
+       "remember": "Music: pleasing. Noise: unpleasant."},
+      {"title": "Everyday sounds", "pic": {"kind": "icons", "items": [
+          {"icon": "🐦", "text": "Birdsong"}, {"icon": "🚗", "text": "Car horn"}, {"icon": "🎻", "text": "Violin"},
+          {"icon": "🔨", "text": "Hammering"}, {"icon": "🎤", "text": "Singing"}, {"icon": "💥", "text": "Crackers"}]},
+       "say": ["Sort these into music and noise. Did you and your friend sort them the same way?"]}
+    ],
+    "crux_points": ["Music is pleasing to the ear; noise is unpleasant.", "Music played too loud becomes noise.", "Different people may find different sounds pleasant."],
+    "quiz": [
+      {"q": "A song played at very high volume is likely to be…", "options": ["Noise", "Ultrasound", "Silent", "Infrasound"], "answer": 0, "why": "Even music becomes noise when it's too loud."},
+      {"q": "Which is usually considered noise?", "options": ["Traffic horns", "A flute", "A lullaby", "Birdsong"], "answer": 0, "why": "Horns are unpleasant, irregular sounds."}
+    ]
+  },
+  "13.8": {
+    "crux": "Too much unwanted sound is noise pollution; it can cause sleeplessness, stress, high blood pressure and hearing loss, but we can reduce it.",
+    "cards": [
+      {"title": "Sources of noise pollution", "pic": {"kind": "icons", "items": [
+          {"icon": "🚗", "text": "Vehicles and horns"}, {"icon": "💥", "text": "Crackers and explosions"}, {"icon": "🏭", "text": "Machines"},
+          {"icon": "📢", "text": "Loudspeakers"}, {"icon": "📺", "text": "TV at high volume"}, {"icon": "❄️", "text": "Coolers, ACs, kitchen appliances"}]},
+       "say": ["The presence of excessive or unwanted sound is called noise pollution."]},
+      {"title": "Harm to health", "pic": {"kind": "icons", "items": [
+          {"icon": "😴", "text": "Lack of sleep"}, {"icon": "❤️‍🩹", "text": "High blood pressure"},
+          {"icon": "😰", "text": "Anxiety and stress"}, {"icon": "👂", "text": "Hearing damage", "sub": "Can be temporary or permanent"}]},
+       "say": ["Very loud sounds can damage hearing permanently."]},
+      {"title": "How to reduce it", "pic": {"kind": "groups", "root": "Less noise", "items": [
+          {"icon": "🔇", "name": "Silencers", "eg": "On vehicles, aircraft engines and machines"},
+          {"icon": "🏘️", "name": "Plan locations", "eg": "Noisy work away from homes"},
+          {"icon": "📯", "name": "Fewer horns", "eg": "Honk only when needed"},
+          {"icon": "🔉", "name": "Lower volume", "eg": "TV and music at low volume"},
+          {"icon": "🌳", "name": "Plant trees", "eg": "Along roads and around buildings: they absorb sound"}]},
+       "say": ["Trees act as natural sound barriers."],
+       "remember": "Silencers, fewer horns, low volume, more trees."}
+    ],
+    "crux_points": ["Noise pollution is excessive unwanted sound.", "It causes sleeplessness, stress, high blood pressure and hearing loss.", "Silencers, fewer horns, lower volume and trees reduce it."],
+    "quiz": [
+      {"q": "How do trees help against noise pollution?", "options": ["They absorb and block sound", "They make sound louder", "They create echoes", "They have no effect"], "answer": 0, "why": "Trees along roads and around buildings cut down noise."},
+      {"q": "Which is a health effect of noise pollution?", "options": ["High blood pressure", "Better sleep", "Stronger bones", "Clearer eyesight"], "answer": 0, "why": "Constant noise causes stress and can raise blood pressure."}
+    ]
+  }
+}

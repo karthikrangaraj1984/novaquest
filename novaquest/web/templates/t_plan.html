@@ -1,0 +1,78 @@
+{% extends "staff.html" %}
+{# Term plan (teacher review, item 12): dates per chapter, filled by hand or spread over the term, with the class's
+   progress on each chapter so it's clear whether the class is on track. #}
+{% block title %}Term plan{% endblock %}
+{% block main %}
+{% from "_teach.html" import teach_head with context %}
+{{ teach_head("plan", teaching, cur, section_notes) }}
+<div class="stack-sm" style="gap:2px"><span class="muted">When {{ "class " ~ cur.class_label if cur else "your class" }} studies each chapter{% if cur %} of {{ cur.book.subject }}{% endif %}</span><h1>Term plan</h1></div>
+{% if not cur %}
+<div class="card"><p>You aren't mapped to a class and subject yet. Ask your school admin.</p></div>
+{% else %}
+{% if error %}<div class="note warn" role="alert">{{ error }}</div>{% endif %}
+<section class="grid" aria-label="Where the class is">
+  <div class="kpi"><span class="k">In class now</span><span class="v small-v">{% if plan.now %}{% for c in plan.now %}{{ c|inpart }}Ch {{ c.code }}{% if not loop.last %}, {% endif %}{% endfor %}{% else %}—{% endif %}</span>
+    <span class="d">{% if plan.now %}{{ plan.now[0].title }} · until {{ plan.now[0].ends_on.strftime("%d %b") }} · <a href="/teacher/prep?for={{ cur.key }}&amp;chapter={{ plan.now[0].id }}">Prepare</a>{% elif plan.next %}Next: {{ plan.next|inpart }}Ch {{ plan.next.code }} from {{ plan.next.starts_on.strftime("%d %b") }}{% else %}Nothing planned for today{% endif %}</span></div>
+  <div class="kpi"><span class="k">On track?</span>
+    {% if not plan.planned %}<span class="v small-v">Add dates</span><span class="d">Then you'll see it here</span>
+    {% elif plan.behind %}<span class="v small-v" style="color:var(--warn-ink, #8A4B00)">{{ plan.behind|length }} chapter{{ "s" if plan.behind|length != 1 }} behind</span><span class="d">Dates passed, under {{ 50 }}% practised</span>
+    {% else %}<span class="v small-v" style="color:var(--ok)">On track</span><span class="d">Every finished chapter is at least half practised</span>{% endif %}</div>
+  <div class="kpi"><span class="k">Chapters dated</span><span class="v">{{ plan.planned }} <small class="muted">of {{ plan.chapters|length }}</small></span>
+    <span class="d">{% if plan.first %}{{ plan.first.strftime("%d %b %Y") }} – {{ plan.last.strftime("%d %b %Y") }}{% else %}Not started{% endif %}</span></div>
+</section>
+{% if plan.behind %}
+<section class="card stack-sm focus" aria-labelledby="behind-h"><h2 id="behind-h">Chapters to catch up on</h2>
+  {% macro behind_row(c) %}<div class="topic-row"><span>{{ c|inpart }}Ch {{ c.code }}. {{ c.title }}<br><span class="small muted">Ended {{ c.ends_on.strftime("%d %b") }} · {{ c.practised }}% practised</span></span>
+    <span class="row" style="gap:6px"><a class="btn small ghost" href="/teacher/classes/{{ cur.cid }}/mastery?book={{ cur.book.id }}&amp;chapter={{ c.id }}">Who needs help</a>
+    <a class="btn small" href="/teacher/assignments/new?for={{ cur.key }}&amp;kind=quiz&amp;chapter={{ c.id }}">Revision task</a></span></div>{% endmacro %}
+  {% for c in plan.behind[:3] %}{{ behind_row(c) }}{% endfor %}
+  {% if plan.behind|length > 3 %}<details><summary class="small">{{ plan.behind|length - 3 }} more chapter{{ "s" if plan.behind|length - 3 != 1 }} behind</summary>
+    <div class="stack-sm" style="margin-top:8px">{% for c in plan.behind[3:] %}{{ behind_row(c) }}{% endfor %}</div></details>
+    <p class="small muted">Many chapters behind? The dates may be off: spread the chapters again from the date you actually started, below.</p>{% endif %}
+</section>
+{% endif %}
+<form method="post" class="card stack-sm" aria-labelledby="fill-h">
+  <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="for" value="{{ cur.key }}"><input type="hidden" name="action" value="fill">
+  <h2 id="fill-h">{% if plan.planned %}Spread chapters again{% else %}Fill in the dates for me{% endif %}</h2>
+  <p class="small muted">NovaQuest shares the school days (Monday to Saturday) between the chapters in book order, giving longer chapters more days. You can change any date afterwards.</p>
+  <div class="row" style="align-items:flex-end">
+    <div class="field"><label for="term_start">First day of term</label><input id="term_start" name="term_start" type="date" required value="{{ f.get('term_start') or (plan.first or plan.today) }}"></div>
+    <div class="field"><label for="term_end">Last day of term</label><input id="term_end" name="term_end" type="date" required value="{{ f.get('term_end') or (plan.last or '') }}"></div>
+  </div>
+  <details><summary class="small">Only some chapters (all {{ plan.chapters|length }} if none ticked)</summary>
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:6px;margin-top:8px">
+    {% for c in plan.chapters %}<label class="choice" style="min-height:40px"><input type="checkbox" name="chapters[]" value="{{ c.id }}">{{ c|inpart }}Ch {{ c.code }}. {{ c.title }}</label>{% endfor %}</div>
+  </details>
+  <button class="btn" type="submit" style="align-self:flex-start" {% if plan.planned %}data-confirm="Replace the dates of the chapters you spread?"{% endif %}>Spread over the term</button>
+</form>
+{% if others and plan.planned %}
+<form method="post" class="card stack-sm" aria-labelledby="copy-h">
+  <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="for" value="{{ cur.key }}"><input type="hidden" name="action" value="copy">
+  <h2 id="copy-h">Use these dates for your other sections</h2>
+  <p class="small muted">You teach {{ cur.book.subject }} in {{ others|length + 1 }} classes. Give the ticked classes the same chapter dates as {{ cur.class_label }} (their own progress stays as it is); change any of them afterwards.</p>
+  <div class="chips">{% for o in others %}<label class="choice" style="min-height:40px"><input type="checkbox" name="classes[]" value="{{ o.cid }}" checked>{{ o.class_label }}{% if section_notes.get(o.key) %} <span class="tiny muted">· {{ section_notes[o.key] }}</span>{% endif %}</label>{% endfor %}</div>
+  <button class="btn small quiet" type="submit" style="align-self:flex-start" data-confirm="Replace the ticked classes' dates with {{ cur.class_label }}'s?">Copy the dates</button>
+</form>
+{% endif %}
+<form method="post" class="stack-sm" aria-labelledby="dates-h">
+  <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="for" value="{{ cur.key }}"><input type="hidden" name="action" value="save">
+  <div class="row-between"><h2 id="dates-h">Chapters</h2><button class="btn small" type="submit">Save dates</button></div>
+  <div class="card table-wrap"><table class="plan-table cards">
+    <thead><tr><th scope="col">Chapter</th><th scope="col">From</th><th scope="col">To</th><th scope="col">Class progress</th></tr></thead>
+    <tbody>
+    {% for c in plan.chapters %}
+    <tr class="plan-{{ c.state or 'none' }}{{ ' plan-behind' if c.behind }}">
+      <th scope="row" class="wide"><input type="hidden" name="chapter[]" value="{{ c.id }}">
+        <span class="stack-sm" style="gap:2px"><span>{{ c|inpart }}{{ c.code }}. {{ c.title }}</span>
+        <span class="tiny muted">{{ c.topics }} topics{% if c.state == "now" %} · <b class="pill l2">In class now</b>{% elif c.state == "done" %} · {{ "Behind" if c.behind else "Done" }}{% endif %} · <a href="/teacher/prep?for={{ cur.key }}&amp;chapter={{ c.id }}">Prepare</a></span></span></th>
+      <td data-label="From"><label class="sr-only" for="start_{{ c.id }}">Chapter {{ c.code }} from</label><input id="start_{{ c.id }}" type="date" name="start_{{ c.id }}" value="{{ f.get('start_' ~ c.id, c.starts_on or '') }}"></td>
+      <td data-label="To"><label class="sr-only" for="end_{{ c.id }}">Chapter {{ c.code }} to</label><input id="end_{{ c.id }}" type="date" name="end_{{ c.id }}" value="{{ f.get('end_' ~ c.id, c.ends_on or '') }}"></td>
+      <td data-label="Class progress"><div class="bar{{ ' warn' if c.behind }}" role="img" aria-label="{{ c.practised }}% practised"><span style="width:{{ c.practised }}%"></span></div><span class="tiny muted">{{ c.practised }}% practised · {{ c.started }}% started</span></td>
+    </tr>
+    {% endfor %}
+    </tbody></table></div>
+  <p class="small muted">Leave both dates blank to take a chapter out of the plan. Students see the chapter being taught in class now at the top of Learn.</p>
+  <button class="btn" type="submit" style="align-self:flex-start">Save dates</button>
+</form>
+{% endif %}
+{% endblock %}

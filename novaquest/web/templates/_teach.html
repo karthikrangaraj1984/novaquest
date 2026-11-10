@@ -1,0 +1,20 @@
+{# Teach (1.30.0): one place for planning and teaching. Tabs for the jobs (lesson plans, topics and what students
+   can open, the term plan, the timetable) and the class-and-subject switcher as chips that apply at once; for the
+   sections that share a subject, each chip says where that class is. #}
+{% macro teach_head(active, teaching, cur, notes={}, keep="") -%}
+{% set teacher = actor.role == "teacher" %}
+<nav class="tabs" aria-label="Teach">
+  <a href="/teacher/prep{% if cur %}?for={{ cur.key }}{% endif %}" {% if active == "prep" %}aria-current="page"{% endif %}>Lesson plans</a>
+  <a href="/teacher/syllabus{% if cur %}?for={{ cur.key }}{% endif %}" {% if active == "topics" %}aria-current="page"{% endif %}>Topics{% if teacher %} and access{% endif %}</a>
+  {% if teacher %}<a href="/teacher/plan{% if cur %}?for={{ cur.key }}{% endif %}" {% if active == "plan" %}aria-current="page"{% endif %}>Term plan</a>
+  <a href="/teacher/timetable" {% if active == "timetable" %}aria-current="page"{% endif %}>Timetable</a>{% endif %}
+</nav>
+{% if cur and teaching|length > 1 %}
+<div class="sections" aria-label="Class and subject">
+  {% for t in teaching %}
+  <a class="section-chip" href="?for={{ t.key }}{{ keep if t.book.id == cur.book.id }}" {% if t.key == cur.key %}aria-current="page"{% endif %}>
+    <b>{{ t.short }}</b>{% if notes.get(t.key) %}<span class="tiny">{{ notes[t.key] }}</span>{% endif %}</a>
+  {% endfor %}
+</div>
+{% endif %}
+{%- endmacro %}

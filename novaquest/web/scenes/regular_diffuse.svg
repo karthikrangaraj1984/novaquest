@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"smooth":[100,226],"parallel_out":[150,90],"rough":[300,232],"scattered":[316,96]}'>
+<rect x="20" y="214" width="160" height="12" fill="#B3E5FC" stroke="#455A64" stroke-width="2"/>
+<g stroke="#E0541A" stroke-width="3"><path d="M30 100 L70 214 M60 100 L100 214 M90 100 L130 214"/></g>
+<g stroke="#2B4BD8" stroke-width="3"><path d="M70 214 L110 100 M100 214 L140 100 M130 214 L170 100"/></g>
+<path d="M220 226 l14 -14 l12 10 l14 -16 l12 14 l12 -10 l14 16 l12 -12 l12 10 l14 -14 l18 12 V240 H220 Z" fill="#D7CCC8" stroke="#6D4C41" stroke-width="2"/>
+<g stroke="#E0541A" stroke-width="3"><path d="M240 100 L262 214 M270 100 L292 214 M300 100 L322 214"/></g>
+<g stroke="#2B4BD8" stroke-width="3"><path d="M262 214 L226 110 M292 214 L320 96 M322 214 L384 140"/></g>
+<line x1="200" y1="40" x2="200" y2="280" stroke="#D7DCE8" stroke-width="2"/>
+</svg>

@@ -1,0 +1,89 @@
+{
+  "4.1": {
+    "crux": "Metals are usually shiny, hard, can be beaten into sheets and drawn into wires, ring when struck and conduct heat and electricity; non-metals usually don't.",
+    "cards": [
+      {"title": "Metal or non-metal?", "pic": {"kind": "compare", "rows": ["Look", "Hammer it", "Pull it", "Strike it", "Heat and electricity"], "cols": [
+          {"head": "Metals", "icon": "🔩", "cells": ["Shiny (lustre)", "Flattens into sheets (malleable)", "Draws into wires (ductile)", "Rings (sonorous)", "Good conductors"]},
+          {"head": "Non-metals", "icon": "🪨", "cells": ["Dull", "Breaks into pieces (brittle)", "Can't be drawn into wires", "No ringing sound", "Poor conductors"]}]},
+       "say": ["Iron, copper, aluminium, gold and silver are metals.", "Sulphur, carbon (coal), oxygen and phosphorus are non-metals."]},
+      {"title": "Metals in action", "pic": {"kind": "icons", "items": [
+          {"icon": "✨", "text": "Lustre", "sub": "Gold and silver jewellery shine"},
+          {"icon": "🥡", "text": "Malleable", "sub": "Aluminium foil for wrapping food"},
+          {"icon": "🧵", "text": "Ductile", "sub": "Copper and aluminium wires"},
+          {"icon": "🔔", "text": "Sonorous", "sub": "School bells are made of metal"},
+          {"icon": "🍳", "text": "Conducts heat", "sub": "Cooking pans"}]},
+       "say": ["We use each property of metals in daily life."]},
+      {"title": "Surprises", "pic": {"kind": "icons", "items": [
+          {"icon": "🔪", "text": "Sodium and potassium", "sub": "Metals so soft they can be cut with a knife"},
+          {"icon": "✏️", "text": "Graphite", "sub": "A non-metal that conducts electricity"}]},
+       "say": ["Most metals are hard, but a few are soft.", "Most non-metals don't conduct electricity, but graphite does."],
+       "remember": "Rules have exceptions: sodium is a soft metal, graphite is a conducting non-metal."}
+    ],
+    "crux_points": ["Metals: shiny, malleable, ductile, sonorous, good conductors.", "Non-metals: dull, brittle, not sonorous, poor conductors.", "There are exceptions, like soft sodium and conducting graphite."],
+    "quiz": [
+      {"q": "Aluminium can be beaten into thin foil. This property is called…", "options": ["Malleability", "Ductility", "Brittleness", "Lustre"], "answer": 0, "why": "Malleable materials can be beaten into thin sheets."},
+      {"q": "Coal breaks into pieces when hammered. Coal is…", "options": ["A brittle non-metal", "A malleable metal", "A ductile metal", "A sonorous metal"], "answer": 0, "why": "Non-metals like coal are brittle: they break instead of flattening."}
+    ]
+  },
+  "4.2": {
+    "crux": "Metals form basic oxides and give hydrogen with acids; non-metals form acidic oxides; a more reactive metal pushes a less reactive one out of its compound.",
+    "cards": [
+      {"title": "Burning in oxygen", "pic": {"kind": "compare", "rows": ["Example", "Forms", "Dissolved in water", "Litmus test"], "cols": [
+          {"head": "Metal", "icon": "🔩", "cells": ["Magnesium burns", "Magnesium oxide", "Magnesium hydroxide", "Red litmus turns blue: basic"]},
+          {"head": "Non-metal", "icon": "🟡", "cells": ["Sulphur burns", "Sulphur dioxide", "Sulphurous acid", "Blue litmus turns red: acidic"]}]},
+       "say": ["Metals react with oxygen to form metal oxides, which are basic.", "Non-metals react with oxygen to form oxides, which are acidic."],
+       "remember": "Metal oxide = basic; non-metal oxide = acidic."},
+      {"title": "Rusting", "pic": {"kind": "equation", "parts": [
+          {"icon": "🔩", "text": "Iron", "color": "grey"}, "+", {"icon": "💨", "text": "Oxygen", "color": "sky"}, "+", {"icon": "💧", "text": "Water", "color": "blue"}, "→", {"icon": "🟫", "text": "Rust", "color": "brown"}]},
+       "say": ["Iron left in moist air gets a brown, flaky coat called rust (iron oxide).", "Copper in moist air gets a dull green coating instead."]},
+      {"title": "With water and acids", "pic": {"kind": "icons", "items": [
+          {"icon": "💥", "text": "Sodium in water", "sub": "Reacts so fast it's kept in kerosene"},
+          {"icon": "🫙", "text": "Phosphorus in air", "sub": "Catches fire, so it's kept in water"},
+          {"icon": "🫧", "text": "Metal + acid", "sub": "Gives hydrogen gas: 'pop' with a burning match"},
+          {"icon": "🧪", "text": "Non-metal + acid", "sub": "Usually no reaction"}]},
+       "say": ["Some metals and non-metals are so reactive they must be stored carefully.", "Hydrogen gas burns with a pop sound."]},
+      {"title": "Displacement", "pic": {"kind": "scene", "scene": "displacement", "labels": [
+          {"at": "blue", "name": "Blue copper sulphate solution"},
+          {"at": "nail_before", "name": "Iron nail dipped in"},
+          {"at": "green", "name": "Turns green", "note": "Iron sulphate forms"},
+          {"at": "coating", "name": "Brown coating on nail", "note": "Copper comes out"}]},
+       "say": ["Iron is more reactive than copper, so it pushes copper out of copper sulphate.", "Iron + copper sulphate → iron sulphate + copper."],
+       "remember": "A more reactive metal displaces a less reactive one. Copper can't displace iron or zinc."}
+    ],
+    "crux_points": ["Metals form basic oxides; non-metals form acidic oxides.", "Metals react with acids to give hydrogen; non-metals usually don't.", "A more reactive metal displaces a less reactive metal from its compound."],
+    "quiz": [
+      {"q": "An iron nail is left in blue copper sulphate. What happens?", "pic": {"kind": "scene", "scene": "displacement", "ask": "coating"}, "options": ["The solution turns green and copper coats the nail", "Nothing happens", "The nail turns blue", "The solution turns red"], "answer": 0, "why": "Iron displaces copper: iron sulphate (green) forms and brown copper coats the nail."},
+      {"q": "The oxide of sulphur dissolved in water turns blue litmus…", "options": ["Red, so it is acidic", "Blue, so it is basic", "Green", "Colourless"], "answer": 0, "why": "Non-metal oxides make acids, which turn blue litmus red."},
+      {"q": "Why is sodium stored in kerosene?", "options": ["It reacts strongly with air and water", "It is too heavy", "It melts at room temperature", "It is a non-metal"], "answer": 0, "why": "Sodium reacts vigorously with oxygen and water, so it is kept in kerosene."}
+    ]
+  },
+  "4.3": {
+    "crux": "We choose metals and non-metals for jobs that match their properties, from copper wires to oxygen for breathing.",
+    "cards": [
+      {"title": "Uses of metals", "pic": {"kind": "groups", "root": "Metals at work", "items": [
+          {"icon": "🚆", "name": "Iron, steel", "eg": "Machines, trains, bridges"},
+          {"icon": "✈️", "name": "Aluminium", "eg": "Aeroplanes, foil, utensils (light and strong)"},
+          {"icon": "🔌", "name": "Copper", "eg": "Electric wires (good conductor)"},
+          {"icon": "💍", "name": "Gold, silver", "eg": "Jewellery (shiny, malleable)"},
+          {"icon": "🍲", "name": "Steel, aluminium", "eg": "Cooking utensils, boilers (conduct heat)"}]},
+       "say": ["Each use matches a property: copper conducts electricity, so it's used in wires."]},
+      {"title": "Uses of non-metals", "pic": {"kind": "groups", "root": "Non-metals at work", "items": [
+          {"icon": "🫁", "name": "Oxygen", "eg": "Needed by all living things to breathe"},
+          {"icon": "🌾", "name": "Nitrogen", "eg": "In fertilisers for crops"},
+          {"icon": "🚰", "name": "Chlorine", "eg": "Kills germs in drinking water"},
+          {"icon": "🩹", "name": "Iodine", "eg": "Purple solution applied on wounds"},
+          {"icon": "🎆", "name": "Sulphur, carbon", "eg": "Used in crackers"}]},
+       "say": ["Non-metals are just as important as metals in our lives."]},
+      {"title": "Match the property to the use", "pic": {"kind": "compare", "rows": ["Property", "So it's used for"], "cols": [
+          {"head": "Copper", "icon": "🔌", "cells": ["Ductile, conducts electricity", "Wires"]},
+          {"head": "Aluminium", "icon": "🥡", "cells": ["Malleable, light", "Foil, aircraft"]},
+          {"head": "Gold", "icon": "💍", "cells": ["Lustrous, doesn't rust", "Jewellery"]}]},
+       "say": ["Look around your home: can you guess why each object is made of its material?"]}
+    ],
+    "crux_points": ["Metals are used for machines, vehicles, wires, utensils and jewellery.", "Non-metals give us oxygen to breathe, fertilisers, water treatment and antiseptics.", "Every use matches a property of the material."],
+    "quiz": [
+      {"q": "Why are electric wires made of copper?", "options": ["Copper is ductile and a good conductor", "Copper is brittle", "Copper is a non-metal", "Copper is cheap plastic"], "answer": 0, "why": "Copper can be drawn into wires and conducts electricity very well."},
+      {"q": "Which non-metal is used to purify drinking water?", "options": ["Chlorine", "Sulphur", "Iron", "Gold"], "answer": 0, "why": "Chlorine kills germs in drinking water."}
+    ]
+  }
+}

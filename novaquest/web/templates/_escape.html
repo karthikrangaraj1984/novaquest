@@ -1,0 +1,6 @@
+{# How NOVA sorted the test cases, after a try at a sorting lock. #}
+{% macro sort_results(lk, results) %}
+<table class="small sort-results"><caption class="sr-only">How NOVA sorted the new cases</caption>
+  <thead><tr><th scope="col">New case</th><th scope="col">NOVA said</th><th scope="col"></th></tr></thead>
+  <tbody>{% for r in results %}<tr><th scope="row">{{ r.name }}</th><td>{{ lk.labels[r.guess] if r.guess is not none else "Not sure" }}</td><td>{{ "✓" if r.ok else "✗" }}</td></tr>{% endfor %}</tbody></table>
+{% endmacro %}

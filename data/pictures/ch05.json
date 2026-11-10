@@ -1,0 +1,118 @@
+{
+  "5.1": {
+    "crux": "Coal formed from forests buried millions of years ago; heating it in factories gives coke, coal tar and coal gas.",
+    "cards": [
+      {"title": "How coal formed", "pic": {"kind": "flow", "steps": [
+          {"icon": "🌳", "text": "About 300 million years ago, dense forests grew in low, wet lands"},
+          {"icon": "🌊", "text": "Floods buried the forests under soil"},
+          {"icon": "⬇️", "text": "More and more soil piled up: high pressure and high temperature deep down"},
+          {"icon": "⚫", "text": "Over millions of years the dead plants slowly became coal"}]},
+       "say": ["This slow change of dead plants into coal is called carbonisation.", "Because coal is made from the remains of living things, it is a fossil fuel."],
+       "remember": "Coal = ancient forests, pressed and heated for millions of years."},
+      {"title": "What we get from coal", "pic": {"kind": "groups", "root": "Coal (processed in industry)", "items": [
+          {"icon": "🪨", "name": "Coke", "eg": "Almost pure carbon: used to make steel and extract metals"},
+          {"icon": "🛢️", "name": "Coal tar", "eg": "Thick black liquid: dyes, drugs, paints, plastics, naphthalene balls"},
+          {"icon": "💨", "name": "Coal gas", "eg": "A fuel in many industries"}]},
+       "say": ["Coal tar is a mixture of about 200 substances.", "Naphthalene balls that keep moths away are made from coal tar."]},
+      {"title": "Coal as a fuel", "pic": {"kind": "icons", "items": [
+          {"icon": "🏭", "text": "Power plants", "sub": "Burnt to make electricity"},
+          {"icon": "🚂", "text": "Old steam engines", "sub": "Railway engines once ran on coal"},
+          {"icon": "🔥", "text": "Burning coal", "sub": "Gives mainly carbon dioxide"}]},
+       "say": ["Coal is hard and black, like stone.", "Today roads are surfaced with bitumen, a petroleum product, instead of coal tar."]}
+    ],
+    "crux_points": ["Coal formed from buried forests over millions of years (carbonisation).", "Coal is a fossil fuel.", "Processing coal gives coke, coal tar and coal gas."],
+    "quiz": [
+      {"q": "The slow change of dead plants into coal is called…", "options": ["Carbonisation", "Combustion", "Refining", "Fermentation"], "answer": 0, "why": "Carbonisation turns buried plant remains into coal over millions of years."},
+      {"q": "Naphthalene balls come from…", "options": ["Coal tar", "Coke", "Natural gas", "Diesel"], "answer": 0, "why": "Naphthalene is one of the many products obtained from coal tar."}
+    ]
+  },
+  "5.2": {
+    "crux": "Petroleum formed from tiny sea creatures buried under the sea bed; a refinery separates it into useful parts like LPG, petrol, kerosene and diesel.",
+    "cards": [
+      {"title": "How petroleum formed", "pic": {"kind": "flow", "steps": [
+          {"icon": "🐚", "text": "Tiny plants and animals lived in the sea"},
+          {"icon": "⬇️", "text": "When they died, they sank and were covered with sand and clay"},
+          {"icon": "🔥", "text": "No air, high temperature and pressure for millions of years"},
+          {"icon": "🛢️", "text": "They changed into petroleum and natural gas"}]},
+       "say": ["Petroleum is a fossil fuel, just like coal."]},
+      {"title": "Under the ground", "pic": {"kind": "scene", "scene": "oil_well", "labels": [
+          {"at": "rock", "name": "Rock layers"},
+          {"at": "gas", "name": "Natural gas", "note": "Lightest, on top"},
+          {"at": "oil", "name": "Petroleum (crude oil)", "note": "Floats on water"},
+          {"at": "water", "name": "Water", "note": "Heaviest, at the bottom"},
+          {"at": "pipe", "name": "Drill pipe"},
+          {"at": "rig", "name": "Drilling rig"}]},
+       "say": ["Petroleum is lighter than water and doesn't mix with it, so it sits above the water, with gas on top.", "We drill wells to bring it up."]},
+      {"title": "Separating petroleum", "pic": {"kind": "scene", "scene": "refinery_column", "labels": [
+          {"at": "crude", "name": "Heated crude oil goes in"},
+          {"at": "gas", "name": "Petroleum gas (LPG)", "note": "Cooking gas"},
+          {"at": "petrol", "name": "Petrol", "note": "Cars, aircraft"},
+          {"at": "kerosene", "name": "Kerosene", "note": "Stoves, lamps, jet planes"},
+          {"at": "diesel", "name": "Diesel", "note": "Trucks, generators"},
+          {"at": "lubricating", "name": "Lubricating oil, paraffin wax", "note": "Machines; candles, vaseline"},
+          {"at": "bitumen", "name": "Bitumen", "note": "Roads, paints"}]},
+       "say": ["Separating petroleum into its parts is called refining. It is done in a refinery.", "Each part (fraction) is collected at a different height of the tall column."],
+       "remember": "Refining: one crude oil → many useful fractions."},
+      {"title": "Black gold", "pic": {"kind": "icons", "items": [
+          {"icon": "🧴", "text": "Petrochemicals", "sub": "Detergents, polythene, nylon, polyester"},
+          {"icon": "🌾", "text": "Fertilisers", "sub": "Hydrogen from natural gas makes urea"},
+          {"icon": "💰", "text": "'Black gold'", "sub": "Petroleum is so valuable"}]},
+       "say": ["Useful substances made from petroleum and natural gas are called petrochemicals.", "In India, oil was found in Assam in 1867. Today it also comes from Gujarat, Mumbai High and the Godavari and Krishna river basins."]}
+    ],
+    "crux_points": ["Petroleum formed from sea organisms buried for millions of years.", "In the ground, gas lies above oil, and oil lies above water.", "A refinery separates petroleum into LPG, petrol, kerosene, diesel, lubricating oil, wax and bitumen."],
+    "quiz": [
+      {"q": "Which fraction is marked '?' at the top of the column?", "pic": {"kind": "scene", "scene": "refinery_column", "ask": "gas"}, "options": ["Petroleum gas (LPG)", "Bitumen", "Diesel", "Lubricating oil"], "answer": 0, "why": "The lightest fraction, petroleum gas, collects at the top."},
+      {"q": "Which petroleum product is used to surface roads?", "options": ["Bitumen", "Petrol", "LPG", "Kerosene"], "answer": 0, "why": "Bitumen is the heavy, thick fraction used on roads and in paints."}
+    ]
+  },
+  "5.3": {
+    "crux": "Natural gas is a clean fossil fuel that is easy to send through pipes; stored under high pressure it is called CNG.",
+    "cards": [
+      {"title": "What is CNG?", "pic": {"kind": "equation", "parts": [
+          {"icon": "💨", "text": "Natural gas", "color": "sky"}, "+", {"icon": "🗜️", "text": "High pressure", "color": "grey"}, "=", {"icon": "🛢️", "text": "CNG", "color": "green"}]},
+       "say": ["CNG means Compressed Natural Gas.", "Squeezing the gas into a small space makes it easy to store and carry in vehicles."]},
+      {"title": "Why it is a good fuel", "pic": {"kind": "icons", "items": [
+          {"icon": "🌿", "text": "Clean", "sub": "Causes much less pollution"},
+          {"icon": "🚌", "text": "Transport", "sub": "Buses and autos run on CNG"},
+          {"icon": "🍳", "text": "Cooking and power", "sub": "Piped to homes and power plants"},
+          {"icon": "🚇", "text": "Easy to move", "sub": "Sent through pipelines"}]},
+       "say": ["Natural gas burns cleanly, which is why many cities use CNG buses."],
+       "remember": "CNG is called a cleaner fuel."},
+      {"title": "Where it is found in India", "pic": {"kind": "icons", "items": [
+          {"icon": "📍", "text": "Tripura"}, {"icon": "📍", "text": "Rajasthan"}, {"icon": "📍", "text": "Maharashtra"},
+          {"icon": "📍", "text": "Krishna-Godavari delta"}]},
+       "say": ["Natural gas is often found along with petroleum."]}
+    ],
+    "crux_points": ["Natural gas is a fossil fuel found with petroleum.", "CNG is natural gas stored at high pressure.", "It is a cleaner fuel for vehicles, cooking and electricity."],
+    "quiz": [
+      {"q": "What does CNG stand for?", "options": ["Compressed Natural Gas", "Coal Nitrogen Gas", "Clean New Gasoline", "Carbon Neutral Gas"], "answer": 0, "why": "CNG is natural gas compressed under high pressure."},
+      {"q": "Why do cities prefer CNG buses?", "options": ["CNG causes less pollution", "CNG is a liquid", "CNG is made from wood", "CNG needs no engine"], "answer": 0, "why": "CNG burns cleanly and pollutes much less than petrol or diesel."}
+    ]
+  },
+  "5.4": {
+    "crux": "Some resources, like sunlight and air, never run out; others, like coal and petroleum, are limited, so we must use them carefully.",
+    "cards": [
+      {"title": "Two kinds of natural resources", "pic": {"kind": "compare", "cols": [
+          {"head": "Inexhaustible", "icon": "☀️", "cells": ["Present in unlimited amounts", "Won't run out by human use", "Sunlight, air"]},
+          {"head": "Exhaustible", "icon": "⛽", "cells": ["Limited amount in nature", "Can be used up", "Forests, minerals, coal, petroleum, natural gas"]}]},
+       "say": ["Fossil fuels took millions of years to form.", "Once used up, they can't be made again in our lifetime."]},
+      {"title": "Save fuel on the road", "pic": {"kind": "icons", "items": [
+          {"icon": "🐢", "text": "Drive at a steady, moderate speed"},
+          {"icon": "🚦", "text": "Switch off the engine at red lights"},
+          {"icon": "🛞", "text": "Keep the right tyre pressure"},
+          {"icon": "🔧", "text": "Service vehicles regularly"}]},
+       "say": ["These tips come from India's Petroleum Conservation Research Association (PCRA)."],
+       "remember": "Use fuel only when needed: it's limited."},
+      {"title": "Other ways to help", "pic": {"kind": "icons", "items": [
+          {"icon": "🚲", "text": "Walk or cycle short distances"},
+          {"icon": "🚌", "text": "Use buses and trains"},
+          {"icon": "💡", "text": "Switch off unused lights and fans"}]},
+       "say": ["Saving electricity also saves coal burnt in power plants."]}
+    ],
+    "crux_points": ["Inexhaustible resources (sunlight, air) won't run out.", "Exhaustible resources (coal, petroleum, natural gas, forests) are limited.", "We must save fuel by driving sensibly and using less energy."],
+    "quiz": [
+      {"q": "Which resource is inexhaustible?", "options": ["Sunlight", "Coal", "Petroleum", "Natural gas"], "answer": 0, "why": "Sunlight will not run out because of human use."},
+      {"q": "Which of these saves petrol?", "options": ["Switching off the engine at a red light", "Driving very fast", "Keeping tyres flat", "Never servicing the car"], "answer": 0, "why": "An engine left running at a red light burns fuel for nothing."}
+    ]
+  }
+}

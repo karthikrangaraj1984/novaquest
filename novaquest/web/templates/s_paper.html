@@ -1,0 +1,20 @@
+{% extends "student.html" %}
+{# A timed practice paper (1.31.0): the time left counts down; when it reaches zero the paper is handed in. #}
+{% block title %}Practice paper{% endblock %}
+{% block eyebrow %}<span class="small muted">{{ row.title }} · practice: no marks for your teacher</span>{% endblock %}
+{% block heading %}Practice paper{% endblock %}
+{% block main %}
+<form method="post" class="stack" data-paper data-seconds="{{ seconds_left }}">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <p class="timer" aria-live="off">⏱ <span data-timer>{{ (seconds_left // 60) }}:{{ "%02d"|format(seconds_left % 60) }}</span> left</p>
+  {% for q in row["items"] %}
+  <section class="qcard" aria-labelledby="p{{ loop.index0 }}">
+    <span class="tiny muted">{{ loop.index }} of {{ row["items"]|length }} · {{ q.topic }}</span>
+    <h2 id="p{{ loop.index0 }}" class="qtitle">{{ q.prompt }}</h2>
+    <fieldset class="stack-sm"><legend class="sr-only">Choose one</legend>
+    {% set i = loop.index0 %}{% for o in q.options %}<label class="choice"><input type="radio" name="q{{ i }}" value="{{ loop.index0 }}">{{ o }}</label>{% endfor %}</fieldset>
+  </section>
+  {% endfor %}
+  <button class="btn warm block" type="submit">Hand in</button>
+</form>
+{% endblock %}

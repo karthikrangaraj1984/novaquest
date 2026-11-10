@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"cornea":[60,150],"iris":[102,108],"pupil":[94,150],"lens":[122,150],"retina":[318,88],"optic_nerve":[364,180],"blind_spot":[330,170]}'>
+<circle cx="210" cy="150" r="128" fill="#FFFFFF" stroke="#8A6A55" stroke-width="4"/>
+<path d="M250 32 A128 128 0 0 1 250 268" fill="none" stroke="#E57373" stroke-width="9"/>
+<path d="M92 92 Q50 150 92 208" fill="#E3F2FD" stroke="#4FC3F7" stroke-width="4"/>
+<g fill="#6D4C41"><rect x="96" y="96" width="12" height="38" rx="4"/><rect x="96" y="166" width="12" height="38" rx="4"/></g>
+<ellipse cx="122" cy="150" rx="14" ry="34" fill="#FFF9C4" stroke="#C9A64A" stroke-width="3"/>
+<path d="M336 166 Q360 176 400 172 V196 Q360 198 334 186 Z" fill="#F6B26B" stroke="#C77D2E" stroke-width="2"/>
+<circle cx="333" cy="176" r="6" fill="#C77D2E"/>
+<g stroke="#FDD835" stroke-width="2" stroke-dasharray="5 4" fill="none"><path d="M10 120 L122 132 L330 150"/><path d="M10 180 L122 168 L330 150"/></g>
+</svg>

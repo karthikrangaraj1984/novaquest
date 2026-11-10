@@ -1,0 +1,32 @@
+{% extends "staff.html" %}
+{# Paper work (1.21.0): photos of students' written answers, read and marked like online work. #}
+{% block title %}Paper work: {{ p.assignment.title }}{% endblock %}
+{% block main %}
+<div class="stack-sm" style="gap:2px"><a class="small" href="/teacher/assignments/{{ p.assignment.id }}">← {{ p.assignment.title }}</a><h1>Paper work</h1></div>
+<p class="small muted">For students who wrote their answers on paper (the printed worksheet or an exercise book): photograph each student's answers, upload them here, check what NovaQuest read, then mark. {% if claude %}Claude reads the handwriting in the background; you check it before anything is marked.{% else %}Claude isn't connected, so you type each student's answers from their photos; NovaQuest marks them.{% endif %} Number the answers as on the worksheet (Q1, Q2…).</p>
+<section class="kpis" aria-label="Where the work stands">
+  <div class="kpi"><span class="k">Handed in online</span><span class="v">{{ p.counts.online }}</span></div>
+  <div class="kpi"><span class="k">To check</span><span class="v">{{ p.counts.to_check }}</span><span class="d">{% if p.counts.reading %}{{ p.counts.reading }} being read{% else %}read, not yet marked{% endif %}</span></div>
+  <div class="kpi"><span class="k">Marked from paper</span><span class="v">{{ p.counts.marked }}</span></div>
+  <div class="kpi"><span class="k">Nothing yet</span><span class="v">{{ p.counts.none }}</span></div>
+</section>
+<section class="card stack-sm" aria-labelledby="st-h"><h2 id="st-h">Students</h2>
+  <ul class="paperlist">{% for s in p.students %}
+    <li class="paperrow">
+      <div class="row-between" style="gap:8px"><b>{{ s.roll_no }}. {{ s.name }}</b>
+        <span>{% if s.state == "online" %}<span class="pill ok">Handed in online</span>
+        {% elif s.state == "marked" %}<span class="pill ok">Marked from paper</span> <a class="small" href="/teacher/paper/{{ s.scan.id }}">See</a>
+        {% elif s.state == "to_check" %}<a class="btn small" href="/teacher/paper/{{ s.scan.id }}">Check and mark</a>
+        {% elif s.state == "reading" %}<span class="pill l1">Reading the handwriting…</span>
+        {% else %}<span class="small muted">Nothing yet</span>{% endif %}</span></div>
+      {% if s.state not in ("online", "marked") %}
+      <form method="post" action="/teacher/assignments/{{ p.assignment.id }}/paper" enctype="multipart/form-data" class="row" style="gap:6px">
+        <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="student_id" value="{{ s.id }}">
+        <label class="sr-only" for="f{{ s.id }}">Photos of {{ s.name }}'s answers</label>
+        <input id="f{{ s.id }}" name="files[]" type="file" accept="image/jpeg,image/png,image/webp,application/pdf" multiple required>
+        <button class="btn small quiet" type="submit" data-busy="Uploading…">{{ "Replace photos" if s.scan else "Upload photos" }}</button></form>
+      {% endif %}
+    </li>{% endfor %}</ul>
+  <p class="tiny muted">Up to 6 pages per student: photos (JPEG or PNG, up to 5 MB each) or a PDF scan. Photos are kept for your school's set period, then deleted; marks stay.</p>
+</section>
+{% endblock %}

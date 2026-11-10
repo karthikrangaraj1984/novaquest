@@ -1,0 +1,134 @@
+{% extends "staff.html" %}
+{# The principal's overview (DB-3, DB-9): what needs attention first, figures that say what they mean, and every
+   class, teacher and student row leading to a page. #}
+{% block title %}Overview{% endblock %}
+{% block main %}
+{% import "_charts.html" as charts with context %}
+<div class="row-between" style="align-items:flex-end">
+  <div class="stack-sm" style="gap:2px"><span class="muted">{{ inst.name }} · {{ "Principal" if inst.kind == "school" else "Head of Department" }}</span><h1>How the school is learning</h1></div>
+  <form method="get" action="/leader/report.pdf" class="row" style="align-items:flex-end">
+    <div class="field"><label for="month" class="small">Monthly report</label><input id="month" type="month" name="month" value="{{ this_month }}"></div>
+    <button class="btn small" type="submit">Download PDF</button>
+  </form>
+</div>
+
+<section class="card stack-sm attention" aria-labelledby="att-h">
+  <h2 id="att-h">Needs your attention{% if data.concerns %} ({{ data.concerns|length }}){% endif %}</h2>
+  {% for x in data.concerns %}
+  <div class="topic-row"><a href="{{ x.link }}">{{ x.text }}</a>
+    {% if x.teacher_id and actor.role == "leader" %}<form method="post" action="/leader/nudge"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="teacher_id" value="{{ x.teacher_id }}"><button class="btn small quiet" type="submit">Send a friendly reminder</button></form>{% endif %}</div>
+  {% else %}<p class="small muted">Nothing needs your attention: every class is active, on plan and handing in work.</p>{% endfor %}
+</section>
+
+<section class="grid" aria-label="Key numbers">
+  <div class="kpi"><span class="k">Students active this week</span><span class="v">{{ data.kpis.active_pct }}%</span><span class="d">of {{ data.kpis.students }} students</span></div>
+  <div class="kpi"><span class="k">Understanding (last 4 weeks)</span>{% if data.kpis.understanding is not none %}<span class="v" style="color:var(--primary-dark)">{{ data.kpis.understanding|pct }}</span><span class="d">average score on practice and tests</span>{% else %}<span class="v small-v muted">Not enough data yet</span><span class="d">Shown once {{ data.min_students }}+ students in a class have scores</span>{% endif %}</div>
+  <div class="kpi"><span class="k">Handed in on time</span>{% if data.kpis.on_time is not none %}<span class="v">{{ data.kpis.on_time|pct }}</span><span class="d">of students, over {{ data.closed }} closed assignment{{ "s" if data.closed != 1 }}</span>{% else %}<span class="v small-v muted">None closed yet</span><span class="d">Counted once an assignment's deadline passes</span>{% endif %}</div>
+  <div class="kpi"><span class="k">AI skills (escape rooms)</span>{% if data.kpis.ai is not none %}<span class="v" style="color:var(--ai)">{{ data.kpis.ai }}%</span><span class="d">average lock score, skills with {{ data.min_students }}+ students</span>{% else %}<span class="v small-v muted">Not enough data yet</span><span class="d">Shown once {{ data.min_students }}+ students have played</span>{% endif %}</div>
+</section>
+<details class="small"><summary>What do these numbers mean?</summary>
+  <ul class="defs">
+    <li><b>Active this week:</b> students who opened a lesson, practised, took a test or played an escape room in the last 7 days.</li>
+    <li><b>Understanding:</b> the average score on practice, understanding checks, lesson quizzes and tests in the last 4 weeks. It is a learning indicator, not an exam mark.</li>
+    <li><b>Handed in on time:</b> of every student an assignment was set for, the share who handed it in by its deadline, over assignments that closed in the last 8 weeks.</li>
+    <li><b>AI skills:</b> how well students open escape-room locks for each AI skill (first try without a hint scores highest).</li>
+    <li>A figure needs at least {{ data.min_students }} students behind it; below that it says "Not enough data".</li>
+  </ul></details>
+
+{% set sc = school %}
+{% set qs_g = ("&grade=" ~ sc.grade) if sc.grade else "" %}{% set qs_s = ("&subject=" ~ sc.subject|urlencode) if sc.subject else "" %}
+<section class="card stack" aria-labelledby="mx-h" id="school">
+  <div class="row-between" style="align-items:flex-end"><div class="stack-sm" style="gap:2px"><h2 id="mx-h">Every class, every subject</h2>
+    <span class="small muted">Last 4 weeks. Each square: understanding, how much of the book the class has practised, the term plan and work handed in.</span></div></div>
+  <div class="filters">
+    {% if sc.grades|length > 1 %}<nav class="chips" aria-label="Grade"><a class="chip" href="?{{ qs_s[1:] }}#school" {% if not sc.grade %}aria-current="page"{% endif %}>All grades</a>
+      {% for g in sc.grades %}<a class="chip" href="?grade={{ g }}{{ qs_s }}#school" {% if sc.grade == g %}aria-current="page"{% endif %}>Grade {{ g }}</a>{% endfor %}</nav>{% endif %}
+    {% if sc.all_subjects|length > 1 %}<nav class="chips" aria-label="Subject"><a class="chip" href="?{{ qs_g[1:] }}#school" {% if not sc.subject %}aria-current="page"{% endif %}>All subjects</a>
+      {% for x in sc.all_subjects %}<a class="chip" href="?subject={{ x|urlencode }}{{ qs_g }}#school" {% if sc.subject == x %}aria-current="page"{% endif %}>{{ x }}</a>{% endfor %}</nav>{% endif %}
+  </div>
+  <div class="grid" aria-label="School figures">
+    <div class="kpi"><span class="k">Students</span><span class="v">{{ sc.students }}</span><span class="d">in {{ sc.rows|length }} class{{ "es" if sc.rows|length != 1 }}</span></div>
+    <div class="kpi"><span class="k">On track with the term plan</span>{% if sc.kpis.planned %}<span class="v">{{ sc.kpis.on_track }} <small class="muted">of {{ sc.kpis.planned }}</small></span><span class="d">class-subjects with a plan</span>{% else %}<span class="v small-v muted">No plans yet</span><span class="d">Teachers add chapter dates under Teach</span>{% endif %}</div>
+    <div class="kpi"><span class="k">Work set (4 weeks)</span><span class="v">{{ sc.kpis.set_4w }}</span><span class="d">assignments across these classes</span></div>
+    <div class="kpi"><span class="k">Work handed in</span>{% if sc.kpis.handed_in is not none %}<span class="v">{{ sc.kpis.handed_in }}%</span><span class="d">of students, closed work, 8 weeks</span>{% else %}<span class="v small-v muted">None closed yet</span>{% endif %}</div>
+  </div>
+  {% if sc.rows %}
+  <div class="table-wrap"><table class="matrix">
+    <thead><tr><th scope="col">Class</th>{% for x in sc.subjects %}<th scope="col">{{ x }}</th>{% endfor %}</tr></thead>
+    <tbody>
+    {% for r in sc.rows %}
+    {% if loop.first or r.grade != loop.previtem.grade %}<tr class="grade-row"><th colspan="{{ sc.subjects|length + 1 }}">Grade {{ r.grade }}</th></tr>{% endif %}
+    <tr><th scope="row"><a href="/leader/classes/{{ r.id }}">{{ r.label }}</a><br><span class="tiny muted">{{ r.students }} students</span></th>
+      {% for x in sc.subjects %}{% set c = r.cells.get(x) %}
+      {% if not c %}<td class="none">Not studied</td>
+      {% else %}<td class="{{ c.tone or '' }}"><span class="big">{{ c.understanding ~ "%" if c.understanding is not none else "—" }}</span>
+        <span class="tiny" style="display:block">{% if c.understanding is none %}Not enough data ({{ c.measured }}) · {% endif %}{{ c.practised }}% practised</span>
+        <span class="tiny" style="display:block">{% if not c.planned %}No term plan{% elif c.behind %}<b class="warn-text">{{ c.behind }} chapter{{ "s" if c.behind != 1 }} behind</b>{% else %}On plan{% if c.now %} · Ch {{ c.now|join(", ") }}{% endif %}{% endif %}</span>
+        <span class="tiny muted" style="display:block">{{ c.set_4w }} set · {{ (c.handed_in|string ~ "% in") if c.handed_in is not none else "none closed" }} · {{ c.teachers }}</span></td>{% endif %}
+      {% endfor %}</tr>
+    {% endfor %}
+    </tbody></table></div>
+  <p class="tiny muted">Colours: green 70%+ understanding, amber 50–69%, red under 50%. A figure needs {{ data.min_students }}+ students with scores.</p>
+  {% else %}<p class="small muted">No classes match.</p>{% endif %}
+  <div class="cols">
+    <div class="main stack-sm"><h3>By grade</h3>
+      <div class="table-wrap"><table><thead><tr><th scope="col">Grade</th><th scope="col">Classes</th><th scope="col">Students</th><th scope="col">Understanding</th><th scope="col">Handed in</th><th scope="col">Chapters behind</th></tr></thead>
+        <tbody>{% for g in sc.by_grade %}<tr><th scope="row">Grade {{ g.grade }}</th><td>{{ g.classes }}</td><td>{{ g.students }}</td><td>{{ (g.understanding|string ~ "%") if g.understanding is not none else "—" }}</td><td>{{ (g.handed_in|string ~ "%") if g.handed_in is not none else "—" }}</td><td>{% if g.behind %}<b class="warn-text">{{ g.behind }}</b>{% else %}0{% endif %}</td></tr>{% endfor %}</tbody></table></div></div>
+    <div class="aside stack-sm"><h3>Students active each week</h3>
+      {% if sc.active %}{{ charts.bar_chart(sc.active, "week", "pct", "Share of students active each week") }}
+      <span class="tiny muted">Share of the {{ sc.students }} students who did anything that week.</span>
+      {% else %}<p class="small muted">No activity in the last 8 weeks.</p>{% endif %}</div>
+  </div>
+</section>
+
+<section class="card stack-sm" aria-labelledby="cl-h">
+  <h2 id="cl-h">Classes</h2>
+  <div class="table-wrap"><table class="cards overview-table">
+    <thead><tr><th scope="col">Class</th><th scope="col">Teachers</th><th scope="col">Understanding</th><th scope="col">Active this week</th><th scope="col">On time</th><th scope="col">Term plan</th><th scope="col">Escape rooms</th><th scope="col">Last activity</th></tr></thead>
+    <tbody>{% for c in data.classes %}
+      <tr class="{{ 'idle' if c.idle }}"><th scope="row" class="wide"><a href="/leader/classes/{{ c.id }}">Class {{ c.label }} ›</a></th>
+        <td data-label="Teachers">{{ c.teachers }}</td>
+        <td data-label="Understanding">{% if c.understanding is not none %}<b>{{ c.understanding|pct }}</b>{% else %}<span class="small muted">Not enough data ({{ c.measured }} student{{ "s" if c.measured != 1 }})</span>{% endif %}</td>
+        <td data-label="Active this week">{{ c.active_pct }}%</td>
+        <td data-label="On time">{% if c.on_time is not none %}{{ c.on_time|pct }}{% else %}<span class="small muted">None closed</span>{% endif %}</td>
+        <td data-label="Term plan">{% if not c.plan.planned %}<span class="small muted">No plan</span>{% elif c.plan.behind %}<span class="pill warn">{{ c.plan.behind }} behind</span>{% else %}<span class="pill ok">On track</span>{% endif %}</td>
+        <td data-label="Escape rooms">{{ c.rooms.escaped }} escaped · {{ c.rooms.players }} played</td>
+        <td data-label="Last activity">{% if c.idle %}<b class="warn-text">{{ c.last_active|ago }}</b>{% else %}{{ c.last_active|ago }}{% endif %}</td></tr>
+    {% else %}<tr><td colspan="8" class="muted">No classes yet.</td></tr>{% endfor %}</tbody></table></div>
+</section>
+
+<div class="cols">
+  <section class="main stack">
+    <section class="card stack-sm" aria-labelledby="ch-h"><h2 id="ch-h">Chapters, weakest first</h2>
+      <div class="table-wrap"><table><thead><tr><th scope="col">Chapter</th><th scope="col">Understanding</th><th scope="col">Students</th></tr></thead>
+        <tbody>{% for c in data.chapters %}<tr><th scope="row">{{ c.chapter }}</th><td>{{ c.pct|pct }}</td><td>{{ c.students }}</td></tr>{% else %}<tr><td colspan="3" class="muted">Chapters appear once {{ data.min_students }}+ students have scores in them.</td></tr>{% endfor %}</tbody></table></div></section>
+    <section class="card stack-sm" aria-labelledby="teachers"><h2 id="teachers">Teachers</h2>
+      <div class="table-wrap"><table class="cards">
+        <thead><tr><th scope="col">Teacher</th><th scope="col">Teaches</th><th scope="col">Work set (4 wk)</th><th scope="col">Handed in</th><th scope="col">Lessons presented (4 wk)</th><th scope="col">Last signed in</th></tr></thead>
+        <tbody>{% set idle = data.teachers|selectattr("idle")|map(attribute="id")|list %}
+        {% for t in school.teachers %}<tr><th scope="row" class="wide">{{ t.name }}{% if t.id in idle and actor.role == "leader" %}<form method="post" action="/leader/nudge" style="margin-top:4px"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="teacher_id" value="{{ t.id }}"><button class="btn small quiet" type="submit">Send a friendly reminder</button></form>{% endif %}</th>
+          <td data-label="Teaches">{{ t.teaches or "—" }}{% if t.lessons_week %}<br><span class="tiny muted">{{ t.lessons_week }} lessons a week</span>{% endif %}</td>
+          <td data-label="Work set">{{ t.set_4w }}</td>
+          <td data-label="Handed in">{{ (t.handed_in|string ~ "%") if t.handed_in is not none else "—" }}</td>
+          <td data-label="Presented">{{ t.presented }}</td>
+          <td data-label="Last signed in">{{ t.last_login_at|ago }}</td></tr>
+        {% else %}<tr><td colspan="6" class="muted">No teachers yet.</td></tr>{% endfor %}</tbody></table></div>
+    </section>
+  </section>
+  <aside class="aside stack">
+    <section class="card stack-sm" aria-labelledby="ai-h"><h2 id="ai-h">AI skills</h2>
+      {% for a in data.ai_skills %}<div class="stack-sm" style="gap:4px"><div class="row-between small"><span>{{ a.concept }}</span><b>{{ a.pct|pct }}</b></div><div class="bar ai"><span style="width:{{ a.pct or 0 }}%"></span></div><span class="tiny muted">{{ a.students }} students</span></div>
+      {% else %}<p class="small muted">Shown for each skill once {{ data.min_students }}+ students have played escape rooms.</p>{% endfor %}</section>
+    <section class="card stack-sm" aria-labelledby="missed"><h2 id="missed">Missed {{ data.thresholds.missed }}+ assignments</h2>
+      {% for s in data.missed %}<a class="row-between small" href="/teacher/students/{{ s.id }}"><span>{{ s.name }} · {{ s.label }}</span><b>{{ s.missed }} missed</b></a>
+      {% else %}<p class="small muted">No student has missed {{ data.thresholds.missed }} or more. (Students who missed one or two are on their class teacher's list.)</p>{% endfor %}</section>
+    <section class="card stack-sm" aria-labelledby="tr-h"><h2 id="tr-h">Understanding over 8 weeks</h2>
+      {% if data.trend|length >= 2 %}
+      {{ charts.line_chart(data.trend, "week", "pct", "Average understanding each week") }}
+      <span class="tiny muted">Average score on practice and tests that week.</span>
+      {% else %}<p class="small muted">The trend appears after two weeks in which {{ data.min_students }}+ students have scores.</p>{% endif %}</section>
+    <section class="card stack-sm"><h2>Downloads</h2><a class="small" href="?format=csv">Class table (CSV)</a><a class="small" href="?format=pdf">Class table (PDF)</a></section>
+  </aside>
+</div>
+<p class="small muted">Scores are AI learning indicators, not official marks. Student names appear only where action may be needed.</p>
+{% endblock %}

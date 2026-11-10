@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon, flash_msg %}
+{% macro account_menu() -%}
+<details class="account" data-account>
+  <summary class="bell avatar" aria-label="My account: {{ actor.name }}"><span aria-hidden="true">{{ actor.name.split()|map("first")|join("")|upper|truncate(2, true, "") }}</span></summary>
+  <div class="account-menu">
+    <p><b>{{ actor.name }}</b><br><span class="small muted">{{ study }}</span></p>
+    <form method="post" action="/logout" data-signout>
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      <p class="note warn small" data-signout-warning hidden></p>
+      <button class="btn block quiet" type="submit">{{ tr("Sign out") }}</button>
+    </form>
+    <p class="small muted">{{ tr("Using a shared phone or tablet? Always sign out when you finish.") }}</p>
+  </div>
+</details>
+{%- endmacro %}
+{% block body %}
+<div class="app">
+  {% block header %}
+  <header class="app-head">
+    <div class="stack-sm" style="gap:2px">
+      {% block eyebrow %}{% endblock %}
+      <h1>{% block heading %}{% endblock %}</h1>
+    </div>
+    <div class="head-actions">
+      <a class="bell" href="/notifications" aria-label="Notifications{% if unread %}, {{ unread }} unread{% endif %}">{{ icon("bell") }}{% if unread %}<span class="dot">{{ unread }}</span>{% endif %}</a>
+      {{ account_menu() }}
+    </div>
+  </header>
+  {% endblock %}
+  <main id="main" class="app-main">
+    {{ flash_msg(flash) }}
+    {% if celebrate %}<section class="celebrate" role="status"><span class="confetti" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+      <h2>{{ celebrate[0] }}</h2><p>{{ celebrate[1] }}</p></section>{% endif %}
+    {% block main %}{% endblock %}
+  </main>
+  {% if nav == "learn" and not hide_ask %}
+  {% if not inline_ask %}<button class="ask-fab" type="button" data-ask-open aria-haspopup="dialog">{{ icon("chat") }}<span>{{ tr("Ask NOVA") }}</span></button>{% endif %}
+  <dialog class="ask-sheet" id="ask-sheet" aria-labelledby="ask-sheet-h">
+    <div class="row-between" style="flex-wrap:nowrap"><h2 id="ask-sheet-h">{{ tr("Ask NOVA") }}{% if topic %} about {{ topic.title }}{% endif %}</h2>
+      <button type="button" class="icon-btn" data-ask-close aria-label="{{ tr('Close') }}">✕</button></div>
+    <p class="small muted">{{ tr("Answers come only from your textbook, with the page number.") }}</p>
+    <div id="ask-list" class="chat" aria-live="polite"></div>
+    <form data-chat="/api/learn/ask" data-mode="ask" data-topic="{{ topic.id if topic else '' }}" data-list="ask-list" class="row" style="flex-wrap:nowrap">
+      <label class="sr-only" for="ask-in">{{ tr("Your question") }}</label>
+      <input id="ask-in" name="message" type="text" placeholder="{% if topic %}Ask about {{ topic.title|lower }}{% else %}e.g. What does the nucleus do?{% endif %}" autocomplete="off">
+      <button class="icon-btn" type="button" data-voice="ask-in" aria-label="Speak your question" aria-pressed="false">🎤</button>
+      <button class="icon-btn send" type="submit" aria-label="{{ tr('Ask') }}">➜</button>
+    </form>
+  </dialog>
+  {% endif %}
+  {% block tabbar %}
+  <nav class="tabbar" aria-label="Main">
+    <ul>
+      <li><a href="/student" {% if nav == "home" %}aria-current="page"{% endif %}>{{ icon("home") }}{{ tr("Home") }}</a></li>
+      <li><a href="/student/learn" {% if nav == "learn" %}aria-current="page"{% endif %}>{{ icon("book") }}{{ tr("Learn") }}</a></li>
+      <li><a href="/student/tasks" {% if nav == "tasks" %}aria-current="page"{% endif %}>{{ icon("tasks") }}{{ tr("Tasks") }}</a></li>
+      <li><a href="/student/progress" {% if nav in ("progress", "notifications") %}aria-current="page"{% endif %}>{{ icon("user") }}{{ tr("Me") }}</a></li>
+    </ul>
+  </nav>
+  {% endblock %}
+</div>
+{% endblock %}

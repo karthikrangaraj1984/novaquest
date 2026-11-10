@@ -1,0 +1,58 @@
+{% extends "staff.html" %}
+{% from "_class.html" import class_head with context %}
+{% block title %}Class progress {{ label }}{% endblock %}
+{% block main %}
+<div class="row-between" style="align-items:flex-end">{{ class_head(cid, label, data.students, "progress") }}
+  <div class="row"><a class="btn small quiet" href="?format=csv">Download CSV</a><a class="btn small quiet" href="?format=pdf">Download PDF</a></div></div>
+<p class="small muted">Learning-progress indicators from lessons, practice, assignments and Teach NOVA. Not exam marks.</p>
+{% if grid.book %}
+<section class="card stack-sm" id="grid" aria-labelledby="g-h">
+  <div class="row-between"><h2 id="g-h">Who needs help with what</h2>
+    <form method="get" action="#grid" class="row" data-autoapply>{% if grid.books|length <= 1 %}<input type="hidden" name="book" value="{{ grid.book.id }}">{% endif %}
+      {% if grid.books|length > 1 %}<label for="g-book" class="sr-only">Subject</label><select id="g-book" name="book" style="width:auto">{% for b in grid.books %}<option value="{{ b.id }}" {% if b.id == grid.book.id %}selected{% endif %}>{{ b.subject }} ({{ b.board }})</option>{% endfor %}</select>{% endif %}
+      <label for="g-ch" class="sr-only">Chapter</label><select id="g-ch" name="chapter" style="width:auto;max-width:320px">{% for c in grid.chapters %}<option value="{{ c.id }}" {% if grid.chapter and c.id == grid.chapter.id %}selected{% endif %}>{{ c|inpart }}{{ c.code }}. {{ c.title }}</option>{% endfor %}</select>
+      <button class="btn small quiet" type="submit" data-apply>Show</button></form></div>
+  <p class="small muted">Each square is one student's level on one topic of this chapter. Tick the students who need help, then make a revision task just for them.</p>
+  <form method="post" action="/teacher/classes/{{ cid }}/revise" class="stack-sm">
+    <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="chapter" value="{{ grid.chapter.id }}"><input type="hidden" name="book" value="{{ grid.book.id }}">
+    <div class="table-wrap"><table class="grid-table">
+      <thead><tr><th scope="col"><span class="sr-only">Choose</span></th><th scope="col">Student</th>
+        {% for t in grid.topics %}<th scope="col" class="gt" title="{{ t.title }}"><abbr title="{{ t.title }}">{{ t|pc }}</abbr></th>{% endfor %}
+        <th scope="col" title="Topics below Practised">Behind</th></tr></thead>
+      <tbody>
+      {% for st in grid.students %}<tr>
+        <td><input type="checkbox" name="students[]" value="{{ st.id }}" id="gs{{ st.id }}" aria-label="Choose {{ st.name }}" {% if actor.role != "teacher" %}disabled{% endif %}></td>
+        <th scope="row"><a href="/teacher/students/{{ st.id }}">{{ st.roll_no }}. {{ st.name }}</a></th>
+        {% for t in grid.topics %}{% set lv = grid.cells.get((st.id, t.id), 0) %}<td class="gc"><span class="cell c{{ lv }}" title="{{ st.name }}: {{ levels[lv] }} – {{ t.title }}">{{ "–LPM"[lv] }}<span class="sr-only"> {{ levels[lv] }}</span></span></td>{% endfor %}
+        <td>{% if st.behind %}<b>{{ st.behind }}</b>{% else %}<span class="muted">0</span>{% endif %}</td></tr>{% endfor %}
+      </tbody></table></div>
+    <div class="row-between small"><span class="legend-row"><span class="cell c0">–</span> Not started <span class="cell c1">L</span> Learning <span class="cell c2">P</span> Practised <span class="cell c3">M</span> Mastered</span>
+      {% if actor.role == "teacher" %}<button class="btn small" type="submit">Make a revision task for the ticked students</button>{% endif %}</div>
+  </form>
+  <details class="small"><summary>Topic names</summary><ul>{% for t in grid.topics %}<li><b>{{ t|pc }}</b> {{ t.title }}</li>{% endfor %}</ul></details>
+</section>
+{% endif %}
+<div class="cols">
+  <section class="main card stack-sm" aria-labelledby="t-h">
+    <h2 id="t-h">Mastery by learning outcome</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">Topic and outcome</th><th scope="col">Mastered</th><th scope="col">Practised</th><th scope="col">Learning</th><th scope="col">Taught NOVA</th><th scope="col">Average</th></tr></thead>
+      <tbody>
+      {% for r in data.rows if r.mastered or r.practised or r.learning %}
+        <tr><th scope="row">{{ r.code }} {{ r.title }}<br><span class="tiny muted" style="font-weight:400">{{ r.outcome }}</span></th><td>{{ r.mastered }}</td><td>{{ r.practised }}</td><td>{{ r.learning }}</td><td>{{ r.taught }}</td>
+          <td>{{ (100 * r.avg_score|float)|round|int ~ "%" if r.avg_score is not none else "—" }}</td></tr>
+      {% else %}<tr><td colspan="6" class="muted">No activity yet.</td></tr>{% endfor %}
+      </tbody></table></div>
+  </section>
+  <aside class="aside stack">
+    <section class="card stack-sm" aria-labelledby="w-h"><h2 id="w-h">Weakest outcomes</h2>
+      {% for w in data.weakest %}<div class="stack-sm" style="gap:4px"><div class="row-between small"><b>{{ w.code }} {{ w.title }}</b><span>{{ (100 * w.avg_score|float)|round|int }}%</span></div>
+        <div class="bar warn"><span style="width:{{ (100 * w.avg_score|float)|round }}%"></span></div>
+        <a class="small" href="/teacher/assignments/new?topic={{ w.topic_id }}">Make a revision task</a></div>{% else %}<p class="small muted">Not enough activity yet.</p>{% endfor %}</section>
+    <section class="card stack-sm" aria-labelledby="m-h"><h2 id="m-h">Most common mix-ups</h2>
+      {% for m in data.misconceptions %}<div class="row-between small"><span>{{ m.label }}</span><b>{{ m.students }}</b></div>{% else %}<p class="small muted">None recorded yet.</p>{% endfor %}</section>
+    <section class="card stack-sm" aria-labelledby="ai-h"><h2 id="ai-h">AI skills</h2>
+      {% for a in data.ai_skills %}<div class="stack-sm" style="gap:4px"><div class="row-between small"><span>{{ a.concept }}</span><b>{{ a.pct|pct }}</b></div><div class="bar ai"><span style="width:{{ a.pct or 0 }}%"></span></div></div>{% else %}<p class="small muted">AI skills appear once students play the escape rooms (on their Learn page).</p>{% endfor %}<a class="small" href="/teacher/classes/{{ cid }}/escape">Escape rooms for this class →</a></section>
+  </aside>
+</div>
+{% endblock %}

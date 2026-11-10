@@ -1,0 +1,13 @@
+{% extends "staff.html" %}
+{# Exam papers (AS-8): the teacher's papers, newest first. #}
+{% block title %}Exam papers{% endblock %}
+{% block main %}
+<div class="row-between"><div class="stack-sm" style="gap:2px"><a class="small" href="/teacher/assignments">← Assignments</a><h1>Exam papers</h1></div>
+  <a class="btn" href="/teacher/papers/new">+ New exam paper</a></div>
+<p class="muted small">Set the pattern (for example 10 one-mark and 5 three-mark questions), the difficulty and the topics. NovaQuest writes three different papers; you pick one and print it with its answer key.</p>
+{% for p in items %}
+<a class="topic-row" href="/teacher/papers/{{ p.id }}"><span><b>{{ p.title }}</b><br>
+  <span class="small muted">Class {{ p.class_label }} · {{ p.questions }} questions · {{ p.total|nicenum }} marks · {{ difficulties[p.difficulty].split(" (")[0] }} · {{ p.created_at|ist("%d %b") }}</span></span>
+  {% if p.chosen_set %}<span class="pill ok">Set {{ "ABC"[p.chosen_set - 1] }} chosen</span>{% else %}<span class="pill l1">Choose a set</span>{% endif %}</a>
+{% else %}<p class="empty">No exam papers yet.</p>{% endfor %}
+{% endblock %}

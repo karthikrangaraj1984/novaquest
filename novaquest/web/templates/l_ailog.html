@@ -1,0 +1,17 @@
+{% extends "staff.html" %}
+{# AI conversation log (1.19.0): students' conversations with NOVA, for the principal and school admin. #}
+{% block title %}AI conversations{% endblock %}
+{% block main %}
+<div class="stack-sm" style="gap:2px"><span class="muted">What students asked NOVA (Ask NOVA) and taught NOVA (Teach NOVA), newest first. Each time this page is opened it is recorded.</span><h1>AI conversations</h1></div>
+<form method="get" class="row" role="search" aria-label="Filter conversations" data-autoapply>
+  <label for="cl" class="sr-only">Class</label><select id="cl" name="class"><option value="">All classes</option>{% for c in log.classes %}<option value="{{ c.id }}" {% if c.id == log.class_id %}selected{% endif %}>{{ c.label }}</option>{% endfor %}</select>
+  <label for="dy" class="sr-only">Period</label><select id="dy" name="days">{% for n, t in ((7, "Last 7 days"), (30, "Last 30 days"), (90, "Last 90 days"), (365, "Last year")) %}<option value="{{ n }}" {% if n == log.days %}selected{% endif %}>{{ t }}</option>{% endfor %}</select>
+  <label for="q" class="sr-only">Words</label><input id="q" name="q" type="search" value="{{ log.q }}" placeholder="Find words, e.g. sad">
+  <button class="btn small quiet" type="submit">Search</button></form>
+<section class="stack-sm" aria-label="Conversations">
+{% for c in log.conversations %}
+  <details class="card convo"><summary><b>{{ c.student }}</b> <span class="muted small">· {{ c.class_label }} · {{ "Teach NOVA" if c.kind == "teach" else "Ask NOVA" }}{% if c.topic %} · {{ c.topic }}{% endif %} · {{ c.started|ist("%d %b, %I:%M %p") }} · {{ c.n }} message{{ "s" if c.n != 1 }}</span></summary>
+    <div class="stack-sm" style="margin-top:8px">{% for m in c.messages %}<p class="small msg {{ m.who }}"><b>{{ "Student" if m.who == "student" else "NOVA" }}:</b> {{ m.text }}</p>{% endfor %}</div></details>
+{% else %}<p class="card small muted">No conversations in this period{% if log.q %} with "{{ log.q }}"{% endif %}.</p>{% endfor %}
+</section>
+{% endblock %}

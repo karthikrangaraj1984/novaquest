@@ -1,0 +1,210 @@
+{
+ "chapter": 16,
+ "title": "The Mirror Maze",
+ "story": "You and NOVA are in a hall of mirrors, testing NOVA's robot camera, when the exit locks. Computers 'see' with cameras, a little like eyes. Help NOVA understand light to find the way out.",
+ "escaped": "The exit appears in the mirrors. NOVA now sorts surfaces by how they reflect, follows the laws of reflection and learns from how eyes work.",
+ "locks": [
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "16.3",
+   "title": "Clear reflection or not?",
+   "intro": "NOVA's camera must sort surfaces into those giving regular reflection (a clear image) and diffused reflection. Choose its clues.",
+   "labels": [
+    "Regular reflection",
+    "Diffused reflection"
+   ],
+   "features": [
+    {
+     "key": "smooth",
+     "text": "Smooth and polished"
+    },
+    {
+     "key": "white",
+     "text": "White"
+    },
+    {
+     "key": "metal",
+     "text": "Made of metal"
+    }
+   ],
+   "train": [
+    {
+     "name": "Mirror",
+     "label": 0,
+     "f": {
+      "smooth": 1,
+      "white": 0,
+      "metal": 0
+     }
+    },
+    {
+     "name": "Polished steel spoon",
+     "label": 0,
+     "f": {
+      "smooth": 1,
+      "white": 0,
+      "metal": 1
+     }
+    },
+    {
+     "name": "Still water",
+     "label": 0,
+     "f": {
+      "smooth": 1,
+      "white": 0,
+      "metal": 0
+     }
+    },
+    {
+     "name": "Sheet of paper",
+     "label": 1,
+     "f": {
+      "smooth": 0,
+      "white": 1,
+      "metal": 0
+     }
+    },
+    {
+     "name": "Cardboard",
+     "label": 1,
+     "f": {
+      "smooth": 0,
+      "white": 0,
+      "metal": 0
+     }
+    },
+    {
+     "name": "Rough wooden plank",
+     "label": 1,
+     "f": {
+      "smooth": 0,
+      "white": 0,
+      "metal": 0
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "Polished white marble tile",
+     "label": 0,
+     "f": {
+      "smooth": 1,
+      "white": 1,
+      "metal": 0
+     }
+    },
+    {
+     "name": "Rusty iron sheet",
+     "label": 1,
+     "f": {
+      "smooth": 0,
+      "white": 0,
+      "metal": 1
+     }
+    }
+   ],
+   "hint": "Marble is white like paper; rusty iron is a metal like the spoon. What makes reflection clear?",
+   "learn": "Colour and material fooled NOVA's camera. Regular reflection depends on the surface being smooth, so that is the clue a machine should use."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "16.2",
+   "title": "Check NOVA's mirror maths",
+   "intro": "NOVA is aiming a laser at a mirror. Is its claim right? Decide and pick the fact that settles it.",
+   "claim": "Light hitting a mirror at an angle of 30° bounces off at 60°.",
+   "confidence": "92% sure",
+   "verdict": 1,
+   "evidence": [
+    "The angle of reflection is always equal to the angle of incidence.",
+    "A mirror image is swapped left to right.",
+    "White light is made of seven colours.",
+    "The incident ray, the reflected ray and the normal all lie in one plane."
+   ],
+   "right": 0,
+   "hint": "Which law of reflection is about angles?",
+   "learn": "Two of these are real laws of reflection, but only one tests NOVA's number. Good checking picks the evidence that matches the exact claim."
+  },
+  {
+   "kind": "pattern",
+   "skill": "data",
+   "topic": "16.7",
+   "title": "Learn from the eye",
+   "intro": "NOVA studied how the pupil of the human eye changes with light, to copy it for its camera opening.",
+   "table": {
+    "cols": [
+     "Light",
+     "Size of the pupil"
+    ],
+    "rows": [
+     [
+      "Bright sunlight",
+      "Small"
+     ],
+     [
+      "Classroom",
+      "Medium"
+     ],
+     [
+      "Dark room",
+      "Large"
+     ]
+    ]
+   },
+   "question": "NOVA's camera is going into a dim cinema hall. Following the eye's pattern, what should it do?",
+   "options": [
+    "Open its opening wider to let in more light.",
+    "Make its opening smaller.",
+    "Keep it the same size; light doesn't matter.",
+    "Close it completely."
+   ],
+   "answer": 0,
+   "hint": "In the table, what happens to the pupil as it gets darker?",
+   "learn": "Engineers copy patterns from nature. The iris makes the pupil bigger in dim light to let more light in, and cameras do the same."
+  },
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "16.7",
+   "title": "Fix NOVA's eye diagram",
+   "intro": "NOVA has labelled parts of the eye. Tick the labels that are wrong.",
+   "rows": [
+    {
+     "item": "Cornea",
+     "label": "Clear front part of the eye"
+    },
+    {
+     "item": "Iris",
+     "label": "Controls the size of the pupil"
+    },
+    {
+     "item": "Retina",
+     "label": "Where the image forms"
+    },
+    {
+     "item": "Rods",
+     "label": "Sense colour",
+     "wrong": true,
+     "why": "rods respond to dim light; cones sense colour"
+    },
+    {
+     "item": "Blind spot",
+     "label": "Has no light-sensitive cells"
+    },
+    {
+     "item": "Pupil",
+     "label": "Gives the eye its colour",
+     "wrong": true,
+     "why": "the iris gives the eye its colour"
+    },
+    {
+     "item": "Lens",
+     "label": "Focuses light onto the retina"
+    }
+   ],
+   "hint": "Rods and cones are two kinds of cells. Which part is coloured?",
+   "learn": "A machine that learned from these labels would 'know' the wrong things about vision. Checking labels matters even for diagrams."
+  }
+ ]
+}

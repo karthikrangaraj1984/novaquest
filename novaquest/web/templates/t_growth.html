@@ -1,0 +1,57 @@
+{% extends "staff.html" %}
+{% from "_class.html" import class_head with context %}
+{# Learning growth (1.16.0): a start-of-term check, progress checks on the same topics, and the change. #}
+{% block title %}Growth {{ label }}{% endblock %}
+{% block main %}
+{{ class_head(cid, label, students_n, "growth") }}
+{% if books|length > 1 %}<nav class="row subj-sum" aria-label="Subject">{% for b in books %}<a class="chip" href="?book={{ b.id }}" {% if b.id == book.id %}aria-current="page"{% endif %}>{{ b.subject }}{% if books|selectattr("subject", "equalto", b.subject)|list|length > 1 %} ({{ b.board }}){% endif %}</a>{% endfor %}</nav>{% endif %}
+{% if not book %}<p class="empty">This class has no subject yet.</p>
+{% else %}
+<p class="small muted">A start-of-term check is a short multiple-choice quiz with questions from every chapter of {{ book.subject }}. Later progress checks cover the same topics with fresh questions, so you can see how far each student and the class have come. Learning-progress indicators, not exam marks.</p>
+
+{% if g.summary %}
+<section class="kpis" aria-label="Growth summary">
+  <div class="kpi"><span class="k">Start of term</span><span class="v">{{ g.summary.baseline }}%</span><span class="d">class average</span></div>
+  <div class="kpi"><span class="k">Now</span><span class="v">{{ g.summary.latest }}%</span><span class="d">{{ g.latest.title }}</span></div>
+  <div class="kpi"><span class="k">Change</span><span class="v" style="color:{{ 'var(--ok-ink)' if g.summary.change > 0 else 'var(--warn-ink)' }}">{{ "%+d"|format(g.summary.change) }}</span><span class="d">points, {{ g.summary.n }} students who took both</span></div>
+  <div class="kpi"><span class="k">Improved</span><span class="v">{{ g.summary.improved }}</span><span class="d">of {{ g.summary.n }} students</span></div>
+</section>
+{% endif %}
+
+<section class="card stack-sm" aria-labelledby="ck-h">
+  <div class="row-between"><h2 id="ck-h">Checks</h2>
+    {% if g.summary %}<a class="btn small quiet" href="?book={{ book.id }}&format=pdf">Download (PDF)</a>{% endif %}</div>
+  {% for c in g.checks %}<div class="row-between small"><a href="/teacher/assignments/{{ c.id }}/review">{{ c.title }}</a>
+    <span class="muted">{% if c.n %}{{ c.n }} handed in · average {{ c.avg }}%{% else %}{{ "Open" if c.state in ("open", "scheduled") else "No answers yet" }}{% endif %}</span></div>
+  {% else %}<p class="small muted">No checks yet for {{ book.subject }}.</p>{% endfor %}
+  {% if actor.role == "teacher" %}
+    {% if g.draft %}<p class="note small">A check is waiting in drafts: <a href="/teacher/assignments/{{ g.draft.id }}">{{ g.draft.title }}</a>. Check its questions and schedule it.</p>
+    {% elif not g.baseline %}
+    <form method="post" action="/teacher/classes/{{ cid }}/growth/new" class="stack-sm"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="book" value="{{ book.id }}"><input type="hidden" name="purpose" value="baseline">
+      <button class="btn" type="submit" data-busy="Writing the questions…">Set the start-of-term check</button>
+      <span class="small muted">About 20 multiple-choice questions across every chapter. You check the questions before students see it.</span></form>
+    {% else %}
+    <form method="post" action="/teacher/classes/{{ cid }}/growth/new" class="stack-sm"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="book" value="{{ book.id }}"><input type="hidden" name="purpose" value="progress">
+      <button class="btn" type="submit" data-busy="Writing the questions…">Set a progress check</button>
+      <span class="small muted">The same topics as the start-of-term check, with fresh questions. Mid-term and end of term work well.</span></form>
+    {% endif %}
+  {% endif %}
+</section>
+
+{% if g.baseline %}
+<div class="cols">
+  <section class="main card stack-sm" aria-labelledby="st-h"><h2 id="st-h">Students</h2>
+    <div class="table-wrap"><table class="cards">
+      <thead><tr><th scope="col">Student</th><th scope="col">Start of term</th><th scope="col">{{ g.latest.title if g.latest else "Latest" }}</th><th scope="col">Change</th></tr></thead>
+      <tbody>{% for s in g.students %}<tr><th scope="row"><a href="/teacher/students/{{ s.id }}">{{ s.roll_no }}. {{ s.name }}</a></th>
+        <td data-label="Start of term">{{ s.baseline ~ "%" if s.baseline is not none else "—" }}</td>
+        <td data-label="Latest">{{ s.latest ~ "%" if s.latest is not none else "—" }}</td>
+        <td data-label="Change">{% if s.change is not none %}<b style="color:{{ 'var(--ok-ink)' if s.change > 0 else ('var(--warn-ink)' if s.change < 0 else 'inherit') }}">{{ "%+d"|format(s.change) }}</b>{% else %}<span class="small muted">{{ "Didn't take the start-of-term check" if s.baseline is none else "Not yet" }}</span>{% endif %}</td></tr>{% endfor %}</tbody></table></div>
+  </section>
+  <aside class="aside stack"><section class="card stack-sm" aria-labelledby="ch-h"><h2 id="ch-h">By chapter</h2>
+    {% for c in g.chapters %}<div class="row-between small"><span>{{ c|inpart }}{{ c.code }}. {{ c.title }}</span><span>{{ c.baseline ~ "%" if c.baseline is not none else "—" }} → {{ c.latest ~ "%" if c.latest is not none else "—" }}{% if c.change is not none %} <b style="color:{{ 'var(--ok-ink)' if c.change > 0 else 'var(--warn-ink)' }}">{{ "%+d"|format(c.change) }}</b>{% endif %}</span></div>{% endfor %}
+    <span class="tiny muted">Class average on that chapter's questions.</span></section></aside>
+</div>
+{% endif %}
+{% endif %}
+{% endblock %}

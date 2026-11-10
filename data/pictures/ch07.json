@@ -1,0 +1,1382 @@
+{
+ "7.1": {
+  "crux": "Deforestation means cutting down forests and using the land for other things, mostly farming, homes, factories, furniture and fuel.",
+  "cards": [
+   {
+    "title": "What is deforestation?",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🌳",
+       "text": "A thick forest"
+      },
+      {
+       "icon": "🪓",
+       "text": "Trees are cut down"
+      },
+      {
+       "icon": "🏘️",
+       "text": "The land is used for farms, houses or factories"
+      }
+     ]
+    },
+    "say": [
+     "Clearing forests and using the land for other purposes is called deforestation."
+    ]
+   },
+   {
+    "title": "Why forests are cleared",
+    "pic": {
+     "kind": "groups",
+     "root": "Causes",
+     "items": [
+      {
+       "icon": "🌾",
+       "name": "Farmland",
+       "eg": "To grow more food"
+      },
+      {
+       "icon": "🏠",
+       "name": "Homes and factories",
+       "eg": "For a growing population"
+      },
+      {
+       "icon": "🪑",
+       "name": "Wood",
+       "eg": "For furniture and as fuel"
+      },
+      {
+       "icon": "🔥",
+       "name": "Natural causes",
+       "eg": "Forest fires and severe droughts"
+      }
+     ]
+    },
+    "say": [
+     "Most deforestation is caused by people.",
+     "Fires and droughts can also destroy forests."
+    ]
+   },
+   {
+    "title": "What forests give us",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "💨",
+       "text": "Oxygen"
+      },
+      {
+       "icon": "🪵",
+       "text": "Wood"
+      },
+      {
+       "icon": "🌿",
+       "text": "Medicines"
+      },
+      {
+       "icon": "🍯",
+       "text": "Food like honey and fruit"
+      },
+      {
+       "icon": "🐒",
+       "text": "Homes for animals"
+      },
+      {
+       "icon": "💧",
+       "text": "Rain and clean water"
+      }
+     ]
+    },
+    "say": [
+     "When a forest is cut down, we lose all of these together."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Deforestation is clearing forests to use the land for other purposes.",
+   "People clear forests for farms, homes, factories, furniture and fuel.",
+   "Forest fires and droughts are natural causes."
+  ],
+  "quiz": [
+   {
+    "q": "Which is a natural cause of deforestation?",
+    "options": [
+     "Forest fire",
+     "Building factories",
+     "Making furniture",
+     "Expanding farms"
+    ],
+    "answer": 0,
+    "why": "Forest fires and severe droughts are natural causes; the rest are caused by people."
+   },
+   {
+    "q": "Deforestation means…",
+    "options": [
+     "Clearing forests and using the land for other purposes",
+     "Planting new trees",
+     "Protecting animals",
+     "Watering crops"
+    ],
+    "answer": 0,
+    "why": "That is the meaning of deforestation."
+   }
+  ]
+ },
+ "7.2": {
+  "crux": "Without forests we get less rain, more heat, more floods and droughts, soil washes away, and fertile land can turn into desert.",
+  "cards": [
+   {
+    "title": "What happens when trees go",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🌡️",
+       "text": "Hotter",
+       "sub": "Temperature and pollution rise"
+      },
+      {
+       "icon": "🏭",
+       "text": "More carbon dioxide",
+       "sub": "Fewer trees to take it in"
+      },
+      {
+       "icon": "🌧️",
+       "text": "Less rain",
+       "sub": "Fewer trees release water vapour"
+      },
+      {
+       "icon": "💧",
+       "text": "Groundwater falls",
+       "sub": "Rain runs off instead of soaking in"
+      },
+      {
+       "icon": "🌊",
+       "text": "Floods",
+       "sub": "No roots to hold back the water"
+      },
+      {
+       "icon": "☀️",
+       "text": "Droughts",
+       "sub": "Less rain, drier soil"
+      }
+     ]
+    },
+    "say": [
+     "Trees control water, temperature and the gases in the air.",
+     "Removing them upsets the balance of nature."
+    ]
+   },
+   {
+    "title": "From forest to desert",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🌳",
+       "text": "Tree roots hold the soil together"
+      },
+      {
+       "icon": "🪓",
+       "text": "Trees are cut down"
+      },
+      {
+       "icon": "💨",
+       "text": "Wind and water carry away the top fertile soil (soil erosion)"
+      },
+      {
+       "icon": "🏜️",
+       "text": "The land slowly becomes a desert (desertification)"
+      }
+     ]
+    },
+    "say": [
+     "The top layer of soil holds humus and nutrients.",
+     "Once it's gone, plants can't grow well."
+    ],
+    "remember": "No trees → soil erosion → desertification."
+   },
+   {
+    "title": "Forests and rain",
+    "pic": {
+     "kind": "cycle",
+     "steps": [
+      {
+       "icon": "🌳",
+       "short": "Trees",
+       "text": "Trees take up water from the soil."
+      },
+      {
+       "icon": "💨",
+       "short": "Vapour",
+       "text": "They release water vapour into the air."
+      },
+      {
+       "icon": "☁️",
+       "short": "Clouds",
+       "text": "The vapour helps form clouds."
+      },
+      {
+       "icon": "🌧️",
+       "short": "Rain",
+       "text": "Rain falls back on the land and forest."
+      }
+     ]
+    },
+    "say": [
+     "Fewer trees means less water goes back into the air, so less rain falls."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Deforestation raises temperature, pollution and carbon dioxide.",
+   "It reduces rainfall and groundwater and causes floods and droughts.",
+   "Soil erosion can turn fertile land into desert (desertification)."
+  ],
+  "quiz": [
+   {
+    "q": "When fertile land slowly turns into desert, it is called…",
+    "options": [
+     "Desertification",
+     "Irrigation",
+     "Reforestation",
+     "Migration"
+    ],
+    "answer": 0,
+    "why": "Desertification follows soil erosion after trees are removed."
+   },
+   {
+    "q": "Why do floods increase after deforestation?",
+    "options": [
+     "No roots hold back the water",
+     "Trees make floods",
+     "Rain stops completely",
+     "Rivers dry up"
+    ],
+    "answer": 0,
+    "why": "Tree roots and forest soil soak up rain; without them water rushes off the land."
+   }
+  ]
+ },
+ "7.3": {
+  "crux": "To save plants and animals, special protected areas are set aside: wildlife sanctuaries, national parks and biosphere reserves.",
+  "cards": [
+   {
+    "title": "Biodiversity",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🌳",
+       "text": "Plants"
+      },
+      {
+       "icon": "🐅",
+       "text": "Animals"
+      },
+      {
+       "icon": "🦠",
+       "text": "Microorganisms"
+      }
+     ]
+    },
+    "say": [
+     "Biodiversity is the variety of living things in an area: plants, animals and microbes.",
+     "Each depends on the others."
+    ]
+   },
+   {
+    "title": "Protected areas",
+    "pic": {
+     "kind": "groups",
+     "root": "Protected areas",
+     "items": [
+      {
+       "icon": "🦌",
+       "name": "Wildlife sanctuary",
+       "eg": "Animals protected from hunting and capture"
+      },
+      {
+       "icon": "🐅",
+       "name": "National park",
+       "eg": "A whole ecosystem protected"
+      },
+      {
+       "icon": "🌍",
+       "name": "Biosphere reserve",
+       "eg": "Large area protecting plants, animals and tribal ways of life"
+      }
+     ]
+    },
+    "say": [
+     "Rules stop people from cutting trees, hunting or grazing inside these areas."
+    ],
+    "remember": "Sanctuary, national park, biosphere reserve: three kinds of protected area."
+   },
+   {
+    "title": "How you can help",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🌱",
+       "text": "Plant trees"
+      },
+      {
+       "icon": "📄",
+       "text": "Save paper"
+      },
+      {
+       "icon": "🚫",
+       "text": "Never buy products made from wild animals"
+      },
+      {
+       "icon": "🦜",
+       "text": "Don't disturb birds and animals"
+      }
+     ]
+    },
+    "say": [
+     "Conservation is everyone's job, not just the forest department's."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Biodiversity is the variety of living things in an area.",
+   "Protected areas conserve forests and wildlife.",
+   "The three main kinds are wildlife sanctuaries, national parks and biosphere reserves."
+  ],
+  "quiz": [
+   {
+    "q": "Biodiversity means…",
+    "options": [
+     "The variety of living things in an area",
+     "Only the trees in a forest",
+     "A kind of fuel",
+     "Cutting forests"
+    ],
+    "answer": 0,
+    "why": "Biodiversity covers all the plants, animals and microbes in an area."
+   },
+   {
+    "q": "Which is a protected area?",
+    "options": [
+     "National park",
+     "Shopping mall",
+     "Factory",
+     "Highway"
+    ],
+    "answer": 0,
+    "why": "National parks, sanctuaries and biosphere reserves are protected areas."
+   }
+  ]
+ },
+ "7.4": {
+  "crux": "A biosphere reserve is a large protected area that conserves its plants, animals and microbes, and the traditional life of the people living there.",
+  "cards": [
+   {
+    "title": "Inside a biosphere reserve",
+    "pic": {
+     "kind": "scene",
+     "scene": "biosphere_zones",
+     "labels": [
+      {
+       "at": "core",
+       "name": "Core area",
+       "note": "Strictly protected wildlife"
+      },
+      {
+       "at": "buffer",
+       "name": "Buffer area",
+       "note": "Research and learning, little disturbance"
+      },
+      {
+       "at": "transition",
+       "name": "Outer area",
+       "note": "Where people live and farm"
+      },
+      {
+       "at": "village",
+       "name": "Tribal villages",
+       "note": "Traditional life continues"
+      },
+      {
+       "at": "research",
+       "name": "Research station"
+      }
+     ]
+    },
+    "say": [
+     "The biosphere is the part of Earth where living things exist.",
+     "A biosphere reserve protects the variety of life in a large area, along with the culture of local people."
+    ]
+   },
+   {
+    "title": "Pachmarhi Biosphere Reserve",
+    "pic": {
+     "kind": "groups",
+     "root": "Pachmarhi Biosphere Reserve (Madhya Pradesh)",
+     "items": [
+      {
+       "icon": "🐅",
+       "name": "Satpura National Park"
+      },
+      {
+       "icon": "🦌",
+       "name": "Bori Wildlife Sanctuary"
+      },
+      {
+       "icon": "🦚",
+       "name": "Pachmarhi Wildlife Sanctuary"
+      }
+     ]
+    },
+    "say": [
+     "A biosphere reserve can contain other protected areas inside it.",
+     "Pachmarhi contains one national park and two wildlife sanctuaries."
+    ]
+   },
+   {
+    "title": "Everything is connected",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🌿",
+       "text": "Grass and plants make food from sunlight"
+      },
+      {
+       "icon": "🦌",
+       "text": "Deer eat the plants"
+      },
+      {
+       "icon": "🐅",
+       "text": "Tigers eat the deer"
+      }
+     ]
+    },
+    "say": [
+     "If one living thing disappears, others that depend on it suffer too.",
+     "That's why a reserve protects all the life in an area, not just one animal."
+    ]
+   }
+  ],
+  "crux_points": [
+   "A biosphere reserve is a large area that conserves biodiversity.",
+   "It also protects the traditional life of local tribal people.",
+   "It can contain national parks and sanctuaries, like Pachmarhi."
+  ],
+  "quiz": [
+   {
+    "q": "Which part of a biosphere reserve is most strictly protected?",
+    "pic": {
+     "kind": "scene",
+     "scene": "biosphere_zones",
+     "ask": "core"
+    },
+    "options": [
+     "The core area",
+     "The outer area",
+     "The villages",
+     "The roads"
+    ],
+    "answer": 0,
+    "why": "The core area is left undisturbed for wildlife."
+   },
+   {
+    "q": "Pachmarhi Biosphere Reserve contains…",
+    "options": [
+     "Satpura National Park and two sanctuaries",
+     "Only farms",
+     "A city",
+     "Only a lake"
+    ],
+    "answer": 0,
+    "why": "It includes Satpura National Park and the Bori and Pachmarhi sanctuaries."
+   }
+  ]
+ },
+ "7.5": {
+  "crux": "Flora means all the plants of an area and fauna means all its animals.",
+  "cards": [
+   {
+    "title": "Flora and fauna",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Flora (plants)",
+       "icon": "🌿",
+       "cells": [
+        "Sal",
+        "Teak",
+        "Mango",
+        "Jamun",
+        "Silver ferns",
+        "Arjun"
+       ]
+      },
+      {
+       "head": "Fauna (animals)",
+       "icon": "🐾",
+       "cells": [
+        "Chinkara",
+        "Blue bull",
+        "Barking deer",
+        "Cheetal",
+        "Leopard",
+        "Wild dog, wolf"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "These are some of the plants and animals of the Pachmarhi Biosphere Reserve."
+    ],
+    "remember": "Flora = plants (think 'flower'); fauna = animals."
+   },
+   {
+    "title": "Flora and fauna depend on each other",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🌳➜🐒",
+       "text": "Plants give animals food and shelter"
+      },
+      {
+       "icon": "🐝➜🌸",
+       "text": "Animals carry pollen and spread seeds"
+      }
+     ]
+    },
+    "say": [
+     "The plants and animals of a forest help each other survive."
+    ]
+   },
+   {
+    "title": "Your own area",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🌳",
+       "text": "Trees on your street",
+       "sub": "Flora"
+      },
+      {
+       "icon": "🐦",
+       "text": "Birds in your garden",
+       "sub": "Fauna"
+      },
+      {
+       "icon": "🐿️",
+       "text": "Squirrels in the park",
+       "sub": "Fauna"
+      }
+     ]
+    },
+    "say": [
+     "Every place has its own flora and fauna."
+    ],
+    "think": "Name three plants and three animals that live near your school."
+   }
+  ],
+  "crux_points": [
+   "Flora: the plants of a particular area.",
+   "Fauna: the animals of a particular area.",
+   "Every area has its own flora and fauna."
+  ],
+  "quiz": [
+   {
+    "q": "Teak and sal trees are part of the area's…",
+    "options": [
+     "Flora",
+     "Fauna",
+     "Fuel",
+     "Soil"
+    ],
+    "answer": 0,
+    "why": "Flora means the plants of an area."
+   },
+   {
+    "q": "Which of these is fauna?",
+    "options": [
+     "Leopard",
+     "Mango tree",
+     "Fern",
+     "Arjun tree"
+    ],
+    "answer": 0,
+    "why": "Fauna means the animals of an area."
+   }
+  ]
+ },
+ "7.6": {
+  "crux": "Endemic species are plants or animals found naturally only in one particular area and nowhere else.",
+  "cards": [
+   {
+    "title": "Found only here",
+    "pic": {
+     "kind": "groups",
+     "root": "Endemic to Pachmarhi",
+     "items": [
+      {
+       "icon": "🐿️",
+       "name": "Indian giant squirrel"
+      },
+      {
+       "icon": "🦇",
+       "name": "Flying squirrel"
+      },
+      {
+       "icon": "🐃",
+       "name": "Bison"
+      },
+      {
+       "icon": "🌳",
+       "name": "Sal tree"
+      },
+      {
+       "icon": "🥭",
+       "name": "Wild mango"
+      }
+     ]
+    },
+    "say": [
+     "An endemic species lives naturally only in a particular region."
+    ]
+   },
+   {
+    "title": "Why they're at risk",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🏚️",
+       "text": "Habitat destroyed",
+       "sub": "Their only home is lost"
+      },
+      {
+       "icon": "👥",
+       "text": "Growing population",
+       "sub": "People need more land"
+      },
+      {
+       "icon": "🌱",
+       "text": "New species brought in",
+       "sub": "Compete with them"
+      }
+     ]
+    },
+    "say": [
+     "If an endemic species loses its home, it has nowhere else to go."
+    ],
+    "remember": "Endemic = found only in one place; lose that place, lose the species."
+   },
+   {
+    "title": "What is a species?",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🐿️🐿️",
+       "text": "Same species",
+       "sub": "Can breed together"
+      },
+      {
+       "icon": "🐿️🐕",
+       "text": "Different species",
+       "sub": "Can't breed together"
+      }
+     ]
+    },
+    "say": [
+     "A species is a group of living things that can breed with each other.",
+     "Members of one species have common features."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Endemic species are found naturally only in one area.",
+   "The Indian giant squirrel is endemic to Pachmarhi.",
+   "Habitat loss, population growth and new species threaten them."
+  ],
+  "quiz": [
+   {
+    "q": "An endemic species is one that…",
+    "options": [
+     "Is found naturally only in a particular area",
+     "Lives everywhere",
+     "Migrates every year",
+     "Is already extinct"
+    ],
+    "answer": 0,
+    "why": "Endemic species are not found naturally anywhere else."
+   },
+   {
+    "q": "Which animal is endemic to the Pachmarhi area?",
+    "options": [
+     "Indian giant squirrel",
+     "Kangaroo",
+     "Penguin",
+     "Polar bear"
+    ],
+    "answer": 0,
+    "why": "The Indian giant squirrel is endemic to that region."
+   }
+  ]
+ },
+ "7.7": {
+  "crux": "A wildlife sanctuary is a place where wild animals are protected; hunting (poaching) and capturing them are strictly banned.",
+  "cards": [
+   {
+    "title": "A safe home for animals",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🦌",
+       "text": "Animals live in their natural surroundings"
+      },
+      {
+       "icon": "🚫",
+       "text": "Killing (poaching) or capturing animals is strictly banned"
+      },
+      {
+       "icon": "👨‍🌾",
+       "text": "Local people may graze cattle or collect firewood in some areas"
+      }
+     ]
+    },
+    "say": [
+     "In a sanctuary, animals are protected from disturbance."
+    ]
+   },
+   {
+    "title": "Threats to sanctuaries",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🎯",
+       "text": "Poaching",
+       "sub": "Illegal killing for skins, tusks, horns"
+      },
+      {
+       "icon": "🐄",
+       "text": "Overgrazing"
+      },
+      {
+       "icon": "🪓",
+       "text": "Cutting trees"
+      }
+     ]
+    },
+    "say": [
+     "Despite the rules, poaching still happens and must be stopped."
+    ],
+    "remember": "Poaching = illegal killing or capturing of wild animals."
+   },
+   {
+    "title": "Sanctuary or zoo?",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Wildlife sanctuary",
+       "icon": "🌳",
+       "cells": [
+        "Animals live in their natural habitat",
+        "Large, wild area"
+       ]
+      },
+      {
+       "head": "Zoo",
+       "icon": "🏛️",
+       "cells": [
+        "Animals kept in enclosures",
+        "Made to look like their habitat"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Zoos also protect animals, but in an artificial setting."
+    ]
+   }
+  ],
+  "crux_points": [
+   "A wildlife sanctuary protects animals in their natural home.",
+   "Poaching and capturing animals are strictly prohibited.",
+   "Some limited activities by local people are allowed."
+  ],
+  "quiz": [
+   {
+    "q": "Illegal killing of wild animals is called…",
+    "options": [
+     "Poaching",
+     "Migration",
+     "Grazing",
+     "Reforestation"
+    ],
+    "answer": 0,
+    "why": "Poaching is the illegal hunting or capturing of wild animals."
+   },
+   {
+    "q": "How is a sanctuary different from a zoo?",
+    "options": [
+     "Animals live in their natural habitat",
+     "Animals are in cages",
+     "There are no animals",
+     "Only birds live there"
+    ],
+    "answer": 0,
+    "why": "A sanctuary protects animals in their natural surroundings."
+   }
+  ]
+ },
+ "7.8": {
+  "crux": "A national park is a large area that protects a whole ecosystem; Satpura National Park in Madhya Pradesh is famous for its tigers and teak.",
+  "cards": [
+   {
+    "title": "A national park protects everything",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🌳",
+       "text": "Plants"
+      },
+      {
+       "icon": "🐅",
+       "text": "Animals"
+      },
+      {
+       "icon": "⛰️",
+       "text": "Landscape"
+      },
+      {
+       "icon": "🏺",
+       "text": "Historic objects"
+      }
+     ]
+    },
+    "say": [
+     "Animals in a national park can freely use their habitat and natural resources.",
+     "The whole ecosystem is protected."
+    ]
+   },
+   {
+    "title": "Satpura National Park",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🐅",
+       "text": "Tigers",
+       "sub": "Part of Satpura Tiger Reserve"
+      },
+      {
+       "icon": "🌲",
+       "text": "Finest Indian teak"
+      },
+      {
+       "icon": "🖼️",
+       "text": "Rock shelters",
+       "sub": "Paintings by prehistoric people"
+      }
+     ]
+    },
+    "say": [
+     "Satpura National Park is in the Pachmarhi Biosphere Reserve.",
+     "Its rock shelters show how people lived in the forest long ago."
+    ]
+   },
+   {
+    "title": "Project Tiger",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "📉",
+       "text": "Tiger numbers were falling fast"
+      },
+      {
+       "icon": "🏛️",
+       "text": "In 1973 the government launched Project Tiger"
+      },
+      {
+       "icon": "🐅",
+       "text": "Tiger reserves now protect tigers and their homes"
+      }
+     ]
+    },
+    "say": [
+     "Tigers are one of the many species at risk of dying out in India."
+    ],
+    "remember": "Project Tiger began in 1973."
+   }
+  ],
+  "crux_points": [
+   "A national park protects a whole ecosystem: plants, animals and landscape.",
+   "Satpura National Park has tigers, fine teak and ancient rock paintings.",
+   "Project Tiger (1973) protects tigers in tiger reserves."
+  ],
+  "quiz": [
+   {
+    "q": "When was Project Tiger launched?",
+    "options": [
+     "1973",
+     "1857",
+     "2005",
+     "1947"
+    ],
+    "answer": 0,
+    "why": "Project Tiger was launched in 1973 to protect tigers."
+   },
+   {
+    "q": "Satpura National Park is famous for…",
+    "options": [
+     "Tigers, teak and rock shelters",
+     "Penguins",
+     "Coral reefs",
+     "Deserts"
+    ],
+    "answer": 0,
+    "why": "It has tigers, the finest Indian teak and prehistoric rock shelters."
+   }
+  ]
+ },
+ "7.9": {
+  "crux": "The Red Data Book keeps a record of all plants and animals that are endangered, to help protect them.",
+  "cards": [
+   {
+    "title": "From safe to extinct",
+    "pic": {
+     "kind": "segments",
+     "items": [
+      {
+       "name": "Safe",
+       "note": "Many alive",
+       "color": "green"
+      },
+      {
+       "name": "Endangered",
+       "note": "Numbers falling, at risk",
+       "color": "amber"
+      },
+      {
+       "name": "Extinct",
+       "note": "None left alive",
+       "color": "red"
+      }
+     ]
+    },
+    "say": [
+     "Endangered animals are those whose numbers have fallen so low they might die out.",
+     "Extinct species no longer exist anywhere, like the dinosaurs."
+    ]
+   },
+   {
+    "title": "The Red Data Book",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "📕",
+       "text": "A source book that records endangered species"
+      },
+      {
+       "icon": "🌐",
+       "text": "Kept by an international organisation"
+      },
+      {
+       "icon": "🇮🇳",
+       "text": "India also keeps its own Red Data Book for its plants and animals"
+      }
+     ]
+    },
+    "say": [
+     "Knowing which species are in danger helps us take steps to save them."
+    ],
+    "remember": "Red Data Book = the record of endangered species."
+   },
+   {
+    "title": "Why species become endangered",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🪓",
+       "text": "Habitat destroyed",
+       "sub": "Forests cut down"
+      },
+      {
+       "icon": "🎯",
+       "text": "Hunting and poaching"
+      },
+      {
+       "icon": "🏭",
+       "text": "Pollution"
+      }
+     ]
+    },
+    "say": [
+     "Most species become endangered because of human activities."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Endangered species are at risk of dying out.",
+   "Extinct species no longer exist.",
+   "The Red Data Book records endangered plants and animals."
+  ],
+  "quiz": [
+   {
+    "q": "What does the Red Data Book record?",
+    "options": [
+     "Endangered species",
+     "Rainfall",
+     "Crop prices",
+     "Fuel values"
+    ],
+    "answer": 0,
+    "why": "It is the source book of all endangered animals and plants."
+   },
+   {
+    "q": "A species that no longer exists anywhere is…",
+    "options": [
+     "Extinct",
+     "Endangered",
+     "Endemic",
+     "Migratory"
+    ],
+    "answer": 0,
+    "why": "Extinct species, like dinosaurs, are gone forever."
+   }
+  ]
+ },
+ "7.10": {
+  "crux": "Migration is when animals travel far from their home at the same time every year, often to escape cold and to breed.",
+  "cards": [
+   {
+    "title": "Why birds migrate",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "❄️",
+       "text": "Their home becomes very cold in winter"
+      },
+      {
+       "icon": "🕊️",
+       "text": "Birds fly thousands of kilometres to warmer places"
+      },
+      {
+       "icon": "🥚",
+       "text": "They lay eggs and raise young there"
+      },
+      {
+       "icon": "↩️",
+       "text": "When the weather changes, they fly back home"
+      }
+     ]
+    },
+    "say": [
+     "Migratory birds travel at a particular time every year because of changes in climate."
+    ]
+   },
+   {
+    "title": "Visitors to India",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🦩",
+       "text": "Siberian cranes",
+       "sub": "Come from very cold Siberia"
+      },
+      {
+       "icon": "🦆",
+       "text": "Many ducks and geese",
+       "sub": "Visit Indian lakes and wetlands in winter"
+      }
+     ]
+    },
+    "say": [
+     "Protecting wetlands keeps these visitors safe."
+    ],
+    "remember": "Migration: moving to another habitat for part of every year."
+   },
+   {
+    "title": "Helping migrating birds",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🏞️",
+       "text": "Protect wetlands and lakes",
+       "sub": "Where they rest and feed"
+      },
+      {
+       "icon": "🤫",
+       "text": "Don't disturb their nests"
+      },
+      {
+       "icon": "🚫",
+       "text": "No hunting"
+      }
+     ]
+    },
+    "say": [
+     "Birds that travel thousands of kilometres need safe places to stop."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Migration is moving from one habitat to another for part of every year.",
+   "Birds migrate to escape harsh cold and to breed.",
+   "Siberian cranes migrate to India in winter."
+  ],
+  "quiz": [
+   {
+    "q": "Why do Siberian cranes come to India?",
+    "options": [
+     "Their home becomes too cold",
+     "They are lost",
+     "They want to eat rice",
+     "They are in a zoo"
+    ],
+    "answer": 0,
+    "why": "They migrate to escape the very cold weather and to breed."
+   },
+   {
+    "q": "Migration happens…",
+    "options": [
+     "At a particular time every year",
+     "Only once in a lifetime",
+     "Every day",
+     "Never"
+    ],
+    "answer": 0,
+    "why": "Migratory animals move at the same season every year."
+   }
+  ]
+ },
+ "7.11": {
+  "crux": "Making paper uses lots of trees, so saving, reusing and recycling paper helps save forests.",
+  "cards": [
+   {
+    "title": "Trees into paper",
+    "pic": {
+     "kind": "equation",
+     "parts": [
+      {
+       "icon": "🌳",
+       "text": "17 full-grown trees",
+       "color": "green"
+      },
+      "→",
+      {
+       "icon": "📄",
+       "text": "1 tonne of paper",
+       "color": "grey"
+      }
+     ]
+    },
+    "say": [
+     "It takes about 17 full-grown trees to make one tonne of paper."
+    ]
+   },
+   {
+    "title": "Recycle, recycle, recycle",
+    "pic": {
+     "kind": "cycle",
+     "steps": [
+      {
+       "icon": "📄",
+       "short": "Use",
+       "text": "We use paper for notebooks and printing."
+      },
+      {
+       "icon": "🗑️",
+       "short": "Collect",
+       "text": "Used paper is collected separately."
+      },
+      {
+       "icon": "🏭",
+       "short": "Recycle",
+       "text": "It is pulped and made into new paper."
+      },
+      {
+       "icon": "📒",
+       "short": "Reuse",
+       "text": "New paper is used again."
+      }
+     ]
+    },
+    "say": [
+     "Paper can be recycled five to seven times.",
+     "If each student saves one sheet a day, we can save many trees a year."
+    ],
+    "remember": "Save, reuse and recycle paper to save trees."
+   },
+   {
+    "title": "Easy ways to save paper",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "✏️",
+       "text": "Write on both sides"
+      },
+      {
+       "icon": "📦",
+       "text": "Reuse envelopes and boxes"
+      },
+      {
+       "icon": "💻",
+       "text": "Read and share digitally"
+      }
+     ]
+    },
+    "say": [
+     "Recycling also saves water and energy used to make new paper."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Making 1 tonne of paper uses about 17 full-grown trees.",
+   "Paper can be recycled 5 to 7 times.",
+   "Saving and recycling paper saves trees."
+  ],
+  "quiz": [
+   {
+    "q": "About how many full-grown trees are needed to make 1 tonne of paper?",
+    "options": [
+     "17",
+     "2",
+     "100",
+     "1,000"
+    ],
+    "answer": 0,
+    "why": "About 17 full-grown trees make one tonne of paper."
+   },
+   {
+    "q": "How many times can paper be recycled?",
+    "options": [
+     "5 to 7 times",
+     "Only once",
+     "Never",
+     "100 times"
+    ],
+    "answer": 0,
+    "why": "Paper fibres get shorter each time, so it can be recycled about 5 to 7 times."
+   }
+  ]
+ },
+ "7.12": {
+  "crux": "Reforestation means planting new trees where forests were destroyed, ideally of the same kinds that grew there before.",
+  "cards": [
+   {
+    "title": "Bringing forests back",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🪓",
+       "text": "A forest area has been cut"
+      },
+      {
+       "icon": "🌱",
+       "text": "New trees of the same types are planted"
+      },
+      {
+       "icon": "🌳",
+       "text": "Over years, the forest grows back"
+      }
+     ]
+    },
+    "say": [
+     "Restocking a destroyed forest by planting new trees is called reforestation.",
+     "We should plant at least as many trees as we cut."
+    ]
+   },
+   {
+    "title": "Nature can do it too",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🌿",
+       "text": "Left undisturbed",
+       "sub": "Seeds sprout by themselves"
+      },
+      {
+       "icon": "🌳",
+       "text": "Natural reforestation",
+       "sub": "The forest slowly re-establishes itself"
+      }
+     ]
+    },
+    "say": [
+     "If a cleared area is left alone, the forest may grow back naturally."
+    ]
+   },
+   {
+    "title": "The law helps",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "⚖️",
+       "text": "Forest (Conservation) Act",
+       "sub": "Protects natural forests in India"
+      },
+      {
+       "icon": "🏡",
+       "text": "Also helps forest people",
+       "sub": "Meets the needs of those living in and near forests"
+      }
+     ]
+    },
+    "say": [
+     "India has laws to protect forests and the people who depend on them."
+    ],
+    "remember": "Plant trees, protect forests, follow the law."
+   }
+  ],
+  "crux_points": [
+   "Reforestation is planting new trees in place of destroyed forests.",
+   "Forests can also regrow naturally if left undisturbed.",
+   "India's Forest (Conservation) Act protects natural forests."
+  ],
+  "quiz": [
+   {
+    "q": "Planting new trees in a destroyed forest is called…",
+    "options": [
+     "Reforestation",
+     "Deforestation",
+     "Desertification",
+     "Migration"
+    ],
+    "answer": 0,
+    "why": "Reforestation restocks a forest with new trees."
+   },
+   {
+    "q": "Which trees are best for reforesting an area?",
+    "options": [
+     "The same types that grew there before",
+     "Only fruit trees",
+     "Plastic trees",
+     "Any foreign species"
+    ],
+    "answer": 0,
+    "why": "Planting the original types restores the natural forest."
+   }
+  ]
+ }
+}

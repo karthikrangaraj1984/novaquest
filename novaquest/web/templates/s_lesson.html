@@ -1,0 +1,56 @@
+{% extends "student.html" %}
+{% from "_icons.html" import level_pill %}
+{% from "_path.html" import path_steps %}
+{% block title %}{{ topic.title }}{% endblock %}
+{% block eyebrow %}<span class="small"><a href="/student/learn?book={{ topic.syllabus_id }}">Learn</a><span class="muted"> · {{ topic|inpart }}Chapter {{ topic.chapter_no }}</span></span>{% endblock %}
+{% block heading %}{{ topic.title }}{% endblock %}
+{% block main %}
+{% set reaches = {"practice": 2, "understand": 3, "teach": 3} %}
+{% set names = {2: "Practised", 3: "Mastered"} %}
+<div class="row-between">{% if level %}{{ level_pill(level) }}{% else %}<span class="pill l0">Not started</span>{% endif %}<span class="small muted">{% if level == 3 %}Top level reached{% elif path.next and reaches.get(path.next.key, 0) > level %}Next: {{ path.next.name }} → {{ names[reaches[path.next.key]] }}{% elif path.next %}Next: {{ path.next.name }}{% endif %}</span></div>
+<p class="small muted">Goal: {{ topic.outcome }}</p>
+{% if next_step and next_step.revise %}
+<a class="btn block big" href="{{ next_step.url }}">Revise: practise again</a>
+<p class="small muted">You've mastered this topic. Practise now and then so you keep it{% if path.next %}, or do any step below{% endif %}.</p>
+{% elif path.next %}
+<a class="btn block big" href="{{ path.next.url }}">{% if path.done %}Continue{% else %}Start{% endif %}: {{ path.next.name }}</a>
+{% else %}
+<p class="note ok">🎉 You've finished every step. Revise any step below, or move on to the next topic.</p>
+{% endif %}
+{{ path_steps(path.steps) }}
+{% if book_pages and book_pages.ready %}
+<a class="topic-row pic-short" href="/student/learn/{{ topic.id }}/pages">
+  <span class="row" style="flex-wrap:nowrap"><span class="pic-cta-art" aria-hidden="true">📄</span>
+  <span class="stack-sm" style="gap:1px"><b>Book pages</b><span class="small muted">The real textbook {% if book_pages.pages|length > 1 %}pages {{ book_pages.pages[0] }}–{{ book_pages.pages[-1] }}{% else %}page {{ book_pages.pages[0] }}{% endif %}, with all the figures</span></span></span>
+  <span aria-hidden="true">›</span>
+</a>
+{% endif %}
+{# Ask NOVA sits in the list here, not floating over the topic's cards #}
+<button class="topic-row pic-short ask-row" type="button" data-ask-open aria-haspopup="dialog">
+  <span class="row" style="flex-wrap:nowrap"><span class="pic-cta-art" aria-hidden="true">💬</span>
+  <span class="stack-sm" style="gap:1px;text-align:left"><b>Ask NOVA about this topic</b><span class="small muted">Answers come from your textbook, with the page</span></span></span>
+  <span aria-hidden="true">›</span>
+</button>
+<a class="topic-row pic-short" href="/student/questions?topic={{ topic.id }}#ask">
+  <span class="row" style="flex-wrap:nowrap"><span class="pic-cta-art" aria-hidden="true">🙋</span>
+  <span class="stack-sm" style="gap:1px"><b>{{ tr("Ask my teacher") }}</b><span class="small muted">Still stuck? Your teacher replies in NovaQuest</span></span></span>
+  <span aria-hidden="true">›</span>
+</a>
+<details class="card textbook">
+  <summary><b>📖 Read the textbook</b> <span class="small muted">· the textbook text and quick checks</span></summary>
+  <div class="stack-sm" style="margin-top:12px">
+    <p>{{ explain }}</p>
+    {% for r in refs[:1] %}<span class="src">📖 {{ r }}</span>{% endfor %}
+    {% if example %}<div class="note info small">{{ example }}</div>{% endif %}
+    {% for c in checks %}
+    <form class="qcard" data-check="/api/learn/{{ topic.id }}/check" data-index="{{ loop.index0 }}">
+      <fieldset class="stack-sm"><legend>{{ c.q }}</legend>
+        {% for o in c.options %}<label class="choice"><input type="radio" name="c{{ loop.index0 }}" value="{{ loop.index0 }}">{{ o }}</label>{% endfor %}
+      </fieldset>
+      <button class="btn small ghost" type="submit" style="align-self:flex-start">Check</button>
+      <div class="result stack-sm" aria-live="polite"></div>
+    </form>
+    {% endfor %}
+  </div>
+</details>
+{% endblock %}

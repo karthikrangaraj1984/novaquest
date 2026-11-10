@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"plant":[200,40],"soil":[60,140],"root":[200,170],"nodule":[244,186],"bacteria":[338,170]}'>
+<rect x="0" y="96" width="400" height="204" fill="#D7B98E"/>
+<g fill="#4E9A3A"><ellipse cx="170" cy="40" rx="24" ry="12"/><ellipse cx="230" cy="40" rx="24" ry="12"/><ellipse cx="200" cy="22" rx="12" ry="20"/></g>
+<rect x="196" y="40" width="8" height="58" fill="#4E9A3A"/>
+<g stroke="#A47A44" stroke-width="5" fill="none" stroke-linecap="round"><path d="M200 96 V250"/><path d="M200 130 Q160 150 130 200"/><path d="M200 140 Q240 160 270 210"/><path d="M200 190 Q170 210 160 250"/><path d="M200 200 Q230 220 240 262"/></g>
+<g fill="#F2C2A0" stroke="#B5653A" stroke-width="2.5"><circle cx="160" cy="158" r="9"/><circle cx="244" cy="186" r="11"/><circle cx="142" cy="186" r="8"/><circle cx="258" cy="204" r="8"/><circle cx="178" cy="228" r="9"/><circle cx="214" cy="164" r="7"/></g>
+<circle cx="338" cy="170" r="40" fill="#FFF6EC" stroke="#B5653A" stroke-width="3"/>
+<g fill="#C8E6C9" stroke="#2E7D32" stroke-width="2"><rect x="318" y="156" width="22" height="9" rx="4"/><rect x="336" y="174" width="22" height="9" rx="4"/><rect x="316" y="180" width="22" height="9" rx="4"/></g>
+<path d="M255 186 L298 172" stroke="#5A6178" stroke-width="2" stroke-dasharray="4 4"/>
+</svg>

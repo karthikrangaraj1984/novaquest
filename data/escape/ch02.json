@@ -1,0 +1,205 @@
+{
+ "chapter": 2,
+ "title": "The Germ Lab",
+ "story": "You and NOVA are shut in a microbiology lab after a power cut. The doors open only when NOVA stops getting microorganisms wrong. Four locks stand between you and fresh air.",
+ "escaped": "The lab doors hiss open. NOVA can now tell bacteria from viruses, check its own claims about medicines and spot a pattern in data.",
+ "locks": [
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "2.1",
+   "title": "Fix NOVA's microbe groups",
+   "intro": "NOVA is learning the five groups of microorganisms. Some of its examples have the wrong group. Tick them.",
+   "rows": [
+    {
+     "item": "Lactobacillus",
+     "label": "Bacteria"
+    },
+    {
+     "item": "Bread mould (Rhizopus)",
+     "label": "Fungi"
+    },
+    {
+     "item": "Amoeba",
+     "label": "Protozoa"
+    },
+    {
+     "item": "Chlamydomonas",
+     "label": "Algae"
+    },
+    {
+     "item": "Yeast",
+     "label": "Bacteria",
+     "wrong": true,
+     "why": "yeast is a fungus"
+    },
+    {
+     "item": "Spirogyra",
+     "label": "Algae"
+    },
+    {
+     "item": "Paramecium",
+     "label": "Fungi",
+     "wrong": true,
+     "why": "Paramecium is a protozoan"
+    }
+   ],
+   "hint": "Two of these are the ones you met in curd-making and in pond water. Which group does each really belong to?",
+   "learn": "If an AI learns from wrongly labelled examples, it repeats the mistakes with confidence. People who build AI spend a lot of time checking labels like these."
+  },
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "2.4",
+   "title": "Bacteria or virus?",
+   "intro": "NOVA must sort diseases by what causes them: bacteria or a virus. Choose the clues it should use, then test it on two new diseases.",
+   "labels": [
+    "Caused by bacteria",
+    "Caused by a virus"
+   ],
+   "features": [
+    {
+     "key": "antibiotic",
+     "text": "Antibiotics can treat it"
+    },
+    {
+     "key": "air",
+     "text": "Spreads through the air"
+    },
+    {
+     "key": "vaccine",
+     "text": "A vaccine exists for it"
+    }
+   ],
+   "train": [
+    {
+     "name": "Tuberculosis",
+     "label": 0,
+     "f": {
+      "antibiotic": 1,
+      "air": 1,
+      "vaccine": 1
+     }
+    },
+    {
+     "name": "Cholera",
+     "label": 0,
+     "f": {
+      "antibiotic": 1,
+      "air": 0,
+      "vaccine": 1
+     }
+    },
+    {
+     "name": "Measles",
+     "label": 1,
+     "f": {
+      "antibiotic": 0,
+      "air": 1,
+      "vaccine": 1
+     }
+    },
+    {
+     "name": "Hepatitis A",
+     "label": 1,
+     "f": {
+      "antibiotic": 0,
+      "air": 0,
+      "vaccine": 1
+     }
+    },
+    {
+     "name": "Chickenpox",
+     "label": 1,
+     "f": {
+      "antibiotic": 0,
+      "air": 1,
+      "vaccine": 1
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "Polio",
+     "label": 1,
+     "f": {
+      "antibiotic": 0,
+      "air": 1,
+      "vaccine": 1
+     }
+    },
+    {
+     "name": "Typhoid",
+     "label": 0,
+     "f": {
+      "antibiotic": 1,
+      "air": 0,
+      "vaccine": 1
+     }
+    }
+   ],
+   "hint": "Every one of these diseases has a vaccine, so that clue can't tell them apart. What works on bacteria but not on viruses?",
+   "learn": "A clue that is the same for everything (all have vaccines) gives an AI nothing to go on, and a clue like 'spreads through air' fits both groups. Antibiotics act on bacteria, not viruses: that real difference sorts them."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "2.3",
+   "title": "Check NOVA's medicine advice",
+   "intro": "A classmate has a cold. NOVA has advice, and sounds sure. Is it right? Decide and pick the fact that settles it.",
+   "claim": "Take antibiotics: they will cure your cold and flu quickly.",
+   "confidence": "94% sure",
+   "verdict": 1,
+   "evidence": [
+    "Antibiotics are medicines that kill or stop the growth of disease-causing microorganisms.",
+    "Antibiotics are not effective against cold and flu, because these are caused by viruses.",
+    "Yeast is used to make bread rise.",
+    "Some antibiotics are made from bacteria and fungi."
+   ],
+   "right": 1,
+   "hint": "What causes a cold? Does that kind of microorganism respond to antibiotics?",
+   "learn": "Half-true facts make AI answers sound convincing: antibiotics DO fight microorganisms, but not viruses. Checking the exact fact that tests the claim is what keeps you safe."
+  },
+  {
+   "kind": "pattern",
+   "skill": "data",
+   "topic": "2.5",
+   "title": "How fast do bacteria grow?",
+   "intro": "Cooked food was left on a warm shelf. A lab counted the bacteria in a sample every hour. NOVA has to find the pattern.",
+   "table": {
+    "cols": [
+     "Hours on the shelf",
+     "Bacteria in the sample"
+    ],
+    "rows": [
+     [
+      "0",
+      "100"
+     ],
+     [
+      "1",
+      "200"
+     ],
+     [
+      "2",
+      "400"
+     ],
+     [
+      "3",
+      "800"
+     ]
+    ]
+   },
+   "question": "If the pattern carries on, about how many bacteria will there be after 4 hours?",
+   "options": [
+    "1,000",
+    "1,600",
+    "3,200",
+    "900"
+   ],
+   "answer": 1,
+   "hint": "Look at how the number changes each hour. Is it adding the same amount, or doubling?",
+   "learn": "AI finds patterns in data: here the count doubles every hour. That's why the textbook says to keep food cold or preserve it: microorganisms multiply fast in warm food."
+  }
+ ]
+}

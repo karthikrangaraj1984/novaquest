@@ -1,0 +1,130 @@
+{% extends "staff.html" %}
+{# Unit prep pack (1.26.0): everything a teacher needs to prepare one chapter: periods with a timed flow, each topic's
+   objective, hook, key points, activity and check, the mix-ups to watch for, the book's activities as demos, key
+   terms and the teacher's own notes. #}
+{% block title %}Prepare: {{ ch|inpart }}Chapter {{ ch.code }}{% endblock %}
+{% block head %}{% if row and row.status == "writing" %}<meta http-equiv="refresh" content="20">{% endif %}{% endblock %}
+{% block main %}
+{% from "_teach.html" import teach_head with context %}
+{% set teacher = actor.role == "teacher" %}
+{{ teach_head("prep", teaching, cur, section_notes, "&chapter=" ~ ch.id) }}
+<div class="row-between" style="align-items:flex-end">
+  <div class="stack-sm" style="gap:2px"><span class="muted small">{{ cur.book.label }} · class {{ cur.class_label }}</span>
+    <h1>{{ ch|inpart }}Chapter {{ ch.code }}: {{ ch.title }}</h1>
+    {% if dates %}<span class="small">In {{ cur.class_label }}'s term plan: {{ dates.starts_on.strftime("%d %b") }} – {{ dates.ends_on.strftime("%d %b") }}{% if pos %} · {% if not pos.started %}starts {{ pos.starts_on.strftime("%d %b") }}{% elif pos.done %}all {{ pos.of }} periods taught{% else %}<b>period {{ pos.period }} is next</b>{% endif %}{% endif %}</span>{% endif %}</div>
+  <form method="get" class="row" style="align-items:flex-end" data-autoapply>
+    <input type="hidden" name="for" value="{{ cur.key }}">
+    <div class="field"><label for="pc" class="small">Chapter</label><select id="pc" name="chapter" style="max-width:320px">{% for c in tree %}<option value="{{ c.id }}" {% if c.id == ch.id %}selected{% endif %}>{{ c|inpart }}{{ c.code }}. {{ c.title }}</option>{% endfor %}</select></div>
+    <button class="btn small quiet" type="submit" data-apply>Show</button></form>
+</div>
+
+{% if row and row.status == "writing" %}<div class="note info" role="status">Claude is writing a fuller pack for this chapter from the book (a minute or two; this page refreshes itself). Meanwhile you see the pack built from the book.</div>
+{% elif row and row.status == "failed" %}<div class="note warn" role="alert">{{ row.error or "Claude couldn't write the pack." }} {% if p.written_by == "claude" %}You see the last pack Claude wrote.{% else %}You see the pack built from the book.{% endif %}
+  <form method="post" action="/teacher/prep/{{ ch.id }}/claude" style="display:inline"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="for" value="{{ cur.key }}"><button class="btn small quiet" type="submit">Try again</button></form></div>
+{% elif p.written_by == "claude" %}<p class="small muted">Written by Claude from your textbook {% if row.updated_at %}on {{ row.updated_at.strftime("%d %b") }}{% endif %}; every fact comes from the book. Check activities and safety notes before class.</p>{% if p.written_by == "claude" and p.partial %}<p class="small muted">Claude's reply for some parts ({{ p.partial|join(", ") }}) didn't come through, so those come from the book. Rewrite with Claude to try them again.</p>{% endif %}
+{% elif not claude %}<p class="small muted">Built from your textbook: its outcomes, lessons, activities and the mix-ups drafted for the book. With Claude set up, NovaQuest writes a fuller pack (hooks, mix-ups with fixes, activities written up as demos).</p>{% endif %}
+
+<section class="card stack-sm" aria-labelledby="ov-h">
+  <div class="row-between"><h2 id="ov-h">The chapter at a glance</h2>
+    <span class="row" style="gap:6px">
+      <a class="btn small" href="/teacher/present/{{ ch.id }}?for={{ cur.key }}&amp;periods={{ periods }}&amp;minutes={{ minutes }}&amp;period={{ pos.period if pos and pos.started else 1 }}">Present{% if pos and pos.started and not pos.done %} period {{ pos.period }}{% endif %}</a>
+      <a class="btn small quiet" href="/teacher/prep?for={{ cur.key }}&amp;chapter={{ ch.id }}&amp;periods={{ periods }}&amp;minutes={{ minutes }}&amp;format=pdf">Download plan (PDF)</a>
+      {% if teacher %}<form method="post" action="/teacher/prep/{{ ch.id }}/quiz"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="for" value="{{ cur.key }}"><button class="btn small quiet" type="submit" data-busy="Writing questions…">Make the opening quiz</button></form>{% endif %}
+      {% if claude and p.written_by == "claude" and not (row and row.status == "writing") %}<form method="post" action="/teacher/prep/{{ ch.id }}/claude" data-confirm="Ask Claude to write this chapter's pack again? It replaces the current one for every teacher in your school."><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="for" value="{{ cur.key }}"><button class="btn small ghost" type="submit">Rewrite with Claude</button></form>{% endif %}
+    </span></div>
+  <p>{{ p.overview }}</p>
+  <p class="small muted">{{ p.topics|length }} topics · {{ p.activities|length }} activit{{ "ies" if p.activities|length != 1 else "y" }} · {{ p.mixups|length }} mix-up{{ "s" if p.mixups|length != 1 }} to watch for. The opening quiz is five easy questions across the chapter: set it before you start to see what the class already knows, or show it on the projector.</p>
+</section>
+
+{% if figs_pending %}<p class="note info small" role="status">NovaQuest is cutting the figures out of the book's pages for this chapter (a minute or two). Refresh to see them here and on the slides.</p>{% endif %}
+{% if not pages_ok %}<p class="note info small">The book's own figures appear on the slides and here once your school admin turns them on (Books → the book → "The book's figures on teachers' slides").</p>{% endif %}
+<section class="stack-sm" aria-labelledby="pl-h">
+  <div class="row-between" style="align-items:flex-end"><h2 id="pl-h">Lesson plan</h2>
+    <form method="get" class="row" style="align-items:flex-end" data-autoapply><input type="hidden" name="for" value="{{ cur.key }}"><input type="hidden" name="chapter" value="{{ ch.id }}">
+      <div class="field"><label for="pp" class="small">Periods</label><select id="pp" name="periods">{% for n in range(1, [p.topics|length * 2 + 3, periods + 1, 13]|max) %}<option value="{{ n }}" {% if n == periods %}selected{% endif %}>{{ n }}</option>{% endfor %}</select></div>
+      <div class="field"><label for="pm" class="small">Minutes each</label><select id="pm" name="minutes">{% for m in [30, 35, 40, 45, 60] %}<option value="{{ m }}" {% if m == minutes %}selected{% endif %}>{{ m }}</option>{% endfor %}</select></div>
+      <button class="btn small quiet" type="submit" data-apply>Plan</button></form></div>
+  {% if dates %}<p class="small muted">{{ periods }} period{{ "s" if periods != 1 }}{% if not periods_chosen %}, from {{ "the lessons your timetable gives" if timetabled else "the school days your term plan gives" }} this chapter{% endif %}. {% if not timetabled %}<a href="/teacher/timetable">Add your timetable</a> to count real lessons, or change{% else %}Change{% endif %} it here.</p>{% endif %}
+  {% for l in lessons %}
+  {% set is_next = pos and pos.started and not pos.done and pos.period == l.no %}
+  <article class="card stack-sm prep-period{{ ' next' if is_next }}" aria-labelledby="per-{{ l.no }}" id="period-{{ l.no }}">
+    <div class="row-between"><h3 id="per-{{ l.no }}">Period {{ l.no }}: {{ l.title }}{% if is_next %} <span class="pill l2">Next for {{ cur.class_label }}</span>{% endif %}</h3>
+      <span class="row" style="gap:8px"><span class="small muted">{{ minutes }} min</span><a class="btn small{{ '' if is_next else ' ghost' }}" href="/teacher/present/{{ ch.id }}?for={{ cur.key }}&amp;periods={{ periods }}&amp;minutes={{ minutes }}&amp;period={{ l.no }}">Present</a></span></div>
+    {% if l.no in elsewhere %}<p class="tiny muted">Next for {{ elsewhere[l.no]|join(", ") }}</p>{% endif %}
+    <p class="small"><b>Flow:</b> {% for m, step in l.flow %}{{ step }} ({{ m }} min){% if not loop.last %} → {% endif %}{% endfor %}</p>
+    {% if l.kind in ("teach", "practice") %}
+    {% for t in l.topics %}
+    <div class="stack-sm prep-topic">
+      {% if l.topics|length > 1 %}<p><b>{{ t.code }} {{ t.title }}</b>{% if t.pages %} <span class="small muted">· textbook {{ t.pages }}</span>{% endif %}</p>
+      {% elif t.pages %}<p class="small muted">Textbook {{ t.pages }}</p>{% endif %}
+      {% if l.kind == "practice" %}<p class="small">Practise and apply: go over the key points with the class, then a short task. <a href="/teacher/assignments/new?for={{ cur.key }}&amp;topic={{ t.id }}&amp;kind=short">Set a short-answer task on this topic</a>.</p>
+      {% else %}
+      <p class="small"><b>Objective:</b> {{ t.objective }}</p>
+      <p class="small"><b>Hook:</b> {{ t.hook }}</p>
+      {% if t.key_points %}<div class="small"><b>Key points</b><ul>{% for k in t.key_points %}<li>{{ k }}</li>{% endfor %}</ul></div>{% endif %}
+      {% if t.diagrams %}<div class="prep-diagrams">{% for d in t.diagrams %}<div class="prep-diagram small">{{ picture(d.pic, "pd" ~ t.id ~ loop.index) }}</div>{% endfor %}</div>{% endif %}
+      {% if figs.get(t.id) %}<div class="prep-figs" aria-label="Figures from the textbook">{% for f in figs[t.id] %}<figure><img src="/teacher/present/{{ ch.id }}/fig/{{ t.id }}/{{ f.page }}/{{ f.n }}.jpg" alt="{{ f.caption or 'Figure' }}" loading="lazy" draggable="false"><figcaption class="tiny muted">p. {{ f.page }}{% if f.caption %} · {{ f.caption|truncate(70) }}{% endif %}</figcaption></figure>{% endfor %}</div>{% endif %}
+      {% if t.activity %}<p class="small"><b>Activity:</b> {% if acts.get(t.activity) %}<a href="#act-{{ t.activity }}">Activity {{ t.activity }}: {{ acts[t.activity].title }}</a> ({{ acts[t.activity].kind|lower }}){% else %}{{ t.activity }}{% endif %}</p>{% endif %}
+      {% if t.check and not t.check.options %}<p class="small"><b>Check:</b> at the end, ask again: “{{ t.check.q }}”{% if t.check.listen %} Listen for: {{ t.check.listen|join(" ") }}{% endif %}</p>
+      {% elif t.check %}<details class="small"><summary><b>Check:</b> {{ t.check.q }}</summary>
+        <ol type="A">{% for o in t.check.options %}<li>{{ o }}{% if loop.index0 == t.check.answer %} <span class="pill ok">Answer</span>{% endif %}</li>{% endfor %}</ol>
+        {% if t.check.why %}<p class="muted">{{ t.check.why }}</p>{% endif %}</details>{% endif %}
+      {% if t.watch_for %}<p class="small"><b>Watch for:</b> {{ t.watch_for|join("; ") }}</p>{% endif %}
+      {% endif %}
+    </div>
+    {% endfor %}
+    {% elif l.kind == "activity" %}
+    <ul class="small">{% for a in l.activities %}<li>{% if a.ref %}<a href="#act-{{ a.ref }}">Activity {{ a.ref }}: {{ a.title }}</a>{% else %}{{ a.title }}{% endif %} <span class="muted">({{ a.kind|lower }})</span></li>{% endfor %}</ul>
+    <p class="small muted">Do the ones you didn't fit into the topic periods. Group students so everyone handles the materials.</p>
+    {% elif l.kind == "review" %}
+    <p class="small">Go back to the ideas the class gave in the first period. Clear up the mix-ups below (ask the “clear it up” questions), then a quiz on the whole chapter{% if teacher %}: <a href="/teacher/assignments/new?for={{ cur.key }}&amp;chapter={{ ch.id }}&amp;kind=quiz">set one from New assignment</a> and show it on the projector or hand out the worksheet{% endif %}.</p>
+    {% endif %}
+  </article>
+  {% endfor %}
+</section>
+
+<section class="card stack-sm" aria-labelledby="mx-h">
+  <h2 id="mx-h">Mix-ups to watch for</h2>
+  {% if seen %}<p class="small"><b>Seen in your class already:</b> {% for s in seen %}{{ s.label }} ({{ s.students }} student{{ "s" if s.students != 1 }}){% if not loop.last %}; {% endif %}{% endfor %}</p>{% endif %}
+  {% for m in p.mixups %}
+  <div class="stack-sm prep-mix">
+    <p><b>{{ m.label }}</b>{% if m.topic %} <span class="small muted">· topic {{ m.topic }}</span>{% endif %}</p>
+    {% if m.wrong %}<p class="small"><b>A student might say:</b> “{{ m.wrong }}”</p>{% endif %}
+    <p class="small"><b>The right idea:</b> {{ m.right }}</p>
+    {% if m.spot %}<p class="small"><b>How you'll notice:</b> {{ m.spot }}</p>{% endif %}
+    {% if m.fix %}<p class="small"><b>Clear it up:</b> {{ m.fix }}</p>{% endif %}
+  </div>
+  {% else %}<p class="small muted">None drafted for this chapter yet. They come with the book's lessons (your school admin drafts them on the Books page), or from Claude's pack.</p>{% endfor %}
+</section>
+
+<section class="stack-sm" aria-labelledby="ac-h">
+  <h2 id="ac-h">Activities and demonstrations</h2>
+  {% for a in p.activities %}
+  <article class="card stack-sm" id="act-{{ a.ref or loop.index }}">
+    <div class="row-between"><h3>{% if a.ref %}Activity {{ a.ref }}: {% endif %}{{ a.title }}</h3>
+      <span class="row" style="gap:6px">{% if a.page %}<span class="small muted">p. {{ a.page }}</span>{% endif %}<span class="pill {{ 'warn' if a.kind == 'Teacher demonstration' else 'l2' }}">{{ a.kind }}</span>{% if not a.ref %}<span class="pill ai">Extra idea</span>{% endif %}</span></div>
+    {% if a.safety %}<div class="note warn small" role="note"><b>Safety:</b> {{ a.safety }}</div>{% endif %}
+    {% if a.materials %}<p class="small"><b>Get ready:</b> {{ a.materials|join("; ") }}</p>{% endif %}
+    {% if a.steps %}<ol class="small">{% for s in a.steps %}<li>{{ s }}</li>{% endfor %}</ol>{% endif %}
+    {% if a.ask %}<p class="small"><b>Ask:</b> {{ a.ask|join(" ") }}</p>{% endif %}
+  </article>
+  {% else %}<p class="small muted card">The book has no numbered activities in this chapter.</p>{% endfor %}
+</section>
+
+{% if p.terms %}
+<section class="card stack-sm" aria-labelledby="tm-h"><h2 id="tm-h">Key terms</h2>
+  {% if p.terms[0].meaning %}<dl class="small prep-terms">{% for t in p.terms %}<dt><b>{{ t.term }}</b></dt><dd>{{ t.meaning }}</dd>{% endfor %}</dl>
+  {% else %}<p class="small">{{ p.terms|map(attribute="term")|join(" · ") }}</p>{% endif %}
+</section>
+{% endif %}
+
+{% if teacher %}
+<form method="post" action="/teacher/prep/{{ ch.id }}/notes" class="card stack-sm" aria-labelledby="nt-h">
+  <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="for" value="{{ cur.key }}">
+  <h2 id="nt-h">My notes for this chapter</h2>
+  <label for="nt" class="small muted">Only you see these. They're printed in your PDF.</label>
+  <textarea id="nt" name="notes" rows="4" maxlength="4000" placeholder="e.g. Book the lab for Activity 2.2; bring onions on Monday.">{{ notes }}</textarea>
+  <button class="btn small" type="submit" style="align-self:flex-start">Save notes</button>
+</form>
+{% endif %}
+{% endblock %}

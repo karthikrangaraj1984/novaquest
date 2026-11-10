@@ -1,0 +1,8 @@
+{% extends "student.html" %}
+{% from "_pictures.html" import deck %}
+{% block title %}{{ topic.title }} · in pictures{% endblock %}
+{% block eyebrow %}<span class="small"><a href="/student/pictures">Learn in pictures</a><span class="muted"> · {{ topic|inpart }}Chapter {{ topic.chapter_no }}</span></span>{% endblock %}
+{% block heading %}{{ topic.title }}{% endblock %}
+{% block main %}
+{{ deck(topic, lesson, "student", next_topic, done, path) }}
+{% endblock %}

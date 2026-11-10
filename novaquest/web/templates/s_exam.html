@@ -1,0 +1,33 @@
+{% extends "student.html" %}
+{# One exam (1.31.0): countdown, how ready, the day-by-day revision plan and practice papers. #}
+{% block title %}{{ v.plan.title }}{% endblock %}
+{% block eyebrow %}<span class="small"><a href="/student/exams">{{ tr("Exam mode") }}</a></span>{% endblock %}
+{% block heading %}{{ v.plan.title }}{% endblock %}
+{% block main %}
+<section class="due upnext" aria-label="Countdown">
+  <span class="small muted">{{ v.plan.exam_on.strftime("%A %d %B") }}</span>
+  <span class="countdown">{% if v.days_left == 0 %}Today{% elif v.days_left == 1 %}Tomorrow{% else %}{{ v.days_left }} days{% endif %}</span>
+  <span class="small muted">{{ v.chapters|map(attribute="code")|join(", ") }} · {{ v.ready.total }} topics</span>
+  <form method="post" action="/student/exams/{{ v.plan.id }}/paper"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="btn block" type="submit">Take a practice paper (15 min)</button></form>
+</section>
+<section class="card stack-sm" aria-labelledby="ready-h"><h2 id="ready-h">How ready am I?</h2>
+  {% set t = v.ready.total or 1 %}
+  <div class="bar stacked" role="img" aria-label="{{ v.ready.mastered }} mastered, {{ v.ready.practised }} practised, {{ v.ready.learning }} learning, {{ v.ready.new }} not started"><span class="m" style="width:{{ (100 * v.ready.mastered / t)|round }}%"></span><span class="p" style="width:{{ (100 * v.ready.practised / t)|round }}%"></span><span class="l" style="width:{{ (100 * v.ready.learning / t)|round }}%"></span></div>
+  <p class="small muted">{{ v.ready.mastered }} mastered · {{ v.ready.practised }} practised · {{ v.ready.learning }} learning · {{ v.ready.new }} not started</p>
+  {% if v.to_revise %}<p class="small">Revised since you made the plan: <b>{{ v.revised }} of {{ v.to_revise }}</b> topics</p>{% endif %}
+</section>
+<section class="stack-sm" aria-labelledby="plan-h"><h2 id="plan-h">My revision plan</h2>
+  {% for d in v.days %}
+  <div class="plan-day stack-sm{{ ' today' if d.today }}{{ ' past' if d.past }}"><b class="small">{% if d.today %}Today{% else %}{{ d.date.strftime("%a %d %b") }}{% endif %}</b>
+    {% for t in d.topics %}<a class="topic-row" href="/student/learn/{{ t.id }}"><span class="stack-sm" style="gap:1px"><span>{{ t.title }}</span><span class="tiny muted">Ch {{ t.chapter_code }} · {{ ["Not started", "Learning", "Practised", "Mastered"][t.level] }}</span></span>{% if t.done %}<span class="pill ok">Revised ✓</span>{% else %}<span class="pill l1">{{ tr("Revise") }}</span>{% endif %}</a>{% endfor %}
+  </div>
+  {% else %}<p class="note ok">Every topic in these chapters is mastered. Take practice papers to stay sharp.</p>{% endfor %}
+  {% if v.days %}<p class="tiny muted">Weakest topics come first. The day before the exam is for a practice paper.</p>{% endif %}
+</section>
+{% if v.papers %}
+<section class="stack-sm" aria-labelledby="pp-h"><h2 id="pp-h">My practice papers</h2>
+  {% for p in v.papers %}<div class="topic-row"><span>{{ p.started_at|ist('%d %b, %I:%M %p') }}</span>{% if p.done_at %}<span class="score-chip">{{ (100 * p.score|float)|round|int }}%</span>{% else %}<a class="small" href="/student/papers/{{ p.id }}">Continue</a>{% endif %}</div>{% endfor %}
+</section>
+{% endif %}
+<form method="post" action="/student/exams/{{ v.plan.id }}/delete" data-confirm="Remove this exam and its plan?"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="link-btn small" type="submit">Remove this exam</button></form>
+{% endblock %}

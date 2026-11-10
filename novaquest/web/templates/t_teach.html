@@ -1,0 +1,26 @@
+{% extends "staff.html" %}
+{% block title %}Teaching session{% endblock %}
+{% block main %}
+<div class="stack-sm" style="gap:2px"><a class="small" href="/teacher/students/{{ session.student_id }}/tutor">← {{ student.name }}</a>
+  <h1>{{ student.name }} taught NOVA: {{ topic.title }}</h1>
+  <span class="muted">{{ session.started_at|ist }} · {{ session.status|capitalize }} · NOVA's ideas fixed: {{ fixed }} of {{ total }}</span></div>
+{% if session.scores %}
+<div class="grid">{% for k in ["accuracy", "completeness", "clarity", "examples", "overall"] %}<div class="kpi"><span class="k">{{ k|capitalize }}</span><span class="v">{{ (session.scores[k] * 100)|round|int }}%</span></div>{% endfor %}</div>
+{% endif %}
+<div class="cols">
+  <section class="main card stack-sm" aria-label="Transcript">
+    <h2>Transcript</h2>
+    {% for t in turns %}
+    <div class="stack-sm" style="gap:2px;border-bottom:1px solid #EEF0F5;padding-bottom:8px">
+      <p class="small"><b>{{ "NOVA" if t.role == "nova" else student.name.split()[0] }}:</b> {{ t.body }}</p>
+      {% if t.role == "student" and t.verdict %}<span class="pill {{ {'correct': 'ok', 'incorrect': 'warn'}.get(t.verdict, 'l0') }}" style="align-self:flex-start">Evaluator: {{ t.verdict|replace("_", " ") }}</span>{% endif %}
+    </div>
+    {% endfor %}
+  </section>
+  <aside class="aside stack">
+    <section class="card stack-sm"><h2>Misconceptions</h2>{% for p in progress %}<div class="row-between small"><span>{{ p.label }}</span><span class="pill {{ 'ok' if p.status == 'resolved' else 'l0' }}">{{ "Resolved" if p.status == "resolved" else "Not yet" }}</span></div>{% endfor %}</section>
+    <section class="card stack-sm"><h2>Errors while teaching</h2>{% for e in errors %}<p class="small note warn">“{{ e.body }}”</p>{% else %}<p class="small muted">None. Every explanation was accurate.</p>{% endfor %}</section>
+    {% if session.summary %}<section class="card"><p class="small">{{ session.summary }}</p></section>{% endif %}
+  </aside>
+</div>
+{% endblock %}

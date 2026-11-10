@@ -1,0 +1,14 @@
+{% extends "student.html" %}
+{% block title %}Daily 5 done{% endblock %}
+{% block heading %}Daily 5 done{% endblock %}
+{% block main %}
+<section class="card stack-sm"><h2>{{ tr("{n} of {m} right", n=res.right, m=res.total) }}</h2>
+  <p>{% if res.streak > 1 %}🔥 {{ res.streak }} days in a row. Keep it going tomorrow!{% else %}Come back tomorrow for the next five.{% endif %}</p>
+  <p class="small muted">Topics you got right come back later; the ones you missed come back tomorrow.</p></section>
+{% for r in res.results %}
+<article class="qcard"><div class="row" style="flex-wrap:nowrap;align-items:flex-start"><span class="pill {{ 'ok' if r.correct else 'warn' }}">{{ "✓" if r.correct else "✗" }}</span><span class="stack-sm" style="gap:2px"><b>{{ r.prompt }}</b><span class="small muted">{{ r.topic }}</span></span></div>
+  {% if not r.correct %}<p class="small note info">Answer: {{ r.answer }}{% if r.why %} · {{ r.why }}{% endif %}</p>
+  <a class="small" href="/student/learn/{{ r.topic_id }}">Revise {{ r.topic }} →</a>{% endif %}</article>
+{% endfor %}
+<a class="btn block" href="/student">{{ tr("Back to Home") }}</a>
+{% endblock %}

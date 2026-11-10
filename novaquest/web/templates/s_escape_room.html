@@ -1,0 +1,93 @@
+{% extends "student.html" %}
+{# One escape room: the story, four locks in order (each a different activity), the door code, and what NOVA learned. #}
+{% from "_escape.html" import sort_results %}
+{% block title %}{{ v.room.title }}{% endblock %}
+{% block eyebrow %}<span class="small muted"><a href="/student/escape">Escape rooms</a> · {{ v.book|inpart }}Chapter {{ v.no }}</span>{% endblock %}
+{% block heading %}{{ v.room.title }}{% endblock %}
+{% block main %}
+{% set room = v.room %}
+<ol class="locks" aria-label="Locks">
+  {% for lk in v.locks %}<li class="{{ 'open' if lk.solved else ('now' if v.current and v.current.no == lk.no else '') }}"{% if v.current and v.current.no == lk.no %} aria-current="step"{% endif %}>
+    <span class="lk" aria-hidden="true">{{ "🔓" if lk.solved else "🔒" }}</span><span class="digit">{{ lk.digit if lk.solved else "?" }}</span>
+    <span class="sr-only">Lock {{ lk.no }}: {{ "open, digit " ~ lk.digit if lk.solved else "locked" }}</span></li>{% endfor %}
+</ol>
+
+{% if result and result.solved %}
+<section class="card stack-sm unlocked" role="status" aria-labelledby="ok-h">
+  <h2 id="ok-h">🔓 Lock {{ result.lock_no }} is open! Digit: <span class="digit-big">{{ result.digit }}</span></h2>
+  <p>{{ result.message }}</p>
+  {% if result.detail.results %}{{ sort_results(v.locks[result.lock_no - 1], result.detail.results) }}{% endif %}
+  <div class="learned"><b>What NOVA learned</b><p>{{ result.learn }}</p></div>
+  {% if v.current %}<a class="btn block" href="/student/escape/{{ v.no }}?book={{ v.book.id }}">Next lock</a>{% endif %}
+</section>
+{% endif %}
+{% if v.escaped %}
+<section class="card stack-sm" aria-labelledby="out-h"><h2 id="out-h">You're out!</h2><p>{{ room.escaped }}</p></section>
+{% if skills %}<section class="stack-sm" aria-labelledby="sk-h"><h2 id="sk-h">Your AI skills</h2>
+  <div class="skills">{% for s in skills %}<div class="skill {{ s.level }}"><b>{{ s.name }}</b><span class="small">{{ {"not_yet": "Not yet", "learning": "Learning", "strong": "Strong ★"}[s.level] }}</span></div>{% endfor %}</div></section>{% endif %}
+<section class="stack-sm" aria-labelledby="learned-h"><h2 id="learned-h">What each lock taught</h2>
+  {% for lk in v.locks %}<div class="card tight stack-sm"><b>Lock {{ lk.no }}: {{ lk.title }}</b><span class="small muted">AI skill: {{ lk.skill_name }}</span><p class="small">{{ lk.learn }}</p></div>{% endfor %}</section>
+<a class="btn block" href="/student/escape">Back to escape rooms</a>
+
+{% elif not v.current %}
+<form method="post" class="card stack-sm" aria-labelledby="door-h">
+  <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="action" value="door">
+  <h2 id="door-h">The door</h2>
+  <p>All four locks are open. Type the four digits you collected, in order, to escape.</p>
+  {% if door_wrong %}<div class="note warn" role="alert">That code didn't open the door. Check the digits above, in order.</div>{% endif %}
+  <label for="code">Door code</label>
+  <input id="code" name="code" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" required class="code-in">
+  <button class="btn block" type="submit">Open the door</button>
+</form>
+
+{% else %}
+{% set lk = v.current %}
+{% if lk.no == 1 and lk.tries == 0 and not result %}<p class="story">{{ room.story }}</p>{% endif %}
+{% if not (result and result.solved) %}
+<form method="post" class="card stack lock-card" aria-labelledby="lock-h">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <span class="small muted">Lock {{ lk.no }} of 4 · AI skill: {{ lk.skill_name }}</span>
+  <h2 id="lock-h">{{ lk.title }}</h2>
+  <p>{{ lk.intro }}</p>
+  {% if error %}<div class="note warn" role="alert">{{ error }}</div>{% endif %}
+  {% if result and not result.solved %}<div class="note warn" role="status"><b>{{ result.message }}</b>
+    {% if result.detail.results %}{{ sort_results(lk, result.detail.results) }}{% endif %}</div>{% endif %}
+
+  {% if lk.kind == "sort" %}
+    <details class="train" open><summary class="small"><b>What NOVA has seen so far</b></summary>
+      <ul class="examples">{% for c in lk.train %}<li><div class="row-between"><b>{{ c.name }}</b><span class="pill l2">{{ lk.labels[c.label] }}</span></div>
+        <span class="clues">{% for f in lk.features %}<span class="{{ 'yes' if c.f[f.key] else 'no' }}">{{ "✓" if c.f[f.key] else "✗" }} {{ f.text }}</span>{% endfor %}</span></li>{% endfor %}</ul></details>
+    {% set chosen = (result.detail.chosen if result and result.detail else []) %}
+    <fieldset><legend>Which clues should NOVA look at?</legend><div class="stack-sm">
+      {% for f in lk.features %}<label class="choice"><input type="checkbox" name="features[]" value="{{ f.key }}" {% if f.key in chosen %}checked{% endif %}>{{ f.text }}</label>{% endfor %}
+    </div></fieldset>
+    <p class="small muted">Then NOVA will sort: {{ lk.test|map(attribute="name")|join(", ") }}.</p>
+    <button class="btn block" type="submit" name="action" value="try">Train NOVA and test it</button>
+  {% elif lk.kind == "clean" %}
+    {% set flagged = (result.detail.flagged if result and result.detail else []) %}
+    <fieldset><legend>NOVA's training examples: tick the ones labelled wrongly</legend><div class="stack-sm">
+      {% for r in lk.rows %}<label class="choice"><input type="checkbox" name="flag[]" value="{{ loop.index0 }}" {% if loop.index0 in flagged %}checked{% endif %}><span><b>{{ r.item }}</b> → {{ r.label }}</span></label>{% endfor %}
+    </div></fieldset>
+    <button class="btn block" type="submit" name="action" value="try">Fix NOVA's data</button>
+  {% elif lk.kind == "evidence" %}
+    <div class="nova-says"><span class="nova-avatar" aria-hidden="true"><i></i><i></i></span><p><b>NOVA ({{ lk.confidence }}):</b> “{{ lk.claim }}”</p></div>
+    <fieldset><legend>Is NOVA right?</legend><div class="row">
+      <label class="choice"><input type="radio" name="verdict" value="0" required>NOVA is right</label>
+      <label class="choice"><input type="radio" name="verdict" value="1" required>NOVA is wrong</label></div></fieldset>
+    <fieldset><legend>Which fact settles it?</legend><div class="stack-sm">
+      {% for e in lk.evidence %}<label class="choice"><input type="radio" name="evidence" value="{{ loop.index0 }}" required>{{ e }}</label>{% endfor %}</div></fieldset>
+    <button class="btn block" type="submit" name="action" value="try">Check NOVA</button>
+  {% else %}
+    {% if lk.table %}<div class="table-wrap"><table class="small data-table"><thead><tr>{% for c in lk.table.cols %}<th scope="col">{{ c }}</th>{% endfor %}</tr></thead>
+      <tbody>{% for r in lk.table.rows %}<tr>{% for cell in r %}<td>{{ cell }}</td>{% endfor %}</tr>{% endfor %}</tbody></table></div>{% endif %}
+    <fieldset><legend>{{ lk.question }}</legend><div class="stack-sm">
+      {% for o in lk.options %}<label class="choice"><input type="radio" name="choice" value="{{ loop.index0 }}" required>{{ o }}</label>{% endfor %}</div></fieldset>
+    <button class="btn block" type="submit" name="action" value="try">Answer</button>
+  {% endif %}
+</form>
+{% if hint_text %}<div class="note" role="status"><b>Hint:</b> {{ hint_text }}</div>
+{% else %}<form method="post"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="action" value="hint">
+  <button class="link-btn" type="submit">Stuck? Show a hint (it costs a little of this lock's score)</button></form>{% endif %}
+{% endif %}
+{% endif %}
+{% endblock %}

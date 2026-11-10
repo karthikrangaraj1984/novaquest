@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"nerve":[92,92],"muscle":[300,74],"rbc":[96,228],"wbc":[296,226],"amoeba":[200,160]}'>
+<g stroke="#7A4BA8" stroke-width="3" fill="#EADDF8"><circle cx="92" cy="92" r="20"/>
+<path d="M92 72 l-6 -30 M92 72 l14 -26 M72 92 l-34 -10 M74 104 l-28 22 M112 96 l60 0 l40 14 M212 110 l14 -12 M212 110 l12 12" fill="none"/></g>
+<circle cx="92" cy="92" r="7" fill="#7A4BA8"/>
+<path d="M240 74 Q300 52 360 74 Q300 96 240 74 Z" fill="#F7D3D3" stroke="#B23B3B" stroke-width="3"/><ellipse cx="300" cy="74" rx="9" ry="5" fill="#B23B3B"/>
+<ellipse cx="96" cy="228" rx="34" ry="30" fill="#E35A5A" stroke="#9E2A2A" stroke-width="3"/><ellipse cx="96" cy="228" rx="15" ry="12" fill="#C94545"/>
+<path d="M262 226 c0 -26 18 -34 34 -32 c20 2 36 14 34 32 c-2 20 -18 30 -36 30 c-18 0 -32 -10 -32 -30 z" fill="#F4F6FB" stroke="#6B7390" stroke-width="3"/>
+<path d="M282 220 c6 -10 18 -10 22 0 c4 10 -6 14 -12 10 c-6 6 -14 2 -10 -10" fill="#7C86B0"/>
+<path d="M170 150 c6 -24 34 -26 44 -14 c14 -6 28 6 22 20 c14 8 6 30 -10 28 c-6 14 -30 14 -36 0 c-18 2 -28 -20 -20 -34 z" fill="#E8F3DD" stroke="#4E8A33" stroke-width="3"/>
+<circle cx="200" cy="160" r="7" fill="#4E8A33"/>
+</svg>

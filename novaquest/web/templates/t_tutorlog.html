@@ -1,0 +1,19 @@
+{% extends "staff.html" %}
+{% block title %}Tutor log{% endblock %}
+{% block main %}
+<div class="stack-sm" style="gap:2px"><a class="small" href="/teacher/students">← Students</a><h1>{{ student.name }}: AI conversations</h1>
+<span class="muted">Every message between {{ student.name.split()[0] }} and the AI tutor or NOVA is logged here.</span></div>
+<div class="cols">
+  <section class="main card stack-sm" aria-label="Tutor messages">
+    {% for m in log %}
+    <div class="stack-sm" style="gap:2px;border-bottom:1px solid #EEF0F5;padding-bottom:8px">
+      <span class="tiny muted">{{ m.created_at|ist }} · {{ "Assignment" if m.context == "assignment" else "Learn mode" }}{% if m.topic_title %} · {{ m.topic_title }}{% endif %}{% if m.hint_level %} · hint level {{ m.hint_level }}{% endif %}</span>
+      <p class="{{ 'small' }}"><b>{{ "Student" if m.role == "student" else "Tutor" }}:</b> {{ m.body }}</p>
+    </div>
+    {% else %}<p class="empty">No conversations yet.</p>{% endfor %}
+  </section>
+  <aside class="aside card stack-sm"><h2>Teaching sessions</h2>
+    {% for s in sessions %}<a class="topic-row" href="/teacher/teach/{{ s.id }}"><span>{{ s.title }}<br><span class="tiny muted">{{ s.started_at|ist }}</span></span><span class="pill {{ 'ok' if s.status == 'passed' else 'l0' }}">{{ s.status|capitalize }}</span></a>{% else %}<p class="small muted">None yet.</p>{% endfor %}
+    <a class="btn ghost small" href="/teacher/students/{{ student.id }}/report.pdf">Parent report (PDF)</a></aside>
+</div>
+{% endblock %}

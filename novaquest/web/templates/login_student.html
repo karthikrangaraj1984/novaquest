@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Student sign in{% endblock %}
+{% block body %}
+<main id="main" class="auth">
+  <span class="brand">Nova<b style="color:var(--primary)">Quest</b></span>
+  <div class="stack-sm"><h1>Hi! Let's get learning.</h1><p class="muted">Use the details on the login slip from your teacher.</p></div>
+  {% if error %}<div class="note warn" role="alert">{{ error }}</div>{% endif %}
+  <form method="post" action="/login/student" class="card stack" autocomplete="off">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <div class="field"><label for="school">School code</label><input id="school" name="school" type="text" required value="{{ f.school or '' }}" autocapitalize="characters" placeholder="e.g. SVS-CBE"></div>
+    <div class="grid-3" style="grid-template-columns:1fr 1fr">
+      <div class="field"><label for="klass">Class</label><input id="klass" name="klass" type="text" required value="{{ f.klass or '' }}" autocapitalize="characters" placeholder="8B"></div>
+      <div class="field"><label for="roll">Roll number</label><input id="roll" name="roll" type="text" inputmode="numeric" required value="{{ f.roll or '' }}"></div>
+    </div>
+    <div class="field"><label for="pin">PIN</label><input id="pin" name="pin" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required autocomplete="current-password"><span class="hint">4 numbers. Keep it secret.</span></div>
+    <p class="small muted">Forgot your PIN? Ask your teacher for a new one. They can reset it in a minute.</p>
+    <button class="btn block" type="submit">Start learning</button>
+  </form>
+  <p class="small muted">Teacher or principal? <a href="/login">Sign in with email</a></p>
+</main>
+{% endblock %}

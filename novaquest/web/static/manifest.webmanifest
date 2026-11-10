@@ -1,0 +1,10 @@
+{
+  "name": "NovaQuest",
+  "short_name": "NovaQuest",
+  "description": "Where students outsmart AI. Learn Grade 8 Science with an AI tutor.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F6FA",
+  "theme_color": "#1D2240",
+  "icons": [{"src": "/static/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}]
+}

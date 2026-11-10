@@ -1,0 +1,1025 @@
+{
+ "6.1": {
+  "crux": "Combustion is a chemical reaction in which a substance reacts with oxygen and gives off heat and often light; it only starts once the substance is heated to its ignition temperature.",
+  "cards": [
+   {
+    "title": "What burns?",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Combustible",
+       "icon": "🔥",
+       "cells": [
+        "Burn in air",
+        "Paper, wood, kerosene, charcoal, LPG, matchstick"
+       ]
+      },
+      {
+       "head": "Non-combustible",
+       "icon": "🪨",
+       "cells": [
+        "Don't burn",
+        "Stone, glass, iron nail"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "A substance that reacts with oxygen and gives off heat is combustible.",
+     "This reaction is called combustion."
+    ]
+   },
+   {
+    "title": "Fire needs air",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🕯️",
+       "text": "A candle burns well in open air"
+      },
+      {
+       "icon": "🫙",
+       "text": "Cover it with a glass jar: the flame flickers"
+      },
+      {
+       "icon": "💨",
+       "text": "When the oxygen inside is used up, the flame goes out"
+      }
+     ]
+    },
+    "say": [
+     "Oxygen in the air is needed for combustion.",
+     "That's why we cover a burning cloth with a blanket to put out the fire."
+    ],
+    "remember": "No oxygen, no combustion."
+   },
+   {
+    "title": "Ignition temperature",
+    "pic": {
+     "kind": "equation",
+     "parts": [
+      {
+       "icon": "🌡️",
+       "text": "Heat to ignition temperature",
+       "color": "orange"
+      },
+      "+",
+      {
+       "icon": "💨",
+       "text": "Oxygen",
+       "color": "sky"
+      },
+      "→",
+      {
+       "icon": "🔥",
+       "text": "Catches fire",
+       "color": "amber"
+      }
+     ]
+    },
+    "say": [
+     "The lowest temperature at which a substance catches fire is its ignition temperature.",
+     "A paper cup with water in it won't burn over a flame: the water keeps the paper below its ignition temperature."
+    ]
+   },
+   {
+    "title": "Easy to catch fire",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "⛽",
+       "text": "Petrol"
+      },
+      {
+       "icon": "🍶",
+       "text": "Alcohol"
+      },
+      {
+       "icon": "🔥",
+       "text": "LPG"
+      }
+     ]
+    },
+    "say": [
+     "Substances with a very low ignition temperature are called inflammable.",
+     "They catch fire easily, so they must be stored with great care."
+    ]
+   },
+   {
+    "title": "How a match lights",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "📦",
+       "text": "The side of the box has powdered glass and red phosphorus"
+      },
+      {
+       "icon": "🤏",
+       "text": "Rubbing the match head on it makes heat"
+      },
+      {
+       "icon": "🔥",
+       "text": "A little red phosphorus turns into white phosphorus, which lights the match head"
+      }
+     ]
+    },
+    "say": [
+     "The match head has antimony trisulphide and potassium chlorate.",
+     "Old matches used poisonous white phosphorus and were dangerous."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Combustion is a reaction with oxygen that gives off heat (and often light).",
+   "A substance burns only after reaching its ignition temperature.",
+   "Inflammable substances like petrol and LPG have very low ignition temperatures."
+  ],
+  "quiz": [
+   {
+    "q": "A candle under a glass jar goes out because…",
+    "options": [
+     "The oxygen inside gets used up",
+     "The jar is too cold",
+     "The wax becomes water",
+     "Light can't pass through glass"
+    ],
+    "answer": 0,
+    "why": "Combustion needs oxygen; once it's used up, the flame dies."
+   },
+   {
+    "q": "The lowest temperature at which a substance catches fire is its…",
+    "options": [
+     "Ignition temperature",
+     "Boiling point",
+     "Melting point",
+     "Calorific value"
+    ],
+    "answer": 0,
+    "why": "Below its ignition temperature, a substance won't catch fire."
+   }
+  ]
+ },
+ "6.2": {
+  "crux": "Fire needs fuel, air and heat; a fire extinguisher works by taking away one or more of these.",
+  "cards": [
+   {
+    "title": "The fire triangle",
+    "pic": {
+     "kind": "scene",
+     "scene": "fire_triangle",
+     "labels": [
+      {
+       "at": "fuel",
+       "name": "Fuel",
+       "note": "Something that burns"
+      },
+      {
+       "at": "air",
+       "name": "Air (oxygen)",
+       "note": "Supports burning"
+      },
+      {
+       "at": "heat",
+       "name": "Heat",
+       "note": "Up to the ignition temperature"
+      },
+      {
+       "at": "fire",
+       "name": "Fire",
+       "note": "Needs all three"
+      }
+     ]
+    },
+    "say": [
+     "Take away any one side of the triangle and the fire goes out."
+    ],
+    "remember": "Fuel + air + heat = fire."
+   },
+   {
+    "title": "Water: cools and covers",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "💧",
+       "text": "Water cools the burning material below its ignition temperature"
+      },
+      {
+       "icon": "♨️",
+       "text": "Steam from the water surrounds the fire and cuts off air"
+      },
+      {
+       "icon": "✅",
+       "text": "The fire stops"
+      }
+     ]
+    },
+    "say": [
+     "Water is the most common fire extinguisher. It works best on wood and paper."
+    ]
+   },
+   {
+    "title": "When NOT to use water",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Electrical fire",
+       "icon": "⚡",
+       "cells": [
+        "Water conducts electricity",
+        "The person can get a shock",
+        "Switch off the mains first"
+       ]
+      },
+      {
+       "head": "Oil or petrol fire",
+       "icon": "⛽",
+       "cells": [
+        "Oil is lighter than water",
+        "Oil floats on top and keeps burning",
+        "Water can spread the fire"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Never throw water on burning oil or on electrical equipment."
+    ]
+   },
+   {
+    "title": "Carbon dioxide: the best choice",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🧯",
+       "text": "Heavier than oxygen",
+       "sub": "Covers the fire like a blanket"
+      },
+      {
+       "icon": "🚫",
+       "text": "Cuts off oxygen",
+       "sub": "The fire is starved of air"
+      },
+      {
+       "icon": "❄️",
+       "text": "Cools the fuel",
+       "sub": "Comes out very cold"
+      },
+      {
+       "icon": "🔌",
+       "text": "Safe for electrics",
+       "sub": "Doesn't harm equipment"
+      }
+     ]
+    },
+    "say": [
+     "Carbon dioxide is best for fires in electrical equipment and in petrol or oil.",
+     "It is stored as a liquid at high pressure in cylinders. Baking soda near a fire also gives off carbon dioxide."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Fire needs fuel, air (oxygen) and heat.",
+   "Water cools the fire and cuts off air, but must not be used on electrical or oil fires.",
+   "Carbon dioxide blankets the fire and is safe for electrical and oil fires."
+  ],
+  "quiz": [
+   {
+    "q": "What is marked '?' in the fire triangle?",
+    "pic": {
+     "kind": "scene",
+     "scene": "fire_triangle",
+     "ask": "air"
+    },
+    "options": [
+     "Air (oxygen)",
+     "Water",
+     "Sand",
+     "Smoke"
+    ],
+    "answer": 0,
+    "why": "The three sides of the fire triangle are fuel, heat and air (oxygen)."
+   },
+   {
+    "q": "Why shouldn't you pour water on burning oil?",
+    "options": [
+     "Oil floats on water and keeps burning",
+     "Water makes oil heavier",
+     "Water is too cold",
+     "Oil turns into water"
+    ],
+    "answer": 0,
+    "why": "Oil is lighter than water, so it floats on top and keeps burning."
+   },
+   {
+    "q": "Which extinguisher is best for a fire in a computer?",
+    "options": [
+     "Carbon dioxide",
+     "Water",
+     "Petrol",
+     "Wind"
+    ],
+    "answer": 0,
+    "why": "Carbon dioxide doesn't conduct electricity and doesn't damage equipment."
+   }
+  ]
+ },
+ "6.3": {
+  "crux": "Combustion can be rapid (gas on a stove), spontaneous (catches fire by itself) or an explosion (sudden, with a loud sound).",
+  "cards": [
+   {
+    "title": "Three types of combustion",
+    "pic": {
+     "kind": "compare",
+     "rows": [
+      "What happens",
+      "Example"
+     ],
+     "cols": [
+      {
+       "head": "Rapid",
+       "icon": "🔥",
+       "cells": [
+        "Burns fast, giving heat and light",
+        "LPG lit with a match"
+       ]
+      },
+      {
+       "head": "Spontaneous",
+       "icon": "🌲",
+       "cells": [
+        "Bursts into flame without any visible cause",
+        "Phosphorus at room temperature; coal dust in mines"
+       ]
+      },
+      {
+       "head": "Explosion",
+       "icon": "💥",
+       "cells": [
+        "Sudden reaction with heat, light, sound and lots of gas",
+        "Firecrackers"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Not every fire starts the same way."
+    ]
+   },
+   {
+    "title": "Forest fires",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "☀️",
+       "text": "Hot sun",
+       "sub": "Can heat dry leaves enough to burn"
+      },
+      {
+       "icon": "⚡",
+       "text": "Lightning",
+       "sub": "Can strike and set trees alight"
+      },
+      {
+       "icon": "🚫",
+       "text": "Carelessness",
+       "sub": "Most forest fires are started by people"
+      }
+     ]
+    },
+    "say": [
+     "Forest fires can start by themselves in very hot, dry weather.",
+     "But most are caused by human carelessness."
+    ]
+   },
+   {
+    "title": "Explosions",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🎆",
+       "text": "A cracker is lit"
+      },
+      {
+       "icon": "💥",
+       "text": "It reacts suddenly, making lots of gas, heat, light and sound"
+      },
+      {
+       "icon": "⚠️",
+       "text": "Explosions can also happen when crackers are pressed hard"
+      }
+     ]
+    },
+    "say": [
+     "Handle crackers only under adult supervision."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Rapid combustion: burns quickly with heat and light (LPG).",
+   "Spontaneous combustion: catches fire by itself (phosphorus).",
+   "Explosion: sudden reaction with heat, light, sound and gas (crackers)."
+  ],
+  "quiz": [
+   {
+    "q": "Phosphorus catches fire in air at room temperature. This is…",
+    "options": [
+     "Spontaneous combustion",
+     "Rapid combustion",
+     "An explosion",
+     "Not combustion"
+    ],
+    "answer": 0,
+    "why": "It burns by itself without being lit: spontaneous combustion."
+   },
+   {
+    "q": "A firecracker going off is an example of…",
+    "options": [
+     "Explosion",
+     "Spontaneous combustion",
+     "Melting",
+     "Rusting"
+    ],
+    "answer": 0,
+    "why": "An explosion is a sudden reaction giving heat, light, sound and gas."
+   }
+  ]
+ },
+ "6.4": {
+  "crux": "Substances that turn into vapour when they burn, like wax and kerosene, burn with a flame; charcoal just glows.",
+  "cards": [
+   {
+    "title": "Flame or glow?",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Burn with a flame",
+       "icon": "🕯️",
+       "cells": [
+        "Candle wax",
+        "Kerosene",
+        "LPG"
+       ]
+      },
+      {
+       "head": "Glow without a flame",
+       "icon": "🔴",
+       "cells": [
+        "Charcoal",
+        "Coal (mostly)"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Some things burn with a flame, others just glow red-hot."
+    ]
+   },
+   {
+    "title": "Why wax makes a flame",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🕯️",
+       "text": "Heat melts the wax near the wick"
+      },
+      {
+       "icon": "⬆️",
+       "text": "Liquid wax rises up the wick"
+      },
+      {
+       "icon": "💨",
+       "text": "The wax turns into vapour"
+      },
+      {
+       "icon": "🔥",
+       "text": "The vapour burns, giving a flame"
+      }
+     ]
+    },
+    "say": [
+     "Only substances that vaporise while burning give a flame.",
+     "Charcoal doesn't vaporise, so it only glows."
+    ],
+    "remember": "Vapour burning = flame."
+   },
+   {
+    "title": "More things that make flames",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🪔",
+       "text": "Kerosene lamp",
+       "sub": "Kerosene rises up the wick and vaporises"
+      },
+      {
+       "icon": "⚪",
+       "text": "Camphor",
+       "sub": "Turns to vapour easily, so it flames"
+      },
+      {
+       "icon": "🔥",
+       "text": "LPG stove",
+       "sub": "Already a gas, so it burns with a flame"
+      }
+     ]
+    },
+    "say": [
+     "Anything that is a gas, or becomes a vapour as it burns, gives a flame."
+    ]
+   }
+  ],
+  "crux_points": [
+   "A flame forms when a substance vaporises as it burns.",
+   "Wax and kerosene burn with flames; charcoal only glows.",
+   "In a candle, molten wax rises up the wick and vaporises."
+  ],
+  "quiz": [
+   {
+    "q": "Why does charcoal glow without a flame?",
+    "options": [
+     "It doesn't vaporise when it burns",
+     "It has no carbon",
+     "It is wet",
+     "It is a metal"
+    ],
+    "answer": 0,
+    "why": "Only substances that vaporise during burning give a flame."
+   },
+   {
+    "q": "In a candle, what actually burns in the flame?",
+    "options": [
+     "Wax vapour",
+     "The wick only",
+     "The air",
+     "Water"
+    ],
+    "answer": 0,
+    "why": "Molten wax rises up the wick, turns into vapour, and the vapour burns."
+   }
+  ]
+ },
+ "6.5": {
+  "crux": "A candle flame has three zones: a dark inner zone of unburnt wax vapour, a bright yellow middle zone and a hot blue outer zone.",
+  "cards": [
+   {
+    "title": "Three zones",
+    "pic": {
+     "kind": "scene",
+     "scene": "candle_flame",
+     "labels": [
+      {
+       "at": "outer",
+       "name": "Outermost zone",
+       "note": "Blue: complete combustion, hottest"
+      },
+      {
+       "at": "middle",
+       "name": "Middle zone",
+       "note": "Yellow: partial combustion, gives light"
+      },
+      {
+       "at": "inner",
+       "name": "Innermost zone",
+       "note": "Dark: unburnt wax vapour, least hot"
+      },
+      {
+       "at": "wick",
+       "name": "Wick"
+      },
+      {
+       "at": "wax",
+       "name": "Wax"
+      }
+     ]
+    },
+    "say": [
+     "Look closely at a candle flame: it isn't all the same colour."
+    ],
+    "remember": "Dark inside, yellow middle, blue outside (hottest)."
+   },
+   {
+    "title": "Compare the zones",
+    "pic": {
+     "kind": "compare",
+     "rows": [
+      "Colour",
+      "Combustion",
+      "Heat"
+     ],
+     "cols": [
+      {
+       "head": "Innermost",
+       "icon": "⚫",
+       "cells": [
+        "Dark",
+        "None: wax vapour",
+        "Least hot"
+       ]
+      },
+      {
+       "head": "Middle",
+       "icon": "🟡",
+       "cells": [
+        "Yellow, bright (luminous)",
+        "Partial",
+        "Moderately hot"
+       ]
+      },
+      {
+       "head": "Outermost",
+       "icon": "🔵",
+       "cells": [
+        "Blue, not bright",
+        "Complete",
+        "Hottest"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "The outer zone gets the most air, so burning there is complete."
+    ]
+   },
+   {
+    "title": "Proofs and uses",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🪟",
+       "text": "Glass in yellow zone",
+       "sub": "Gets a black ring of unburnt carbon (soot)"
+      },
+      {
+       "icon": "💍",
+       "text": "Goldsmiths",
+       "sub": "Blow the hottest outer zone onto gold and silver to melt them"
+      }
+     ]
+    },
+    "say": [
+     "The black soot shows that carbon in the middle zone is not fully burnt."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Innermost zone: dark, unburnt vapour, least hot.",
+   "Middle zone: yellow and bright, partial combustion.",
+   "Outermost zone: blue, complete combustion, the hottest."
+  ],
+  "quiz": [
+   {
+    "q": "Which zone is marked '?'",
+    "pic": {
+     "kind": "scene",
+     "scene": "candle_flame",
+     "ask": "outer"
+    },
+    "options": [
+     "Outermost zone, the hottest",
+     "Middle zone, the brightest",
+     "Innermost zone, the darkest",
+     "The wick"
+    ],
+    "answer": 0,
+    "why": "The blue outer zone has complete combustion and is the hottest part."
+   },
+   {
+    "q": "Which zone of the flame gives the most light?",
+    "options": [
+     "Middle (yellow) zone",
+     "Outermost zone",
+     "Innermost zone",
+     "The wax"
+    ],
+    "answer": 0,
+    "why": "The middle zone is luminous: glowing carbon particles give the yellow light."
+   }
+  ]
+ },
+ "6.6": {
+  "crux": "A fuel burns to give heat; a good fuel is cheap, easy to get, burns at a steady rate, gives lots of heat and leaves little waste.",
+  "cards": [
+   {
+    "title": "Fuels in three states",
+    "pic": {
+     "kind": "groups",
+     "root": "Fuels",
+     "items": [
+      {
+       "icon": "🪵",
+       "name": "Solid",
+       "eg": "Wood, coal, cow dung cakes"
+      },
+      {
+       "icon": "⛽",
+       "name": "Liquid",
+       "eg": "Kerosene, petrol, diesel"
+      },
+      {
+       "icon": "🔥",
+       "name": "Gas",
+       "eg": "LPG, CNG, biogas, hydrogen"
+      }
+     ]
+    },
+    "say": [
+     "Anything that burns to give us useful heat is a fuel."
+    ]
+   },
+   {
+    "title": "A good fuel is…",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "📦",
+       "text": "Readily available"
+      },
+      {
+       "icon": "💰",
+       "text": "Cheap"
+      },
+      {
+       "icon": "🔥",
+       "text": "Burns easily at a moderate rate"
+      },
+      {
+       "icon": "♨️",
+       "text": "Gives lots of heat"
+      },
+      {
+       "icon": "🧹",
+       "text": "Leaves no harmful residue"
+      }
+     ]
+    },
+    "say": [
+     "No fuel is perfect (ideal).",
+     "We choose the fuel that best fits the job."
+    ],
+    "remember": "There is no ideal fuel; we pick the best one for each use."
+   },
+   {
+    "title": "Choosing a cooking fuel",
+    "pic": {
+     "kind": "compare",
+     "rows": [
+      "Smoke",
+      "Heat given",
+      "Leftovers"
+     ],
+     "cols": [
+      {
+       "head": "Wood",
+       "icon": "🪵",
+       "cells": [
+        "A lot of smoke",
+        "Less heat",
+        "Ash"
+       ]
+      },
+      {
+       "head": "LPG",
+       "icon": "🔥",
+       "cells": [
+        "Almost no smoke",
+        "Much more heat",
+        "No residue"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "That's why many homes have switched from wood to LPG for cooking.",
+     "Smoke from wood fires harms the lungs."
+    ]
+   }
+  ],
+  "crux_points": [
+   "A fuel burns to give useful heat.",
+   "Fuels can be solid, liquid or gas.",
+   "A good fuel is cheap, available, burns steadily, gives lots of heat and leaves little residue."
+  ],
+  "quiz": [
+   {
+    "q": "Which of these is a gaseous fuel?",
+    "options": [
+     "LPG",
+     "Coal",
+     "Wood",
+     "Kerosene"
+    ],
+    "answer": 0,
+    "why": "LPG (liquefied petroleum gas) burns as a gas."
+   },
+   {
+    "q": "Which is NOT a feature of a good fuel?",
+    "options": [
+     "Leaves lots of smoke and ash",
+     "Cheap",
+     "Easy to get",
+     "Gives lots of heat"
+    ],
+    "answer": 0,
+    "why": "A good fuel leaves little or no harmful residue."
+   }
+  ]
+ },
+ "6.7": {
+  "crux": "Calorific value is the heat a fuel gives when 1 kg burns completely; burning fuels also releases harmful gases and soot.",
+  "cards": [
+   {
+    "title": "Calorific values (kJ per kg)",
+    "pic": {
+     "kind": "bars",
+     "unit": "kJ/kg",
+     "items": [
+      {
+       "label": "Cow dung cake",
+       "icon": "🟤",
+       "value": 7000,
+       "show": "6,000–8,000",
+       "color": "brown"
+      },
+      {
+       "label": "Wood",
+       "icon": "🪵",
+       "value": 19500,
+       "show": "17,000–22,000",
+       "color": "amber"
+      },
+      {
+       "label": "Coal",
+       "icon": "⚫",
+       "value": 29000,
+       "show": "25,000–33,000",
+       "color": "grey"
+      },
+      {
+       "label": "Petrol, diesel",
+       "icon": "⛽",
+       "value": 45000,
+       "show": "45,000",
+       "color": "orange"
+      },
+      {
+       "label": "CNG",
+       "icon": "🚌",
+       "value": 50000,
+       "show": "50,000",
+       "color": "green"
+      },
+      {
+       "label": "LPG",
+       "icon": "🔥",
+       "value": 55000,
+       "show": "55,000",
+       "color": "red"
+      },
+      {
+       "label": "Hydrogen",
+       "icon": "💧",
+       "value": 150000,
+       "show": "150,000",
+       "color": "blue"
+      }
+     ]
+    },
+    "say": [
+     "Calorific value tells us how much heat 1 kg of a fuel gives on burning completely.",
+     "It is measured in kilojoules per kilogram (kJ/kg)."
+    ],
+    "remember": "Higher calorific value = more heat from the same amount of fuel."
+   },
+   {
+    "title": "Harm from burning fuels",
+    "pic": {
+     "kind": "groups",
+     "root": "When fuels burn",
+     "items": [
+      {
+       "icon": "🌫️",
+       "name": "Soot particles",
+       "eg": "Cause breathing problems like asthma"
+      },
+      {
+       "icon": "☠️",
+       "name": "Carbon monoxide",
+       "eg": "Poisonous gas from incomplete burning"
+      },
+      {
+       "icon": "🌡️",
+       "name": "Carbon dioxide",
+       "eg": "Too much causes global warming"
+      },
+      {
+       "icon": "🌧️",
+       "name": "Sulphur and nitrogen oxides",
+       "eg": "Cause acid rain"
+      }
+     ]
+    },
+    "say": [
+     "Never sleep in a closed room with a coal fire burning: carbon monoxide can kill."
+    ]
+   },
+   {
+    "title": "Global warming",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🏭",
+       "text": "Burning fuels adds extra carbon dioxide to the air"
+      },
+      {
+       "icon": "🌡️",
+       "text": "The Earth's average temperature rises"
+      },
+      {
+       "icon": "🧊",
+       "text": "Polar ice and glaciers melt"
+      },
+      {
+       "icon": "🌊",
+       "text": "Sea level rises and low coastal areas flood"
+      }
+     ]
+    },
+    "say": [
+     "Using cleaner fuels like CNG and saving energy reduces this harm."
+    ]
+   },
+   {
+    "title": "Acid rain",
+    "pic": {
+     "kind": "equation",
+     "parts": [
+      {
+       "icon": "🏭",
+       "text": "Sulphur and nitrogen oxides",
+       "color": "grey"
+      },
+      "+",
+      {
+       "icon": "🌧️",
+       "text": "Rain water",
+       "color": "sky"
+      },
+      "→",
+      {
+       "icon": "⚠️",
+       "text": "Acid rain",
+       "color": "red"
+      }
+     ]
+    },
+    "say": [
+     "Acid rain harms crops, buildings and soil."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Calorific value = heat from burning 1 kg of fuel completely (kJ/kg).",
+   "Hydrogen has the highest calorific value; cow dung cakes are among the lowest.",
+   "Burning fuels releases soot, carbon monoxide, carbon dioxide (global warming) and gases that cause acid rain."
+  ],
+  "quiz": [
+   {
+    "q": "Which fuel has the highest calorific value?",
+    "options": [
+     "Hydrogen",
+     "Wood",
+     "Coal",
+     "Cow dung cake"
+    ],
+    "answer": 0,
+    "why": "Hydrogen gives about 150,000 kJ/kg, far more than other fuels."
+   },
+   {
+    "q": "Why is it dangerous to sleep in a closed room with a coal fire?",
+    "options": [
+     "Carbon monoxide can build up",
+     "It gets too cold",
+     "Oxygen increases",
+     "Smoke smells nice"
+    ],
+    "answer": 0,
+    "why": "Incomplete burning makes carbon monoxide, a deadly poisonous gas."
+   }
+  ]
+ }
+}

@@ -1,0 +1,202 @@
+{
+ "chapter": 15,
+ "title": "The Storm Shelter",
+ "story": "A thunderstorm has you and NOVA sheltering in the weather station, and the door has locked itself. NOVA must learn about charges, lightning and earthquakes, and give safe advice, before you can leave.",
+ "escaped": "The door opens to clear skies. NOVA now gives safe lightning advice and knows what can and can't be predicted.",
+ "locks": [
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "15.6",
+   "title": "Fix NOVA's lightning safety list",
+   "intro": "NOVA has written lightning safety advice. Some of it is dangerous. Tick the wrong advice.",
+   "rows": [
+    {
+     "item": "Shelter in a house or building",
+     "label": "Safe"
+    },
+    {
+     "item": "Sit in a closed car or bus with the windows shut",
+     "label": "Safe"
+    },
+    {
+     "item": "Stand under a tall tree",
+     "label": "Safe",
+     "wrong": true,
+     "why": "tall trees attract lightning"
+    },
+    {
+     "item": "Lie flat on the open ground",
+     "label": "Safest",
+     "wrong": true,
+     "why": "squat low with your head between your knees; don't lie flat"
+    },
+    {
+     "item": "Avoid bathing during a thunderstorm",
+     "label": "Safe"
+    },
+    {
+     "item": "Stay away from poles and metal objects",
+     "label": "Safe"
+    },
+    {
+     "item": "Carry an umbrella in the open",
+     "label": "Safe",
+     "wrong": true,
+     "why": "don't carry an umbrella in a thunderstorm"
+    }
+   ],
+   "hint": "Which places or objects would lightning be more likely to strike?",
+   "learn": "Some mistakes in training data are dangerous. An AI giving safety advice must be trained only on checked, trustworthy information."
+  },
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "15.3",
+   "title": "Attract or repel?",
+   "intro": "NOVA must predict whether two charged objects attract or repel. Choose its clues.",
+   "labels": [
+    "Repel",
+    "Attract"
+   ],
+   "features": [
+    {
+     "key": "same",
+     "text": "Both have the same kind of charge"
+    },
+    {
+     "key": "plastic",
+     "text": "Both are plastic"
+    },
+    {
+     "key": "wool",
+     "text": "Rubbed with wool"
+    }
+   ],
+   "train": [
+    {
+     "name": "Two balloons rubbed with wool",
+     "label": 0,
+     "f": {
+      "same": 1,
+      "plastic": 0,
+      "wool": 1
+     }
+    },
+    {
+     "name": "Two plastic refills rubbed with polythene",
+     "label": 0,
+     "f": {
+      "same": 1,
+      "plastic": 1,
+      "wool": 0
+     }
+    },
+    {
+     "name": "A glass rod rubbed with silk and a balloon rubbed with wool",
+     "label": 1,
+     "f": {
+      "same": 0,
+      "plastic": 0,
+      "wool": 1
+     }
+    },
+    {
+     "name": "A glass rod rubbed with silk and a charged plastic refill",
+     "label": 1,
+     "f": {
+      "same": 0,
+      "plastic": 0,
+      "wool": 0
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "Two glass rods rubbed with silk",
+     "label": 0,
+     "f": {
+      "same": 1,
+      "plastic": 0,
+      "wool": 0
+     }
+    },
+    {
+     "name": "A charged comb and a glass rod rubbed with silk",
+     "label": 1,
+     "f": {
+      "same": 0,
+      "plastic": 0,
+      "wool": 0
+     }
+    }
+   ],
+   "hint": "Like charges repel and unlike charges attract. Does the material, or what it was rubbed with, matter?",
+   "learn": "Materials and cloths were just details of NOVA's examples. The rule is about the charges: like charges repel, unlike charges attract."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "15.7",
+   "title": "Check NOVA's earthquake forecast",
+   "intro": "NOVA announces an earthquake forecast. Is it right? Decide and pick the fact that settles it.",
+   "claim": "Scientists can predict exactly when and where the next earthquake will strike.",
+   "confidence": "96% sure",
+   "verdict": 1,
+   "evidence": [
+    "Earthquakes can't be predicted; we can only be prepared and build earthquake-safe buildings.",
+    "The Richter scale measures how strong an earthquake is.",
+    "Earthquakes are caused by movements deep inside the Earth's crust.",
+    "Lightning is an electric spark."
+   ],
+   "right": 0,
+   "hint": "What does the textbook say about predicting earthquakes?",
+   "learn": "Some things can't be predicted yet, however clever the AI. An honest AI says so instead of giving false certainty."
+  },
+  {
+   "kind": "pattern",
+   "skill": "predicting",
+   "topic": "15.7",
+   "title": "Is this zone safe now?",
+   "intro": "NOVA looked at five years of records for a zone known to have many earthquakes (seismic zone V).",
+   "table": {
+    "cols": [
+     "Year",
+     "Big earthquakes in the zone"
+    ],
+    "rows": [
+     [
+      "2019",
+      "0"
+     ],
+     [
+      "2020",
+      "0"
+     ],
+     [
+      "2021",
+      "0"
+     ],
+     [
+      "2022",
+      "0"
+     ],
+     [
+      "2023",
+      "0"
+     ]
+    ]
+   },
+   "question": "NOVA says: 'No big earthquakes for five years, so there will never be one here.' What is the honest prediction?",
+   "options": [
+    "NOVA is right: five quiet years prove the zone is safe.",
+    "Five quiet years don't make the zone safe. It is still among the most likely to have earthquakes, so people should stay prepared.",
+    "There will be an earthquake next year for certain.",
+    "Earthquakes only happen in the rainy season."
+   ],
+   "answer": 1,
+   "hint": "Big earthquakes can be years apart. Is five years enough data?",
+   "learn": "A short run of data can hide rare events. AI that predicts from too little history can give dangerous reassurance."
+  }
+ ]
+}

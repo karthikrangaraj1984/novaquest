@@ -1,0 +1,65 @@
+{# Learn in pictures: one topic as a deck of picture cards. mode: "student" (live quiz, progress) or "preview" (teachers; answers shown). #}
+{% macro deck(topic, lesson, mode="student", next_topic=None, done=False, path=None) -%}
+{% set total = lesson.cards|length + 2 %}
+<div class="deck{% if mode == 'preview' %} preview{% endif %}" data-deck {% if mode == "student" %}data-finish-url="/api/learn/{{ topic.id }}/pictures/done"{% endif %}>
+  <p class="bigidea"><span class="tag">Big idea</span>{{ lesson.crux }}</p>
+  <div class="deck-progress" data-progress hidden><span class="track"><span class="fill"></span></span><span class="count small muted"></span>{% if mode == "student" %}<button type="button" class="ask-mini" data-ask-open aria-haspopup="dialog" aria-label="Ask NOVA">💬</button>{% endif %}</div>
+  {% for c in lesson.cards %}
+  <section class="pcard" data-card aria-labelledby="pc-{{ loop.index }}">
+    <span class="tiny muted">Card {{ loop.index }} of {{ total }}</span>
+    <h2 id="pc-{{ loop.index }}">{{ c.title }}</h2>
+    {{ picture(c.pic, "c" ~ loop.index) }}
+    <div class="say">{% for s in c.say %}<p>{{ s }}</p>{% endfor %}</div>
+    {% if c.remember %}<p class="remember"><b>Remember:</b> {{ c.remember }}</p>{% endif %}
+    {% if c.think %}<p class="think"><b>Think:</b> {{ c.think }}</p>{% endif %}
+  </section>
+  {% endfor %}
+  <section class="pcard crux" data-card aria-labelledby="pc-crux">
+    <span class="tiny muted">Card {{ total - 1 }} of {{ total }}</span>
+    <h2 id="pc-crux">The crux</h2>
+    <p class="small muted">If you remember only this, you've got the topic:</p>
+    <ol class="crux-list">{% for p in lesson.crux_points %}<li>{{ p }}</li>{% endfor %}</ol>
+  </section>
+  <section class="pcard" data-card aria-labelledby="pc-quiz">
+    <span class="tiny muted">Card {{ total }} of {{ total }}</span>
+    <h2 id="pc-quiz">Picture quiz</h2>
+    {% for q in lesson.quiz %}
+    {% set qi = loop.index0 %}
+    {% if mode == "student" %}
+    <form class="qcard" data-check="/api/learn/{{ topic.id }}/pictures/check" data-index="{{ qi }}">
+      <fieldset class="stack-sm"><legend>{{ q.q }}</legend>
+        {% if q.pic %}{{ picture(q.pic, "q" ~ qi) }}{% endif %}
+        {% for o in q.options %}<label class="choice"><input type="radio" name="pq{{ qi }}" value="{{ loop.index0 }}">{{ o }}</label>{% endfor %}
+      </fieldset>
+      <button class="btn small ghost" type="submit" style="align-self:flex-start">Check</button>
+      <div class="result stack-sm" aria-live="polite"></div>
+    </form>
+    {% else %}
+    <div class="qcard stack-sm"><p><b>{{ q.q }}</b></p>
+      {% if q.pic %}{{ picture(q.pic, "q" ~ qi) }}{% endif %}
+      <ul class="stack-sm">{% for o in q.options %}<li class="choice {{ 'right' if loop.index0 == q.answer }}">{{ o }}{% if loop.index0 == q.answer %} ✓{% endif %}</li>{% endfor %}</ul>
+      <p class="note info small">{{ q.why }}</p>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% if mode == "student" %}
+    <div class="stack-sm">
+      {% set after = (path.steps|rejectattr("key", "equalto", "pictures")|rejectattr("done")|first) if path else None %}
+      {% if done %}
+      <p class="note ok small" data-finish-msg>Well done! You've finished this picture lesson.</p>
+      {% if after %}<a class="btn block" href="{{ after.url }}">Next: {{ after.name }} →</a>{% endif %}
+      {% else %}
+      <button class="btn block" type="button" data-finish {% if after %}data-then="{{ after.url }}"{% endif %}>{% if after %}Finish and go to {{ after.name }} →{% else %}I've finished this lesson{% endif %}</button>
+      <p class="note ok small" data-finish-msg hidden>Well done! You've finished this picture lesson.</p>
+      {% endif %}
+      <a class="btn block quiet" href="/student/learn/{{ topic.id }}">Back to {{ topic.title }}</a>
+      {% if next_topic %}<a class="small" href="/student/learn/{{ next_topic.id }}/pictures">Or picture lesson for the next topic: {{ next_topic.title }} →</a>{% endif %}
+    </div>
+    {% endif %}
+  </section>
+  <nav class="deck-nav" data-nav hidden aria-label="Cards">
+    <button class="btn ghost" type="button" data-prev>Back</button>
+    <button class="btn" type="button" data-next>Next</button>
+  </nav>
+</div>
+{%- endmacro %}

@@ -1,0 +1,993 @@
+{
+ "8.1": {
+  "crux": "In 1665 Robert Hooke looked at thin cork through a microscope and saw tiny boxes. He called them cells.",
+  "cards": [
+   {
+    "title": "Too small to see",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "✋",
+       "text": "Your hand",
+       "sub": "Seen easily"
+      },
+      {
+       "icon": "⏺",
+       "text": "A grain of sand",
+       "sub": "Just about seen"
+      },
+      {
+       "icon": "🔬",
+       "text": "A cell",
+       "sub": "Needs a microscope"
+      }
+     ]
+    },
+    "say": [
+     "Most cells are far too small to see with our eyes alone.",
+     "To see them we need a microscope, which makes tiny things look much bigger."
+    ]
+   },
+   {
+    "title": "A microscope",
+    "pic": {
+     "kind": "scene",
+     "scene": "microscope",
+     "labels": [
+      {
+       "at": "eyepiece",
+       "name": "Eyepiece",
+       "note": "You look in here"
+      },
+      {
+       "at": "objective",
+       "name": "Objective lens",
+       "note": "Magnifies the slide"
+      },
+      {
+       "at": "slide",
+       "name": "Glass slide",
+       "note": "The thin sample sits here"
+      },
+      {
+       "at": "stage",
+       "name": "Stage",
+       "note": "Holds the slide"
+      },
+      {
+       "at": "mirror",
+       "name": "Mirror",
+       "note": "Throws light up through the sample"
+      },
+      {
+       "at": "focus",
+       "name": "Focus knob",
+       "note": "Makes the picture sharp"
+      }
+     ]
+    },
+    "say": [
+     "Light passes up through a very thin sample.",
+     "The lenses make it look many times bigger."
+    ],
+    "remember": "The sample must be thin so light can pass through it."
+   },
+   {
+    "title": "Hooke's cork",
+    "pic": {
+     "kind": "scene",
+     "scene": "cork_cells",
+     "labels": [
+      {
+       "at": "slice",
+       "name": "Thin slice of cork",
+       "note": "Cork is part of the bark of a tree"
+      },
+      {
+       "at": "cell",
+       "name": "Cell",
+       "note": "One tiny box"
+      },
+      {
+       "at": "wall",
+       "name": "Wall between boxes"
+      }
+     ]
+    },
+    "say": [
+     "In 1665 Robert Hooke cut a thin slice of cork and looked at it under his microscope.",
+     "He saw many small boxes side by side, like a honeycomb.",
+     "He called each box a cell. 'Cell' means a small room."
+    ]
+   },
+   {
+    "title": "Discovery timeline",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "📜",
+       "text": "1665: Robert Hooke sees boxes in cork and names them cells."
+      },
+      {
+       "icon": "🔍",
+       "text": "Better microscopes are made over the next 150 years."
+      },
+      {
+       "icon": "🧫",
+       "text": "Scientists see that all living things are made of cells."
+      }
+     ]
+    },
+    "say": [
+     "Hooke's cork cells were dead: only their walls were left.",
+     "Later, better microscopes let scientists study living cells."
+    ],
+    "think": "Why did learning more about cells have to wait for better microscopes?"
+   }
+  ],
+  "crux_points": [
+   "Cells are too small to see without a microscope.",
+   "Robert Hooke saw cells in a thin slice of cork in 1665.",
+   "He named them cells because they looked like small rooms."
+  ],
+  "quiz": [
+   {
+    "q": "What did Robert Hooke look at when he saw cells?",
+    "options": [
+     "A slice of cork",
+     "A drop of blood",
+     "An onion peel",
+     "A leaf"
+    ],
+    "answer": 0,
+    "why": "Hooke looked at a thin slice of cork, part of the bark of a tree."
+   },
+   {
+    "q": "Which part of the microscope is marked with '?'",
+    "pic": {
+     "kind": "scene",
+     "scene": "microscope",
+     "ask": "eyepiece"
+    },
+    "options": [
+     "Eyepiece",
+     "Mirror",
+     "Stage",
+     "Slide"
+    ],
+    "answer": 0,
+    "why": "The eyepiece is at the top: it is where you put your eye."
+   }
+  ]
+ },
+ "8.2": {
+  "crux": "Every living thing is built from cells, just as a building is built from bricks.",
+  "cards": [
+   {
+    "title": "Bricks of life",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🧱➜🏠",
+       "text": "Bricks build a house",
+       "sub": "The brick is the smallest building block"
+      },
+      {
+       "icon": "🔵➜🧍",
+       "text": "Cells build a body",
+       "sub": "The cell is the smallest living block"
+      }
+     ]
+    },
+    "say": [
+     "A building is made of bricks joined together.",
+     "In the same way, the body of every living thing is made of cells."
+    ],
+    "remember": "The cell is the basic structural unit of life."
+   },
+   {
+    "title": "Everything alive has cells",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🌳",
+       "text": "Trees",
+       "sub": "Billions of cells"
+      },
+      {
+       "icon": "🐘",
+       "text": "Elephant",
+       "sub": "Trillions of cells"
+      },
+      {
+       "icon": "🧍",
+       "text": "You",
+       "sub": "Trillions of cells"
+      },
+      {
+       "icon": "🦠",
+       "text": "Bacterium",
+       "sub": "Just one cell"
+      }
+     ]
+    },
+    "say": [
+     "Plants, animals, people and tiny microbes are all made of cells.",
+     "Some living things have only one cell. Others have a huge number."
+    ]
+   },
+   {
+    "title": "One egg, one cell",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🥚",
+       "text": "Hen's egg",
+       "sub": "A single cell you can see without a microscope"
+      },
+      {
+       "icon": "🪺",
+       "text": "Ostrich egg",
+       "sub": "The biggest single cell: about 17 cm long"
+      }
+     ]
+    },
+    "say": [
+     "Not every cell is tiny. A hen's egg is one single cell.",
+     "The ostrich egg is the largest cell known."
+    ],
+    "think": "If an egg is one cell, why can we see it without a microscope?"
+   },
+   {
+    "title": "Cells work together",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🔵",
+       "text": "Cell: the smallest living unit."
+      },
+      {
+       "icon": "🧩",
+       "text": "Tissue: a group of similar cells doing one job."
+      },
+      {
+       "icon": "🫀",
+       "text": "Organ: different tissues working together, like the heart."
+      },
+      {
+       "icon": "🧍",
+       "text": "Organism: all the organs together make a living body."
+      }
+     ]
+    },
+    "say": [
+     "Cells join to form tissues, tissues form organs, and organs make up the whole body."
+    ]
+   }
+  ],
+  "crux_points": [
+   "All living things are made of cells.",
+   "The cell is the basic unit of life, like a brick in a building.",
+   "Cells can be tiny or, like an egg, big enough to see."
+  ],
+  "quiz": [
+   {
+    "q": "Why do we call the cell the 'basic unit' of living things?",
+    "options": [
+     "All living things are built from cells",
+     "Cells are always big",
+     "Only animals have cells",
+     "Cells are made of bricks"
+    ],
+    "answer": 0,
+    "why": "Every living thing is built up from cells, the way a wall is built from bricks."
+   },
+   {
+    "q": "Which of these is a single cell?",
+    "options": [
+     "A hen's egg",
+     "A leaf",
+     "A heart",
+     "A tree"
+    ],
+    "answer": 0,
+    "why": "An egg is one single cell. A leaf, a heart and a tree are made of many cells."
+   }
+  ]
+ },
+ "8.3": {
+  "crux": "Some living things are just one cell, others have many; cells come in many shapes and sizes to suit their jobs.",
+  "cards": [
+   {
+    "title": "One cell or many?",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Unicellular",
+       "icon": "🦠",
+       "cells": [
+        "Made of only ONE cell",
+        "That one cell does every job",
+        "Amoeba, Paramecium, bacteria"
+       ]
+      },
+      {
+       "head": "Multicellular",
+       "icon": "🐕",
+       "cells": [
+        "Made of MANY cells",
+        "Different cells do different jobs",
+        "Plants, animals, humans"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "'Uni' means one and 'multi' means many.",
+     "A single-celled organism eats, breathes, grows and reproduces with just one cell."
+    ]
+   },
+   {
+    "title": "Shapes of cells",
+    "pic": {
+     "kind": "scene",
+     "scene": "cell_shapes",
+     "labels": [
+      {
+       "at": "nerve",
+       "name": "Nerve cell",
+       "note": "Long with branches: carries messages"
+      },
+      {
+       "at": "muscle",
+       "name": "Muscle cell",
+       "note": "Spindle-shaped: can shorten and stretch"
+      },
+      {
+       "at": "rbc",
+       "name": "Red blood cell",
+       "note": "Round: flows easily in blood"
+      },
+      {
+       "at": "wbc",
+       "name": "White blood cell",
+       "note": "Changes shape to catch germs"
+      },
+      {
+       "at": "amoeba",
+       "name": "Amoeba",
+       "note": "One cell with no fixed shape"
+      }
+     ]
+    },
+    "say": [
+     "Cells have different shapes because they do different jobs.",
+     "A nerve cell is long and branched so it can pass messages over long distances."
+    ],
+    "remember": "The shape of a cell suits the job it does."
+   },
+   {
+    "title": "Amoeba's false feet",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🫧",
+       "text": "Amoeba pushes out a finger-like bulge called a pseudopodium (false foot)."
+      },
+      {
+       "icon": "➡️",
+       "text": "The bulge helps it move along."
+      },
+      {
+       "icon": "🍽️",
+       "text": "Bulges also wrap around food and take it in."
+      }
+     ]
+    },
+    "say": [
+     "An amoeba keeps changing its shape.",
+     "These changing bulges help it move and catch food."
+    ]
+   },
+   {
+    "title": "Sizes of cells",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🦠",
+       "text": "Smallest: bacteria, only 0.1 to 0.5 micrometre across"
+      },
+      {
+       "icon": "🔵",
+       "text": "Most cells in our body: need a microscope to see"
+      },
+      {
+       "icon": "🥚",
+       "text": "A hen's egg: one cell you can hold in your hand"
+      },
+      {
+       "icon": "🪺",
+       "text": "Largest: the ostrich egg, about 17 cm long"
+      }
+     ]
+    },
+    "say": [
+     "The smallest cells, like bacteria, are less than a micrometre across.",
+     "A micrometre (µm) is one-millionth of a metre."
+    ],
+    "remember": "The size of a cell has nothing to do with the size of the animal: an elephant's cells are not bigger than a mouse's."
+   }
+  ],
+  "crux_points": [
+   "Unicellular organisms have one cell; multicellular organisms have many.",
+   "Cells have different shapes because they do different jobs.",
+   "Cell size does not depend on how big the animal is."
+  ],
+  "quiz": [
+   {
+    "q": "Which of these is unicellular?",
+    "options": [
+     "Amoeba",
+     "Dog",
+     "Mango tree",
+     "Human"
+    ],
+    "answer": 0,
+    "why": "Amoeba is a single cell that does every job by itself."
+   },
+   {
+    "q": "Which cell is marked with '?'",
+    "pic": {
+     "kind": "scene",
+     "scene": "cell_shapes",
+     "ask": "nerve"
+    },
+    "options": [
+     "Nerve cell",
+     "Red blood cell",
+     "Muscle cell",
+     "Amoeba"
+    ],
+    "answer": 0,
+    "why": "It is long with many branches: a nerve cell, built to carry messages."
+   },
+   {
+    "q": "Are an elephant's cells bigger than a mouse's cells?",
+    "options": [
+     "No, they are about the same size",
+     "Yes, much bigger",
+     "Yes, ten times bigger",
+     "Elephants have no cells"
+    ],
+    "answer": 0,
+    "why": "Bigger animals have more cells, not bigger ones."
+   }
+  ]
+ },
+ "8.4": {
+  "crux": "A cell's shape and parts suit its job; similar cells form tissues, and tissues form organs.",
+  "cards": [
+   {
+    "title": "Built for the job",
+    "pic": {
+     "kind": "compare",
+     "rows": [
+      "Shape",
+      "Job"
+     ],
+     "cols": [
+      {
+       "head": "Nerve cell",
+       "icon": "⚡",
+       "cells": [
+        "Long, with branches",
+        "Carries messages around the body"
+       ]
+      },
+      {
+       "head": "Muscle cell",
+       "icon": "💪",
+       "cells": [
+        "Spindle-shaped",
+        "Shortens and stretches to move body parts"
+       ]
+      },
+      {
+       "head": "Blood cell",
+       "icon": "🩸",
+       "cells": [
+        "Round and small",
+        "Moves in blood, carries oxygen or fights germs"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Each kind of cell has a shape that helps it do its job well."
+    ]
+   },
+   {
+    "title": "From cell to body",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "💪",
+       "text": "Muscle cells (one kind of cell)"
+      },
+      {
+       "icon": "🧵",
+       "text": "Muscle tissue (many similar muscle cells together)"
+      },
+      {
+       "icon": "🫀",
+       "text": "Heart: an organ made of muscle and other tissues"
+      },
+      {
+       "icon": "🧍",
+       "text": "The body: many organs working together"
+      }
+     ]
+    },
+    "say": [
+     "A tissue is a group of similar cells doing one job.",
+     "An organ, like the stomach or the heart, is made of different tissues working together."
+    ],
+    "remember": "Cells → tissues → organs → organism."
+   },
+   {
+    "title": "Teamwork in the body",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🧠",
+       "text": "Brain",
+       "sub": "Nerve tissue sends and receives messages"
+      },
+      {
+       "icon": "🫀",
+       "text": "Heart",
+       "sub": "Muscle tissue pumps blood"
+      },
+      {
+       "icon": "🦴",
+       "text": "Bones",
+       "sub": "Bone tissue gives support"
+      },
+      {
+       "icon": "🍃",
+       "text": "Leaf",
+       "sub": "Plant tissues make food"
+      }
+     ]
+    },
+    "say": [
+     "Plants have tissues and organs too: a leaf is a plant organ.",
+     "Every organ has a job, and its tissues are made of cells suited to that job."
+    ]
+   }
+  ],
+  "crux_points": [
+   "A cell's shape suits the job it does.",
+   "A tissue is a group of similar cells doing one job.",
+   "Organs are made of tissues; organs together make the organism."
+  ],
+  "quiz": [
+   {
+    "q": "What is a tissue?",
+    "options": [
+     "A group of similar cells doing one job",
+     "A single cell",
+     "A whole animal",
+     "A part of the nucleus"
+    ],
+    "answer": 0,
+    "why": "A tissue is a group of similar cells that work together on one job."
+   },
+   {
+    "q": "Why are nerve cells long and branched?",
+    "options": [
+     "To carry messages over long distances",
+     "To store food",
+     "To make the body heavy",
+     "To swim in blood"
+    ],
+    "answer": 0,
+    "why": "Their long branches reach far, so messages can travel through the body."
+   }
+  ]
+ },
+ "8.5": {
+  "crux": "Every cell has three basic parts: a cell membrane outside, jelly-like cytoplasm inside, and a nucleus that controls the cell.",
+  "cards": [
+   {
+    "title": "Three basic parts",
+    "pic": {
+     "kind": "scene",
+     "scene": "animal_cell",
+     "labels": [
+      {
+       "at": "membrane",
+       "name": "Cell membrane",
+       "note": "Thin outer cover"
+      },
+      {
+       "at": "cytoplasm",
+       "name": "Cytoplasm",
+       "note": "Jelly-like filling"
+      },
+      {
+       "at": "nucleus",
+       "name": "Nucleus",
+       "note": "Control centre"
+      }
+     ]
+    },
+    "say": [
+     "Every cell has a cell membrane, cytoplasm and a nucleus.",
+     "Each part has its own job, like rooms in a house."
+    ]
+   },
+   {
+    "title": "Cell membrane: the gatekeeper",
+    "pic": {
+     "kind": "equation",
+     "parts": [
+      {
+       "icon": "💧",
+       "text": "Water, food in",
+       "color": "sky"
+      },
+      "→",
+      {
+       "icon": "🚪",
+       "text": "Cell membrane",
+       "color": "orange"
+      },
+      "→",
+      {
+       "icon": "🗑️",
+       "text": "Waste out",
+       "color": "grey"
+      }
+     ]
+    },
+    "say": [
+     "The cell membrane is a thin, porous cover around the cell.",
+     "It lets useful things in and waste out, and keeps the cell separate from its neighbours."
+    ],
+    "remember": "Plant cells also have a cell wall outside the membrane for extra strength."
+   },
+   {
+    "title": "The nucleus: control centre",
+    "pic": {
+     "kind": "scene",
+     "scene": "animal_cell",
+     "labels": [
+      {
+       "at": "nucleus",
+       "name": "Nucleus",
+       "note": "Controls everything the cell does"
+      },
+      {
+       "at": "nuclear_membrane",
+       "name": "Nuclear membrane",
+       "note": "Wraps the nucleus"
+      },
+      {
+       "at": "nucleolus",
+       "name": "Nucleolus",
+       "note": "Dark dot inside the nucleus"
+      }
+     ]
+    },
+    "say": [
+     "The nucleus is usually round and near the middle of the cell.",
+     "It holds chromosomes, which carry genes.",
+     "Genes pass features like eye colour from parents to children."
+    ]
+   },
+   {
+    "title": "Cytoplasm and its tiny parts",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🫙",
+       "text": "Cytoplasm",
+       "sub": "Jelly between the membrane and the nucleus"
+      },
+      {
+       "icon": "🫧",
+       "text": "Vacuole",
+       "sub": "A store; small in animal cells, large in plant cells"
+      },
+      {
+       "icon": "🟢",
+       "text": "Chloroplasts",
+       "sub": "Green plastids in plant cells that make food using sunlight"
+      }
+     ]
+    },
+    "say": [
+     "Cytoplasm fills the cell and holds many tiny parts called organelles.",
+     "Cytoplasm and nucleus together are called protoplasm, the living part of the cell."
+    ]
+   },
+   {
+    "title": "Cells without a proper nucleus",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Prokaryotes",
+       "icon": "🦠",
+       "cells": [
+        "No nuclear membrane",
+        "Nucleus material lies loose",
+        "Bacteria, blue-green algae"
+       ]
+      },
+      {
+       "head": "Eukaryotes",
+       "icon": "🔵",
+       "cells": [
+        "Nuclear membrane present",
+        "Well-organised nucleus",
+        "Plants, animals, humans"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "In bacteria the nucleus has no membrane around it.",
+     "Cells like these are called prokaryotic cells."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Cell membrane: the cover that controls what goes in and out.",
+   "Cytoplasm: the jelly that holds the cell's tiny parts.",
+   "Nucleus: the control centre with chromosomes and genes."
+  ],
+  "quiz": [
+   {
+    "q": "Which part is marked with '?'",
+    "pic": {
+     "kind": "scene",
+     "scene": "animal_cell",
+     "ask": "nucleus"
+    },
+    "options": [
+     "Nucleus",
+     "Cell membrane",
+     "Cytoplasm",
+     "Vacuole"
+    ],
+    "answer": 0,
+    "why": "The round body in the middle is the nucleus, the control centre."
+   },
+   {
+    "q": "What carries the genes that pass features from parents to children?",
+    "options": [
+     "Chromosomes",
+     "Cell wall",
+     "Vacuole",
+     "Cytoplasm"
+    ],
+    "answer": 0,
+    "why": "Chromosomes in the nucleus carry genes."
+   },
+   {
+    "q": "Bacteria have no nuclear membrane. They are called…",
+    "options": [
+     "Prokaryotes",
+     "Eukaryotes",
+     "Tissues",
+     "Organs"
+    ],
+    "answer": 0,
+    "why": "Cells without a nuclear membrane are prokaryotic."
+   }
+  ]
+ },
+ "8.6": {
+  "crux": "Plant and animal cells share a membrane, cytoplasm and nucleus, but only plant cells have a cell wall, chloroplasts and a big vacuole.",
+  "cards": [
+   {
+    "title": "A plant cell",
+    "pic": {
+     "kind": "scene",
+     "scene": "plant_cell",
+     "labels": [
+      {
+       "at": "wall",
+       "name": "Cell wall",
+       "note": "Stiff outer layer"
+      },
+      {
+       "at": "membrane",
+       "name": "Cell membrane"
+      },
+      {
+       "at": "cytoplasm",
+       "name": "Cytoplasm"
+      },
+      {
+       "at": "nucleus",
+       "name": "Nucleus"
+      },
+      {
+       "at": "vacuole",
+       "name": "Large vacuole",
+       "note": "A big store of water and food"
+      },
+      {
+       "at": "chloroplast",
+       "name": "Chloroplast",
+       "note": "Green plastid that makes food"
+      }
+     ]
+    },
+    "say": [
+     "A plant cell is often box-shaped because of its stiff cell wall.",
+     "A big vacuole fills much of the middle."
+    ]
+   },
+   {
+    "title": "An animal cell",
+    "pic": {
+     "kind": "scene",
+     "scene": "animal_cell",
+     "labels": [
+      {
+       "at": "membrane",
+       "name": "Cell membrane",
+       "note": "No cell wall outside it"
+      },
+      {
+       "at": "cytoplasm",
+       "name": "Cytoplasm"
+      },
+      {
+       "at": "nucleus",
+       "name": "Nucleus"
+      },
+      {
+       "at": "vacuole",
+       "name": "Small vacuole"
+      }
+     ]
+    },
+    "say": [
+     "An animal cell has no cell wall, so its shape is not fixed.",
+     "Its vacuoles are small, and it has no chloroplasts."
+    ]
+   },
+   {
+    "title": "Spot the difference",
+    "pic": {
+     "kind": "compare",
+     "rows": [
+      "Cell wall",
+      "Cell membrane",
+      "Nucleus",
+      "Vacuole",
+      "Chloroplasts"
+     ],
+     "cols": [
+      {
+       "head": "Plant cell",
+       "icon": "🌿",
+       "cells": [
+        "Yes",
+        "Yes",
+        "Yes",
+        "One large",
+        "Yes"
+       ]
+      },
+      {
+       "head": "Animal cell",
+       "icon": "🐾",
+       "cells": [
+        "No",
+        "Yes",
+        "Yes",
+        "Small, if any",
+        "No"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Both have a membrane, cytoplasm and a nucleus.",
+     "The cell wall, chloroplasts and large vacuole belong only to plant cells."
+    ],
+    "remember": "Wall, chloroplasts, big vacuole = plant."
+   },
+   {
+    "title": "Why plants need a cell wall",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🌡️",
+       "text": "Heat and cold",
+       "sub": "The wall protects against changes in temperature"
+      },
+      {
+       "icon": "💨",
+       "text": "Strong wind",
+       "sub": "It keeps the plant stiff"
+      },
+      {
+       "icon": "💧",
+       "text": "Moisture",
+       "sub": "It protects against wet air"
+      }
+     ]
+    },
+    "say": [
+     "Plants can't move to escape bad weather.",
+     "The extra wall gives each cell shape, strength and protection."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Both cells have a membrane, cytoplasm and nucleus.",
+   "Only plant cells have a cell wall and chloroplasts.",
+   "Plant cells have one large vacuole; animal cells have small ones."
+  ],
+  "quiz": [
+   {
+    "q": "Which part is marked with '?' in this plant cell?",
+    "pic": {
+     "kind": "scene",
+     "scene": "plant_cell",
+     "ask": "chloroplast"
+    },
+    "options": [
+     "Chloroplast",
+     "Nucleus",
+     "Vacuole",
+     "Cell wall"
+    ],
+    "answer": 0,
+    "why": "The small green bodies are chloroplasts, which make food using sunlight."
+   },
+   {
+    "q": "Which part is found ONLY in plant cells?",
+    "options": [
+     "Cell wall",
+     "Nucleus",
+     "Cell membrane",
+     "Cytoplasm"
+    ],
+    "answer": 0,
+    "why": "Animal cells have no cell wall."
+   },
+   {
+    "q": "Plant cells have a ____ vacuole.",
+    "options": [
+     "large",
+     "very small",
+     "missing",
+     "metal"
+    ],
+    "answer": 0,
+    "why": "Plant cells usually have one large vacuole; animal cells have small ones."
+   }
+  ]
+ }
+}

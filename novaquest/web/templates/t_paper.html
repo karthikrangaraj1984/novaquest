@@ -1,0 +1,55 @@
+{% extends "staff.html" %}
+{# One exam paper (AS-8): three sets to compare, choose one, swap questions, download paper and answer key. #}
+{% block title %}{{ paper.title }}{% endblock %}
+{% block main %}
+{% set s = sets[shown - 1] %}
+{% set base = "/teacher/papers/" ~ paper.id %}
+<div class="stack-sm" style="gap:2px"><a class="small" href="/teacher/papers">← Exam papers</a><h1>{{ paper.title }}</h1>
+  <p class="muted small">Class {{ paper.class_label }} · {{ paper.subject }} · {{ questions }} questions · {{ total|nicenum }} marks · {{ paper.duration_min }} minutes · {{ difficulties[paper.difficulty] }}</p></div>
+{% if paper.chosen_set %}
+<div class="note ok stack-sm" role="status"><b>Set {{ "ABC"[paper.chosen_set - 1] }} is your chosen paper.</b>
+  <span class="row"><a class="btn" href="{{ base }}/set-{{ paper.chosen_set }}.pdf">⬇ Question paper (PDF)</a><a class="btn ghost" href="{{ base }}/set-{{ paper.chosen_set }}-key.pdf">⬇ Answer key</a></span>
+  <span class="tiny muted">Print the question paper for students and keep the answer key for marking.</span></div>
+{% else %}
+<p class="note small">Three different papers to the same pattern. Look through each, swap any question you don't like, then choose one to print.</p>
+{% endif %}
+<nav class="tabs" aria-label="Sets">{% for x in sets %}<a href="{{ base }}?set={{ x.no }}" {% if x.no == shown %}aria-current="page"{% endif %}>Set {{ x.name }}{% if paper.chosen_set == x.no %} ✓{% endif %}</a>{% endfor %}</nav>
+<div class="cols paper-cols">
+  <section class="main stack" aria-label="Set {{ s.name }} questions">
+    {% for sec in s.sections %}
+    <section class="card stack" aria-labelledby="sec-{{ sec.no }}">
+      <h2 id="sec-{{ sec.no }}">Section {{ "ABCDEF"[sec.no - 1] }} <span class="muted small">· {{ sec.count }} × {{ sec.marks|nicenum }} = {{ sec.total|nicenum }} marks · {{ kinds[sec.kind] }}</span></h2>
+      {% for q in sec["items"] %}
+      <article class="exam-q" id="s{{ sec.no }}-{{ q.item_no }}">
+        <div class="row-between" style="align-items:flex-start;flex-wrap:nowrap"><p><b>{{ q.no }}.</b> {% if q.parts %}{{ q.parts[0] }}{% else %}{% if q.scenario %}{{ q.scenario }} {% endif %}{{ q.prompt }}{% endif %}</p>
+          <span class="pill">{{ q.marks|nicenum }} mark{{ "s" if q.marks != 1 }}</span></div>
+        {% if q.parts %}<p class="small">(b) {{ q.parts[1] }}</p>{% endif %}
+        {% if q.options %}<ol class="opts" type="a">{% for o in q.options %}<li class="{{ 'right' if loop.index0 == q.answer.index }}">{{ o }}{% if loop.index0 == q.answer.index %} ✓{% endif %}</li>{% endfor %}</ol>
+        {% else %}<details class="small"><summary>Answer and marking scheme</summary>
+          {% if q.model %}<p><b>Expected answer:</b> {{ q.model }}</p>{% endif %}
+          {% if q.scheme %}<ul>{% for pt, m in q.scheme %}<li>{{ pt }} <span class="muted">({{ m|nicenum }})</span></li>{% endfor %}</ul>{% endif %}
+        </details>{% endif %}
+        <div class="row-between"><span class="tiny muted">{{ q.topic_code }} {{ q.topic_title }} · {{ q.difficulty|capitalize }}</span>
+          <form method="post" action="{{ base }}/replace"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="set" value="{{ s.no }}"><input type="hidden" name="section" value="{{ sec.no }}"><input type="hidden" name="item" value="{{ q.item_no }}">
+            <button class="btn ghost small" type="submit" data-busy="Writing…" aria-label="Replace question {{ q.no }}">↻ Replace</button></form></div>
+      </article>
+      {% endfor %}
+    </section>
+    {% endfor %}
+  </section>
+  <aside class="aside stack">
+    <section class="card stack" aria-labelledby="sum-h">
+      <h2 id="sum-h">Set {{ s.name }} at a glance</h2>
+      <div><p class="small"><b>Marks by chapter</b></p><ul class="small plain">{% for ch, m in s.chapters %}<li>{{ ch }} <span class="muted">· {{ m|nicenum }}</span></li>{% endfor %}</ul></div>
+      <p class="small"><b>Difficulty</b> (share of marks): easy {{ s.difficulty.easy }}% · medium {{ s.difficulty.medium }}% · hard {{ s.difficulty.hard }}%</p>
+      <p class="small"><b>Thinking</b>: recall {{ s.thinking.remember }}% · apply {{ s.thinking.apply }}% · analyse {{ s.thinking.analyse }}%</p>
+      {% if s.shared %}<p class="tiny muted">Shares {{ s.shared }} question{{ "s" if s.shared != 1 }} with the other sets.</p>{% else %}<p class="tiny muted">No question repeats in the other sets.</p>{% endif %}
+      <span class="row"><a class="btn ghost" href="{{ base }}/set-{{ s.no }}.pdf">Preview PDF</a><a class="btn ghost" href="{{ base }}/set-{{ s.no }}-key.pdf">Answer key</a></span>
+      {% if paper.chosen_set != s.no %}
+      <form method="post" action="{{ base }}/choose"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="set" value="{{ s.no }}">
+        <button class="btn block" type="submit">Choose Set {{ s.name }}</button></form>
+      {% else %}<p class="pill ok">Chosen</p>{% endif %}
+    </section>
+  </aside>
+</div>
+{% endblock %}

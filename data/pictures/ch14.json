@@ -1,0 +1,85 @@
+{
+  "14.1": {
+    "crux": "Some liquids conduct electricity and some don't; most conducting liquids are solutions of acids, bases or salts, which we can test with a simple tester.",
+    "cards": [
+      {"title": "A simple tester", "pic": {"kind": "scene", "scene": "tester_circuit", "labels": [
+          {"at": "cell", "name": "Cell", "note": "Gives the electric current"},
+          {"at": "bulb", "name": "Bulb or LED", "note": "Glows if current flows"},
+          {"at": "wire", "name": "Connecting wires"},
+          {"at": "free_ends", "name": "Free ends", "note": "Dipped into the liquid"},
+          {"at": "liquid", "name": "Liquid being tested"}]},
+       "say": ["If the liquid conducts, the circuit is complete and the bulb glows.", "If it doesn't, the bulb stays off."]},
+      {"title": "Why use an LED?", "pic": {"kind": "compare", "cols": [
+          {"head": "Bulb", "icon": "💡", "cells": ["Needs a fairly strong current", "May not glow for a weak current"]},
+          {"head": "LED", "icon": "🔆", "cells": ["Glows even with a weak current", "Better for testing liquids"]}]},
+       "say": ["Some liquids conduct only a little. An LED can show even this small current.", "A magnetic compass placed near the wire also deflects when current flows."]},
+      {"title": "Test results", "pic": {"kind": "compare", "cols": [
+          {"head": "Conduct", "icon": "✅", "cells": ["Lemon juice", "Vinegar", "Tap water", "Salt water"]},
+          {"head": "Don't conduct (or hardly)", "icon": "❌", "cells": ["Distilled water", "Vegetable oil", "Honey"]}]},
+       "say": ["Distilled water is pure, with no salts, so it hardly conducts.", "Tap water has salts dissolved in it, so it conducts. Add salt to distilled water and it conducts too."],
+       "remember": "Acids, bases and salt solutions conduct electricity."},
+      {"title": "Stay safe", "pic": {"kind": "icons", "items": [
+          {"icon": "🚫", "text": "Never test with mains electricity", "sub": "Or a generator or inverter"},
+          {"icon": "💧", "text": "Never touch switches with wet hands", "sub": "Water can conduct electricity to you"}]},
+       "say": ["Always use cells (batteries) for experiments."]}
+    ],
+    "crux_points": ["A tester (cell, bulb or LED, wires) shows whether a liquid conducts.", "Acids, bases and salt solutions conduct electricity.", "Distilled water hardly conducts; tap water conducts because of dissolved salts."],
+    "quiz": [
+      {"q": "What is marked '?' in the tester?", "pic": {"kind": "scene", "scene": "tester_circuit", "ask": "bulb"}, "options": ["Bulb (or LED)", "Cell", "Liquid", "Beaker"], "answer": 0, "why": "The bulb or LED glows when current flows through the liquid."},
+      {"q": "Why does tap water conduct electricity but distilled water hardly does?", "options": ["Tap water contains dissolved salts", "Tap water is colder", "Distilled water is coloured", "Tap water has no minerals"], "answer": 0, "why": "Dissolved salts make water a conductor."}
+    ]
+  },
+  "14.2": {
+    "crux": "When current passes through a conducting solution it causes chemical changes: gas bubbles, metal deposits on the electrodes, or a change in colour.",
+    "cards": [
+      {"title": "Chemical effects of current", "pic": {"kind": "icons", "items": [
+          {"icon": "🫧", "text": "Gas bubbles", "sub": "Form on the electrodes"},
+          {"icon": "🪙", "text": "Metal deposit", "sub": "A layer forms on an electrode"},
+          {"icon": "🎨", "text": "Colour change", "sub": "The solution changes colour"}]},
+       "say": ["The rods or plates dipped into the solution are called electrodes.", "These changes are the chemical effects of electric current."]},
+      {"title": "Splitting water", "pic": {"kind": "compare", "rows": ["Gas formed"], "cols": [
+          {"head": "Electrode joined to + terminal", "icon": "➕", "cells": ["Oxygen bubbles"]},
+          {"head": "Electrode joined to – terminal", "icon": "➖", "cells": ["Hydrogen bubbles"]}]},
+       "say": ["In 1800, William Nicholson showed that current passing through water makes bubbles of oxygen and hydrogen."],
+       "remember": "Oxygen at +, hydrogen at –."},
+      {"title": "The potato test", "pic": {"kind": "flow", "steps": [
+          {"icon": "🥔", "text": "Push the two wires of a tester into a cut potato"},
+          {"icon": "⏳", "text": "Wait a few minutes"},
+          {"icon": "🟢", "text": "A greenish-blue spot appears around the wire joined to the + terminal"}]},
+       "say": ["This shows a chemical change, and helps find which terminal of a battery is positive."]}
+    ],
+    "crux_points": ["Current through a conducting solution causes chemical changes.", "Signs: gas bubbles, metal deposits on electrodes, colour changes.", "Water splits into oxygen (at +) and hydrogen (at –)."],
+    "quiz": [
+      {"q": "Which of these is a chemical effect of current?", "options": ["Gas bubbles on the electrodes", "The wire gets longer", "The battery gets lighter", "The beaker cracks"], "answer": 0, "why": "Bubbles of gas show a chemical reaction caused by the current."},
+      {"q": "In a potato test, the greenish-blue spot appears near the wire joined to the…", "options": ["Positive terminal", "Negative terminal", "Both", "Neither"], "answer": 0, "why": "The spot forms around the wire connected to the positive terminal."}
+    ]
+  },
+  "14.3": {
+    "crux": "Electroplating uses electricity to coat a thin layer of one metal onto another, to make things shiny, rust-free or look costly.",
+    "cards": [
+      {"title": "How electroplating works", "pic": {"kind": "scene", "scene": "electroplating", "labels": [
+          {"at": "battery", "name": "Battery"},
+          {"at": "copper_plate", "name": "Copper plate", "note": "Joined to + terminal; slowly dissolves"},
+          {"at": "object", "name": "Object to be plated", "note": "Joined to – terminal; gets coated with copper"},
+          {"at": "solution", "name": "Copper sulphate solution"}]},
+       "say": ["Copper from the solution is deposited on the object joined to the negative terminal.", "The same amount of copper dissolves from the plate at the positive terminal, so the solution stays the same."],
+       "remember": "The object to be coated goes on the NEGATIVE terminal."},
+      {"title": "Where we see it", "pic": {"kind": "groups", "root": "Electroplating uses", "items": [
+          {"icon": "🚲", "name": "Chromium", "eg": "Bike handles, taps, car parts, gas burners: shiny, no rust, scratch-proof"},
+          {"icon": "💍", "name": "Silver and gold", "eg": "Coated on cheaper metals for jewellery"},
+          {"icon": "🥫", "name": "Tin", "eg": "On iron food cans: food doesn't touch the iron"},
+          {"icon": "🌉", "name": "Zinc", "eg": "On iron in bridges and cars: protects from rust"}]},
+       "say": ["Chromium is expensive, so objects are made of cheaper metal and only coated with chromium."]},
+      {"title": "A word of caution", "pic": {"kind": "flow", "steps": [
+          {"icon": "🏭", "text": "Electroplating factories use chemical solutions"},
+          {"icon": "⚠️", "text": "Used solutions can pollute water and soil"},
+          {"icon": "♻️", "text": "They must be disposed of following rules"}]},
+       "say": ["Industry must handle these chemicals responsibly."]}
+    ],
+    "crux_points": ["Electroplating deposits a layer of metal on an object using electricity.", "The object is joined to the negative terminal.", "Uses: chromium on taps and bikes, tin on cans, zinc on iron, gold and silver on jewellery."],
+    "quiz": [
+      {"q": "Which part is marked '?' in the electroplating set-up?", "pic": {"kind": "scene", "scene": "electroplating", "ask": "object"}, "options": ["The object getting coated (joined to –)", "The copper plate (joined to +)", "The battery", "The solution"], "answer": 0, "why": "Metal from the solution deposits on the object joined to the negative terminal."},
+      {"q": "Why are food cans coated with tin?", "options": ["Tin is less reactive, so food doesn't touch iron", "Tin is cheaper than iron", "Tin is magnetic", "Tin makes food sweet"], "answer": 0, "why": "Tin protects the food from reacting with the iron of the can."}
+    ]
+  }
+}

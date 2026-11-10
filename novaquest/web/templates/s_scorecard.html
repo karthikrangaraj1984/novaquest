@@ -1,0 +1,73 @@
+{% extends "student.html" %}
+{% from "_icons.html" import level_pill %}
+{% block title %}Scorecard{% endblock %}
+{% block eyebrow %}<span class="small muted">Results released by {{ card.teacher_name }} · {{ card.assignment.released_at|ist("%d %b") }}</span>{% endblock %}
+{% block heading %}{{ card.assignment.title }}{% endblock %}
+{% block main %}
+{% if card.class_message %}
+<section class="card row" style="align-items:flex-start;flex-wrap:nowrap" aria-labelledby="cm-h"><span class="pill" aria-hidden="true">{{ card.teacher_name[:2]|upper }}</span><div><h2 id="cm-h" style="font-size:14px">{{ card.teacher_name }}, to the class</h2><p>{{ card.class_message }}</p></div></section>
+{% endif %}
+<section class="card stack" aria-labelledby="sum-h">
+  <h2 id="sum-h">{{ card.headline[0] }}</h2>
+  {% if card.headline[1] %}<p>{{ card.headline[1] }}</p>{% endif %}
+  {% if card.minutes %}<p class="small muted">You took {{ card.minutes }} min.</p>{% endif %}
+  <p class="small muted">These show your learning progress. They are not exam marks.</p>
+</section>
+<section class="card stack-sm" aria-labelledby="reflect-h">
+  <h2 id="reflect-h">{{ tr("How did it feel?") }}</h2>
+  <form method="post" action="/student/results/{{ card.assignment.id }}/reflect" class="stack-sm">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <fieldset class="feel"><legend class="sr-only">How it felt</legend>
+      {% for k, label in feelings.items() %}<label class="choice"><input type="radio" name="feeling" value="{{ k }}" required {% if felt and felt.feeling == k %}checked{% endif %}>{{ {"easy": "😀", "okay": "🙂", "hard": "😣"}[k] }} {{ tr(label) }}</label>{% endfor %}</fieldset>
+    <label for="nx" class="small"><b>{{ tr("What will you do next?") }}</b></label>
+    <select id="nx" name="next_step">{% for k, label in next_steps.items() %}<option value="{{ k }}" {% if felt and felt.next_step == k %}selected{% elif not felt and k == ("revise" if card.revise else "fine") %}selected{% endif %}>{{ tr(label) }}</option>{% endfor %}</select>
+    <button class="btn small" type="submit">{{ tr("Save") if not felt else tr("Update") }}</button>
+  </form>
+  {% if felt %}<p class="small muted">Saved: {{ feelings[felt.feeling] }}{% if felt.next_step %} · {{ next_steps[felt.next_step] }}{% endif %}</p>{% endif %}
+</section>
+{% if card.revise or (to_fix and card.right < card.total) %}
+<section class="card stack-sm" aria-labelledby="next-h"><h2 id="next-h">What to do next</h2>
+  {% for c in card.revise %}<a class="btn block" href="/student/learn/{{ c.topic_id }}">Revise {{ c.name }} →</a>{% endfor %}
+  {% if to_fix and card.right < card.total %}<a class="btn block ghost" href="/student/mistakes">Redo my mistakes ({{ to_fix }}) →</a>{% endif %}
+  <p class="small muted">Each topic has pictures, practice and the book pages. Nothing you do there changes this score.</p>
+</section>
+{% endif %}
+{% if card.feedback %}
+<section class="card row" style="align-items:flex-start;flex-wrap:nowrap"><span class="pill" aria-hidden="true">{{ card.teacher_name[:2]|upper }}</span><div><h2 style="font-size:14px">{{ card.teacher_name }}, to you</h2><p>{{ card.feedback }}</p></div></section>
+{% endif %}
+{% if card.mixups %}
+<section class="card stack-sm"><h2>Work on next</h2>{% for m in card.mixups %}<p class="note">{{ m }}</p>{% endfor %}</section>
+{% endif %}
+{% if topics %}
+<section class="stack-sm" aria-labelledby="concepts-h">
+  <h2 id="concepts-h">Your topics now</h2>
+  {% for t in topics %}<a class="topic-row" href="/student/learn/{{ t.topic_id }}"><span>{{ t.name }}</span>{{ level_pill(t.level) }}</a>{% endfor %}
+  <p class="small muted">Levels go Learning → Practised → Mastered. Open a topic to see the step that takes it to the next level.</p>
+</section>
+{% endif %}
+<section class="stack-sm" aria-labelledby="ans-h">
+  <h2 id="ans-h">Your answers</h2>
+  {% for r in card.rows %}
+  <article class="qcard">
+    <b>{{ r.ord }}. {{ r.prompt }}</b>
+    {% if r.options %}
+      {% set mine = (r.answer or {}).get("index") %}
+      {% for o in r.options %}
+        {% if loop.index0 == r.key.index %}<div class="row small"><span class="pill ok" aria-label="Correct answer">✓</span>{{ o }}</div>
+        {% elif loop.index0 == mine %}<div class="row small"><span class="pill warn" aria-label="Your answer, wrong">✗</span>{{ o }}</div>{% endif %}
+      {% endfor %}
+      {% if mine is none %}<span class="small muted">Not answered</span>{% endif %}
+    {% elif r.kind == "numeric" %}
+      <p class="small"><b>You wrote:</b> {{ (r.answer or {}).get("text") or "—" }}</p>
+      <p class="small note info"><b>Worked solution:</b> {{ r.key.worked or (r.key.value|nicenum ~ " " ~ (r.key.unit or "")) }}</p>
+    {% elif r.kind in ("short", "viva") %}
+      <p class="small"><b>You wrote:</b> {{ (r.answer or {}).get("text") or "—" }}</p>
+      <p class="small note info"><b>A strong answer:</b> {{ r.key.model }}</p>
+    {% endif %}
+    <p class="small muted">{{ r.final|nicenum }} of {{ r.max_score|float|nicenum }} · {{ r.teacher_comment or r.ai_rationale }}</p>
+    {% if r.citation %}<span class="src">📖 {{ r.citation[0].ref }}</span>{% endif %}
+    {% if not r.correct %}<a class="small" href="/student/questions?q={{ r.question_id }}#ask">Still not sure? Ask my teacher ›</a>{% endif %}
+  </article>
+  {% endfor %}
+</section>
+{% endblock %}

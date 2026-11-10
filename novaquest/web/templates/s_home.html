@@ -1,0 +1,63 @@
+{% extends "student.html" %}
+{% from "_path.html" import path_dots %}
+{% from "_tasks.html" import subject_tag, progress with context %}
+{% block title %}Home{% endblock %}
+{% block eyebrow %}<span class="small muted">{{ study }}</span>{% endblock %}
+{% block heading %}{{ tr('Hi {name}!', name=actor.name.split()[0]) }}{% endblock %}
+{% block main %}
+{# Home (1.31.0): 1. work due soon, with its countdown; 2. the one learning step to do next; 3. Daily 5; 4. new results with
+   the change from last time; then mistakes to redo and an exam coming up. #}
+{% if soon %}
+<section class="stack-sm" aria-labelledby="due-h">
+  <h2 id="due-h">{{ tr(soon_label) }}</h2>
+  {% for a in soon %}
+  <a class="task-row due-row{{ ' urgent' if a.closes_soon }}" href="/student/assignments/{{ a.id }}">
+    <span class="stack-sm" style="gap:3px;min-width:0">
+      <span class="row" style="gap:6px;flex-wrap:wrap">{{ subject_tag(a.subject_label, a.subject_colour) }}<b>{{ a.title }}</b></span>
+      <span class="small {{ 'due-soon' if a.closes_soon else 'muted' }}">{{ a.student_expires_at|due }}</span>
+      {% set i = info.get(a.id) %}{% if i %}<span class="tiny muted">{{ i.questions }} question{{ "s" if i.questions != 1 }} · {% if i.timed %}{{ i.minutes }} min limit{% else %}about {{ i.minutes }} min{% endif %}</span>{% endif %}
+      {{ progress(a) }}
+    </span>
+    <span class="pill {{ 'l2' if a.started else 'warn' }}">{{ tr("Continue") if a.started else tr("Start") }}</span>
+  </a>
+  {% endfor %}
+  {% if more_soon or later %}<a class="small" href="/student/tasks">{% if later %}{{ later|length }} more open task{{ "s" if later|length != 1 }} · next closes {{ later[0].student_expires_at|ist('%a %d %b') }}{% else %}{{ more_soon }} more due soon{% endif %} ›</a>{% endif %}
+</section>
+{% endif %}
+
+{% if up %}
+<section class="due upnext" aria-labelledby="up-h">
+  <span class="small muted">{% if up.in_class %}{{ tr("In class now") }}{% else %}{{ tr("Up next") }}{% endif %} · {{ up.chapter|inpart }}{{ tr("Chapter") }} {{ up.chapter.no }}: {{ up.chapter.title }}</span>
+  <h2 id="up-h">{{ up.topic.title }}</h2>
+  <div class="row small muted">{{ path_dots(up.topic.path_done, up.topic.path_total) }} {{ tr("Step {n} of {m}: {name}", n=up.step.no, m=up.topic.path_total, name=tr(up.step.name)) }}</div>
+  <a class="btn block" href="{{ up.step.url }}">{% if up.resume %}{{ tr("Continue") }}{% else %}{{ tr("Start") }}{% endif %}: {{ tr(up.step.name) }}</a>
+</section>
+{% elif not soon %}
+<section class="card"><h2>{{ tr("All caught up!") }}</h2><p class="muted small">{{ tr("Nothing due, and every topic is finished. Revise anything from Learn.") }}</p></section>
+{% endif %}
+
+{% if daily %}
+<a class="daily{{ ' done' if daily.done }}" href="/student/daily" {% if daily.done %}aria-disabled="true"{% endif %}>
+  <span class="stack-sm" style="gap:2px"><b>{{ tr("Daily 5") }}</b><span class="small">{% if daily.done %}{{ tr("Done for today ✓") }}{% else %}{{ tr("5 quick questions · about 3 minutes") }}{% endif %}</span></span>
+  <span class="small">{% if daily.streak %}🔥 {{ daily.streak }} day{{ "s" if daily.streak != 1 }}{% endif %}{% if not daily.done %} <span class="pill warn">{{ tr("Start") }}</span>{% endif %}</span></a>
+{% endif %}
+
+{% if fresh %}
+<section class="stack-sm" aria-labelledby="new-h">
+  <h2 id="new-h">{{ tr("New results") }}</h2>
+  {% for r in fresh %}
+  <a class="topic-row" href="/student/results/{{ r.id }}">
+    <span class="stack-sm" style="gap:2px"><span class="row" style="gap:6px">{{ subject_tag(r.subject, r.colour) }}<b>{{ r.title }}</b></span>
+      <span class="small muted">{{ r.right }} of {{ r.total }} right · {% if r.change is none %}Your first result in {{ r.subject }}{% elif r.change > 0 %}<span class="up">▲ {{ r.change }}</span> from last time{% elif r.change < 0 %}<span class="down">▼ {{ -r.change }}</span> from last time{% else %}Same as last time{% endif %}</span></span>
+    <span class="score-chip">{{ r.pct }}%</span></a>
+  {% endfor %}
+</section>
+{% endif %}
+
+{% if to_fix or exam %}
+<section class="stack-sm" aria-label="{{ tr('Also for you') }}">
+  {% if exam %}<a class="topic-row" href="/student/exams/{{ exam.id }}"><span class="stack-sm" style="gap:2px"><b>📅 {{ exam.title }}</b><span class="small muted">{% if exam.days_left == 0 %}Today{% elif exam.days_left == 1 %}Tomorrow{% else %}In {{ exam.days_left }} days{% endif %} · see today's revision</span></span><span class="pill l2">{{ tr("Revise") }}</span></a>{% endif %}
+  {% if to_fix %}<a class="topic-row" href="/student/mistakes"><span class="stack-sm" style="gap:2px"><b>{{ tr("My mistakes") }}</b><span class="small muted">{{ to_fix }} question{{ "s" if to_fix != 1 }} to get right</span></span><span class="pill l1">{{ tr("Redo") }}</span></a>{% endif %}
+</section>
+{% endif %}
+{% endblock %}

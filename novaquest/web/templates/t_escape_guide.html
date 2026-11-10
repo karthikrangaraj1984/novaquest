@@ -1,0 +1,24 @@
+{% extends "staff.html" %}
+{# Answer guide for one escape room, for the teacher before class. #}
+{% block title %}Guide: {{ room.title }}{% endblock %}
+{% block main %}
+<div class="stack-sm" style="gap:4px">{% if admin_view %}<a class="small" href="/admin/books/{{ book.id }}#escape">← {{ book.title }}</a>
+  {% else %}<a class="small" href="{{ '/leader' if actor.role == 'leader' else '/teacher/classes' }}">← {{ "Overview" if actor.role == "leader" else "Classes" }}</a>{% endif %}
+  <span class="muted small">Escape room · {{ book.label }} · Chapter {{ no }} · door code {{ code }}</span><h1>{{ room.title }}</h1></div>
+{% if admin_view and room.status == "draft" %}<div class="note warn row-between"><span><b>Drafted by Claude, not yet approved.</b> Check the science and answers below; students and teachers see it once approved.</span>
+  <form method="post" action="/admin/books/{{ book.id }}/escape_approve"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="chapter" value="{{ no }}"><button class="btn small" type="submit">Approve this room</button></form></div>{% endif %}
+<p class="story">{{ room.story }}</p>
+{% for lk in locks %}
+<section class="card stack-sm" aria-labelledby="l{{ lk.no }}">
+  <div class="row-between"><h2 id="l{{ lk.no }}">Lock {{ lk.no }}: {{ lk.title }}</h2><span class="pill ai">{{ lk.skill_name }}</span></div>
+  <p class="small">{{ lk.intro }}</p>
+  {% if lk.kind == "evidence" %}<p class="small"><b>NOVA ({{ lk.confidence }}):</b> “{{ lk.claim }}”</p>{% endif %}
+  {% if lk.kind == "pattern" %}<p class="small"><b>Question:</b> {{ lk.question }}</p>{% endif %}
+  <p class="note ok small"><b>Answer:</b> {{ lk.answer_text }}</p>
+  {% if lk.trap %}<p class="small"><b>Clues that fool NOVA on their own:</b> {{ lk.trap|join(", ") }}</p>{% endif %}
+  <p class="small"><b>Hint students can ask for:</b> {{ lk.hint }}</p>
+  <p class="small"><b>What it teaches:</b> {{ lk.learn }}</p>
+</section>
+{% endfor %}
+<p class="small muted">Class discussion idea: after students escape, ask them where they've seen an AI make a mistake like NOVA's, and how they could check it.</p>
+{% endblock %}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"outer_ear":[60,110],"canal":[150,150],"eardrum":[214,150],"bones":[244,138],"cochlea":[300,170],"nerve":[352,128]}'>
+<path d="M90 40 C30 40 20 110 46 150 C60 172 60 210 40 240 C64 262 104 250 110 214 C116 186 112 172 120 160" fill="#F5D0B5" stroke="#8A5A3B" stroke-width="4"/>
+<path d="M90 40 C130 44 140 90 120 160" fill="none" stroke="#8A5A3B" stroke-width="4"/>
+<path d="M112 140 H210 V160 H112 Z" fill="#FFE0CC" stroke="#8A5A3B" stroke-width="3"/>
+<path d="M212 124 Q220 150 212 176" stroke="#E0541A" stroke-width="6" fill="none"/>
+<g fill="#E0E0E0" stroke="#616161" stroke-width="2"><path d="M220 140 l14 -8 l6 6 l-14 10z"/><path d="M240 134 l12 2 l-2 12 l-12 -2z"/><path d="M252 142 l14 6 l-4 8 l-12 -6z"/></g>
+<path d="M286 150 c30 -10 40 30 16 40 c-20 8 -30 -18 -12 -24 c10 -4 16 8 8 12" fill="none" stroke="#7448C8" stroke-width="7" stroke-linecap="round"/>
+<path d="M318 150 Q340 130 380 120" stroke="#F6B26B" stroke-width="6" fill="none"/>
+<g fill="none" stroke="#2B4BD8" stroke-width="2.5"><path d="M10 140 q6 10 0 20"/><path d="M22 132 q10 18 0 36"/></g>
+</svg>

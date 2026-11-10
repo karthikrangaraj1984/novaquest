@@ -1,0 +1,37 @@
+{# Assignment header: where it is in its life (Draft → Scheduled → Open → Closed → Released), the ONE thing to do next,
+   and two tabs: Questions and Results (UX-1). #}
+{% macro assign_head(a, tab, kinds, pending=0, show_action=True, csrf="") -%}
+{% set order = ["draft", "scheduled", "open", "closed", "reviewed"] %}
+{% set names = {"draft": "Draft", "scheduled": "Scheduled", "open": "Open", "closed": "Closed", "reviewed": "Results released"} %}
+{% set cur = order.index(a.live_state) %}
+<div class="assign-head">
+  {% if actor.role == "teacher" %}<a class="small" href="/teacher/assignments">← Assignments</a>{% else %}<a class="small" href="/leader/classes/{{ a.class_id }}">← Class {{ a.class_label }}</a>{% endif %}
+  <div class="row-between" style="align-items:flex-start">
+    <div class="stack-sm" style="gap:4px">
+      <h1>{{ a.title }}</h1>
+      <span class="muted small">{{ kinds.get(a.kind, a.kind) }} · Class {{ a.class_label }}{% if a.expires_at %} · {% if a.live_state in ("draft", "scheduled", "open") %}Closes{% else %}Closed{% endif %} {{ a.expires_at|ist }}{% endif %}</span>
+    </div>
+    {% if show_action and actor.role == "teacher" %}
+    <div class="primary-action">
+      {% if a.live_state == "draft" and pending %}
+        <form method="post" action="/teacher/assignments/{{ a.id }}/approve-all"><input type="hidden" name="csrf" value="{{ csrf }}">
+          <button class="btn" type="submit">Approve all {{ pending }} question{{ 's' if pending > 1 }}</button></form>
+      {% elif a.live_state == "draft" %}<a class="btn" href="#sch-h">Schedule it</a>
+      {% elif a.live_state == "scheduled" %}<span class="pill l0">Opens {{ a.opens_at|ist }}</span>
+      {% elif a.live_state == "open" %}<a class="btn" href="/teacher/assignments/{{ a.id }}/review">See answers so far</a>
+      {% elif a.live_state == "closed" %}<a class="btn" href="/teacher/assignments/{{ a.id }}/review">Check and release results</a>
+      {% else %}<a class="btn ghost" href="/teacher/assignments/{{ a.id }}/review">View results</a>{% endif %}
+    </div>
+    {% endif %}
+  </div>
+  <ol class="stages" aria-label="Stage">
+    {% for s in order %}<li class="{{ 'done' if loop.index0 < cur else ('now' if loop.index0 == cur else '') }}"{% if loop.index0 == cur %} aria-current="step"{% endif %}><span class="sd">{{ '✓' if loop.index0 < cur else loop.index }}</span>{{ names[s] }}</li>{% endfor %}
+  </ol>
+  <nav class="tabs" aria-label="{{ a.title }}">
+    <a href="/teacher/assignments/{{ a.id }}?view=questions" {% if tab == "questions" %}aria-current="page"{% endif %}>Questions</a>
+    {% if a.live_state in ("draft", "scheduled") %}<span class="off" title="Results appear once it opens">Results</span>
+    {% else %}<a href="/teacher/assignments/{{ a.id }}/review" {% if tab == "results" %}aria-current="page"{% endif %}>Results</a>{% endif %}
+    {% if a.kind not in ("learn", "teach") %}<span class="tabs-extra"><a href="/teacher/assignments/{{ a.id }}/worksheet">🖨 Print worksheet</a><a href="/teacher/assignments/{{ a.id }}/present">📽 Show on projector</a>{% if a.state != "draft" and actor.role == "teacher" %}<a href="/teacher/assignments/{{ a.id }}/paper">📷 Paper work</a>{% endif %}</span>{% endif %}
+  </nav>
+</div>
+{%- endmacro %}

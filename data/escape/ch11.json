@@ -1,0 +1,201 @@
+{
+ "chapter": 11,
+ "title": "The Pressure Chamber",
+ "story": "You and NOVA are testing a robot arm in the physics lab's pressure chamber when the hatch seals shut. NOVA must understand forces and pressure before the hatch will open.",
+ "escaped": "The hatch hisses open. NOVA now sorts forces correctly, separates weight from pressure and checks its claims about air.",
+ "locks": [
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "11.6",
+   "title": "Contact or non-contact force?",
+   "intro": "NOVA must sort forces into contact forces and non-contact forces. Choose its clues.",
+   "labels": [
+    "Contact force",
+    "Non-contact force"
+   ],
+   "features": [
+    {
+     "key": "touch",
+     "text": "Acts only when objects touch"
+    },
+    {
+     "key": "pulls",
+     "text": "Pulls things"
+    },
+    {
+     "key": "living",
+     "text": "Needs a person or animal"
+    }
+   ],
+   "train": [
+    {
+     "name": "Pushing a box",
+     "label": 0,
+     "f": {
+      "touch": 1,
+      "pulls": 0,
+      "living": 1
+     }
+    },
+    {
+     "name": "Friction slowing a ball",
+     "label": 0,
+     "f": {
+      "touch": 1,
+      "pulls": 0,
+      "living": 0
+     }
+    },
+    {
+     "name": "A magnet pulling a pin",
+     "label": 1,
+     "f": {
+      "touch": 0,
+      "pulls": 1,
+      "living": 0
+     }
+    },
+    {
+     "name": "The Earth pulling an apple down",
+     "label": 1,
+     "f": {
+      "touch": 0,
+      "pulls": 1,
+      "living": 0
+     }
+    },
+    {
+     "name": "A charged comb pulling bits of paper",
+     "label": 1,
+     "f": {
+      "touch": 0,
+      "pulls": 1,
+      "living": 0
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "Pulling a rope in tug of war",
+     "label": 0,
+     "f": {
+      "touch": 1,
+      "pulls": 1,
+      "living": 1
+     }
+    },
+    {
+     "name": "A magnet pushing another magnet away",
+     "label": 1,
+     "f": {
+      "touch": 0,
+      "pulls": 0,
+      "living": 0
+     }
+    }
+   ],
+   "hint": "A tug of war is a pull. A magnet can push. What really separates the two groups?",
+   "learn": "In NOVA's examples every non-contact force pulled, so 'pulls' looked like a good clue. New cases broke it. The defining clue, whether the objects must touch, works every time."
+  },
+  {
+   "kind": "pattern",
+   "skill": "cause",
+   "topic": "11.8",
+   "title": "Why did the brick sink more?",
+   "intro": "The same brick was put on soft sand twice: once lying flat and once standing on its end.",
+   "table": {
+    "cols": [
+     "Brick position",
+     "Area touching the sand",
+     "How deep it sank"
+    ],
+    "rows": [
+     [
+      "Lying flat",
+      "Large",
+      "Shallow"
+     ],
+     [
+      "Standing on end",
+      "Small",
+      "Deep"
+     ],
+     [
+      "Lying flat again",
+      "Large",
+      "Shallow"
+     ]
+    ]
+   },
+   "question": "NOVA says: 'It sank deeper the second time because the brick was heavier.' What is the honest explanation?",
+   "options": [
+    "NOVA is right: the brick got heavier.",
+    "It was the same brick with the same weight; the force pressed on a smaller area, so the pressure was greater.",
+    "Sand is softer when it is cold.",
+    "Bricks sink at random."
+   ],
+   "answer": 1,
+   "hint": "What changed between the tries, and what stayed the same?",
+   "learn": "NOVA blamed something that hadn't changed. Look for what actually changed (the area) and connect it to the rule: pressure is force divided by area."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "11.10",
+   "title": "Check NOVA's claim about air",
+   "intro": "NOVA explains air pressure. Is it right? Decide and pick the fact that settles it.",
+   "claim": "Air doesn't press on us at all; we would feel it if it did.",
+   "confidence": "91% sure",
+   "verdict": 1,
+   "evidence": [
+    "Air presses on us with great force; we aren't crushed because the pressure inside our bodies balances it.",
+    "Friction opposes motion.",
+    "Liquids press on the walls of their container.",
+    "A force can change the shape of an object."
+   ],
+   "right": 0,
+   "hint": "Why don't we feel the air pressing on us?",
+   "learn": "'I would feel it' is a guess, not evidence. Science explains why we don't notice air pressure, and an AI should rely on that explanation, not on what seems obvious."
+  },
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "11.4",
+   "title": "Fix NOVA's force effects",
+   "intro": "NOVA has written what each force does. Tick the ones that are wrong.",
+   "rows": [
+    {
+     "item": "Kicking a rolling ball",
+     "label": "Changes its speed or direction"
+    },
+    {
+     "item": "Pressing a lump of dough",
+     "label": "Changes its shape"
+    },
+    {
+     "item": "Squeezing a sponge",
+     "label": "Changes its shape"
+    },
+    {
+     "item": "Pushing a wall that doesn't move",
+     "label": "Changes its speed",
+     "wrong": true,
+     "why": "the wall doesn't move: its motion doesn't change"
+    },
+    {
+     "item": "Catching a ball",
+     "label": "Changes its state of motion (stops it)"
+    },
+    {
+     "item": "Stretching a rubber band",
+     "label": "Changes its speed",
+     "wrong": true,
+     "why": "stretching changes its shape"
+    }
+   ],
+   "hint": "Did the object start moving, stop, speed up or turn? Or did its shape change?",
+   "learn": "Wrong descriptions in the training data would leave NOVA confused about what forces do. Checking examples against what really happened keeps the data honest."
+  }
+ ]
+}

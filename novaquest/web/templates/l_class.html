@@ -1,0 +1,61 @@
+{% extends "staff.html" %}
+{% from "_class.html" import class_head with context %}
+{# A read-only page for one class, for the principal (DB-9): figures, term plan, weakest topics, work set, AI skills
+   and students, each leading to the detailed page. #}
+{% block title %}Class {{ c.label }}{% endblock %}
+{% block main %}
+{{ class_head(c.id, c.label, c.students, "summary") }}
+<p class="muted small">Teacher{{ "s" if "," in c.teachers }}: {{ c.teachers }} · last student activity {{ c.last_active|ago }}</p>
+<section class="grid" aria-label="Key numbers">
+  <div class="kpi"><span class="k">Active this week</span><span class="v">{{ c.active_pct }}%</span><span class="d">{{ c.active_week }} of {{ c.students }} students</span></div>
+  <div class="kpi"><span class="k">Understanding (4 weeks)</span>{% if c.understanding is not none %}<span class="v" style="color:var(--primary-dark)">{{ c.understanding|pct }}</span>{% else %}<span class="v small-v muted">Not enough data</span><span class="d">{{ c.measured }} of {{ min }}+ students needed</span>{% endif %}</div>
+  <div class="kpi"><span class="k">Handed in on time</span>{% if c.on_time is not none %}<span class="v">{{ c.on_time|pct }}</span><span class="d">over {{ c.closed }} closed</span>{% else %}<span class="v small-v muted">None closed yet</span>{% endif %}</div>
+  <div class="kpi"><span class="k">Escape rooms</span><span class="v">{{ escapes }}</span><span class="d">escaped · {{ c.rooms.players }} students played</span></div>
+</section>
+
+<section class="card stack-sm" id="plan" aria-labelledby="plan-h"><h2 id="plan-h">Term plan</h2>
+  {% for b in books %}
+    {% if books|length > 1 %}<h3>{{ b.book.subject }} ({{ b.book.board }})</h3>{% endif %}
+    {% if b.plan %}
+    <p class="small">{% if b.plan.behind %}<span class="pill warn">{{ b.plan.behind|length }} chapter{{ "s" if b.plan.behind|length != 1 }} behind</span>{% else %}<span class="pill ok">On track</span>{% endif %}
+      {% if b.plan.now %} · In class now: {% for x in b.plan.now %}Ch {{ x.code }} {{ x.title }}{% if not loop.last %}; {% endif %}{% endfor %}{% endif %}</p>
+    <div class="table-wrap"><table class="cards"><thead><tr><th scope="col">Chapter</th><th scope="col">Dates</th><th scope="col">Practised</th></tr></thead>
+      <tbody>{% for ch in b.plan.chapters if ch.state %}<tr class="{{ 'plan-behind' if ch.behind }}"><th scope="row" class="wide">{{ ch|inpart }}{{ ch.code }}. {{ ch.title }}{% if ch.state == "now" %} <span class="pill l2">Now</span>{% elif ch.behind %} <span class="pill warn">Behind</span>{% endif %}</th>
+        <td data-label="Dates">{{ ch.starts_on.strftime("%d %b") }} – {{ ch.ends_on.strftime("%d %b") }}</td><td data-label="Practised">{{ ch.practised }}%</td></tr>{% endfor %}</tbody></table></div>
+    {% else %}<p class="small muted">No term plan yet. The class teacher sets it under Classes → Term plan.</p>{% endif %}
+  {% endfor %}
+</section>
+
+<div class="cols">
+  <section class="main stack">
+    <section class="card stack-sm" id="topics" aria-labelledby="wk-h"><h2 id="wk-h">Weakest topics</h2>
+      {% for t in weakest %}<div class="row-between small"><span>{{ t.code }} {{ t.title }}</span><b>{{ (100 * t.avg_score|float)|round|int }}%</b></div>
+      {% else %}<p class="small muted">Shown once students have scores.</p>{% endfor %}
+      <a class="small" href="/teacher/classes/{{ c.id }}/mastery">See who needs help with what →</a></section>
+    <section class="card stack-sm" id="work" aria-labelledby="work-h"><h2 id="work-h">Work set</h2>
+      {% for a in work %}<a class="topic-row" href="/teacher/assignments/{{ a.id }}/review"><span>{{ a.title }}<br><span class="small muted">{{ a.teacher }} · {% if a.closed %}closed{% else %}closes{% endif %} {{ a.expires_at|ist("%d %b") }}</span></span><span class="small">{{ a.submitted }} of {{ a.targets }} handed in</span></a>
+      {% else %}<p class="small muted">No work set yet.</p>{% endfor %}</section>
+  </section>
+  <aside class="aside stack">
+    <section class="card stack-sm" id="growth" aria-labelledby="gr-h"><h2 id="gr-h">Learning growth</h2>
+      {% for g in growth %}<div class="stack-sm" style="gap:2px"><b class="small">{{ g.book.subject }}</b>
+        {% if g.summary %}<span class="small">{{ g.summary.baseline }}% at the start of term → {{ g.summary.latest }}% in {{ g.summary.latest_title }} <b style="color:{{ 'var(--ok-ink)' if g.summary.change > 0 else 'var(--warn-ink)' }}">({{ "%+d"|format(g.summary.change) }} points)</b> · {{ g.summary.n }} students</span>
+        {% else %}<span class="small muted">Start of term: {{ g.baseline_avg }}%. Growth shows after the first progress check.</span>{% endif %}</div>
+      {% else %}<p class="small muted">No start-of-term check yet. Teachers set one from the class's Growth tab.</p>{% endfor %}
+      <a class="small" href="/teacher/classes/{{ c.id }}/growth">Growth for this class →</a></section>
+    <section class="card stack-sm" id="ai" aria-labelledby="ai-h"><h2 id="ai-h">AI skills</h2>
+      {% for s in skills %}<div class="row-between small"><span>{{ s.name }}</span>{% if s.enough %}<b>{{ s.avg }}%</b>{% else %}<span class="muted">{% if s.students %}{{ s.students }} played{% else %}Not tried{% endif %}</span>{% endif %}</div>{% endfor %}
+      <span class="tiny muted">A skill's figure shows once {{ min }}+ students have opened its locks.</span>
+      <a class="small" href="/teacher/classes/{{ c.id }}/escape">Escape rooms for this class →</a></section>
+  </aside>
+</div>
+
+<section class="card stack-sm" aria-labelledby="st-h"><h2 id="st-h">Students</h2>
+  <div class="table-wrap"><table class="cards"><thead><tr><th scope="col">Roll</th><th scope="col">Student</th><th scope="col">Mastered · practised · learning</th><th scope="col">Missed</th><th scope="col">Rooms escaped</th><th scope="col">Last signed in</th></tr></thead>
+    <tbody>{% for s in students %}<tr><td class="roll">{{ s.roll_no }}</td><th scope="row"><a href="/teacher/students/{{ s.id }}">{{ s.name }}</a></th>
+      <td data-label="Topics">{{ s.mastered }} · {{ s.practised }} · {{ s.learning }}</td>
+      <td data-label="Missed">{% if s.missed >= missed_alert %}<b class="warn-text">{{ s.missed }}</b>{% else %}{{ s.missed }}{% endif %}</td>
+      <td data-label="Rooms escaped">{{ s.escaped }}</td><td data-label="Last signed in">{{ s.last_login_at|ago }}</td></tr>
+    {% else %}<tr><td colspan="6" class="muted">No students yet.</td></tr>{% endfor %}</tbody></table></div>
+</section>
+{% endblock %}

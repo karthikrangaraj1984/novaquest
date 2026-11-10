@@ -1,0 +1,36 @@
+{% extends "staff.html" %}
+{# Check what was read from a student's paper answers, then mark (1.21.0). #}
+{% block title %}Paper work: {{ v.scan.name }}{% endblock %}
+{% block main %}
+<div class="stack-sm" style="gap:2px"><a class="small" href="/teacher/assignments/{{ v.assignment.id }}/paper">← Paper work: {{ v.assignment.title }}</a><h1>{{ v.scan.roll_no }}. {{ v.scan.name }}</h1></div>
+{% set marked = v.scan.status == "marked" %}
+{% if v.scan.error %}<div class="note warn small">{{ v.scan.error }}</div>{% endif %}
+{% if v.scan.status == "reading" %}<div class="note small" role="status">Claude is reading the handwriting. This page shows the answers when it's done (about a minute).</div>{% endif %}
+<div class="cols">
+  <section class="main card stack-sm" aria-labelledby="ans-h">
+    <h2 id="ans-h">{{ "Answers as marked" if marked else ("Check what Claude read" if v.scan.read_by == "claude" else "Type the answers from the photos") }}</h2>
+    {% if not marked and v.scan.read_by == "claude" %}<p class="small muted">Claude typed what the student wrote, without correcting it. Fix anything it misread. <b>Unclear</b> answers are marked for you to check again after marking unless you tick “Read correctly”.</p>{% endif %}
+    <form method="post" action="/teacher/paper/{{ v.scan.id }}" class="stack">
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      {% for q in v.questions %}
+      <fieldset class="stack-sm paperq"{% if marked %} disabled{% endif %}><legend><b>Q{{ q.no }}.</b> {{ q.prompt }}</legend>
+        {% if q.options %}
+          <div class="row" style="gap:6px">{% for l, o in q.letters %}<label class="choice small"><input type="radio" name="q{{ q.id }}" value="{{ loop.index0 }}" {% if q.read.index == loop.index0 %}checked{% endif %}>{{ l }}. {{ o }}</label>{% endfor %}
+            <label class="choice small"><input type="radio" name="q{{ q.id }}" value="" {% if q.read.index is not defined or q.read.index is none %}checked{% endif %}>Not answered</label></div>
+        {% else %}
+          <label class="sr-only" for="a{{ q.id }}">Answer to question {{ q.no }}</label>
+          {% if q.kind == "numeric" %}<input id="a{{ q.id }}" name="q{{ q.id }}" type="text" inputmode="decimal" value="{{ q.read.text or '' }}">
+          {% else %}<textarea id="a{{ q.id }}" name="q{{ q.id }}" style="min-height:70px">{{ q.read.text or "" }}</textarea>{% endif %}
+        {% endif %}
+        {% if q.read.unclear and not marked %}<label class="check-row small"><span class="pill warn">Unclear</span><input type="checkbox" name="ok{{ q.id }}" value="1">Read correctly</label>{% endif %}
+      </fieldset>
+      {% endfor %}
+      {% if not marked and v.scan.status != "reading" %}<button class="btn" type="submit" data-busy="Marking…">Mark this work</button>
+      <span class="tiny muted">Marked like online work; it goes into the assignment's results for you to review and release.</span>{% endif %}
+    </form>
+  </section>
+  <aside class="aside stack" aria-label="Photos">
+    {% for n in range(1, v.scan.pages + 1) %}<a href="/teacher/paper/{{ v.scan.id }}/page/{{ n }}" target="_blank" rel="noopener" class="card paperpage"><img src="/teacher/paper/{{ v.scan.id }}/page/{{ n }}" alt="Page {{ n }} of {{ v.scan.name }}'s answers" loading="lazy"><span class="tiny muted">Page {{ n }} · open full size</span></a>{% endfor %}
+  </aside>
+</div>
+{% endblock %}

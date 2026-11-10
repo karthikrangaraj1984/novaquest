@@ -1,0 +1,1172 @@
+{
+ "10.1": {
+  "crux": "Adolescence is the time, roughly from 11 to 18 or 19 years, when the body changes towards adulthood; puberty is the main change that makes it able to reproduce.",
+  "cards": [
+   {
+    "title": "Growing up in stages",
+    "pic": {
+     "kind": "segments",
+     "ticks": [
+      "0",
+      "11",
+      "18–19",
+      ""
+     ],
+     "items": [
+      {
+       "name": "Childhood",
+       "color": "sky"
+      },
+      {
+       "name": "Adolescence",
+       "note": "The teenage years",
+       "color": "amber"
+      },
+      {
+       "name": "Adulthood",
+       "color": "green"
+      }
+     ]
+    },
+    "say": [
+     "Adolescence is the period between childhood and adulthood.",
+     "Because it covers ages 13 to 19 ('teens'), it is often called teenage."
+    ]
+   },
+   {
+    "title": "Puberty",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🌱",
+       "text": "Puberty begins: the body starts changing"
+      },
+      {
+       "icon": "📏",
+       "text": "Many changes in size, shape, voice and feelings"
+      },
+      {
+       "icon": "🌳",
+       "text": "Puberty ends when the body can reproduce"
+      }
+     ]
+    },
+    "say": [
+     "Puberty is the most important change of adolescence.",
+     "It may start a year or two earlier in girls than in boys."
+    ],
+    "remember": "Adolescence = the years of change; puberty = the changes that make the body able to reproduce."
+   },
+   {
+    "title": "Everyone is different",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "⏱️",
+       "text": "Different timing",
+       "sub": "Changes start at different ages"
+      },
+      {
+       "icon": "🚀",
+       "text": "Different speed",
+       "sub": "Some grow fast, some slowly"
+      },
+      {
+       "icon": "💬",
+       "text": "Talk about it",
+       "sub": "Ask parents, teachers or a doctor"
+      }
+     ]
+    },
+    "say": [
+     "There's no single 'right' age for these changes.",
+     "It is normal for friends to change at different times."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Adolescence is roughly ages 11 to 18 or 19.",
+   "Puberty is the set of changes that make the body able to reproduce.",
+   "These changes happen at different times for different people."
+  ],
+  "quiz": [
+   {
+    "q": "Puberty ends when…",
+    "options": [
+     "The body becomes able to reproduce",
+     "A child turns 5",
+     "Growth stops forever",
+     "School ends"
+    ],
+    "answer": 0,
+    "why": "Puberty ends when reproductive maturity is reached."
+   },
+   {
+    "q": "Why is adolescence also called 'teenage'?",
+    "options": [
+     "It covers the years ending in 'teen'",
+     "Only teens go to school",
+     "It lasts ten years exactly",
+     "It starts at age ten"
+    ],
+    "answer": 0,
+    "why": "Thirteen to nineteen are the 'teen' years."
+   }
+  ]
+ },
+ "10.2": {
+  "crux": "At puberty you grow taller, your body shape and voice change, sweat and oil glands become more active, and you mature in mind and feelings too.",
+  "cards": [
+   {
+    "title": "Changes at puberty",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "📏",
+       "text": "Grow taller",
+       "sub": "Long bones of the arms and legs grow"
+      },
+      {
+       "icon": "🧍",
+       "text": "Body shape changes",
+       "sub": "Boys' shoulders broaden; girls' hips widen"
+      },
+      {
+       "icon": "🗣️",
+       "text": "Voice changes",
+       "sub": "The voice box grows"
+      },
+      {
+       "icon": "💧",
+       "text": "More sweat and oil",
+       "sub": "Can cause pimples"
+      },
+      {
+       "icon": "🧠",
+       "text": "Mind matures",
+       "sub": "Thinking and feelings develop"
+      }
+     ]
+    },
+    "say": [
+     "The sudden increase in height is one of the most noticeable changes.",
+     "At first, arms and legs may seem out of proportion; the body catches up soon."
+    ]
+   },
+   {
+    "title": "The voice box",
+    "pic": {
+     "kind": "scene",
+     "scene": "larynx",
+     "labels": [
+      {
+       "at": "larynx",
+       "name": "Larynx (voice box)",
+       "note": "Grows bigger at puberty"
+      },
+      {
+       "at": "vocal_cords",
+       "name": "Vocal cords"
+      },
+      {
+       "at": "windpipe",
+       "name": "Windpipe"
+      }
+     ]
+    },
+    "say": [
+     "In boys the voice box grows larger and can be seen as a bump on the throat called the Adam's apple.",
+     "Boys' voices become deeper; girls' voices stay high-pitched."
+    ],
+    "remember": "Adam's apple = a bigger voice box."
+   },
+   {
+    "title": "Pimples are common",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "💧",
+       "text": "Sweat and oil glands become more active"
+      },
+      {
+       "icon": "😣",
+       "text": "Many young people get pimples (acne)"
+      },
+      {
+       "icon": "🧼",
+       "text": "Wash your face regularly to keep skin clean"
+      }
+     ]
+    },
+    "say": [
+     "Pimples are a normal part of growing up."
+    ]
+   },
+   {
+    "title": "Organs and feelings",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🌱",
+       "text": "Sex organs develop",
+       "sub": "Testes and penis in boys; ovaries enlarge in girls"
+      },
+      {
+       "icon": "💭",
+       "text": "Mental and emotional growth",
+       "sub": "Adolescents become more independent"
+      }
+     ]
+    },
+    "say": [
+     "Adolescents may feel unsure at times. Talking to trusted adults helps."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Height increases and body shape changes.",
+   "The voice box grows: boys develop an Adam's apple and a deeper voice.",
+   "Sweat and oil glands become active; the mind and feelings mature too."
+  ],
+  "quiz": [
+   {
+    "q": "The Adam's apple is…",
+    "options": [
+     "A larger voice box seen in boys' throats",
+     "A fruit",
+     "A bone in the arm",
+     "A gland in the brain"
+    ],
+    "answer": 0,
+    "why": "At puberty boys' larynx grows and shows as a bump on the throat."
+   },
+   {
+    "q": "Why do many adolescents get pimples?",
+    "options": [
+     "Oil and sweat glands become more active",
+     "They eat apples",
+     "They grow taller",
+     "Their voice changes"
+    ],
+    "answer": 0,
+    "why": "More active oil glands can block the skin and cause acne."
+   }
+  ]
+ },
+ "10.3": {
+  "crux": "Secondary sexual characters, like a beard in boys and breasts in girls, help tell males and females apart; hormones testosterone and estrogen cause them.",
+  "cards": [
+   {
+    "title": "Secondary sexual characters",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Boys",
+       "icon": "👦",
+       "cells": [
+        "Moustache and beard",
+        "Hair on chest, armpits, pubic area",
+        "Deeper voice"
+       ]
+      },
+      {
+       "head": "Girls",
+       "icon": "👧",
+       "cells": [
+        "Breasts develop",
+        "Hair in armpits and pubic area",
+        "Wider hips"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "These features help us distinguish a male from a female.",
+     "They are called secondary sexual characters."
+    ]
+   },
+   {
+    "title": "Hormones cause them",
+    "pic": {
+     "kind": "compare",
+     "rows": [
+      "Made by",
+      "Causes"
+     ],
+     "cols": [
+      {
+       "head": "Testosterone",
+       "icon": "♂️",
+       "cells": [
+        "Testes (male hormone)",
+        "Beard, deep voice and other male features"
+       ]
+      },
+      {
+       "head": "Estrogen",
+       "icon": "♀️",
+       "cells": [
+        "Ovaries (female hormone)",
+        "Breasts and other female features"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Hormones are chemical messengers.",
+     "At puberty the testes and ovaries start making these hormones."
+    ],
+    "remember": "Testosterone in boys; estrogen in girls."
+   },
+   {
+    "title": "Primary and secondary",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "1️⃣",
+       "text": "Primary",
+       "sub": "Reproductive organs themselves"
+      },
+      {
+       "icon": "2️⃣",
+       "text": "Secondary",
+       "sub": "Other features that develop at puberty"
+      }
+     ]
+    },
+    "say": [
+     "Secondary characters are not needed for reproduction itself, but they mark the body's maturity."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Secondary sexual characters develop at puberty and differ in boys and girls.",
+   "Testosterone (from testes) causes male features.",
+   "Estrogen (from ovaries) causes female features."
+  ],
+  "quiz": [
+   {
+    "q": "Which hormone causes boys to grow a beard?",
+    "options": [
+     "Testosterone",
+     "Estrogen",
+     "Insulin",
+     "Thyroxine"
+    ],
+    "answer": 0,
+    "why": "Testosterone, made by the testes, causes male secondary sexual characters."
+   },
+   {
+    "q": "Estrogen is made by the…",
+    "options": [
+     "Ovaries",
+     "Testes",
+     "Pancreas",
+     "Thyroid"
+    ],
+    "answer": 0,
+    "why": "The ovaries make estrogen, the female hormone."
+   }
+  ]
+ },
+ "10.4": {
+  "crux": "Hormones are chemical messengers made by endocrine glands and carried by the blood; the pituitary gland signals the testes and ovaries to start working at puberty.",
+  "cards": [
+   {
+    "title": "Endocrine glands",
+    "pic": {
+     "kind": "scene",
+     "scene": "endocrine",
+     "labels": [
+      {
+       "at": "pituitary",
+       "name": "Pituitary",
+       "note": "Below the brain: controls other glands"
+      },
+      {
+       "at": "thyroid",
+       "name": "Thyroid",
+       "note": "In the neck"
+      },
+      {
+       "at": "adrenal",
+       "name": "Adrenal glands",
+       "note": "On top of the kidneys"
+      },
+      {
+       "at": "pancreas",
+       "name": "Pancreas"
+      },
+      {
+       "at": "ovary_testis",
+       "name": "Ovaries (in females) / Testes (in males)"
+      }
+     ]
+    },
+    "say": [
+     "Endocrine glands release hormones straight into the blood.",
+     "They have no tubes (ducts), so they are also called ductless glands."
+    ]
+   },
+   {
+    "title": "How a hormone works",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🧠",
+       "text": "A gland releases a hormone"
+      },
+      {
+       "icon": "🩸",
+       "text": "The blood carries it around the body"
+      },
+      {
+       "icon": "🎯",
+       "text": "It acts on a particular target organ"
+      }
+     ]
+    },
+    "say": [
+     "A hormone is like a message posted through the bloodstream to one address."
+    ],
+    "remember": "Hormones travel in the blood."
+   },
+   {
+    "title": "Starting puberty",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🧠",
+       "text": "Pituitary gland releases a hormone"
+      },
+      {
+       "icon": "🩸",
+       "text": "It reaches the testes or ovaries"
+      },
+      {
+       "icon": "⚙️",
+       "text": "They begin making testosterone or estrogen"
+      },
+      {
+       "icon": "🌱",
+       "text": "Puberty changes begin"
+      }
+     ]
+    },
+    "say": [
+     "So the pituitary gland is the starter switch for puberty."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Hormones are chemical messengers released into the blood.",
+   "Endocrine (ductless) glands make hormones.",
+   "The pituitary signals the testes and ovaries to make sex hormones."
+  ],
+  "quiz": [
+   {
+    "q": "Which gland is marked '?'",
+    "pic": {
+     "kind": "scene",
+     "scene": "endocrine",
+     "ask": "pituitary"
+    },
+    "options": [
+     "Pituitary",
+     "Thyroid",
+     "Pancreas",
+     "Adrenal"
+    ],
+    "answer": 0,
+    "why": "The pituitary sits just below the brain and controls other glands."
+   },
+   {
+    "q": "How do hormones reach their target organs?",
+    "options": [
+     "Through the blood",
+     "Through the air",
+     "Through the bones",
+     "Through the skin"
+    ],
+    "answer": 0,
+    "why": "Endocrine glands release hormones directly into the bloodstream."
+   }
+  ]
+ },
+ "10.5": {
+  "crux": "In humans the reproductive phase starts at puberty; in women an egg matures about once a month, and if it isn't fertilised the uterus lining is shed in menstruation.",
+  "cards": [
+   {
+    "title": "The reproductive phase",
+    "pic": {
+     "kind": "segments",
+     "ticks": [
+      "",
+      "10–12 yrs",
+      "45–50 yrs",
+      ""
+     ],
+     "items": [
+      {
+       "name": "Childhood",
+       "color": "sky"
+      },
+      {
+       "name": "Reproductive phase",
+       "note": "In women",
+       "color": "pink"
+      },
+      {
+       "name": "After menopause",
+       "color": "grey"
+      }
+     ]
+    },
+    "say": [
+     "In women this phase lasts from about 10–12 years to about 45–50 years.",
+     "In men it usually lasts much longer."
+    ]
+   },
+   {
+    "title": "The monthly cycle",
+    "pic": {
+     "kind": "cycle",
+     "steps": [
+      {
+       "icon": "🥚",
+       "short": "Egg matures",
+       "text": "Every 28 to 30 days, one egg matures and is released by an ovary."
+      },
+      {
+       "icon": "🛏️",
+       "short": "Lining thickens",
+       "text": "The wall of the uterus thickens, ready to receive a fertilised egg."
+      },
+      {
+       "icon": "🩸",
+       "short": "Menstruation",
+       "text": "If the egg isn't fertilised, the egg and thick lining come out with blood."
+      },
+      {
+       "icon": "🔁",
+       "short": "Repeat",
+       "text": "The cycle begins again, controlled by hormones."
+      }
+     ]
+    },
+    "say": [
+     "This monthly flow is called menstruation."
+    ],
+    "remember": "Menarche: first menstruation. Menopause: when it stops."
+   },
+   {
+    "title": "Two milestones",
+    "pic": {
+     "kind": "compare",
+     "rows": [
+      "What",
+      "When"
+     ],
+     "cols": [
+      {
+       "head": "Menarche",
+       "icon": "🌱",
+       "cells": [
+        "The first menstrual flow",
+        "At puberty"
+       ]
+      },
+      {
+       "head": "Menopause",
+       "icon": "🍂",
+       "cells": [
+        "Menstruation stops",
+        "Around 45 to 50 years"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Menstruation is a natural, healthy process.",
+     "Cleanliness during this time is very important."
+    ]
+   }
+  ],
+  "crux_points": [
+   "The reproductive phase begins at puberty.",
+   "About every 28–30 days an egg is released; if not fertilised, menstruation follows.",
+   "Menarche is the first menstruation; menopause is when it stops."
+  ],
+  "quiz": [
+   {
+    "q": "The first menstrual flow is called…",
+    "options": [
+     "Menarche",
+     "Menopause",
+     "Metamorphosis",
+     "Puberty"
+    ],
+    "answer": 0,
+    "why": "Menarche is the first menstruation, at puberty."
+   },
+   {
+    "q": "Menstruation happens when…",
+    "options": [
+     "The egg is not fertilised",
+     "A baby is born",
+     "Puberty ends",
+     "The voice changes"
+    ],
+    "answer": 0,
+    "why": "If the egg isn't fertilised, the thickened lining of the uterus is shed."
+   }
+  ]
+ },
+ "10.6": {
+  "crux": "Every egg carries an X chromosome; the sperm carries either X or Y; X+X gives a girl and X+Y gives a boy, so the father's sperm decides the baby's sex.",
+  "cards": [
+   {
+    "title": "Sex chromosomes",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Female",
+       "icon": "♀️",
+       "cells": [
+        "Two X chromosomes",
+        "XX"
+       ]
+      },
+      {
+       "head": "Male",
+       "icon": "♂️",
+       "cells": [
+        "One X and one Y chromosome",
+        "XY"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Our cells have 23 pairs of chromosomes.",
+     "Two of them, X and Y, are the sex chromosomes."
+    ]
+   },
+   {
+    "title": "Who decides: girl or boy?",
+    "pic": {
+     "kind": "groups",
+     "root": "Egg (always X) meets a sperm",
+     "items": [
+      {
+       "icon": "👧",
+       "name": "Sperm with X",
+       "eg": "X + X = XX → baby girl"
+      },
+      {
+       "icon": "👦",
+       "name": "Sperm with Y",
+       "eg": "X + Y = XY → baby boy"
+      }
+     ]
+    },
+    "say": [
+     "Every egg has an X chromosome.",
+     "A sperm can carry either an X or a Y chromosome."
+    ],
+    "remember": "The father's sperm (X or Y) decides whether the baby is a girl or a boy."
+   },
+   {
+    "title": "Busting a myth",
+    "pic": {
+     "kind": "compare",
+     "cols": [
+      {
+       "head": "Myth",
+       "icon": "❌",
+       "cells": [
+        "The mother decides if the baby is a boy or girl"
+       ]
+      },
+      {
+       "head": "Fact",
+       "icon": "✅",
+       "cells": [
+        "It depends on whether the sperm carries X or Y; the mother can't decide it"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Blaming mothers for the sex of a baby is wrong and unscientific."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Females have XX and males have XY sex chromosomes.",
+   "Every egg has X; a sperm has X or Y.",
+   "X sperm gives a girl (XX), Y sperm gives a boy (XY): the mother is not responsible."
+  ],
+  "quiz": [
+   {
+    "q": "An egg is fertilised by a sperm carrying Y. The baby will be…",
+    "options": [
+     "A boy (XY)",
+     "A girl (XX)",
+     "Either",
+     "Twins"
+    ],
+    "answer": 0,
+    "why": "Egg (X) + sperm (Y) = XY, a boy."
+   },
+   {
+    "q": "Which chromosome does every egg carry?",
+    "options": [
+     "X",
+     "Y",
+     "Both X and Y",
+     "None"
+    ],
+    "answer": 0,
+    "why": "Females are XX, so every egg has an X."
+   }
+  ]
+ },
+ "10.7": {
+  "crux": "Besides sex hormones, endocrine glands make thyroxine (thyroid), insulin (pancreas), adrenalin (adrenal) and growth hormone (pituitary).",
+  "cards": [
+   {
+    "title": "Glands and their hormones",
+    "pic": {
+     "kind": "compare",
+     "rows": [
+      "Thyroid",
+      "Pancreas",
+      "Adrenal",
+      "Pituitary"
+     ],
+     "cols": [
+      {
+       "head": "Hormone",
+       "icon": "🧪",
+       "cells": [
+        "Thyroxine",
+        "Insulin",
+        "Adrenalin",
+        "Growth hormone (and others)"
+       ]
+      },
+      {
+       "head": "If something goes wrong",
+       "icon": "⚠️",
+       "cells": [
+        "Too little thyroxine: goitre",
+        "Too little insulin: diabetes",
+        "Helps us cope with stress",
+        "Affects growth"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Each gland makes its own hormones for particular jobs."
+    ]
+   },
+   {
+    "title": "Where they are",
+    "pic": {
+     "kind": "scene",
+     "scene": "endocrine",
+     "labels": [
+      {
+       "at": "pituitary",
+       "name": "Pituitary",
+       "note": "Growth hormone"
+      },
+      {
+       "at": "thyroid",
+       "name": "Thyroid",
+       "note": "Thyroxine"
+      },
+      {
+       "at": "adrenal",
+       "name": "Adrenal",
+       "note": "Adrenalin"
+      },
+      {
+       "at": "pancreas",
+       "name": "Pancreas",
+       "note": "Insulin"
+      }
+     ]
+    },
+    "say": [
+     "The pituitary also controls the other glands, so it is called the master gland."
+    ]
+   },
+   {
+    "title": "Adrenalin in action",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "😨",
+       "text": "You feel angry, scared or stressed"
+      },
+      {
+       "icon": "💉",
+       "text": "Adrenal glands release adrenalin into the blood"
+      },
+      {
+       "icon": "💓",
+       "text": "Heart beats faster, breathing speeds up: the body is ready to act"
+      }
+     ]
+    },
+    "say": [
+     "Adrenalin helps the body adjust to stress, anger, worry or embarrassment."
+    ],
+    "remember": "Adrenalin = emergency hormone."
+   }
+  ],
+  "crux_points": [
+   "Thyroid makes thyroxine; too little causes goitre.",
+   "Pancreas makes insulin; too little causes diabetes.",
+   "Adrenal glands make adrenalin for stress; the pituitary makes growth hormone and controls other glands."
+  ],
+  "quiz": [
+   {
+    "q": "Which hormone does the pancreas make?",
+    "options": [
+     "Insulin",
+     "Thyroxine",
+     "Adrenalin",
+     "Estrogen"
+    ],
+    "answer": 0,
+    "why": "The pancreas makes insulin; lack of insulin causes diabetes."
+   },
+   {
+    "q": "Goitre is linked to which gland?",
+    "options": [
+     "Thyroid",
+     "Pancreas",
+     "Adrenal",
+     "Ovary"
+    ],
+    "answer": 0,
+    "why": "Goitre happens when the thyroid doesn't make enough thyroxine."
+   }
+  ]
+ },
+ "10.8": {
+  "crux": "Hormones control metamorphosis: in frogs, thyroxine turns a tadpole into an adult, and the thyroid needs iodine in the water to make it.",
+  "cards": [
+   {
+    "title": "Tadpole to frog",
+    "pic": {
+     "kind": "cycle",
+     "steps": [
+      {
+       "icon": "🫧",
+       "short": "Eggs",
+       "text": "Frog eggs are laid in water."
+      },
+      {
+       "icon": "🐟",
+       "short": "Tadpole",
+       "text": "Tadpoles hatch; they swim with tails."
+      },
+      {
+       "icon": "🦵",
+       "short": "Change",
+       "text": "Thyroxine makes legs grow and the tail shrink."
+      },
+      {
+       "icon": "🐸",
+       "short": "Frog",
+       "text": "An adult frog that can live on land."
+      }
+     ]
+    },
+    "say": [
+     "The change from tadpole to frog is metamorphosis.",
+     "It is controlled by the hormone thyroxine."
+    ]
+   },
+   {
+    "title": "Iodine is needed",
+    "pic": {
+     "kind": "equation",
+     "parts": [
+      {
+       "icon": "💧",
+       "text": "Iodine in water",
+       "color": "sky"
+      },
+      "→",
+      {
+       "icon": "🦋",
+       "text": "Thyroid makes thyroxine",
+       "color": "violet"
+      },
+      "→",
+      {
+       "icon": "🐸",
+       "text": "Tadpole becomes frog",
+       "color": "green"
+      }
+     ]
+    },
+    "say": [
+     "If the water lacks iodine, tadpoles can't become adult frogs."
+    ],
+    "remember": "No iodine → no thyroxine → no metamorphosis."
+   },
+   {
+    "title": "Insects too",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🥚",
+       "text": "Egg"
+      },
+      {
+       "icon": "🐛",
+       "text": "Larva (caterpillar)"
+      },
+      {
+       "icon": "🫘",
+       "text": "Pupa"
+      },
+      {
+       "icon": "🦋",
+       "text": "Adult"
+      }
+     ]
+    },
+    "say": [
+     "Insect metamorphosis is also controlled by insect hormones."
+    ]
+   },
+   {
+    "title": "Iodine for people",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🧂",
+       "text": "Iodised salt",
+       "sub": "Gives us the iodine our thyroid needs"
+      },
+      {
+       "icon": "⚠️",
+       "text": "Too little iodine",
+       "sub": "The thyroid can't make enough thyroxine (goitre)"
+      }
+     ]
+    },
+    "say": [
+     "That's why salt sold in India has iodine added to it."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Metamorphosis is the change from larva to adult.",
+   "In frogs, thyroxine controls metamorphosis.",
+   "Thyroxine needs iodine; without iodine tadpoles can't become frogs."
+  ],
+  "quiz": [
+   {
+    "q": "Which hormone turns a tadpole into a frog?",
+    "options": [
+     "Thyroxine",
+     "Insulin",
+     "Adrenalin",
+     "Testosterone"
+    ],
+    "answer": 0,
+    "why": "Thyroxine from the thyroid controls frog metamorphosis."
+   },
+   {
+    "q": "Tadpoles in water without iodine will…",
+    "options": [
+     "Not become adult frogs",
+     "Grow faster",
+     "Turn into fish",
+     "Lay eggs"
+    ],
+    "answer": 0,
+    "why": "Without iodine the thyroid can't make thyroxine."
+   }
+  ]
+ },
+ "10.9": {
+  "crux": "To stay healthy as you grow, eat a balanced diet, keep clean, exercise, and say no to drugs.",
+  "cards": [
+   {
+    "title": "A balanced diet",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🍚",
+       "text": "Carbohydrates",
+       "sub": "Energy: rice, chapati"
+      },
+      {
+       "icon": "🫘",
+       "text": "Proteins",
+       "sub": "Growth: dal, milk, eggs"
+      },
+      {
+       "icon": "🥑",
+       "text": "Fats",
+       "sub": "Energy store"
+      },
+      {
+       "icon": "🥦",
+       "text": "Vitamins, minerals",
+       "sub": "Fruit and vegetables"
+      },
+      {
+       "icon": "🥬",
+       "text": "Iron",
+       "sub": "Leafy vegetables, jaggery, amla"
+      },
+      {
+       "icon": "🥛",
+       "text": "Milk",
+       "sub": "A balanced food"
+      }
+     ]
+    },
+    "say": [
+     "Your body is growing fast, so it needs plenty of good food.",
+     "Iron helps build blood; growing girls especially need iron-rich food."
+    ]
+   },
+   {
+    "title": "Keep clean, keep active",
+    "pic": {
+     "kind": "icons",
+     "items": [
+      {
+       "icon": "🛁",
+       "text": "Bathe every day",
+       "sub": "Sweat glands are more active now"
+      },
+      {
+       "icon": "🧴",
+       "text": "Clean clothes",
+       "sub": "And clean hands and face"
+      },
+      {
+       "icon": "🏃",
+       "text": "Exercise and play",
+       "sub": "Walks and games keep body and mind fit"
+      }
+     ]
+    },
+    "say": [
+     "Girls should take special care of cleanliness during menstruation."
+    ]
+   },
+   {
+    "title": "Say NO to drugs",
+    "pic": {
+     "kind": "flow",
+     "steps": [
+      {
+       "icon": "🚫",
+       "text": "Drugs are addictive: once taken, the body wants more"
+      },
+      {
+       "icon": "💀",
+       "text": "They harm the body and mind"
+      },
+      {
+       "icon": "🦠",
+       "text": "Sharing syringes for drugs can spread HIV, which causes AIDS"
+      }
+     ]
+    },
+    "say": [
+     "If anyone offers you drugs, say no and tell a trusted adult."
+    ],
+    "remember": "Drugs give no benefit, only harm."
+   },
+   {
+    "title": "Myths vs facts",
+    "pic": {
+     "kind": "compare",
+     "rows": [
+      "Belief",
+      "Truth"
+     ],
+     "cols": [
+      {
+       "head": "Myth",
+       "icon": "❌",
+       "cells": [
+        "Girls shouldn't work in the kitchen during menstruation",
+        "The mother decides a baby's sex"
+       ]
+      },
+      {
+       "head": "Fact",
+       "icon": "✅",
+       "cells": [
+        "There is no reason for this",
+        "The father's sperm (X or Y) decides"
+       ]
+      }
+     ]
+    },
+    "say": [
+     "Ask a teacher or doctor if you hear something that worries you."
+    ]
+   }
+  ],
+  "crux_points": [
+   "Eat a balanced diet with protein, iron and vitamins.",
+   "Keep clean and exercise regularly.",
+   "Say no to drugs; they are addictive and harmful."
+  ],
+  "quiz": [
+   {
+    "q": "Which food is rich in iron?",
+    "options": [
+     "Green leafy vegetables",
+     "Fizzy drinks",
+     "Chips",
+     "Sweets"
+    ],
+    "answer": 0,
+    "why": "Leafy vegetables, jaggery and amla are good sources of iron."
+   },
+   {
+    "q": "Why should adolescents say no to drugs?",
+    "options": [
+     "Drugs are addictive and harm body and mind",
+     "Drugs are too cheap",
+     "Drugs make you taller",
+     "Drugs are tasty"
+    ],
+    "answer": 0,
+    "why": "Drugs are addictive and damage health."
+   }
+  ]
+ }
+}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon, flash_msg %}
+{% from "_account.html" import account_menu with context %}
+{% block body %}
+<div class="shell">
+  {# On a phone the menu moves to a bar at the bottom (like the students' app) and this bar carries the bell and account. #}
+  <header class="mtop">
+    <a class="brand" href="/">Nova<b>Quest</b></a>
+    <span class="row" style="gap:8px;flex-wrap:nowrap">
+      {% if actor.role != "platform_admin" %}<a class="bell" href="/notifications" aria-label="Notifications{% if unread %}, {{ unread }} unread{% endif %}">{{ icon("bell") }}{% if unread %}<span class="dot">{{ unread }}</span>{% endif %}</a>{% endif %}
+      {{ account_menu("m") }}
+    </span>
+  </header>
+  <nav class="side{% if actor.role in ('leader', 'platform_admin') %} dark{% endif %}" aria-label="{{ role_names[actor.role] }}">
+    <div class="brand-row"><a class="brand" href="/">Nova<b>Quest</b></a>
+    {% if actor.role != "platform_admin" %}<a class="bell" href="/notifications" aria-label="Notifications{% if unread %}, {{ unread }} unread{% endif %}" {% if nav == "notifications" %}aria-current="page"{% endif %}>{{ icon("bell") }}{% if unread %}<span class="dot">{{ unread }}</span>{% endif %}</a>{% endif %}</div>
+    {% if actor.role == "teacher" %}
+      <a class="nav" href="/teacher" {% if nav == "home" %}aria-current="page"{% endif %}>{{ icon("home") }}Today</a>
+      <a class="nav" href="/teacher/prep" {% if nav in ("syllabus", "plan", "timetable", "teach") %}aria-current="page"{% endif %}>{{ icon("book") }}Teach</a>
+      <a class="nav" href="/teacher/classes" {% if nav in ("students", "progress", "classes") %}aria-current="page"{% endif %}>{{ icon("class") }}Classes</a>
+      <a class="nav" href="/teacher/assignments" {% if nav in ("assignments", "review", "bank") %}aria-current="page"{% endif %}>{{ icon("tasks") }}Assignments</a>
+    {% elif actor.role == "leader" %}
+      <a class="nav" href="/leader" {% if nav == "overview" %}aria-current="page"{% endif %}>{{ icon("chart", "currentColor") }}Overview</a>
+      <a class="nav" href="/teacher/syllabus" {% if nav == "syllabus" %}aria-current="page"{% endif %}>{{ icon("book") }}Syllabus</a>
+      <a class="nav" href="/leader/ai-log" {% if nav == "ailog" %}aria-current="page"{% endif %}>{{ icon("chat") }}AI conversations</a>
+    {% elif actor.role == "inst_admin" %}
+      <a class="nav" href="/admin" {% if nav == "admin" %}aria-current="page"{% endif %}>{{ icon("settings") }}School setup</a>
+      <a class="nav" href="/admin/books" {% if nav == "books" %}aria-current="page"{% endif %}>{{ icon("book") }}Books</a>
+      <a class="nav" href="/leader" {% if nav == "overview" %}aria-current="page"{% endif %}>{{ icon("chart") }}Overview</a>
+      <a class="nav" href="/admin/privacy" {% if nav in ("privacy", "ailog") %}aria-current="page"{% endif %}>{{ icon("check") }}Data protection</a>
+    {% elif actor.role == "platform_admin" %}
+      <a class="nav" href="/platform" {% if nav == "platform" %}aria-current="page"{% endif %}>{{ icon("settings") }}Platform</a>
+    {% endif %}
+
+  </nav>
+  <main id="main" class="work">
+    <div class="topbar">{{ account_menu("d", True) }}</div>
+    {{ flash_msg(flash) }}
+    {% block main %}{% endblock %}
+  </main>
+</div>
+{% endblock %}

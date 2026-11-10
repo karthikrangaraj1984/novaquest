@@ -1,0 +1,69 @@
+{% extends "student.html" %}
+{% from "_path.html" import path_dots %}
+{% from "_icons.html" import level_pill %}
+{% from "_books.html" import book_tabs %}
+{% block title %}Learn{% endblock %}
+{% block heading %}Learn{% endblock %}
+{% block main %}
+{% if cont %}
+<section class="due upnext" aria-labelledby="cont-h">
+  <span class="small muted">{% if cont.resume %}Continue where you left off{% else %}Start here{% endif %} · {% if books|length > 1 %}{{ cont.chapter.book }} · {% endif %}{{ cont.chapter|inpart }}Chapter {{ cont.chapter.no }}</span>
+  <h2 id="cont-h">{{ cont.topic.title }}</h2>
+  <div class="row small muted">{{ path_dots(cont.topic.path_done, cont.topic.path_total) }} {{ tr("Step {n}: {name}", n=cont.step.no, name=tr(cont.step.name)) }}</div>
+  <a class="btn block" href="{{ cont.step.url }}">{% if cont.resume %}Continue{% else %}Start{% endif %}</a>
+</section>
+{% endif %}
+{{ book_tabs(books, book, "/student/learn") }}
+{% for ic in in_class %}
+<a class="card tight inclass" href="{{ '/student/learn/' ~ ic.topic.id if ic.topic else '#ch' ~ ic.chapter.id }}">
+  <span class="pic-cta-art" aria-hidden="true">🏫</span>
+  <span class="stack-sm" style="gap:1px"><span class="small muted">In class now · until {{ ic.ends_on.strftime("%d %b") }}</span>
+    <b>{{ ic.chapter|inpart }}Chapter {{ ic.chapter.no }}: {{ ic.chapter.title }}</b>
+    {% if ic.topic %}<span class="small">{{ "Start" if not ic.topic.started else "Next" }}: {{ ic.topic.title }}</span>{% endif %}</span>
+</a>
+{% endfor %}
+<a class="topic-row pic-short" href="/student/pictures{% if books|length > 1 %}?book={{ book.id }}{% endif %}">
+  <span class="row" style="flex-wrap:nowrap"><span class="pic-cta-art" aria-hidden="true">🖼️</span>
+  <span class="stack-sm" style="gap:1px"><b>Learn in pictures</b><span class="small muted">Browse every topic as picture cards</span></span></span>
+  <span aria-hidden="true">›</span>
+</a>
+{% if rooms %}
+<a class="topic-row pic-short" href="/student/escape">
+  <span class="row" style="flex-wrap:nowrap"><span class="pic-cta-art" aria-hidden="true">🔐</span>
+  <span class="stack-sm" style="gap:1px"><b>Escape rooms</b><span class="small muted">Learn AI through AI: help NOVA open four locks in each chapter</span></span></span>
+  <span class="small muted">{{ rooms.values()|selectattr("escaped")|list|length }}/{{ rooms|length }}</span>
+</a>
+{% endif %}
+{% macro chapter(ch, open_it) %}
+<details class="chapter" id="ch{{ ch.id }}" {% if open_it %}open{% endif %}>
+  <summary><span>{{ ch|inpart }}{{ ch.no }}. {{ ch.title }}</span><span class="small muted">{{ ch.practised }}/{{ ch.topics|length }} practised</span></summary>
+  {% for t in ch.topics %}
+  <a class="topic-row" href="/student/learn/{{ t.id }}">
+    <span class="stack-sm" style="gap:3px"><span>{{ t.title }}</span>{{ path_dots(t.path_done, t.path_total) }}</span>
+    {% if t.level %}{{ level_pill(t.level) }}{% endif %}
+  </a>
+  {% endfor %}
+  {% set room = rooms.get(ch.syllabus_id ~ ":" ~ (ch.no|int)) if rooms else none %}
+  {% if room %}<a class="topic-row room-row" href="/student/escape/{{ room.chapter }}?book={{ room.book_id }}"><span class="stack-sm" style="gap:2px"><span>🔐 Escape room: {{ room.title }}</span></span>
+    {% if room.escaped %}<span class="pill ok">Escaped ✓</span>{% elif room.started %}<span class="pill l1">{{ room.solved }} of 4 locks</span>{% else %}<span class="pill l0">Play</span>{% endif %}</a>{% endif %}
+</details>
+{% endmacro %}
+<h2>Chapters</h2>
+{% set now_ids = in_class|map(attribute="chapter.id")|list %}
+{% set ns = namespace(first=none, last=none) %}
+{% for ch in chapters %}{% if ch.id in now_ids %}{% if ns.first is none %}{% set ns.first = loop.index0 %}{% endif %}{% set ns.last = loop.index0 %}{% endif %}{% endfor %}
+{% if ns.first is not none and chapters|length > 4 %}
+  {# 1.31.0: open on the chapter taught in class now; earlier and later chapters fold into one line each #}
+  {% set before = chapters[:ns.first] %}{% set now_chs = chapters[ns.first:ns.last + 1] %}{% set after = chapters[ns.last + 1:] %}
+  {% if before %}<details class="chapter-group"><summary><b>Earlier chapters</b> <span class="small muted">· {{ before|length }} chapter{{ "s" if before|length != 1 }} · {{ before|sum(attribute="practised") }} of {{ before|map(attribute="topics")|map("length")|sum }} topics practised</span></summary>
+    <div class="stack-sm" style="margin-top:8px">{% for ch in before %}{{ chapter(ch, false) }}{% endfor %}</div></details>{% endif %}
+  {% for ch in now_chs %}{{ chapter(ch, ch.id in now_ids or (cont and cont.chapter.id == ch.id)) }}{% endfor %}
+  {% if after %}<details class="chapter-group"><summary><b>Coming up</b> <span class="small muted">· {{ after|length }} chapter{{ "s" if after|length != 1 }}</span></summary>
+    <div class="stack-sm" style="margin-top:8px">{% for ch in after %}{{ chapter(ch, false) }}{% endfor %}</div></details>{% endif %}
+{% else %}
+  {% for ch in chapters %}{{ chapter(ch, (cont and cont.chapter.id == ch.id) or ch.id in now_ids) }}
+  {% else %}
+  <p class="empty">{% if not books %}Your class doesn't have a subject yet. Your school will add one soon.{% else %}Your teacher hasn't opened any topics yet.{% endif %}</p>
+  {% endfor %}
+{% endif %}
+{% endblock %}

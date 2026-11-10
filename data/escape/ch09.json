@@ -1,0 +1,214 @@
+{
+ "chapter": 9,
+ "title": "The Hatchery",
+ "story": "You and NOVA are helping at a wildlife hatchery when the gate locks for the night. Open four locks by helping NOVA understand how animals reproduce.",
+ "escaped": "The gate opens. NOVA now sorts animals by how young are born and gives honest ranges, not exact guesses.",
+ "locks": [
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "9.2",
+   "title": "Born or hatched?",
+   "intro": "NOVA must sort animals into viviparous (give birth to young ones) and oviparous (lay eggs). Choose its clues, then test it on a whale and a bat.",
+   "labels": [
+    "Viviparous (gives birth)",
+    "Oviparous (lays eggs)"
+   ],
+   "features": [
+    {
+     "key": "birth",
+     "text": "Gives birth to young ones"
+    },
+    {
+     "key": "water",
+     "text": "Lives in water"
+    },
+    {
+     "key": "flies",
+     "text": "Can fly"
+    }
+   ],
+   "train": [
+    {
+     "name": "Dog",
+     "label": 0,
+     "f": {
+      "birth": 1,
+      "water": 0,
+      "flies": 0
+     }
+    },
+    {
+     "name": "Cow",
+     "label": 0,
+     "f": {
+      "birth": 1,
+      "water": 0,
+      "flies": 0
+     }
+    },
+    {
+     "name": "Human",
+     "label": 0,
+     "f": {
+      "birth": 1,
+      "water": 0,
+      "flies": 0
+     }
+    },
+    {
+     "name": "Hen",
+     "label": 1,
+     "f": {
+      "birth": 0,
+      "water": 0,
+      "flies": 1
+     }
+    },
+    {
+     "name": "Frog",
+     "label": 1,
+     "f": {
+      "birth": 0,
+      "water": 1,
+      "flies": 0
+     }
+    },
+    {
+     "name": "Fish",
+     "label": 1,
+     "f": {
+      "birth": 0,
+      "water": 1,
+      "flies": 0
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "Whale",
+     "label": 0,
+     "f": {
+      "birth": 1,
+      "water": 1,
+      "flies": 0
+     }
+    },
+    {
+     "name": "Bat",
+     "label": 0,
+     "f": {
+      "birth": 1,
+      "water": 0,
+      "flies": 1
+     }
+    }
+   ],
+   "hint": "A whale lives in water and a bat can fly, but both are mammals.",
+   "learn": "If an AI uses where an animal lives or whether it flies, the whale and the bat fool it. The clue that defines the groups, how the young are born, sorts both."
+  },
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "9.2",
+   "title": "Fix NOVA's reproduction facts",
+   "intro": "NOVA has matched animals with how they reproduce. Tick the matches that are wrong.",
+   "rows": [
+    {
+     "item": "Hydra",
+     "label": "Budding"
+    },
+    {
+     "item": "Amoeba",
+     "label": "Binary fission"
+    },
+    {
+     "item": "Frog",
+     "label": "External fertilisation"
+    },
+    {
+     "item": "Hen",
+     "label": "External fertilisation",
+     "wrong": true,
+     "why": "fertilisation in hens is internal"
+    },
+    {
+     "item": "Human",
+     "label": "Internal fertilisation"
+    },
+    {
+     "item": "Fish",
+     "label": "Internal fertilisation",
+     "wrong": true,
+     "why": "fish eggs are fertilised outside the body, in water"
+    },
+    {
+     "item": "Cow",
+     "label": "Internal fertilisation"
+    }
+   ],
+   "hint": "Which animals lay eggs in water, where the sperm meet them outside the body?",
+   "learn": "An AI can't know an example is wrong unless someone checks. Careful labelling is a big part of making AI useful."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "9.2",
+   "title": "Check NOVA's pond survey",
+   "intro": "NOVA is counting animals in the hatchery pond. Is it right? Decide and pick the fact that settles it.",
+   "claim": "Tadpoles and frogs are two different kinds of animal.",
+   "confidence": "88% sure",
+   "verdict": 1,
+   "evidence": [
+    "A tadpole changes into an adult frog by metamorphosis.",
+    "Frogs lay hundreds of eggs.",
+    "Hydra reproduces by budding.",
+    "Amoeba divides into two."
+   ],
+   "right": 0,
+   "hint": "What does a tadpole grow into?",
+   "learn": "An AI that judges only by appearance can split one animal into two. Knowing the life cycle, the evidence from biology, corrects it."
+  },
+  {
+   "kind": "pattern",
+   "skill": "predicting",
+   "topic": "9.2",
+   "title": "How many frogs?",
+   "intro": "Each year the hatchery counted how many of 100 frog eggs grew into adult frogs.",
+   "table": {
+    "cols": [
+     "Year",
+     "Eggs",
+     "Adult frogs"
+    ],
+    "rows": [
+     [
+      "1",
+      "100",
+      "5"
+     ],
+     [
+      "2",
+      "100",
+      "8"
+     ],
+     [
+      "3",
+      "100",
+      "4"
+     ]
+    ]
+   },
+   "question": "NOVA predicts: 'Next year exactly 5 of 100 eggs will become frogs.' What is the honest prediction?",
+   "options": [
+    "Exactly 5, because that was year 1.",
+    "Probably about 4 to 8, because it changed from year to year; nobody can say the exact number.",
+    "All 100, because frogs lay many eggs.",
+    "None, because most eggs don't survive."
+   ],
+   "answer": 1,
+   "hint": "Look at all three years, not just one.",
+   "learn": "Good predictions show uncertainty. The counts vary because many eggs and tadpoles are eaten or damaged, which is why frogs lay so many eggs. A range is more honest than one exact number."
+  }
+ ]
+}

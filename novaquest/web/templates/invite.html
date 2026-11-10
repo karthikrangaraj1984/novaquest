@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Set your password{% endblock %}
+{% block body %}
+<main id="main" class="auth">
+  <span class="brand">Nova<b style="color:var(--primary)">Quest</b></span>
+  <div class="stack-sm"><h1>Welcome to NovaQuest</h1><p class="muted">Choose a password to finish setting up your account.</p></div>
+  {% if error %}<div class="note warn" role="alert">{{ error }}</div>{% endif %}
+  <form method="post" class="card stack">
+    <input type="hidden" name="csrf" value="{{ csrf }}">
+    <div class="field"><label for="password">New password</label><input id="password" name="password" type="password" required minlength="10" autocomplete="new-password" aria-describedby="pw-hint"><span class="hint" id="pw-hint">At least 10 characters, with upper- and lower-case letters and a number.</span></div>
+    <div class="field"><label for="password2">Type it again</label><input id="password2" name="password2" type="password" required autocomplete="new-password"></div>
+    <button class="btn block" type="submit">Set password</button>
+  </form>
+</main>
+{% endblock %}

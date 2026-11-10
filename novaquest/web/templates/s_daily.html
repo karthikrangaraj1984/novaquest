@@ -1,0 +1,31 @@
+{% extends "student.html" %}
+{% block title %}Daily 5{% endblock %}
+{% block eyebrow %}<span class="small muted">{% if streak %}🔥 {{ streak }} day{{ "s" if streak != 1 }} in a row{% else %}A few minutes a day{% endif %}</span>{% endblock %}
+{% block heading %}{{ tr('Daily 5') }}{% endblock %}
+{% block main %}
+{% if not questions %}<p class="empty">Nothing to review yet. Start a topic in Learn, and Daily 5 will bring it back to you at the right time.</p>
+{% else %}
+<p class="note info small">{{ tr("Five quick questions from topics you've learnt, timed so you remember them for good. Just practice: no marks.") }}</p>
+<form method="post" class="stack" data-steps>
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <div class="deck-progress" data-progress hidden><span class="track"><span class="fill"></span></span><span class="count small muted"></span></div>
+  {% for q in questions %}
+  <section class="qcard" data-step aria-labelledby="d{{ q.i }}">
+    <span class="tiny muted">{{ tr("Question {n} of {m}", n=loop.index, m=questions|length) }} · {{ q.topic }}</span>
+    <div class="row" style="flex-wrap:nowrap;align-items:flex-start"><h2 id="d{{ q.i }}" class="qtitle" style="flex:1">{{ q.prompt }}</h2><button type="button" class="say-btn" data-say="d{{ q.i }}" data-say-options="[aria-labelledby='d{{ q.i }}'] label.choice" aria-label="{{ tr('Read aloud') }}" aria-pressed="false" hidden>🔊</button></div>
+    <fieldset class="stack-sm"><legend class="sr-only">Choose one</legend>
+    {% for o in q.options %}<label class="choice"><input type="radio" name="q{{ q.i }}" value="{{ loop.index0 }}">{{ o }}</label>{% endfor %}</fieldset>
+  </section>
+  {% endfor %}
+  <section class="qcard" data-step data-review aria-labelledby="rev-h">
+    <h2 id="rev-h" class="qtitle">{{ tr("All done?") }}</h2>
+    <ol class="review-list">{% for q in questions %}<li><button type="button" class="link-btn" data-goto="{{ loop.index0 }}">{{ tr("Question {n} of {m}", n=loop.index, m=questions|length) }}</button> <span class="small" data-answered="{{ loop.index0 }}"></span></li>{% endfor %}</ol>
+    <button class="btn warm block" type="submit">{{ tr("Finish Daily 5") }}</button>
+  </section>
+  <nav class="deck-nav" data-nav hidden aria-label="Questions">
+    <button class="btn ghost" type="button" data-prev>{{ tr("Back") }}</button>
+    <button class="btn" type="button" data-next>{{ tr("Next") }}</button>
+  </nav>
+</form>
+{% endif %}
+{% endblock %}

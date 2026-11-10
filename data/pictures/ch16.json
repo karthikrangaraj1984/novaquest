@@ -1,0 +1,274 @@
+{
+  "16.1": {
+    "crux": "We see an object only when light from it reaches our eyes, either light it makes itself or light it reflects.",
+    "cards": [
+      {"title": "How we see", "pic": {"kind": "flow", "steps": [
+          {"icon": "☀️", "text": "Light comes from a source like the Sun or a bulb"},
+          {"icon": "🍎", "text": "It falls on an object and bounces off (reflects)"},
+          {"icon": "👁️", "text": "The reflected light enters our eyes, and we see the object"}]},
+       "say": ["In a completely dark room you can't see anything, even with your eyes open.", "Light is what makes things visible."],
+       "remember": "No light reaching your eye = nothing seen."},
+      {"title": "Two kinds of objects", "pic": {"kind": "compare", "cols": [
+          {"head": "Luminous", "icon": "🕯️", "cells": ["Give out their own light", "Sun, bulb, candle flame"]},
+          {"head": "Illuminated", "icon": "🌕", "cells": ["Only reflect light falling on them", "Moon, book, tree"]}]},
+       "say": ["Most objects you see are illuminated: they reflect light from a source."]},
+      {"title": "Light bounces", "pic": {"kind": "icons", "items": [
+          {"icon": "🪞", "text": "Mirror", "sub": "Reflects most of the light"},
+          {"icon": "🥄", "text": "Shiny spoon", "sub": "Reflects well"},
+          {"icon": "📦", "text": "Cardboard", "sub": "Reflects light in all directions"}]},
+       "say": ["When light falls on a surface and bounces back, it is called reflection."]}
+    ],
+    "crux_points": ["We see objects when light from them enters our eyes.", "Luminous objects make light; illuminated objects reflect it.", "Bouncing back of light from a surface is reflection."],
+    "quiz": [
+      {"q": "Why can't we see anything in a fully dark room?", "options": ["No light reaches our eyes from objects", "Our eyes close", "Objects disappear", "Air blocks the view"], "answer": 0, "why": "We need light from objects to enter our eyes."},
+      {"q": "The Moon is…", "options": ["Illuminated: it reflects sunlight", "Luminous: it makes its own light", "A star", "A planet"], "answer": 0, "why": "The Moon has no light of its own; it reflects sunlight."}
+    ]
+  },
+  "16.2": {
+    "crux": "When light reflects from a mirror, the angle of incidence always equals the angle of reflection, and the incident ray, normal and reflected ray lie in the same plane.",
+    "cards": [
+      {"title": "Parts of a reflection", "pic": {"kind": "scene", "scene": "reflection_laws", "labels": [
+          {"at": "incident", "name": "Incident ray", "note": "Light going to the mirror"},
+          {"at": "reflected", "name": "Reflected ray", "note": "Light coming back"},
+          {"at": "normal", "name": "Normal", "note": "Line at 90° to the mirror"},
+          {"at": "angle_i", "name": "Angle of incidence (i)"},
+          {"at": "angle_r", "name": "Angle of reflection (r)"},
+          {"at": "point", "name": "Point of incidence"},
+          {"at": "mirror", "name": "Plane mirror"}]},
+       "say": ["The normal is an imaginary line drawn at right angles to the mirror at the point where the light hits it.", "Both angles are measured from the normal, not from the mirror."]},
+      {"title": "The two laws", "pic": {"kind": "equation", "parts": [
+          {"icon": "↘️", "text": "Angle of incidence", "color": "orange"}, "=", {"icon": "↗️", "text": "Angle of reflection", "color": "blue"}]},
+       "say": ["Law 1: the angle of incidence is always equal to the angle of reflection.", "Law 2: the incident ray, the normal and the reflected ray all lie in the same plane."],
+       "remember": "∠i = ∠r, always."},
+      {"title": "Like a bouncing ball", "pic": {"kind": "flow", "steps": [
+          {"icon": "🏀", "text": "Throw a ball at a slant onto the floor"},
+          {"icon": "↗️", "text": "It bounces off at the same slant on the other side"},
+          {"icon": "🔦", "text": "Light reflecting from a mirror behaves the same way"}]},
+       "say": ["If light hits the mirror straight along the normal, it comes straight back."]}
+    ],
+    "crux_points": ["Incident ray, normal and reflected ray describe a reflection.", "Angle of incidence = angle of reflection (measured from the normal).", "The incident ray, normal and reflected ray lie in one plane."],
+    "quiz": [
+      {"q": "Which line is marked '?'", "pic": {"kind": "scene", "scene": "reflection_laws", "ask": "normal"}, "options": ["The normal", "Incident ray", "Reflected ray", "The mirror"], "answer": 0, "why": "The dashed line at 90° to the mirror is the normal."},
+      {"q": "Light hits a mirror with an angle of incidence of 40°. The angle of reflection is…", "options": ["40°", "50°", "80°", "90°"], "answer": 0, "why": "The angle of reflection always equals the angle of incidence."}
+    ]
+  },
+  "16.3": {
+    "crux": "A smooth surface like a mirror reflects parallel rays in one direction (regular reflection); a rough surface scatters them in all directions (diffused reflection).",
+    "cards": [
+      {"title": "Smooth vs rough", "pic": {"kind": "scene", "scene": "regular_diffuse", "labels": [
+          {"at": "smooth", "name": "Smooth surface (mirror)"},
+          {"at": "parallel_out", "name": "Regular reflection", "note": "Rays stay parallel"},
+          {"at": "rough", "name": "Rough surface (cardboard)"},
+          {"at": "scattered", "name": "Diffused reflection", "note": "Rays scatter"}]},
+       "say": ["Parallel rays hitting a smooth surface come back parallel.", "On a rough surface, the same rays bounce off in different directions."]},
+      {"title": "Laws still hold", "pic": {"kind": "flow", "steps": [
+          {"icon": "🔍", "text": "Zoom in on a rough surface: it has many tiny slopes"},
+          {"icon": "📐", "text": "At each tiny point, angle of incidence = angle of reflection"},
+          {"icon": "💥", "text": "But the slopes face different ways, so the rays scatter"}]},
+       "say": ["Diffused reflection is not a failure of the laws of reflection. It's caused by the bumpy surface."],
+       "remember": "Smooth → regular; rough → diffused."},
+      {"title": "Which is which?", "pic": {"kind": "compare", "cols": [
+          {"head": "Regular", "icon": "🪞", "cells": ["Mirror", "Still water", "Polished steel"]},
+          {"head": "Diffused", "icon": "📦", "cells": ["Cardboard", "Wall", "Paper", "Wood"]}]},
+       "say": ["Diffused reflection lets us see objects from any direction."]}
+    ],
+    "crux_points": ["Regular reflection: smooth surfaces keep parallel rays parallel.", "Diffused reflection: rough surfaces scatter the rays.", "The laws of reflection hold at every point in both cases."],
+    "quiz": [
+      {"q": "Light falling on cardboard undergoes…", "options": ["Diffused reflection", "Regular reflection", "No reflection", "Dispersion"], "answer": 0, "why": "Cardboard is rough, so it scatters light in all directions."},
+      {"q": "Do the laws of reflection hold for diffused reflection?", "options": ["Yes, at every point", "No, never", "Only in daytime", "Only for mirrors"], "answer": 0, "why": "Each tiny part follows the laws; the rough surface makes rays go different ways."}
+    ]
+  },
+  "16.4": {
+    "crux": "Reflected light can be reflected again; a periscope uses two mirrors to let you see over or around obstacles.",
+    "cards": [
+      {"title": "The periscope", "pic": {"kind": "scene", "scene": "periscope", "labels": [
+          {"at": "object", "name": "Object", "note": "Something you can't see directly"},
+          {"at": "top_mirror", "name": "Top mirror", "note": "At 45°: turns light downwards"},
+          {"at": "tube", "name": "Tube"},
+          {"at": "bottom_mirror", "name": "Bottom mirror", "note": "At 45°: turns light to your eye"},
+          {"at": "eye", "name": "Your eye"}]},
+       "say": ["Light from the object reflects off the top mirror, travels down the tube, and reflects again off the bottom mirror into your eye."],
+       "remember": "Two mirrors at 45° = a periscope."},
+      {"title": "Who uses periscopes?", "pic": {"kind": "icons", "items": [
+          {"icon": "🚢", "text": "Submarines", "sub": "See above the water"},
+          {"icon": "🪖", "text": "Soldiers in bunkers", "sub": "See without being seen"},
+          {"icon": "🛡️", "text": "Tanks", "sub": "Look out safely"}]},
+       "say": ["You can make a simple periscope with a long box and two small mirrors."]},
+      {"title": "Mirrors in daily life", "pic": {"kind": "flow", "steps": [
+          {"icon": "💈", "text": "At the barber's, one mirror shows your back"},
+          {"icon": "🪞", "text": "Its image is reflected again in the front mirror"},
+          {"icon": "👀", "text": "So you can see the back of your head"}]},
+       "say": ["This is reflected light being reflected again."]}
+    ],
+    "crux_points": ["Reflected light can be reflected again by another mirror.", "A periscope uses two mirrors at 45°.", "Periscopes are used in submarines, tanks and bunkers."],
+    "quiz": [
+      {"q": "Which part of the periscope is marked '?'", "pic": {"kind": "scene", "scene": "periscope", "ask": "top_mirror"}, "options": ["Top mirror at 45°", "The eye", "A lens", "A light bulb"], "answer": 0, "why": "The top mirror turns incoming light down the tube."},
+      {"q": "Why can a submarine crew see above the water?", "options": ["A periscope reflects light down to them twice", "They use X-rays", "Water is a mirror", "They look through glass walls"], "answer": 0, "why": "The periscope's two mirrors redirect light down to the viewer."}
+    ]
+  },
+  "16.5": {
+    "crux": "Two mirrors placed at an angle make several images; a kaleidoscope uses three mirrors to make beautiful, ever-changing patterns.",
+    "cards": [
+      {"title": "Mirrors at an angle", "pic": {"kind": "flow", "steps": [
+          {"icon": "📐", "text": "Stand two mirrors at an angle, edges touching"},
+          {"icon": "🪙", "text": "Place a coin between them"},
+          {"icon": "🪙🪙🪙", "text": "You see several images of the coin"}]},
+       "say": ["Light is reflected again and again between the two mirrors, so we see many images.", "The smaller the angle between the mirrors, the more images you see."]},
+      {"title": "Making a kaleidoscope", "pic": {"kind": "flow", "steps": [
+          {"icon": "🪞", "text": "Join three rectangular mirror strips into a triangular tube (prism)"},
+          {"icon": "🔺", "text": "Put small pieces of coloured glass or bangles at one end"},
+          {"icon": "👁️", "text": "Look through the other end and rotate the tube"}]},
+       "say": ["Repeated reflections turn a few coloured pieces into a beautiful pattern."],
+       "remember": "Kaleidoscope = three mirrors + coloured pieces + many reflections."},
+      {"title": "Never the same twice", "pic": {"kind": "icons", "items": [
+          {"icon": "🌀", "text": "Every turn makes a new pattern"},
+          {"icon": "🎨", "text": "Designers use it for ideas", "sub": "Wallpapers and fabrics"}]},
+       "say": ["You'll never see exactly the same pattern again."]}
+    ],
+    "crux_points": ["Two mirrors at an angle produce several images.", "A smaller angle gives more images.", "A kaleidoscope uses three mirrors to make changing patterns."],
+    "quiz": [
+      {"q": "How many mirrors does a kaleidoscope usually have?", "options": ["Three", "One", "Ten", "None"], "answer": 0, "why": "Three mirror strips are joined into a prism shape."},
+      {"q": "Why do two inclined mirrors show many images?", "options": ["Light reflects again and again between them", "Mirrors make copies of objects", "Light bends in air", "The objects multiply"], "answer": 0, "why": "Repeated reflections create several images."}
+    ]
+  },
+  "16.6": {
+    "crux": "White sunlight is a mix of seven colours; a prism splits it into these colours, which is called dispersion, and a rainbow is dispersion in nature.",
+    "cards": [
+      {"title": "Splitting sunlight", "pic": {"kind": "scene", "scene": "prism", "labels": [
+          {"at": "white", "name": "White light"},
+          {"at": "prism", "name": "Glass prism"},
+          {"at": "red", "name": "Red", "note": "Bends least"},
+          {"at": "violet", "name": "Violet", "note": "Bends most"},
+          {"at": "spectrum", "name": "Band of colours (spectrum)"}]},
+       "say": ["A prism splits white light into a band of colours.", "Splitting of light into its colours is called dispersion."]},
+      {"title": "Seven colours", "pic": {"kind": "segments", "items": [
+          {"name": "Violet", "color": "violet"}, {"name": "Indigo", "color": "navy"}, {"name": "Blue", "color": "blue"},
+          {"name": "Green", "color": "green"}, {"name": "Yellow", "color": "amber"}, {"name": "Orange", "color": "orange"}, {"name": "Red", "color": "red"}]},
+       "say": ["Remember them with the word VIBGYOR."],
+       "remember": "VIBGYOR: Violet, Indigo, Blue, Green, Yellow, Orange, Red."},
+      {"title": "Rainbows", "pic": {"kind": "flow", "steps": [
+          {"icon": "🌧️", "text": "After rain, tiny water drops float in the air"},
+          {"icon": "☀️", "text": "Sunlight passes through the drops"},
+          {"icon": "🌈", "text": "Each drop acts like a prism and splits the light: a rainbow"}]},
+       "say": ["You see a rainbow with the Sun behind you."]}
+    ],
+    "crux_points": ["White sunlight is made of seven colours.", "A prism splits light into colours: dispersion.", "A rainbow is dispersion of sunlight by raindrops."],
+    "quiz": [
+      {"q": "Which colour is marked '?' (the one that bends most)?", "pic": {"kind": "scene", "scene": "prism", "ask": "violet"}, "options": ["Violet", "Red", "Green", "Yellow"], "answer": 0, "why": "Violet bends the most and appears at the bottom of the spectrum."},
+      {"q": "Splitting white light into its colours is called…", "options": ["Dispersion", "Reflection", "Diffusion", "Evaporation"], "answer": 0, "why": "That's the definition of dispersion."}
+    ]
+  },
+  "16.7": {
+    "crux": "Light enters the eye through the cornea and pupil, the lens focuses it on the retina, and the optic nerve carries the message to the brain.",
+    "cards": [
+      {"title": "Parts of the eye", "pic": {"kind": "scene", "scene": "human_eye", "labels": [
+          {"at": "cornea", "name": "Cornea", "note": "Clear front window"},
+          {"at": "iris", "name": "Iris", "note": "Coloured part: controls the pupil"},
+          {"at": "pupil", "name": "Pupil", "note": "The opening that lets light in"},
+          {"at": "lens", "name": "Lens", "note": "Focuses light"},
+          {"at": "retina", "name": "Retina", "note": "Screen of light-sensitive cells"},
+          {"at": "optic_nerve", "name": "Optic nerve", "note": "Carries signals to the brain"},
+          {"at": "blind_spot", "name": "Blind spot", "note": "No light-sensing cells here"}]},
+       "say": ["The eye is roughly round. Its tough white outer coat protects it."]},
+      {"title": "From light to sight", "pic": {"kind": "flow", "steps": [
+          {"icon": "🔆", "text": "Light passes through the cornea"},
+          {"icon": "⚫", "text": "It enters through the pupil (the iris adjusts its size)"},
+          {"icon": "🔍", "text": "The lens focuses it onto the retina"},
+          {"icon": "🧠", "text": "The optic nerve carries the signals to the brain"}]},
+       "say": ["The iris makes the pupil small in bright light and large in dim light."],
+       "remember": "Cornea → pupil → lens → retina → optic nerve → brain."},
+      {"title": "Rods and cones", "pic": {"kind": "compare", "rows": ["Sensitive to", "Animals with many"], "cols": [
+          {"head": "Cones", "icon": "🎨", "cells": ["Bright light and colour", "Day birds like eagles"]},
+          {"head": "Rods", "icon": "🌙", "cells": ["Dim light", "Owls (they see well at night)"]}]},
+       "say": ["The retina has two kinds of light-sensitive cells.", "Owls have many rods and few cones, so they see well at night but poorly in daylight."]},
+      {"title": "Persistence of vision", "pic": {"kind": "flow", "steps": [
+          {"icon": "👁️", "text": "An image stays on the retina for about 1/16th of a second"},
+          {"icon": "🎞️", "text": "Movies show about 24 pictures every second"},
+          {"icon": "🎬", "text": "So the pictures blend and we see smooth motion"}]},
+       "say": ["This is why a quickly spinning fan looks like a disc."]}
+    ],
+    "crux_points": ["Light enters through the cornea and pupil; the iris controls the pupil's size.", "The lens focuses light onto the retina, which has rods (dim light) and cones (colour).", "The optic nerve carries signals to the brain; the blind spot has no sensory cells."],
+    "quiz": [
+      {"q": "Which part is marked '?'", "pic": {"kind": "scene", "scene": "human_eye", "ask": "lens"}, "options": ["Lens", "Retina", "Iris", "Optic nerve"], "answer": 0, "why": "The lens, just behind the pupil, focuses light on the retina."},
+      {"q": "Owls see well at night because their eyes have…", "options": ["Many rods", "Many cones", "No retina", "No pupil"], "answer": 0, "why": "Rods are sensitive to dim light."},
+      {"q": "Which part of the eye gives it its colour?", "options": ["Iris", "Retina", "Lens", "Cornea"], "answer": 0, "why": "The iris is the coloured part of the eye."}
+    ]
+  },
+  "16.8": {
+    "crux": "Look after your eyes: read in good light at a proper distance, never look at the Sun, don't rub them, eat food rich in vitamin A and get them checked.",
+    "cards": [
+      {"title": "Good habits", "pic": {"kind": "icons", "items": [
+          {"icon": "💡", "text": "Read in good light", "sub": "Not too dim, not too bright"},
+          {"icon": "📏", "text": "Keep books at about 25 cm"},
+          {"icon": "💧", "text": "Dust in the eye?", "sub": "Wash with clean water"},
+          {"icon": "🩺", "text": "Regular eye check-ups"},
+          {"icon": "👓", "text": "Wear spectacles if advised"}]},
+       "say": ["Small habits protect your eyes for life."]},
+      {"title": "Never do this", "pic": {"kind": "icons", "items": [
+          {"icon": "☀️", "text": "Look straight at the Sun", "sub": "Can damage the retina"},
+          {"icon": "✋", "text": "Rub your eyes"},
+          {"icon": "🌑", "text": "Read in dim light"}]},
+       "say": ["Looking at the Sun or a very bright light can harm your eyes badly."]},
+      {"title": "Vitamin A", "pic": {"kind": "icons", "items": [
+          {"icon": "🥕", "text": "Carrots"}, {"icon": "🥬", "text": "Green vegetables"}, {"icon": "🥭", "text": "Mango, papaya"},
+          {"icon": "🥛", "text": "Milk"}, {"icon": "🥚", "text": "Eggs"}, {"icon": "🐟", "text": "Cod liver oil"}]},
+       "say": ["Too little vitamin A causes night blindness: difficulty seeing in dim light."],
+       "remember": "Vitamin A keeps eyes healthy."}
+    ],
+    "crux_points": ["Read in good light with the book about 25 cm away.", "Never look at the Sun or rub your eyes; wash dust out with clean water.", "Eat vitamin A rich foods to prevent night blindness; get regular check-ups."],
+    "quiz": [
+      {"q": "Lack of which vitamin causes night blindness?", "options": ["Vitamin A", "Vitamin C", "Vitamin D", "Vitamin K"], "answer": 0, "why": "Vitamin A is needed for healthy eyes."},
+      {"q": "Dust has gone into your eye. What should you do?", "options": ["Wash it with clean water", "Rub it hard", "Look at the Sun", "Ignore it for a week"], "answer": 0, "why": "Clean water washes the dust out safely; rubbing can hurt the eye."}
+    ]
+  },
+  "16.9": {
+    "crux": "Visually impaired people sharpen their other senses and use aids, both non-optical (Braille, talking books, computers) and optical (magnifiers, special lenses), to read and write.",
+    "cards": [
+      {"title": "Other senses", "pic": {"kind": "icons", "items": [
+          {"icon": "👂", "text": "Hearing", "sub": "Recognise people by their voices"},
+          {"icon": "✋", "text": "Touch", "sub": "Read Braille, identify objects"},
+          {"icon": "👃", "text": "Smell"}]},
+       "say": ["Some people are visually impaired from birth; others lose sight through disease or injury.", "They develop their other senses more sharply."]},
+      {"title": "Helpful aids", "pic": {"kind": "compare", "cols": [
+          {"head": "Non-optical aids", "icon": "🦯", "cells": ["Braille slate and stylus", "Talking books, recorders", "Talking calculators", "Computers that read aloud"]},
+          {"head": "Optical aids", "icon": "🔍", "cells": ["Bifocal lenses", "Contact and tinted lenses", "Magnifiers", "Telescopic aids"]}]},
+       "say": ["Optical aids help people with low vision; non-optical aids help those who can't see at all."]},
+      {"title": "Inspiring people", "pic": {"kind": "icons", "items": [
+          {"icon": "✍️", "text": "Many visually impaired people", "sub": "Are writers, musicians, teachers and scientists"},
+          {"icon": "🤝", "text": "We can help", "sub": "By offering help politely and giving equal respect"}]},
+       "say": ["With the right aids, visually impaired people can read, write and achieve a great deal."]}
+    ],
+    "crux_points": ["Visually impaired people rely more on hearing, touch and smell.", "Non-optical aids include Braille, talking books and computers.", "Optical aids include magnifiers and special lenses for low vision."],
+    "quiz": [
+      {"q": "Which is a non-optical aid?", "options": ["Talking book", "Magnifier", "Bifocal lens", "Tinted lens"], "answer": 0, "why": "Talking books use sound, not sight."},
+      {"q": "Optical aids like magnifiers help people who…", "options": ["Have low vision", "Can't hear", "Can't walk", "Have perfect eyesight"], "answer": 0, "why": "They help people who still have some sight."}
+    ]
+  },
+  "16.10": {
+    "crux": "Braille is a reading and writing system of raised dots, arranged in cells of six, that visually impaired people read with their fingertips.",
+    "cards": [
+      {"title": "A Braille cell", "pic": {"kind": "scene", "scene": "braille", "labels": [
+          {"at": "cell", "name": "One cell", "note": "Two columns of three dots"},
+          {"at": "dots", "name": "Six dot positions", "note": "Numbered 1 to 6"},
+          {"at": "raised", "name": "Raised dots", "note": "Embossed on thick paper"},
+          {"at": "finger", "name": "Read by touch"}]},
+       "say": ["Different patterns of raised dots stand for different letters, words and signs.", "There are 63 dot patterns."]},
+      {"title": "Louis Braille", "pic": {"kind": "flow", "steps": [
+          {"icon": "👦", "text": "Louis Braille lost his sight in an accident as a young child"},
+          {"icon": "💡", "text": "He invented the dot system for visually impaired people"},
+          {"icon": "📚", "text": "Nearly 200 years later, it is used all over the world"}]},
+       "say": ["The system is named after him."],
+       "remember": "Braille: 6-dot cells, read with fingertips, invented by Louis Braille."},
+      {"title": "How Braille is read", "pic": {"kind": "icons", "items": [
+          {"icon": "👆", "text": "Fingertips feel the dots"},
+          {"icon": "↔️", "text": "Read left to right"},
+          {"icon": "🌐", "text": "Indian languages too", "sub": "Braille is used for many languages"}]},
+       "say": ["Practised readers move their fingers smoothly along each line."]}
+    ],
+    "crux_points": ["Braille uses raised dots in cells of six.", "There are 63 dot patterns for letters, words and signs.", "It is read with the fingertips; invented by Louis Braille."],
+    "quiz": [
+      {"q": "How many dot positions are there in one Braille cell?", "options": ["Six", "Four", "Ten", "Two"], "answer": 0, "why": "Each cell has two columns of three dots."},
+      {"q": "Braille is read using…", "options": ["Fingertips", "A microscope", "Ears", "A prism"], "answer": 0, "why": "The dots are raised so they can be felt."}
+    ]
+  }
+}

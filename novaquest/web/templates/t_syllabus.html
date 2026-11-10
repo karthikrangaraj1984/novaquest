@@ -1,0 +1,93 @@
+{% extends "staff.html" %}
+{% block title %}Topics{% endblock %}
+{% block main %}
+{% from "_teach.html" import teach_head with context %}
+{{ teach_head("topics", teaching, cur) }}
+<div class="stack-sm" style="gap:2px"><h1>Topics: {{ cur.book.subject }}, class {{ cur.class_label }}</h1><span class="muted">{{ cur.book.label }} · {{ n_students }} students</span></div>
+{% if actor.role == "teacher" %}<p class="small muted">Each topic shows its textbook source, whether your class has practised it, and how many students have mastered it. Lock a chapter or a topic to hide it from self-study.</p>
+{% else %}<p class="small muted">A read-only view of what each class is covering: each topic's textbook source, whether it has been set as work, and how many students have mastered it. Choose a class above.</p>{% endif %}
+{% if actor.role == "teacher" %}
+<section class="card stack-sm" aria-labelledby="ss-h">
+  <h2 id="ss-h">What students can study on their own</h2>
+  <form method="post" action="/teacher/syllabus/chapters" class="row" style="align-items:flex-end">
+    <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="for" value="{{ cur.key }}"><input type="hidden" name="action" value="mode">
+    <div class="field"><label for="ss-mode" class="small">For class {{ cur.class_label }}</label><select id="ss-mode" name="mode">{% for k, v in modes.items() %}<option value="{{ k }}" {% if k == mode %}selected{% endif %}>{{ v }}</option>{% endfor %}</select></div>
+    <button class="btn small quiet" type="submit">Save</button></form>
+  <p class="small muted">{% if mode == "plan" %}A chapter opens on its start date in your <a href="/teacher/plan?for={{ cur.key }}">term plan</a>; chapters without dates stay closed.{% elif mode == "closed" %}Students see only the chapters you open below.{% else %}Every chapter is open; lock any you don't want students to see yet.{% endif %} Opening or locking a chapter by hand always wins. Work you set is always open to the students you set it for, and a chapter's escape room shows only while the chapter is open.</p>
+  <details><summary class="small">Open only some chapters</summary>
+    <form method="post" action="/teacher/syllabus/chapters" class="stack-sm" style="margin-top:8px">
+      <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="for" value="{{ cur.key }}"><input type="hidden" name="action" value="only">
+      <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:6px">
+      {% for ch in tree %}{% set open_n = ch.topics|rejectattr("id", "in", locked)|list|length %}<label class="choice" style="min-height:40px"><input type="checkbox" name="chapters[]" value="{{ ch.id }}" {% if open_n %}checked{% endif %}>{{ ch|inpart }}{{ ch.code }}. {{ ch.title }}</label>{% endfor %}</div>
+      <button class="btn small" type="submit" style="align-self:flex-start" data-confirm="Open the ticked chapters and lock all the others for this class?">Open only these</button></form></details>
+</section>
+{% endif %}
+<div class="cols">
+<section class="main card tree" aria-label="Syllabus">
+  {% for ch in tree %}
+  {% set ids = ch.topics|map(attribute='id')|list %}
+  {% set open_n = ch.topics|rejectattr("id", "in", locked)|list|length %}
+  <details {% if ch.meta.demo or (detail and detail.topic.chapter_id == ch.id) %}open{% endif %}>
+    <summary>{{ ch|inpart }}{{ ch.code }}. {{ ch.title }}{% if ch.meta.start_page %} <span class="small muted">· pages {{ ch.meta.start_page }}–{{ ch.meta.end_page }}</span>{% endif %}
+      {% if not open_n %} <span class="pill warn">Locked</span>{% elif open_n < ch.topics|length %} <span class="pill l1">Partly open</span>{% endif %}</summary>
+    <div class="row-between small" style="margin:6px 0">
+      <span>{% if open_n == ch.topics|length and open_n %}<span class="pill ok">Open</span>{% elif open_n %}<span class="pill l1">{{ open_n }} of {{ ch.topics|length }} topics open</span>{% else %}<span class="pill warn">Locked</span>{% if mode == "plan" and starts.get(ch.id) and starts[ch.id] > today %} <span class="muted">opens {{ starts[ch.id].strftime("%d %b") }} (term plan)</span>{% endif %}{% endif %}
+        · <a href="/teacher/prep?for={{ cur.key }}&amp;chapter={{ ch.id }}">Prepare to teach ›</a></span>
+      {% if actor.role == "teacher" %}<form method="post" action="/teacher/syllabus/chapters"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="for" value="{{ cur.key }}"><input type="hidden" name="chapter_id" value="{{ ch.id }}">
+        {% if open_n %}<button class="btn small quiet" type="submit" name="action" value="lock">Lock chapter</button>{% endif %}
+        {% if open_n < ch.topics|length %}<button class="btn small" type="submit" name="action" value="open">Open chapter</button>{% endif %}</form>{% endif %}
+    </div>
+    {% for t in ch.topics %}
+    {% set g = grid.get(t.id, {"3": 0, "2": 0, "1": 0}) %}
+    <div class="topic" id="t{{ t.id }}">
+      <div class="stack-sm" style="gap:2px;min-width:0;flex:1 1 260px">
+        <a href="?for={{ cur.key }}&topic={{ t.id }}#detail"><b>{{ t|pc }} {{ t.title }}</b></a>
+        <span class="tiny muted">{{ t.outcomes[0].title if t.outcomes }} · {{ counts.get(t.id, 0) }} source passages{% if notes.get(t.id) %} (incl. {{ notes[t.id] }} from your notes){% endif %}</span>
+      </div>
+      <div class="row">
+        {% if t.id in assigned %}<span class="pill ok">Assigned</span>{% else %}<span class="pill l0">Not yet assigned</span>{% endif %}
+        <span class="pill l3" title="Mastered">{{ g["3"] }} mastered</span>
+        {% if t.id in locked %}<span class="pill warn">Locked</span>{% endif %}
+        {% if actor.role == "teacher" %}
+        <form method="post" action="/teacher/topics/{{ t.id }}/open"><input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="class_id" value="{{ cid }}"><input type="hidden" name="open" value="{{ '1' if t.id in locked else '0' }}">
+          <button class="btn small quiet" type="submit" aria-label="{{ 'Open' if t.id in locked else 'Lock' }} {{ t.title }} for self-study">{{ "Open" if t.id in locked else "Lock" }}</button></form>
+        <a class="btn small ghost" href="/teacher/assignments/new?topic={{ t.id }}">Assign</a>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </details>
+  {% endfor %}
+</section>
+<aside class="aside stack" id="detail">
+  {% if detail %}
+  <section class="card stack-sm" aria-labelledby="d-h">
+    <h2 id="d-h">{{ detail.topic|pc }} {{ detail.topic.title }}</h2>
+    <p class="small muted">{{ detail.topic.outcome }}</p>
+    {% if detail.has_pictures %}<div class="row-between small"><a class="btn small ghost" href="/teacher/syllabus/topics/{{ detail.topic.id }}/pictures">Preview picture lesson</a>
+      <span class="muted">{{ detail.pictures_done }} of {{ n_students }} students finished it</span></div>{% endif %}
+    <a class="small" href="/teacher/syllabus/topics/{{ detail.topic.id }}/pages">📄 Book pages for this topic</a>
+    <h3 style="font-size:14px">Mastery by student</h3>
+    <div class="stack-sm" style="max-height:220px;overflow:auto">{% for s in detail.students %}<div class="row-between small"><span>{{ s.roll_no }}. {{ s.name }}</span><span class="pill l{{ s.level or 0 }}">{{ levels[s.level or 0] }}</span></div>{% endfor %}</div>
+    <h3 style="font-size:14px">Source material</h3>
+    {% for p in detail.passages[:4] %}<div class="small note {{ 'info' if p.source_kind == 'teacher_notes' else '' }}"><b>{{ p.ref }}</b><br>{{ p.body[:260] }}…</div>{% endfor %}
+  </section>
+  {% if actor.role == "teacher" %}
+  <section class="card stack-sm" aria-labelledby="n-h">
+    <h2 id="n-h">Add your notes</h2>
+    <p class="small muted">The AI can use your notes when it writes questions and answers students. Only your school sees them.</p>
+    <form method="post" action="/teacher/topics/{{ detail.topic.id }}/notes" enctype="multipart/form-data" class="stack-sm">
+      <input type="hidden" name="csrf" value="{{ csrf }}"><input type="hidden" name="class_id" value="{{ cid }}">
+      <div class="field"><label for="nt">Title</label><input id="nt" name="title" type="text" value="My notes"></div>
+      <div class="field"><label for="nx">Paste notes</label><textarea id="nx" name="text"></textarea></div>
+      <div class="field"><label for="nf">…or upload a PDF or text file</label><input id="nf" name="file" type="file" accept=".pdf,.txt,.md"></div>
+      <button class="btn small" type="submit">Add notes</button>
+    </form>
+  </section>
+  {% endif %}
+  {% else %}
+  <section class="card"><p class="small muted">Select a topic to see its source material and each student's mastery.</p></section>
+  {% endif %}
+</aside>
+</div>
+{% endblock %}

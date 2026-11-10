@@ -1,0 +1,27 @@
+{% extends "student.html" %}
+{# Escape rooms (LN-12): one per chapter; each lock teaches an AI skill through the chapter's science. #}
+{% block title %}Escape rooms{% endblock %}
+{% block eyebrow %}<span class="small muted">Learn AI through AI</span>{% endblock %}
+{% block heading %}Escape rooms{% endblock %}
+{% block main %}
+<section class="card dark stack-sm">
+  <p>You and NOVA, the class AI, are locked in. NOVA keeps making mistakes. Teach it, check it and fix its data to open four locks. Each lock gives a digit of the door code.</p>
+  {% set escaped = rooms|selectattr("escaped")|list|length %}
+  <div class="row-between small"><span>{{ escaped }} of {{ rooms|length }} rooms escaped</span>
+    <span class="track wide" aria-hidden="true"><span class="fill" style="width:{{ (100 * escaped / rooms|length)|round(0) if rooms else 0 }}%"></span></span></div>
+</section>
+<section class="stack-sm" aria-labelledby="sk-h">
+  <h2 id="sk-h">Your AI skills</h2>
+  <div class="skills">{% for s in skills %}<div class="skill {{ s.level }}"><b>{{ s.name }}</b><span class="small">{{ {"not_yet": "Not yet", "learning": "Learning", "strong": "Strong ★"}[s.level] }}</span></div>{% endfor %}</div>
+</section>
+<h2>Rooms</h2>
+{% set multi = rooms|map(attribute="book_id")|unique|list|length > 1 %}
+{% for r in rooms %}
+{% if multi and (loop.first or loop.previtem.book_id != r.book_id) %}<h3 class="small muted">{{ r.book }}</h3>{% endif %}
+<a class="topic-row room-row" href="/student/escape/{{ r.chapter }}?book={{ r.book_id }}">
+  <span class="room-lock" aria-hidden="true">{{ "🔓" if r.escaped else "🔐" }}</span>
+  <span class="stack-sm" style="gap:2px;flex:1"><b>{{ r.title }}</b><span class="small muted">{{ r|inpart }}Chapter {{ r.chapter }}: {{ r.chapter_title }}</span></span>
+  {% if r.escaped %}<span class="pill ok">Escaped ✓</span>{% elif r.started %}<span class="pill l1">{{ r.solved }} of 4 locks</span>{% else %}<span class="pill l0">Start</span>{% endif %}
+</a>
+{% else %}<p class="empty">No escape rooms yet. They appear here once your school has made them for your books.</p>{% endfor %}
+{% endblock %}

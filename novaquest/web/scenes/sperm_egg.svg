@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"head":[56,70],"middle":[86,70],"tail":[140,72],"egg":[246,52],"egg_nucleus":[290,96],"zygote":[300,248]}'>
+<ellipse cx="56" cy="70" rx="14" ry="10" fill="#C7D0FA" stroke="#3949A8" stroke-width="3"/>
+<rect x="70" y="66" width="22" height="8" rx="4" fill="#9FA8DA" stroke="#3949A8" stroke-width="2"/>
+<path d="M92 70 q10 -10 20 0 t20 0 t20 0 t20 0" fill="none" stroke="#3949A8" stroke-width="3"/>
+<circle cx="290" cy="96" r="64" fill="#FFE9D6" stroke="#E0541A" stroke-width="3"/>
+<circle cx="290" cy="96" r="18" fill="#E0541A" opacity=".75"/>
+<g transform="translate(70 190)"><ellipse cx="0" cy="40" rx="10" ry="7" fill="#C7D0FA" stroke="#3949A8" stroke-width="2"/><path d="M10 40 q8 -8 16 0 t16 0" fill="none" stroke="#3949A8" stroke-width="2"/>
+<circle cx="76" cy="40" r="34" fill="#FFE9D6" stroke="#E0541A" stroke-width="3"/><circle cx="76" cy="40" r="9" fill="#E0541A" opacity=".75"/></g>
+<path d="M186 230 h46 m-10 -8 l10 8 l-10 8" stroke="#2A3150" stroke-width="3" fill="none"/>
+<circle cx="300" cy="230" r="34" fill="#FFE0CC" stroke="#B5653A" stroke-width="3"/><circle cx="300" cy="230" r="10" fill="#8E3B12"/>
+<text x="118" y="290" font-size="12" fill="#5A6178" text-anchor="middle" font-family="sans-serif">sperm meets egg</text>
+<text x="300" y="290" font-size="12" fill="#5A6178" text-anchor="middle" font-family="sans-serif">fertilised egg</text>
+</svg>

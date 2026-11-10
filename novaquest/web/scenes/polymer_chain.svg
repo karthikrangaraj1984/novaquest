@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-anchors='{"unit":[44,80],"link":[76,80],"chain":[200,80],"fibre":[200,230]}'>
+<g fill="#FFD7C2" stroke="#E0541A" stroke-width="3">
+<circle cx="44" cy="80" r="16"/><circle cx="108" cy="80" r="16"/><circle cx="172" cy="80" r="16"/><circle cx="236" cy="80" r="16"/><circle cx="300" cy="80" r="16"/><circle cx="364" cy="80" r="16"/></g>
+<g stroke="#2A3150" stroke-width="5"><path d="M60 80 h32 M124 80 h32 M188 80 h32 M252 80 h32 M316 80 h32"/></g>
+<g fill="none" stroke-width="5" stroke-linecap="round"><path d="M30 200 Q120 170 200 210 T370 200" stroke="#E0541A"/><path d="M30 214 Q120 184 200 224 T370 214" stroke="#2B4BD8"/><path d="M30 228 Q120 198 200 238 T370 228" stroke="#1E7A4F"/><path d="M30 242 Q120 212 200 252 T370 242" stroke="#7448C8"/></g>
+<text x="200" y="130" font-size="13" fill="#5A6178" text-anchor="middle" font-family="sans-serif">small units joined in a long chain</text>
+<text x="200" y="284" font-size="13" fill="#5A6178" text-anchor="middle" font-family="sans-serif">many chains together make a fibre</text>
+</svg>

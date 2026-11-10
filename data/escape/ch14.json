@@ -1,0 +1,210 @@
+{
+ "chapter": 14,
+ "title": "The Plating Workshop",
+ "story": "You and NOVA are in an electroplating workshop when the safety doors close. NOVA is learning how electric current changes liquids. Help it get things right to open the doors.",
+ "escaped": "The doors open. NOVA now knows which liquids conduct, why electroplating is used and how a weak current can fool a test.",
+ "locks": [
+  {
+   "kind": "sort",
+   "skill": "features",
+   "topic": "14.1",
+   "title": "Will it conduct?",
+   "intro": "NOVA must sort liquids into those that conduct electricity and those that don't. Choose its clues.",
+   "labels": [
+    "Conducts electricity",
+    "Doesn't conduct (or very poorly)"
+   ],
+   "features": [
+    {
+     "key": "salts",
+     "text": "Has salts, acids or bases dissolved in it"
+    },
+    {
+     "key": "clear",
+     "text": "Clear and colourless"
+    },
+    {
+     "key": "food",
+     "text": "Used in cooking"
+    }
+   ],
+   "train": [
+    {
+     "name": "Lemon juice",
+     "label": 0,
+     "f": {
+      "salts": 1,
+      "clear": 0,
+      "food": 1
+     }
+    },
+    {
+     "name": "Salt water",
+     "label": 0,
+     "f": {
+      "salts": 1,
+      "clear": 1,
+      "food": 0
+     }
+    },
+    {
+     "name": "Vinegar",
+     "label": 0,
+     "f": {
+      "salts": 1,
+      "clear": 1,
+      "food": 1
+     }
+    },
+    {
+     "name": "Distilled water",
+     "label": 1,
+     "f": {
+      "salts": 0,
+      "clear": 1,
+      "food": 0
+     }
+    },
+    {
+     "name": "Vegetable oil",
+     "label": 1,
+     "f": {
+      "salts": 0,
+      "clear": 0,
+      "food": 1
+     }
+    },
+    {
+     "name": "Honey",
+     "label": 1,
+     "f": {
+      "salts": 0,
+      "clear": 0,
+      "food": 1
+     }
+    }
+   ],
+   "test": [
+    {
+     "name": "Tap water",
+     "label": 0,
+     "f": {
+      "salts": 1,
+      "clear": 1,
+      "food": 0
+     }
+    },
+    {
+     "name": "Sugar dissolved in distilled water",
+     "label": 1,
+     "f": {
+      "salts": 0,
+      "clear": 1,
+      "food": 1
+     }
+    }
+   ],
+   "hint": "Tap water and distilled water both look clear. What does tap water have in it that distilled water doesn't?",
+   "learn": "How a liquid looks or where it's used doesn't decide whether it conducts. Dissolved salts, acids or bases do, which is why tap water conducts and distilled water hardly does."
+  },
+  {
+   "kind": "clean",
+   "skill": "training",
+   "topic": "14.3",
+   "title": "Fix NOVA's electroplating notes",
+   "intro": "NOVA has notes on why things are electroplated. Tick the wrong ones.",
+   "rows": [
+    {
+     "item": "Chromium on bicycle handlebars",
+     "label": "Gives a shiny finish that doesn't scratch easily"
+    },
+    {
+     "item": "Tin on iron food cans",
+     "label": "Tin is less reactive, so food doesn't spoil"
+    },
+    {
+     "item": "Zinc on iron for bridges",
+     "label": "Protects the iron from rusting"
+    },
+    {
+     "item": "Gold or silver on cheap jewellery",
+     "label": "Makes it look like gold or silver"
+    },
+    {
+     "item": "Chromium layer",
+     "label": "Used because chromium is cheap",
+     "wrong": true,
+     "why": "chromium is expensive, so only a thin layer is put on a cheaper metal"
+    },
+    {
+     "item": "Electroplating iron",
+     "label": "Makes it rust faster",
+     "wrong": true,
+     "why": "plating protects iron from rusting"
+    }
+   ],
+   "hint": "Why is only a THIN layer of chromium used?",
+   "learn": "Wrong 'reasons' in training data teach an AI to explain things wrongly, even when its answer sounds smooth."
+  },
+  {
+   "kind": "evidence",
+   "skill": "checking",
+   "topic": "14.2",
+   "title": "Check NOVA's experiment report",
+   "intro": "NOVA wrote up an experiment. Is it right? Decide and pick the fact that settles it.",
+   "claim": "Passing electricity through water does nothing to it.",
+   "confidence": "87% sure",
+   "verdict": 1,
+   "evidence": [
+    "When current passes through water with a little salt, bubbles of oxygen and hydrogen form at the electrodes.",
+    "An LED glows even with a weak current.",
+    "Distilled water is a poor conductor.",
+    "Copper is a good conductor."
+   ],
+   "right": 0,
+   "hint": "What appears at the electrodes during the experiment?",
+   "learn": "'Nothing happened' is a claim too, and it needs checking. Careful observation (the bubbles) is the evidence that decides."
+  },
+  {
+   "kind": "pattern",
+   "skill": "data",
+   "topic": "14.1",
+   "title": "Bulb or LED?",
+   "intro": "NOVA tested liquids with two testers: one with a bulb and one with an LED.",
+   "table": {
+    "cols": [
+     "Liquid",
+     "Bulb glowed?",
+     "LED glowed?"
+    ],
+    "rows": [
+     [
+      "Lemon juice",
+      "No",
+      "Yes"
+     ],
+     [
+      "Salt water",
+      "Yes",
+      "Yes"
+     ],
+     [
+      "Distilled water",
+      "No",
+      "No"
+     ]
+    ]
+   },
+   "question": "NOVA says: 'The bulb didn't glow in lemon juice, so lemon juice doesn't conduct.' What is the honest conclusion?",
+   "options": [
+    "NOVA is right: no glow means no current.",
+    "Lemon juice conducts a little: the current was too weak for the bulb but enough for the LED.",
+    "LEDs glow without any current.",
+    "The LED tester is broken."
+   ],
+   "answer": 1,
+   "hint": "Which tester works with a smaller current?",
+   "learn": "A test can miss something real if it isn't sensitive enough. An AI trained only on bulb-tester results would learn that lemon juice doesn't conduct, which is wrong."
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{% extends "student.html" %}
+{% block title %}{{ assignment.title }}{% endblock %}
+{% block eyebrow %}<span class="small muted">Time left: {{ attempt.deadline_at|left }} · <span id="save-status" class="status-dot" role="status">{{ tr("All answers saved") }}</span></span>{% endblock %}
+{% block heading %}{{ assignment.title }}{% endblock %}
+{% block main %}
+{% set story = questions|story %}
+<p class="small muted">{% if story %}{{ story }} {% endif %}{{ tr("Answers save by themselves. Stuck? Tap “Need a hint?”: the tutor guides you but never gives the answer.") }}</p>
+<form id="work" method="post" action="/student/attempts/{{ attempt.id }}/submit" data-autosave="/api/attempts/{{ attempt.id }}/answers" class="stack" data-steps>
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <div class="deck-progress" data-progress hidden><span class="track"><span class="fill"></span></span><span class="count small muted"></span></div>
+  {% for q in questions %}
+  <section class="qcard" data-step data-q="{{ q.id }}" aria-labelledby="q{{ q.id }}-h">
+    <span class="row-between" style="flex-wrap:nowrap"><span class="tiny muted">{{ tr("Question {n} of {m}", n=loop.index, m=questions|length) }}</span>{% if lang != "en" and claude %}<button type="button" class="link-btn small" data-translate="/api/attempts/{{ attempt.id }}/questions/{{ q.id }}/translate" data-orig="{{ tr('Show in English') }}">{{ tr("Read in {lang}", lang=lang_name) }}</button>{% endif %}</span>
+    {% set sc = q.scenario|scene %}{% if sc %}<p class="scenario{% if q.ai_concept %} ai{% endif %}">{{ sc }}</p>{% endif %}
+    {% if q.ai_concept %}<span class="pill ai">AI moment · {{ q.ai_concept }}</span>{% endif %}
+    <div class="row" style="flex-wrap:nowrap;align-items:flex-start"><h2 id="q{{ q.id }}-h" class="qtitle" style="flex:1">{{ q.prompt }}</h2><button type="button" class="say-btn" data-say="q{{ q.id }}-h" data-say-options="[data-q='{{ q.id }}'] label.choice" aria-label="{{ tr('Read aloud') }}" aria-pressed="false" hidden>🔊</button></div>
+    {% if q.options %}
+    <fieldset class="stack-sm"><legend class="sr-only">{{ tr("Choose one answer") }}</legend>
+      {% for o in q.options %}
+      <label class="choice"><input type="radio" name="q{{ q.id }}" value="{{ loop.index0 }}" {% if q.saved and q.saved.index == loop.index0 %}checked{% endif %}>{{ o }}</label>
+      {% endfor %}
+    </fieldset>
+    {% elif q.kind == "numeric" %}
+    <div class="field numans"><label for="a{{ q.id }}">Your answer{% if q.unit %} <span class="hint">(with its unit, e.g. {{ q.unit }})</span>{% endif %}</label>
+      <input id="a{{ q.id }}" name="q{{ q.id }}" type="text" inputmode="decimal" autocomplete="off" data-answer value="{{ q.saved.text if q.saved else '' }}" placeholder="{{ '24 ' ~ q.unit if q.unit else 'A number' }}"></div>
+    <div class="symbols" role="group" aria-label="Maths symbols">{% for sym, name in (("²", "squared"), ("³", "cubed"), ("√", "square root"), ("π", "pi"), ("×", "times"), ("÷", "divide"), ("−", "minus"), ("/", "fraction bar")) %}<button type="button" class="btn small quiet" data-sym="{{ sym }}" data-for="a{{ q.id }}" aria-label="Type {{ name }}">{{ sym }}</button>{% endfor %}</div>
+    <p class="tiny muted">{{ tr("Work it out on paper, then type the answer. Fractions (3/4), decimals and units all work.") }}</p>
+    {% elif q.kind in ("short", "viva") %}
+    <label class="sr-only" for="a{{ q.id }}">{{ tr("Your answer") }}</label>
+    <textarea id="a{{ q.id }}" name="q{{ q.id }}" placeholder="{{ tr('Write your answer in your own words') }}">{{ q.saved.text if q.saved else "" }}</textarea>
+    <button type="button" class="btn small quiet" data-voice="a{{ q.id }}" aria-label="Speak your answer" aria-pressed="false" style="align-self:flex-start">🎤 Speak</button>
+    {% endif %}
+    <div class="row"><button type="button" class="btn small ghost" data-hint="/api/attempts/{{ attempt.id }}/questions/{{ q.id }}/hint" aria-controls="hints-{{ q.id }}">{{ tr("Need a hint?") }}</button></div>
+    <div id="hints-{{ q.id }}" class="stack-sm" aria-live="polite"></div>
+  </section>
+  {% endfor %}
+  <section class="qcard" data-step data-review aria-labelledby="rev-h">
+    <h2 id="rev-h" class="qtitle">{{ tr("Check and hand in") }}</h2>
+    <p class="small muted">{{ tr("Tap a question to go back to it. You can't change answers after handing in.") }}</p>
+    <ol class="review-list">{% for q in questions %}<li><button type="button" class="link-btn" data-goto="{{ loop.index0 }}">{{ tr("Question {n} of {m}", n=loop.index, m=questions|length) }}</button> <span class="small" data-answered="{{ loop.index0 }}"></span></li>{% endfor %}</ol>
+    <button class="btn warm block" type="submit" data-confirm="{{ tr("Hand in now? You can't change answers afterwards.") }}">{{ tr("Hand in") }}</button>
+  </section>
+  <nav class="deck-nav" data-nav hidden aria-label="Questions">
+    <button class="btn ghost" type="button" data-prev>{{ tr("Back") }}</button>
+    <button class="btn" type="button" data-next>{{ tr("Next") }}</button>
+  </nav>
+</form>
+{% endblock %}
